@@ -6,7 +6,8 @@ const onFinish = (values) => {
 const onFinishFailed = (errorInfo) => {
   console.log('Failed:', errorInfo);
 };
-const App = () => (
+
+const LoginPage = () => (
   <Form
     name="basic"
     labelCol={{
@@ -74,4 +75,5 @@ const App = () => (
     </Form.Item>
   </Form>
 );
-export default App;
+
+export default LoginPage;
