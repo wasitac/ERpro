@@ -1,6 +1,6 @@
 /** 
  * 김주원
- */ 
+ */
 import React from 'react';
 import { Button, Form, Input } from 'antd';
 import logo2 from '../../../../img/logo2.png';
@@ -12,7 +12,7 @@ const onFinishFailed = (errorInfo) => {
   console.log('Failed:', errorInfo);
 };
 
-const LoginPage = () => (
+const FindPasswordPage = () => (
   <Form
     name="basic"
     labelCol={{
@@ -32,7 +32,7 @@ const LoginPage = () => (
     autoComplete="off"
   >
     <div>
-      <img src={logo2} alt="로고" style={{width:"50%"}}/>
+      <img src={logo2} alt="logo_t" style={{width:'50%'}}/>
     </div>
       <Form.Item
         name="userNo"
@@ -44,18 +44,6 @@ const LoginPage = () => (
         ]}
       >
         <Input placeholder='사원번호를 입력하세요.'/>
-      </Form.Item>
-
-      <Form.Item
-        name="password"
-        rules={[
-          {
-            required: true,
-            message: '비밀번호를 입력해주세요.',
-          },
-        ]}
-      >
-        <Input.Password placeholder='비밀번호를 입력하세요.' />
       </Form.Item>
 
   {/*     
@@ -77,16 +65,11 @@ const LoginPage = () => (
           span: 16,
         }}
       >
-        <Button type="primary" shape="round" size="large" htmlType="submit" style={{backgroundColor:"#66bd00"}}>
-          로그인
+        <Button type="primary" shape="round" size="large" blockhtmlType="submit" style={{backgroundColor:"#66bd00"}}>
+          전송
         </Button>
-        <div>
-          <a href="/findpassword" style={{color:"#66bd00"}}>
-            비밀번호를 잊어버리셨나요?
-          </a>
-        </div>
       </Form.Item>
-  </Form>
+    </Form>
 );
 
-export default LoginPage;
+export default FindPasswordPage;
