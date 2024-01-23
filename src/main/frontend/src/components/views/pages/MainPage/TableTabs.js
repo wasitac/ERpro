@@ -16,7 +16,7 @@ const defaultPanes = new Array(2).fill(null).map((_, index) => {
 });
 
 // 저장한 탭 기록 출력
-const TableTabs = () => {
+const TableTabs = (props) => {
   const [activeKey, setActiveKey] = useState(defaultPanes[0].key);
   const [items, setItems] = useState(defaultPanes);
   const newTabIndex = useRef(0);
@@ -29,7 +29,7 @@ const TableTabs = () => {
     setItems([
       ...items,
       {
-        label: "New Tab",
+        label: props.menu,
         children: <DataTable></DataTable>,
         key: newActiveKey,
       },

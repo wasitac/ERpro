@@ -7,7 +7,7 @@ import TableTabs from "./TableTabs";
 const MainPage = () => {
   const [data, setData] = useState("");
   useEffect(() => {
-    fetch("/main")
+    fetch("/home")
       .then((response) => response.text())
       .then((data) => {
         setData(data);
@@ -17,7 +17,7 @@ const MainPage = () => {
   return (
     <div>
       메인페이지
-      <TableTabs menu="메뉴1"></TableTabs>
+      <TableTabs menu={data}></TableTabs>
     </div>
   );
 };
