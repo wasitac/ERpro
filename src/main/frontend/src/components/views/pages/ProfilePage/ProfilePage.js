@@ -2,6 +2,7 @@
  * 이지홍
  */
 import React, { useState, useEffect } from "react";
+import ProfileForm from "./ProfileForm";
 
 const ProfilePage = () => {
   const [data, setData] = useState("");
@@ -16,8 +17,8 @@ const ProfilePage = () => {
   return (
     <div>
       <div>내 정보 수정 페이지</div>
-
       <div>{data}</div>
+			<ProfileForm></ProfileForm>
     </div>
   );
 };
