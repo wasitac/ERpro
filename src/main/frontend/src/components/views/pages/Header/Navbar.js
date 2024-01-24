@@ -9,8 +9,8 @@ import tradeIcon from '../../../../img/tradeIcon.png';
 import logisticsIcon from '../../../../img/logisticsIcon.png';
 import productionIcon from '../../../../img/productIcon.png';
 import logo from '../../../../img/logo.png';
-import profile from '../../../../img/profileIcon.png';
 import "./reset.css";
+import Profiledropdown from './Profiledropdown';
 
 const items = [
 	{
@@ -131,7 +131,10 @@ const Navbar = () => {
 				}}
 			/>
 		</div>
-		<img style={{ marginLeft: 'auto', marginRight: '30px' }} src={profile} alt="profile" />
+		<div style={{ marginLeft: 'auto', marginRight: '30px' }}>
+		<Profiledropdown />
+		</div>
+		
 	</div>
 };
 
