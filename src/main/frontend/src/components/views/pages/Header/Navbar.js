@@ -112,13 +112,11 @@ const items = [
 ];
 
 const Navbar = () => {
-	
 	const setCurrent = useState('mail');
 	const onClick = (e) => {
 		console.log('click ', e);
 		setCurrent(e.key);
 	};
-
 	return <div style={{ backgroundColor: '#f4f4f4', height: '90px', display: 'flex', alignItems: 'center', width: '100%', borderBottom: '1px solid rgba(5, 5, 5, 0.06)' }}>
 		<div style={{ display: 'flex', alignItems: 'center' }}>
 			<img style={{ width: '150px', margin: '20px 20px 12px 20px' }} src={logo} alt="logo" />
