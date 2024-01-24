@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { UserOutlined } from '@ant-design/icons';
 import { Button, Form, Input, Row, Col, Image, notification, Space } from 'antd';
 
 import logo2 from '../../../../img/logo2.png';
@@ -51,12 +51,12 @@ function FindPasswordPage() {
   return (
     <>
       {contextHolder}
-      <Row justify="center" align="middle" style={{ height: '100vh' }}>
+      <Row justify="center" align="middle" style={{ height: "100vh" }}>
         <Col span={6}>
-          <div style={{ textAlign: 'center', marginBottom: '25px' }}>
+          <div style={{ textAlign: "center", marginBottom: "25px" }}>
             <Image src={logo2} alt="Company Logo" preview={false} style={{ width: '60%'}}/>
           </div>
-          <h1 style={{ textAlign: 'center', marginBottom: '25px', fontWeight:'bold' }}>
+          <h1 style={{ textAlign: "center", marginBottom: "25px", fontWeight:"bold" }}>
             비밀번호 찾기
           </h1>
           <Form
@@ -80,7 +80,7 @@ function FindPasswordPage() {
               <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="사원번호를 입력하세요" />
             </Form.Item>
             <Form.Item
-              style={{ textAlign: 'center' }}
+              style={{ textAlign: "center" }}
             >
               <Button
                 type="primary"
@@ -88,7 +88,7 @@ function FindPasswordPage() {
                 size="large"
                 htmlType="submit"
                 className="login-form-button"
-                style={{ backgroundColor: '#66bd00'}}
+                style={{ backgroundColor: "#66bd00"}}
               >
                 전송
               </Button>
