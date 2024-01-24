@@ -3,7 +3,7 @@ import { Button, Modal } from 'antd';
 import "../Header/reset.css";
 
 
-const Modalwindow = () => {
+const UpdateModal = () => {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const showModal = () => {
@@ -47,4 +47,4 @@ const Modalwindow = () => {
     </>
   );
 };
-export default Modalwindow;
+export default UpdateModal;

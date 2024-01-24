@@ -23,19 +23,19 @@ const items = [
 				children: [
 					{
 						label: '거래처 목록',
-						key: 'setting:1',
+						key: 'account',
 					},
 					{
 						label: '물품 목록',
-						key: 'setting:2',
+						key: 'item',
 					},
 					{
 						label: 'BOM',
-						key: 'setting:3',
+						key: 'bom',
 					},
 					{
 						label: '사원 대장',
-						key: 'setting:4',
+						key: 'user',
 					},
 				],
 			},
@@ -51,19 +51,19 @@ const items = [
 				children: [
 					{
 						label: '구매 발주서',
-						key: 'setting:5',
+						key: 'buy',
 					},
 					{
 						label: '견적서',
-						key: 'setting:6',
+						key: 'estimate',
 					},
 					{
 						label: '판매 주문서',
-						key: 'setting:7',
+						key: 'sell',
 					},
 					{
 						label: '매입/매출 전표',
-						key: 'setting:8',
+						key: 'invoice',
 					},
 				],
 			},
@@ -79,11 +79,11 @@ const items = [
 				children: [
 					{
 						label: '입고/출고 관리',
-						key: 'setting:9',
+						key: 'store',
 					},
 					{
 						label: '재고 관리',
-						key: 'setting:10',
+						key: 'inventory',
 					},
 				],
 			},
@@ -99,11 +99,11 @@ const items = [
 				children: [
 					{
 						label: '생산 지시',
-						key: 'setting:11',
+						key: 'production',
 					},
 					{
 						label: '제품 검수',
-						key: 'setting:12',
+						key: 'inspection',
 					},
 				],
 			},
@@ -112,7 +112,7 @@ const items = [
 ];
 
 const Navbar = () => {
-	const setCurrent = useState('mail');
+	const [current, setCurrent] = useState("");
 	const onClick = (e) => {
 		console.log('click ', e);
 		setCurrent(e.key);
@@ -132,9 +132,9 @@ const Navbar = () => {
 			/>
 		</div>
 		<div style={{ marginLeft: 'auto', marginRight: '30px' }}>
-		<Profiledropdown />
+			<Profiledropdown />
 		</div>
-		
+
 	</div>
 };
 

@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
 import "./profile.css";
 import { Button, Flex } from 'antd';
-import { Space, Typography } from 'antd';
 import profile from '../../../../img/profileIcon.png';
 
 function Profiledropdown() {
@@ -24,10 +23,10 @@ function Profiledropdown() {
           <li>이메일 : abc@erpro.com</li>
 
           <Flex wrap="wrap" gap="small" style={{ display: 'flex', alignItems: 'center', marginTop: '14px' }}>
-            <Button type="primary" success>
+            <Button type="primary" style={{backgroundColor:"#44883e"}}>
               내 정보
             </Button>
-            <Button type="primary" danger>
+            <Button type="primary" style={{backgroundColor:"#ffc43e", color:"black"}}>
               로그아웃
             </Button>
           </Flex>
