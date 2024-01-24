@@ -46,10 +46,18 @@ function Profiledropdown() {
             gap="small"
             style={{ display: "flex", alignItems: "center", marginTop: "14px" }}
           >
-            <Button type="primary" onClick={handleProfileClick}>
+            <Button
+              type="primary"
+              onClick={handleProfileClick}
+              style={{ backgroundColor: "#44883e" }}
+            >
               내 정보
             </Button>
-            <Button type="primary" onClick={handleLogoutClick}>
+            <Button
+              type="primary"
+              onClick={handleLogoutClick}
+              style={{ backgroundColor: "#ffc43e", color: "black" }}
+            >
               로그아웃
             </Button>
           </Flex>

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
 import "../Header/reset.css";
+import OrderAdd from '../OrderPage/OrderAdd';
+import OrderAddDataTable from '../OrderPage/OrderAddDataTable';
 
 
-const Modalwindow = () => {
+const AddModal = () => {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const showModal = () => {
@@ -30,22 +32,22 @@ const Modalwindow = () => {
         onOk={handleOk}
         onCancel={handleCancel}
         footer={[
-          <Button
-            type="primary"
-          >
+          <Button type="primary" style={{ backgroundColor: '#E8E9EA', color: 'black' }}>
             계속
           </Button>,
           <Button key="back" onClick={handleCancel}>
             취소
           </Button>,
-          <Button key="submit" type="primary" onClick={handleOk}>
+          <Button key="submit" type="primary" onClick={handleOk} style={{backgroundColor: '#66dd00' }}>
             저장
           </Button>,
         ]}
+        width={1000}
       >
-        <p>Some contents...</p>
+      <OrderAdd />
+      <OrderAddDataTable />
       </Modal>
     </>
   );
 };
-export default Modalwindow;
+export default AddModal;
