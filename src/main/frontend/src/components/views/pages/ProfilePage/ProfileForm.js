@@ -7,65 +7,40 @@ import moment from "moment";
 import axios from "axios";
 
 // 정보수정 폼. 사원 대장에서 비밀번호만 빼고 모달로 사용하면 될것같음
-
-const onFinish = (values) => {
+const onFinish = async (values) => {
   console.log("sucsses:", values);
+  try {
+    const response = await axios.put("/profile", values);
+    console.log("PUT request successful", response.data);
+  } catch (error) {
+    console.error("Error making PUT request", error);
+  }
 };
 
 const onFinishFailed = (errorInfo) => {
   console.log("Failed:", errorInfo);
 };
+
 const ProfileForm = () => {
-  const [data, setData] = useState({
-    name: "1",
-    id: "2",
-    birth: "1997-08-17",
-    phone: "4",
-    email: "5",
-    department: "6",
-    position: "7",
-    insertDate: "2000-03-23",
-  });
+  const [data, setData] = useState({});
 
   useEffect(() => {
-    // 데이터를 비동기적으로 가져오기
     const fetchData = async () => {
-      axios
-        .get("/profile")
-        .then((response) => {
-          console.log(response.data.name);
-          console.log(data.name);
-        })
-        .catch((error) => {
-          console.error("Error fetching data", error);
-        });
+      try {
+        const response = await axios.get("/profile");
+        setData(response.data);
+      } catch (error) {
+        console.error("Error fetching data", error);
+      }
     };
+
     fetchData();
   }, []);
 
-  const profilePutRequest = async () => {
-    try {
-      const response = await axios.put("/profile", data);
-
-      console.log("PUT request successful", response.data);
-    } catch (error) {
-      console.error("Error making PUT request", error);
-    }
-  };
-
-  return (
-    <Form
-      name="updateProfile"
-      labelCol={{
-        span: 8,
-      }}
-      wrapperCol={{
-        span: 16,
-      }}
-      style={{
-        maxWidth: 600,
-      }}
-      initialValues={{
+  // profile이 변경될 때마다 Form의 initialValues 업데이트
+  useEffect(() => {
+    if (Object.keys(data).length > 0) {
+      form.setFieldsValue({
         name: data.name,
         id: data.id,
         birth: moment(data.birth),
@@ -74,6 +49,24 @@ const ProfileForm = () => {
         department: data.department,
         position: data.position,
         insertDate: moment(data.insertDate),
+      });
+    }
+  }, [data]);
+
+  const [form] = Form.useForm();
+
+  return (
+    <Form
+      form={form}
+      name="putProfile"
+      labelCol={{
+        span: 8,
+      }}
+      wrapperCol={{
+        span: 16,
+      }}
+      style={{
+        maxWidth: 600,
       }}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
@@ -152,8 +145,8 @@ const ProfileForm = () => {
           span: 16,
         }}
       >
-        <Button type="primary" onClick={profilePutRequest}>
-          내 정보 변경하기
+        <Button type="primary" htmlType="submit">
+          내 정보 수정하기
         </Button>
       </Form.Item>
     </Form>

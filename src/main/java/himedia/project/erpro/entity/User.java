@@ -8,13 +8,13 @@ import lombok.Setter;
 public class User {
 	long id;
 	String name;
-	String password;
 	String birth;
 	String phone;
 	String email;
 	String department;
 	String position;
 	String work_type;
-	String insert_date;
-	String retire_date;
+	String insertDate;
+	String retireDate;
+	String password;
 }
