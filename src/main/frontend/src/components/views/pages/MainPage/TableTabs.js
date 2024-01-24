@@ -1,8 +1,9 @@
 /**
  * 이지홍
  */
-import React, { useRef, useState } from "react";
-import { Button, Tabs } from "antd";
+import React, { useRef, useState, useEffect } from "react";
+import axios from "axios";
+import { Tabs } from "antd";
 import DataTable from "./DataTable";
 
 // 이거대신 탭 기록 넣으면 됨
@@ -23,6 +24,20 @@ const TableTabs = (props) => {
   const onChange = (key) => {
     setActiveKey(key);
   };
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`/home/${props.menu}`);
+        setData(response.data);
+        add();
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, [props.menu]);
 
   const add = () => {
     const newActiveKey = `newTab${newTabIndex.current++}`;
@@ -36,6 +51,7 @@ const TableTabs = (props) => {
     ]);
     setActiveKey(newActiveKey);
   };
+
   const remove = (targetKey) => {
     const targetIndex = items.findIndex((pane) => pane.key === targetKey);
     const newPanes = items.filter((pane) => pane.key !== targetKey);
@@ -48,6 +64,7 @@ const TableTabs = (props) => {
     }
     setItems(newPanes);
   };
+
   const onEdit = (targetKey, action) => {
     if (action === "add") {
       add();
@@ -55,15 +72,14 @@ const TableTabs = (props) => {
       remove(targetKey);
     }
   };
+  
   return (
     <div>
       <div
         style={{
           marginBottom: 16,
         }}
-      >
-        <Button onClick={add}>ADD</Button>
-      </div>
+      ></div>
       <Tabs
         hideAdd
         onChange={onChange}

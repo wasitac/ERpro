@@ -1,6 +1,7 @@
 package himedia.project.erpro.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,9 +17,10 @@ public class UserController {
 	private final UserService userService;
 	
 	// 메인페이지 - 이지홍
-	@GetMapping("/home")
-	public String home() {
-		return "데이타";
+	@GetMapping("/home/{menu}")
+	public String home(@PathVariable(value="menu") String menu) {
+		// menu로 테이블 찾아서 반환하기
+		return menu + "테이블";
 	}
 
 	// 회원정보 수정폼 - 이지홍
