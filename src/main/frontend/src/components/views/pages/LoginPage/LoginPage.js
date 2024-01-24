@@ -22,10 +22,10 @@ function LoginPage() {
   };
   
   return (
-    <Row justify="center" align="middle" style={{ height: '100vh' }}>
+    <Row justify="center" align="middle" style={{ height: "100vh" }}>
       <Col span={6}>
-        <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-          <Image src={logo2} alt="Company Logo" preview={false} style={{ width: '60%'}}/>
+        <div style={{ textAlign: "center", marginBottom: "20px" }}>
+          <Image src={logo2} alt="Company Logo" preview={false} style={{ width: "60%"}}/>
         </div>
         <Form
           name="normal_login"
@@ -63,7 +63,7 @@ function LoginPage() {
             />
           </Form.Item>
           <Form.Item
-            style={{ textAlign: 'center' }}
+            style={{ textAlign: "center" }}
           >
             <Button
               type="primary"
@@ -71,14 +71,14 @@ function LoginPage() {
               size="large"
               htmlType="submit"
               className="login-form-button"
-              style={{ backgroundColor: '#66bd00'}}
+              style={{ backgroundColor: "#66bd00"}}
             >
               Log in
             </Button>
             <div
-              style={{ marginTop: '10px' }}
+              style={{ marginTop: "10px" }}
             >
-              <a style={{color: '#66bd00'}} onClick={(event) => {
+              <a style={{ color: "#66bd00" }} onClick={(event) => {
                 event.preventDefault();
                 navigate('/findpassword');
               }}>비밀번호를 잊어버렸어요</a>
