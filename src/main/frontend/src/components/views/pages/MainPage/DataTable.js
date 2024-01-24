@@ -40,49 +40,49 @@ const data = [
 ];
 const DataTable = () => (
   // 위아래로 2등분
-  // <>
-  //   <Divider>Small size table</Divider>
-  //   <Table
-  //     columns={columns}
-  //     dataSource={data}
-  //     size="small"
-  //     pagination={false}
-  //     scroll={{ y: 240 }}
-  //   />
-  //   <Divider>Small size table</Divider>
-  //   <Table
-  //     columns={columns}
-  //     dataSource={data}
-  //     size="small"
-  //     pagination={false}
-  //     scroll={{ y: 240 }}
-  //   />
-  // </>
-  // 좌우로 2등분
   <>
-    <div style={{ display: "flex" }}>
-      <div style={{ marginRight: "16px" }}>
-        <Divider>Small size table</Divider>
-        <Table
-          columns={columns}
-          dataSource={data}
-          size="small"
-          pagination={false}
-          scroll={{ y: 240 }}
-        />
-      </div>
-
-      <div>
-        <Divider>Small size table</Divider>
-        <Table
-          columns={columns}
-          dataSource={data}
-          size="small"
-          pagination={false}
-          scroll={{ y: 240 }}
-        />
-      </div>
-    </div>
+    <Divider>Small size table</Divider>
+    <Table
+      columns={columns}
+      dataSource={data}
+      size="small"
+      pagination={false}
+      scroll={{ y: 240 }}
+    />
+    <Divider>Small size table</Divider>
+    <Table
+      columns={columns}
+      dataSource={data}
+      size="small"
+      pagination={false}
+      scroll={{ y: 240 }}
+    />
   </>
+  // 좌우로 2등분
+  // <>
+  //   <div style={{ display: "flex" }}>
+  //     <div style={{ marginRight: "16px" }}>
+  //       <Divider>Small size table</Divider>
+  //       <Table
+  //         columns={columns}
+  //         dataSource={data}
+  //         size="small"
+  //         pagination={false}
+  //         scroll={{ y: 240 }}
+  //       />
+  //     </div>
+
+  //     <div>
+  //       <Divider>Small size table</Divider>
+  //       <Table
+  //         columns={columns}
+  //         dataSource={data}
+  //         size="small"
+  //         pagination={false}
+  //         scroll={{ y: 240 }}
+  //       />
+  //     </div>
+  //   </div>
+  // </>
 );
 export default DataTable;
