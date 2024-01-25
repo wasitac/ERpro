@@ -2,11 +2,8 @@ package himedia.project.erpro.controller;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-<<<<<<< HEAD
-import org.springframework.web.bind.annotation.PostMapping;
-=======
 import org.springframework.web.bind.annotation.PathVariable;
->>>>>>> main
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,12 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import himedia.project.erpro.dto.Password;
 import himedia.project.erpro.dto.Profile;
-<<<<<<< HEAD
 import himedia.project.erpro.entity.User;
-=======
 import himedia.project.erpro.service.UserService;
 import lombok.RequiredArgsConstructor;
->>>>>>> main
 
 @RestController
 @RequiredArgsConstructor
@@ -54,8 +48,8 @@ public class UserController {
 		System.out.println("연락처 : " + user.getPhone());
 		System.out.println("이메일 : " + user.getEmail());
 		System.out.println("부서 : " + user.getDepartment());
-		System.out.println("직책 : " + user.getPosition());
-		System.out.println("입사일 : " + user.getInsert_date());
+		System.out.println("직책 : " + user.getUserRank());
+		System.out.println("입사일 : " + user.getInsertDate());
 		return "사원 추가";
 	}
 	
@@ -63,7 +57,7 @@ public class UserController {
 	@PutMapping("/user")
 	public String editUser(@RequestBody User user) {
 		System.out.println("이메일 : " + user.getEmail());
-		System.out.println("직책 : " + user.getPosition());
+		System.out.println("직책 : " + user.getUserRank());
 		System.out.println("연락처 : " + user.getPhone());
 		return "사원 정보 수정";
 	}

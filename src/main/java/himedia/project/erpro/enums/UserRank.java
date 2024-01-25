@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public enum Rank {
+public enum UserRank {
 	EMPLOYEE("사원"), 
 	MANAGER("대리"), 
 	DIRECTOR("과장"), 
