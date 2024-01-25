@@ -1,45 +1,51 @@
 package himedia.project.erpro.service;
 
-import java.util.Optional;
-
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import himedia.project.erpro.dto.Password;
 import himedia.project.erpro.dto.Profile;
 import himedia.project.erpro.entity.User;
 import himedia.project.erpro.repository.UserRepository;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
 public class UserService {
 	private final UserRepository userRepository;
-	
-	public Optional<User> getUserById(Long userId) {
-		Optional<User> user = userRepository.findById(userId);
-		System.out.println(user.get().getName());
-		return user;
+	private final ModelMapper modelMapper;
+
+	// 프로필 가져오기 - 이지홍
+	public Profile getUserProfile(Long userId) {
+		User user = userRepository.findById(userId)
+				.orElseThrow(() -> new EntityNotFoundException("User not found with ID: " + userId));
+		Profile profile = modelMapper.map(user, Profile.class);
+		return profile;
 	}
-	
+
+	// 내 정보 수정 - 이지홍
 	public void updateProfile(Long userId, Profile profile) {
-		Optional<User> findUser = userRepository.findById(userId);
-		if (findUser.isPresent()) {
-			User user = findUser.get();
-			user.setName(profile.getName());
-			userRepository.save(user);
-		}
+		User user = userRepository.findById(userId)
+				.orElseThrow(() -> new EntityNotFoundException("User not found with ID: " + userId));
+		
+		user.setName(profile.getName());
+		user.setEmail(profile.getEmail());
+		user.setPhone(profile.getPhone());
+		userRepository.save(user);
 	}
 
+	// 비밀번호 수정 - 이지홍
 	public void updatePassword(Long userId, Password password) {
-		Optional<User> findUser = userRepository.findById(userId);
-		if (findUser.isPresent()) {
-			User user = findUser.get();
-			// 현재 비밀번호와 입력한 비밀번호가 일치하는지 검사
-			if (user.getPassword().equals(password.getPassword())) {
-				user.setPassword(password.getNewPassword());
-				userRepository.save(user);
-			}
-		}
-
+		User user = userRepository.findById(userId)
+				.orElseThrow(() -> new EntityNotFoundException("User not found with ID: " + userId));
+		
+		if (user.getPassword().equals(password.getPassword())) {
+			user.setPassword(password.getNewPassword());
+			userRepository.save(user);
+			return;
+		} 
+		// 비밀번호가 틀렸을 경우 추가
 	}
+	
 }
