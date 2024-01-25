@@ -20,6 +20,7 @@ public class UserService {
 		System.out.println(user.get().getName());
 		return user;
 	}
+	
 	public void updateProfile(Long userId, Profile profile) {
 		Optional<User> findUser = userRepository.findById(userId);
 		if (findUser.isPresent()) {

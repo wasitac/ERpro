@@ -26,10 +26,10 @@ public class AccountController {
 	      
 		// 리턴용 샘플 데이터
 		List<Account> dataList = new ArrayList<>();
-		Account sample = new Account();
-		sample.setId(1);
-		sample.setB_nm("000");
-		dataList.add(sample);
+//		Account sample = new Account();
+//		sample.setId(1);
+//		sample.setB_nm("000");
+//		dataList.add(sample);
   
 		// Map<String, List<Account>> returnData = new HashMap<>();
 		// returnData.put("data", dataList);
