@@ -1,5 +1,7 @@
 package himedia.project.erpro.entity;
 
+import himedia.project.erpro.enums.Department;
+import himedia.project.erpro.enums.Rank;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,9 +21,9 @@ public class User {
 	private String birth;
 	private String phone;
 	private String email;
-	private String department;
-	private String position;
-	private String work_type;
+	private Department department;
+	private Rank rankType;
+	private String workType;
 	private String insertDate;
 	private String retireDate;
 	private String password;
