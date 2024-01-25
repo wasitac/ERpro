@@ -8,9 +8,9 @@ import lombok.Setter;
 public class Item {
 	long id;
 	String sort;
-	String item_name;
+	String itemName;
 	String unit;
 	String spec;
-	int purchase_price;
-	int sales_price;
+	int purchasePrice;
+	int salesPrice;
 }
