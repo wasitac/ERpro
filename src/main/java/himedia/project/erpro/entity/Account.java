@@ -1,9 +1,6 @@
 package himedia.project.erpro.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,15 +13,29 @@ import lombok.Setter;
 public class Account {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	long id;			// 거래처 코드
-	long user_id;		// 담당자 id			user에서 id를 외래키로 참조
-	String b_no;		// 사업자 등록 번호
-	String b_nm;		// 거래처명
-	String sort;		// 구분 (개인, 법인)
-	String p_nm;		// 대표명
-	String b_sector;	// 업태
-	String b_type;		// 종목
-	String phone;		// 연락처
-	String b_adr;		// 거래처 주소
-	String email;		// 이메일
+	private Long id;			// 거래처 코드
+	
+	@Column(name = "user_id")
+	private Long userId;		// 담당자 id			user에서 id를 외래키로 참조
+	
+	@Column(name = "b_no")
+	private String bNo;		// 사업자 등록 번호
+	
+	@Column(name = "b_nm")
+	private String bNm;		// 거래처명
+	private String sort;		// 구분 (개인, 법인)
+	
+	@Column(name = "p_nm")
+	private String pNm;		// 대표명
+	
+	@Column(name = "b_sector")
+	private String bSector;	// 업태
+	
+	@Column(name = "b_type")
+	private String bType;		// 종목
+	private String phone;		// 연락처
+	
+	@Column(name = "b_adr")
+	private String bAdr;		// 거래처 주소
+	private String email;		// 이메일
 }
