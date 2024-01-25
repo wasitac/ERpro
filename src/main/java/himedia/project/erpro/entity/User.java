@@ -13,14 +13,13 @@ import lombok.Setter;
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-	
+	private Long id;
 	private String name;
 	private String birth;
 	private String phone;
 	private String email;
 	private String department;
-	private String position;
+	private String rank;
 	private String work_type;
 	private String insertDate;
 	private String retireDate;
