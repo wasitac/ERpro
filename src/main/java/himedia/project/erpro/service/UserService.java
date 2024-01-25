@@ -14,13 +14,18 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class UserService {
 	private final UserRepository userRepository;
-
+	
+	public Optional<User> getUserById(Long userId) {
+		Optional<User> user = userRepository.findById(userId);
+		System.out.println(user.get().getName());
+		return user;
+	}
 	public void updateProfile(Long userId, Profile profile) {
 		Optional<User> findUser = userRepository.findById(userId);
 		if (findUser.isPresent()) {
 			User user = findUser.get();
-				user.setName(profile.getName());
-				userRepository.save(user);
+			user.setName(profile.getName());
+			userRepository.save(user);
 		}
 	}
 

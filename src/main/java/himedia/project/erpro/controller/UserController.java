@@ -16,6 +16,11 @@ import lombok.RequiredArgsConstructor;
 public class UserController {
 	private final UserService userService;
 	
+	@GetMapping("/")
+	public String main() {
+		return userService.getUserById(1l).get().getName();
+	}
+	
 	// 메인페이지 - 이지홍
 	@GetMapping("/home/{menu}")
 	public String home(@PathVariable(value="menu") String menu) {
