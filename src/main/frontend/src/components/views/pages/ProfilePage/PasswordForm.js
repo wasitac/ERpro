@@ -2,39 +2,26 @@
  * 이지홍
  */
 import { Button, Form, Input } from "antd";
-import React, { useState } from "react";
 import axios from "axios";
 
-// 정보수정 폼. 사원 대장에서 비밀번호만 빼고 모달로 사용하면 될것같음
+const onFinish = async (values) => {
+  console.log("sucsses:", values);
+  try {
+    const response = await axios.put("/password", values);
+    console.log("PUT request successful", response.data);
+  } catch (error) {
+    console.error("Error making PUT request", error);
+  }
+};
 
-const PasswordForm = (props) => {
-  const [data, setData] = useState({
-    // name: "1",
-    // id: "2",
-  });
-  const onFinish = (values) => {
-    setData(values);
-  };
+const onFinishFailed = (errorInfo) => {
+  console.log("Failed:", errorInfo);
+};
 
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
-
-  const passwordPutRequest = async () => {
-    try {
-      const response = await axios.put("/password", {
-        password: "1",
-        newPassword: "2",
-      });
-      console.log("PUT request successful", response.data);
-    } catch (error) {
-      console.error("Error making PUT request", error);
-    }
-  };
-
+const PasswordForm = () => {
   return (
     <Form
-      name="updatePassword"
+      name="putPassword"
       labelCol={{
         span: 8,
       }}
@@ -60,9 +47,11 @@ const PasswordForm = (props) => {
       >
         <Input.Password />
       </Form.Item>
+
       <Form.Item label="new Password" name="newPassword">
         <Input.Password />
       </Form.Item>
+
       <Form.Item
         name="confirm"
         label="Confirm Password"
@@ -94,7 +83,7 @@ const PasswordForm = (props) => {
           span: 16,
         }}
       >
-        <Button type="primary" onClick={passwordPutRequest}>
+        <Button type="primary" htmlType="submit">
           비밀번호 변경하기
         </Button>
       </Form.Item>
