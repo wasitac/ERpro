@@ -53,6 +53,34 @@ const columns = [
     dataIndex: "note",
   },
 ];
+
+const totalColumns = [
+  {
+    title: "공급가",
+    dataIndex: "note",
+  },
+  {
+    title: "부가세",
+    dataIndex: "note",
+  },
+  {
+    title: "합계",
+    dataIndex: "note",
+  },
+  {
+    title: "공급가",
+    dataIndex: "note",
+  },
+  {
+    title: "부가세",
+    dataIndex: "note",
+  },
+  {
+    title: "합계",
+    dataIndex: "note",
+  },
+];
+
 const data = [];
 for (let i = 0; i < 46; i++) {
   data.push({
@@ -95,6 +123,16 @@ const OrderPage = () => {
       </span>
     </div>
     <Table rowSelection={rowSelection} columns={columns} dataSource={data} />
+  
+    <>
+    <Table
+      columns={totalColumns}
+      dataSource={data}
+      size="small"
+      pagination={false}
+      
+    />
+  </>
   </div>
   
   );
