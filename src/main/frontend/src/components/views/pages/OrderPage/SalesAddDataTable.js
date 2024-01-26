@@ -27,8 +27,12 @@ const columns = [
     dataIndex: "price",
   },
   {
-    title: "매입단가",
-    dataIndex: "purchasePrice",
+    title: "매출단가",
+    dataIndex: "salesPrice",
+  },
+  {
+    title: "부가세액",
+    dataIndex: "vat",
   },
   {
     title: "합계금액",
@@ -48,7 +52,7 @@ const data = [
   },
 ];
 
-const OrderAddDataTable = () => (
+const SalesAddDataTable = () => (
   <>
     <div style={{ display: "flex" }}>
       <div style={{ marginRight: "16px" }}>
@@ -65,4 +69,4 @@ const OrderAddDataTable = () => (
     </div>
   </>
 );
-export default OrderAddDataTable;
+export default SalesAddDataTable;

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Button, Table } from 'antd';
 const columns = [
   {
-    title: "발주번호",
+    title: "견적ID",
     dataIndex: "id",
   },
   {
@@ -11,28 +11,48 @@ const columns = [
     dataIndex: "bNm",
   },
   {
+    title: "물품ID",
+    dataIndex: "itemId",
+  },
+  {
     title: "품목명",
     dataIndex: "itemName",
+  },
+  {
+    title: "단위",
+    dataIndex: "unit",
+  },
+  {
+    title: "규격",
+    dataIndex: "spec",
   },
   {
     title: "수량",
     dataIndex: "count",
   },
   {
-    title: "매입단가",
-    dataIndex: "purchacsePrice",
+    title: "단가",
+    dataIndex: "price",
   },
   {
-    title: "합계금액",
+    title: "견적금액",
     dataIndex: "total",
   },
   {
-    title: "발주일자",
+    title: "주문처리",
+    dataIndex: "order",
+  },
+  {
+    title: "작성일자",
+    dataIndex: "insertDate",
+  },
+  {
+    title: "납기일자",
     dataIndex: "dueDate",
   },
   {
-    title: "입고일자",
-    dataIndex: "completionDate",
+    title: "유효기간",
+    dataIndex: "expiration",
   },
 ];
 const data = [];
@@ -40,17 +60,22 @@ for (let i = 0; i < 46; i++) {
   data.push({
     key: i,
     id: `${i}`,
-    type: "구매",
-    bNm: "고고상사",
+    bNm: "가나제조",
+    itemId: "K2301",
     itemName: "Gellaxy24",
+    unit: "100",
+    spec: "9.5",
     count: "1",
-    purchacsePrice: "500,000",
-    total: "500,000",
+    price: "700,000",
+    vat: "70,000",
+    total: "770,000",
+    order: "진행",
+    insertDate: "2024-01-01",
     dueDate: "2023-12-01",
-    completionDate: "2024-12-10",
+    expiration: "30일까지",
   });
 }
-const OrderPage = () => {
+const EstimatePage = () => {
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const onSelectChange = (newSelectedRowKeys) => {
     console.log('selectedRowKeys changed: ', newSelectedRowKeys);
@@ -81,4 +106,4 @@ const OrderPage = () => {
   );
 };
 
-export default OrderPage;
+export default EstimatePage;

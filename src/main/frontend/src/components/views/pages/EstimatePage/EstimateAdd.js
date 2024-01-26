@@ -7,7 +7,7 @@ const EstimateAdd = () => {
   const onFormLayoutChange = ({ size }) => {
     setComponentSize(size);
   };
-
+ 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', }}>
       <Form
@@ -32,20 +32,20 @@ const EstimateAdd = () => {
           margin: '30px',
         }}
       >
-        <div style={{ width: '48%' }}>
+        <div style={{ width: '40%' }}>
+          <Form.Item label="견적ID" name="id">
+            <Input disabled />
+          </Form.Item>
           <Form.Item label="거래처ID" name="accountId">
             <Input />
           </Form.Item>
           <Form.Item label="작성일자" name="insertDate">
             <DatePicker />
           </Form.Item>
-          <Form.Item label="물품코드" name="itemId">
+          <Form.Item label="물품ID" name="itemId">
             <Input />
           </Form.Item>
           <Form.Item label="물품명" name="itemName">
-            <Input />
-          </Form.Item>
-          <Form.Item label="유효기간" name="expiration">
             <Input />
           </Form.Item>
           <Form.Item label="납기일자" name="dueDate">
@@ -54,12 +54,33 @@ const EstimateAdd = () => {
           <Form.Item label="주문처리" name="order" >
             <Input />
           </Form.Item>
+          <Form.Item label="유효기간" name="expiration">
+            <Input />
+          </Form.Item>
+          </div>
+          <div style={{ width: '40%' }}>
+        <Form.Item label="단위" name="unit">
+            <Input />
+          </Form.Item>
+          <Form.Item label="규격" name="spec">
+            <Input />
+          </Form.Item>
+          <Form.Item label="수량" name="count" >
+            <Input />
+          </Form.Item>
+          <Form.Item label="단가" name="price">
+            <Input />
+          </Form.Item>
+          <Form.Item label="견적금액" name="total">
+            <Input />
+          </Form.Item>
         </div>
         <div style={{ width: '48%' }}>
-          <Form.Item label="거래처명" name="bNm">
+
+          <Form.Item label="회사명" name="bNm">
             <Input disabled />
           </Form.Item>
-          <Form.Item label="사업자 번호" name="bNo">
+          <Form.Item label="사업자 등록번호" name="bNo">
             <Input disabled />
           </Form.Item>
           <Form.Item label="담당자" name="userId">
@@ -74,8 +95,6 @@ const EstimateAdd = () => {
           <Form.Item label="업태" name="bSector">
             <Input disabled />
           </Form.Item>
-        </div>
-        <div style={{ width: '48%', marginTop: "-170px"}}>
           <Form.Item label="대표자" name="pNm">
             <Input disabled />
           </Form.Item>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Button, DatePicker, Form, Input, InputNumber, Radio, Select, TreeSelect, } from 'antd';
+import {Button,DatePicker,Form,Input,InputNumber,Radio,Select,TreeSelect,} from 'antd';
 
-const OrderAdd = () => {
+const SalesAdd = () => {
   const [componentSize, setComponentSize] = useState('default');
 
   const onFormLayoutChange = ({ size }) => {
@@ -33,14 +33,14 @@ const OrderAdd = () => {
         }}
       >
         <div style={{ width: '48%' }}>
-          <Form.Item label="주문ID" name="id">
-            <Input disabled />
+        <Form.Item label="판매ID" name="id">
+            <Input disabled/>
           </Form.Item>
           <Form.Item label="구분" name="type">
-            <Select>
-              <Select.Option value="buy">구매</Select.Option>
-              <Select.Option value="sell">판매</Select.Option>
-            </Select>
+             <Select>
+             <Select.Option value="buy">구매</Select.Option>             
+             <Select.Option value="sell">판매</Select.Option>
+              </Select>
           </Form.Item>
           <Form.Item label="거래처ID" name="accountId">
             <Input />
@@ -51,10 +51,10 @@ const OrderAdd = () => {
           <Form.Item label="품목명" name="itemName">
             <Input />
           </Form.Item>
-          <Form.Item label="발주일자" name="dueDate">
+          <Form.Item label="납기입자" name="dueDate">
             <DatePicker />
           </Form.Item>
-          <Form.Item label="입고일자" name="completionDate">
+          <Form.Item label="납기완료일" name="completionDate">
             <DatePicker />
           </Form.Item>
         </div>
@@ -71,25 +71,28 @@ const OrderAdd = () => {
           <Form.Item label="단가" name="price">
             <Input />
           </Form.Item>
-          <Form.Item label="매입단가" name="purchacsePrice">
+          <Form.Item label="부가세" name="vat">
             <Input />
           </Form.Item>
-          <Form.Item label="합계금액" name="total">
+          <Form.Item label="합계" name="total">
+            <Input />
+          </Form.Item>
+          <Form.Item label="매출단가" name="salesPrice">
             <Input />
           </Form.Item>
         </div>
         <div style={{ width: '48%' }}>
-          <Form.Item label="거래처명" name="bNm">
+        <Form.Item label="거래처명" name="bNm">
             <Input />
           </Form.Item>
           <Form.Item label="대표자" name="pNm">
             <Input />
-          </Form.Item>
-          <Form.Item label="사업자 구분" name="sort">
+            </Form.Item>  
+            <Form.Item label="사업자 구분" name="sort">
             <Select>
-              <Select.Option value="personal ">개인</Select.Option>
-              <Select.Option value="corporate">법인</Select.Option>
-            </Select>
+             <Select.Option value="personal ">개인</Select.Option>             
+             <Select.Option value="corporate">법인</Select.Option>
+              </Select>
           </Form.Item>
           <Form.Item label="사업자 등록번호" name="bNo" >
             <Input />
@@ -118,4 +121,4 @@ const OrderAdd = () => {
   );
 };
 
-export default OrderAdd;
+export default SalesAdd;

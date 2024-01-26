@@ -10,6 +10,10 @@ import OrderAdd from "./components/views/pages/OrderPage/OrderAdd";
 import OrderAddDataTable from "./components/views/pages/OrderPage/OrderAddDataTable";
 import DataTable from "./components/views/pages/MainPage/DataTable";
 import EstimateAdd from "./components/views/pages/EstimatePage/EstimateAdd";
+import EstimateAddDataTable from "./components/views/pages/EstimatePage/EstimateAddDataTable";
+import SalesAdd from "./components/views/pages/OrderPage/SalesAdd";
+import SalesAddDataTable from "./components/views/pages/OrderPage/SalesAddDataTable";
+import EstimatePage from "./components/views/pages/EstimatePage/EstimatePage";
 
 function App() {
   return (
@@ -26,6 +30,10 @@ function App() {
           <Route path="/OrderAddDataTable" element={<OrderAddDataTable />} />
           <Route path="/DataTable" element={<DataTable />} />
           <Route path="/EstimateAdd" element={<EstimateAdd />} />
+          <Route path="/EstimateAddDataTable" element={<EstimateAddDataTable />} />
+          <Route path="/EstimatePage" element={<EstimatePage />} />
+          <Route path="/SalesAdd" element={<SalesAdd />} />
+          <Route path="/SalesAddDataTable" element={<SalesAddDataTable />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Button, Table } from 'antd';
 const columns = [
   {
-    title: "발주번호",
+    title: "주문번호",
     dataIndex: "id",
   },
   {
@@ -19,19 +19,27 @@ const columns = [
     dataIndex: "count",
   },
   {
-    title: "매입단가",
-    dataIndex: "purchacsePrice",
+    title: "단가",
+    dataIndex: "price",
+  },
+  {
+    title: "매출단가",
+    dataIndex: "salesPrice",
+  },
+  {
+    title: "부가세",
+    dataIndex: "vat",
   },
   {
     title: "합계금액",
     dataIndex: "total",
   },
   {
-    title: "발주일자",
+    title: "납기예정일",
     dataIndex: "dueDate",
   },
   {
-    title: "입고일자",
+    title: "납기완료일",
     dataIndex: "completionDate",
   },
 ];
@@ -43,14 +51,16 @@ for (let i = 0; i < 46; i++) {
     type: "구매",
     bNm: "고고상사",
     itemName: "Gellaxy24",
-    count: "1",
-    purchacsePrice: "500,000",
-    total: "500,000",
+    count: "2",
+    price: "1,000,000",
+    salesPrice: "2,000,000",
+    vat: "200,000",
+    total: "1,800,000",
     dueDate: "2023-12-01",
     completionDate: "2024-12-10",
   });
 }
-const OrderPage = () => {
+const SalesPage = () => {
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const onSelectChange = (newSelectedRowKeys) => {
     console.log('selectedRowKeys changed: ', newSelectedRowKeys);
@@ -81,4 +91,4 @@ const OrderPage = () => {
   );
 };
 
-export default OrderPage;
+export default SalesPage;
