@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
-import "../Header/reset.css";
+import "../../Header/reset.css";
 import OrderAdd from '../OrderPage/OrderAdd';
 import OrderAddDataTable from '../OrderPage/OrderAddDataTable';
 import SalesAddDataTable from '../OrderPage/SalesAddDataTable';
@@ -47,10 +47,6 @@ const AddModal = () => {
             저장
           </Button>,
         ]}
-<<<<<<< HEAD
-        width={1200}
-=======
->>>>>>> 20b17f90c6eede9f9f589710d8f2946ecaa01836
       >
         <EstimateAdd />
         <EstimateAddDataTable />

@@ -5,8 +5,12 @@ import React, { useState } from 'react';
 import { Button, Table } from 'antd';
 const columns = [
   {
-    title: "발주번호",
+    title: "전표번호",
     dataIndex: "id",
+  },
+  {
+    title: "거래구분",
+    dataIndex: "sort",
   },
   {
     title: "거래처명",
@@ -21,20 +25,32 @@ const columns = [
     dataIndex: "count",
   },
   {
-    title: "매입단가",
-    dataIndex: "purchacsePrice",
+    title: "단가",
+    dataIndex: "price",
+  },
+  {
+    title: "공급가",
+    dataIndex: "supplyPrice",
+  },
+  {
+    title: "부가세",
+    dataIndex: "vat",
   },
   {
     title: "합계금액",
     dataIndex: "total",
   },
   {
-    title: "발주일자",
-    dataIndex: "dueDate",
+    title: "결제방법",
+    dataIndex: "payment",
   },
   {
-    title: "입고일자",
-    dataIndex: "completionDate",
+    title: "거래일자",
+    dataIndex: "date",
+  },
+  {
+    title: "비고",
+    dataIndex: "note",
   },
 ];
 const data = [];
@@ -65,21 +81,22 @@ const OrderPage = () => {
   const hasSelected = selectedRowKeys.length > 0;
   return (
     <div>
-      <div
+    <div
+      style={{
+        marginBottom: 16,
+      }}
+    >
+      <span
         style={{
-          marginBottom: 16,
+          marginLeft: 8,
         }}
       >
-        <span
-          style={{
-            marginLeft: 8,
-          }}
-        >
-          {hasSelected ? `Selected ${selectedRowKeys.length} items` : ''}
-        </span>
-      </div>
-      <Table rowSelection={rowSelection} columns={columns} dataSource={data} />
+        {hasSelected ? `Selected ${selectedRowKeys.length} items` : ''}
+      </span>
     </div>
+    <Table rowSelection={rowSelection} columns={columns} dataSource={data} />
+  </div>
+  
   );
 };
 

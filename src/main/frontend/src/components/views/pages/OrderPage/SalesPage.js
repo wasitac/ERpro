@@ -1,6 +1,41 @@
-
+/**
+ * 정유진 
+ */
 import React, { useState } from 'react';
 import { Button, Table } from 'antd';
+
+const SalesPage = () => {
+  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
+  const onSelectChange = (newSelectedRowKeys) => {
+    console.log('selectedRowKeys changed: ', newSelectedRowKeys);
+    setSelectedRowKeys(newSelectedRowKeys);
+  };
+  const rowSelection = {
+    selectedRowKeys,
+    onChange: onSelectChange,
+  };
+  const hasSelected = selectedRowKeys.length > 0;
+  return (
+    <div>
+      <div
+        style={{
+          marginBottom: 16,
+        }}
+      >
+        <span
+          style={{
+            marginLeft: 8,
+          }}
+        >
+          {hasSelected ? `Selected ${selectedRowKeys.length} items` : ''}
+        </span>
+      </div>
+      <Table rowSelection={rowSelection} columns={columns} dataSource={data} />
+    </div>
+  );
+};
+
+// 테이블 컬럼
 const columns = [
   {
     title: "주문번호",
@@ -60,35 +95,5 @@ for (let i = 0; i < 46; i++) {
     completionDate: "2024-12-10",
   });
 }
-const SalesPage = () => {
-  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
-  const onSelectChange = (newSelectedRowKeys) => {
-    console.log('selectedRowKeys changed: ', newSelectedRowKeys);
-    setSelectedRowKeys(newSelectedRowKeys);
-  };
-  const rowSelection = {
-    selectedRowKeys,
-    onChange: onSelectChange,
-  };
-  const hasSelected = selectedRowKeys.length > 0;
-  return (
-    <div>
-      <div
-        style={{
-          marginBottom: 16,
-        }}
-      >
-        <span
-          style={{
-            marginLeft: 8,
-          }}
-        >
-          {hasSelected ? `Selected ${selectedRowKeys.length} items` : ''}
-        </span>
-      </div>
-      <Table rowSelection={rowSelection} columns={columns} dataSource={data} />
-    </div>
-  );
-};
 
 export default SalesPage;

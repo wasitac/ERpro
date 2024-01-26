@@ -4,7 +4,7 @@ import LoginPage  from './components/views/pages/LoginPage/LoginPage';
 import FindPasswordPage from './components/views/pages/FindPasswordPage/FindPasswordPage';
 import MainPage from "./components/views/pages/MainPage/MainPage";
 import ProfilePage from "./components/views/pages/ProfilePage/ProfilePage";
-import Navbar from "./components/views/pages/Header/Navbar";
+import Navbar from "./components/views/Header/Navbar";
 import AddModal from "./components/views/pages/Modal/AddModal";
 import UpdateModal from "./components/views/pages/Modal/UpdateModal";
 import OrderPage from "./components/views/pages/OrderPage/OrderPage";
@@ -18,6 +18,7 @@ import SalesAddDataTable from "./components/views/pages/OrderPage/SalesAddDataTa
 import EstimatePage from "./components/views/pages/EstimatePage/EstimatePage";
 import SalesPage from "./components/views/pages/OrderPage/SalesPage";
 import AccountPage from "./components/views/pages/AccountPage/AccountPage";
+import InvoicePage from "./components/views/pages/InvoicePage/InvoicePage";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
           <Route path="/SalesAddDataTable" element={<SalesAddDataTable />} />
           <Route path="/SalesPage" element={<SalesPage />} />
           <Route path="/account" element={<AccountPage />} />
+          <Route path="/InvoicePage" element={<InvoicePage />} />
         </Routes>
       </BrowserRouter>
     </div>

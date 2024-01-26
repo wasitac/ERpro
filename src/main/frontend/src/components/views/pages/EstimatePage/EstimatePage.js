@@ -1,4 +1,6 @@
-
+/**
+ * 정유진 
+ */
 import React, { useState } from 'react';
 import { Button, Table } from 'antd';
 const columns = [

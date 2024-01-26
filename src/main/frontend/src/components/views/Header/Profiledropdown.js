@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import "./profile.css";
 import { Button, Flex } from "antd";
-import profile from "../../../../img/profileIcon.png";
+import profile from "../../../img/profileIcon.png";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
