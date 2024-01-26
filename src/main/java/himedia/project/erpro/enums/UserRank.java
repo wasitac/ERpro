@@ -3,6 +3,7 @@ package himedia.project.erpro.enums;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+//이지홍
 @Getter
 @RequiredArgsConstructor
 public enum UserRank {
@@ -14,4 +15,6 @@ public enum UserRank {
 	CEO("사장");
 
 	private final String kor;
+	
+	
 }

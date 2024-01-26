@@ -1,5 +1,7 @@
 package himedia.project.erpro.entity;
 
+import java.time.LocalDate;
+
 import himedia.project.erpro.enums.Department;
 import himedia.project.erpro.enums.UserRank;
 import jakarta.persistence.Column;
@@ -23,7 +25,7 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-	private String birth;	
+	private LocalDate birth;	
 	private String phone;
 	private String email;
 	
@@ -33,11 +35,12 @@ public class User {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "user_rank")
 	private UserRank userRank;
+	
 	@Column(name = "work_type")
 	private String workType;
 	@Column(name = "insert_date")
-	private String insertDate;
+	private LocalDate insertDate;
 	@Column(name = "retire_date")
-	private String retireDate;
+	private LocalDate retireDate;
 	private String password;
 }
