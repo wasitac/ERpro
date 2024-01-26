@@ -1,4 +1,4 @@
-package himedia.project.erpro.enums;
+package himedia.project.erpro.user.enums;
 
 //이지홍
 public enum OrderType {

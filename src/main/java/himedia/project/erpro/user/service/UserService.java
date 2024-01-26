@@ -1,12 +1,12 @@
-package himedia.project.erpro.service;
+package himedia.project.erpro.user.service;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import himedia.project.erpro.dto.Password;
-import himedia.project.erpro.dto.Profile;
-import himedia.project.erpro.entity.User;
-import himedia.project.erpro.repository.UserRepository;
+import himedia.project.erpro.user.dto.Password;
+import himedia.project.erpro.user.dto.Profile;
+import himedia.project.erpro.user.entity.User;
+import himedia.project.erpro.user.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 
