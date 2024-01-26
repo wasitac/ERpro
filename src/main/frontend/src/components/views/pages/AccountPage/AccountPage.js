@@ -44,10 +44,6 @@ const AccountPage = () => {
       ),
     },
     {
-      title: "사업자 유형",
-      dataIndex: "sort",
-    },
-    {
       title: "사업자 번호",
       dataIndex: "bno",
       render: (text, record) => (

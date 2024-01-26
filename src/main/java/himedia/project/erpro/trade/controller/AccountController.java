@@ -44,24 +44,23 @@ public class AccountController {
 	@PostMapping("/account")
 	public ResponseEntity<Message> addAccount(@RequestBody Account account) {
 		Account data = accountService.createAccount(account);
-		Message returnData = new Message("", data);
+		Message returnData = new Message("저장 성공", data);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	// 거래처 수정 - 김주원
 	@PutMapping("/account")
-	public String editAccount(@RequestBody Account account) {
-		System.out.println("거래처id : " + account.getId());
-		System.out.println("사업자 등록 번호 : " + account.getBNo());
-		System.out.println("거래처명 : " + account.getBNm());
-		System.out.println("종목 : " + account.getBType());
-		return "거래처 정보 수정";
+	public ResponseEntity<Message> editAccount(@RequestBody Account account) {
+		Optional<Account> editData = accountService.updateAccount(account);
+		Message returnData = new Message("수정 성공", editData);
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	// 거래처 삭제 - 김주원
 	@DeleteMapping("/account")
-	public String deleteAccount(@RequestParam(name = "id") Long id) {
-	   System.out.println("거래처 id: " + id);
-	   return "거래처 삭제";
+	public ResponseEntity<Message> deleteAccount(@RequestParam(name = "id") Long id) {
+		List<Account> deleteData = accountService.deleteAccount(id);
+		Message returnData = new Message("삭제 성공", deleteData);
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 }
