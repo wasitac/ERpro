@@ -1,4 +1,4 @@
-package himedia.project.erpro.controller;
+package himedia.project.erpro.inventory.controller;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import himedia.project.erpro.entity.Item;
+import himedia.project.erpro.inventory.entity.Item;
 
 @RestController
 public class ItemController {

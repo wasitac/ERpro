@@ -1,12 +1,13 @@
-package himedia.project.erpro.service;
-
-import himedia.project.erpro.entity.Account;
-import himedia.project.erpro.repository.AccountRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
+package himedia.project.erpro.trade.service;
 
 import java.util.List;
 import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
+import himedia.project.erpro.trade.entity.Account;
+import himedia.project.erpro.trade.repository.AccountRepository;
+import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
