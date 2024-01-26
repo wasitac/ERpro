@@ -1,4 +1,4 @@
-package himedia.project.erpro.controller;
+package himedia.project.erpro.trade.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import himedia.project.erpro.common.Message;
-import himedia.project.erpro.entity.Account;
-import himedia.project.erpro.service.AccountService;
+import himedia.project.erpro.trade.entity.Account;
+import himedia.project.erpro.trade.service.AccountService;
 import lombok.RequiredArgsConstructor;
 
 @RestController

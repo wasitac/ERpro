@@ -1,4 +1,4 @@
-package himedia.project.erpro.entity;
+package himedia.project.erpro.trade.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;

@@ -1,4 +1,4 @@
-package himedia.project.erpro.controller;
+package himedia.project.erpro.inventory.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 

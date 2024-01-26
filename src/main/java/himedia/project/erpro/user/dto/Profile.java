@@ -1,4 +1,4 @@
-package himedia.project.erpro.dto;
+package himedia.project.erpro.user.dto;
 
 import java.time.LocalDate;
 
