@@ -20,7 +20,6 @@ import DataTable from "./DataTable";
 const TableTabs = (props) => {
   const [activeKey, setActiveKey] = useState([]);
   const [items, setItems] = useState([]);
-  const newTabIndex = useRef(0);
   const onChange = (key) => {
     setActiveKey(key);
   };
@@ -41,25 +40,18 @@ const TableTabs = (props) => {
   }, [props.menu]);
 
   const add = () => {
-    items.forEach(function (value) {
-      // console.log(value.label);
-      // console.log(props.menu);
-      // console.log(value.label === props.menu);
-      if (value.label === props.menu) {
-        setActiveKey(value.key);
-        return;
-      }
-    });
-    const newActiveKey = `newTab${newTabIndex.current++}`;
-    setItems([
-      ...items,
-      {
-        label: props.menu,
-        children: <DataTable></DataTable>,
-        key: newActiveKey,
-      },
-    ]);
-    setActiveKey(newActiveKey);
+    const isValueExist = items.some((value) => value.label === props.menu);
+    if (!isValueExist) {
+      setItems([
+        ...items,
+        {
+          label: props.menu,
+          children: <DataTable></DataTable>,
+          key: props.menu,
+        },
+      ]);
+    }
+    setActiveKey(props.menu);
   };
 
   const remove = (targetKey) => {

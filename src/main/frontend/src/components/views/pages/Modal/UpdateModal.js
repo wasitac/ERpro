@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Modal } from "antd";
-import "../Header/reset.css";
+import "../../Header/reset.css";
 import OrderAdd from "../OrderPage/OrderAdd";
 import OrderAddDataTable from "../OrderPage/OrderAddDataTable";
 
