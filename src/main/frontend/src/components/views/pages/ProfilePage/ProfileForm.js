@@ -47,7 +47,7 @@ const ProfileForm = () => {
         phone: data.phone,
         email: data.email,
         department: data.department,
-        position: data.position,
+        position: data.userRank,
         insertDate: moment(data.insertDate),
       });
     }
@@ -88,17 +88,8 @@ const ProfileForm = () => {
         <Input disabled />
       </Form.Item>
 
-      <Form.Item
-        label="생년월일"
-        name="birth"
-        rules={[
-          {
-            required: true,
-            message: "Please input your birth!",
-          },
-        ]}
-      >
-        <DatePicker />
+      <Form.Item label="생년월일" name="birth">
+        <DatePicker disabled format="YYYY-MM-DD" />
       </Form.Item>
 
       <Form.Item
@@ -136,7 +127,7 @@ const ProfileForm = () => {
       </Form.Item>
 
       <Form.Item label="입사일" name="insertDate">
-        <DatePicker disabled />
+        <DatePicker disabled format="YYYY-MM-DD" />
       </Form.Item>
 
       <Form.Item

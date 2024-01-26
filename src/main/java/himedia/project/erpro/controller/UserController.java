@@ -1,10 +1,7 @@
 package himedia.project.erpro.controller;
 
-import java.util.Optional;
-
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,7 +19,7 @@ import lombok.RequiredArgsConstructor;
 public class UserController {
 	private final UserService userService;
 	
-	// 사원 대장 - 김주원
+	// 사원 대장 - 김주원\
 	@GetMapping("/user")
 	public String user() {
 		return "사원 대장";
@@ -64,12 +61,9 @@ public class UserController {
 	public Profile profile() {
 		// 유저정보와 일치하는 유저데이터 받아오기
 		Long userId = 1L;
-		Profile profile = new Profile("이미자", "111111", "1969-04-23", "010-8888-7777", "mija@gmail.com", "영업", "부장", "2010-10-23");
-		Optional<User> user = userService.getUserById(userId);
-		if(user.isPresent()) {
-			//User to Profile
-		}
-		return profile;
+		Profile profile = userService.getUserProfile(userId);
+		System.out.println(profile.getUserRank());
+		return profile;	
 	}
 
 	// 회원정보 수정 - 이지홍
