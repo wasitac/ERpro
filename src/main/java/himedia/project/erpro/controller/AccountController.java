@@ -42,15 +42,10 @@ public class AccountController {
 	
 	// 거래처 추가 - 김주원
 	@PostMapping("/account")
-	public String addAccount(@RequestBody Account account) {
-		System.out.println("거래처id : " + account.getId());
-		System.out.println("사업자 등록 번호 : " + account.getBNo());
-		System.out.println("거래처명 : " + account.getBNm());
-		System.out.println("사업자 구분 : " + account.getSort());
-		System.out.println("대표자 : " + account.getPNm());
-		System.out.println("업태 : " + account.getBSector());
-		System.out.println("종목 : " + account.getBType());
-		return "거래처 등록";
+	public ResponseEntity<Message> addAccount(@RequestBody Account account) {
+		Account data = accountService.createAccount(account);
+		Message returnData = new Message("", data);
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	// 거래처 수정 - 김주원
@@ -65,7 +60,7 @@ public class AccountController {
 	
 	// 거래처 삭제 - 김주원
 	@DeleteMapping("/account")
-	public String deleteAccount(@RequestParam(name = "id") long id) {
+	public String deleteAccount(@RequestParam(name = "id") Long id) {
 	   System.out.println("거래처 id: " + id);
 	   return "거래처 삭제";
 	}

@@ -25,4 +25,10 @@ public class AccountService {
     return accountList;
   }
   
+  // 거래처 추가
+  public Account createAccount(Account account) {
+	  accountRepository.save(account);
+	  return account;
+  }
+
 }

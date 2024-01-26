@@ -15,21 +15,21 @@ public class Account {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;			// 거래처 코드
 	
-	@Column(name = "user_id")
-	private Long userId;		// 담당자 id			user에서 id를 외래키로 참조
+//	@Column(name = "user_id")
+//	private Long userId;		// 담당자 id	user에서 id를 외래키로 참조
 	
 	@Column(name = "b_no")
-	private String bNo;		// 사업자 등록 번호
+	private String bNo;			// 사업자 등록 번호
 	
 	@Column(name = "b_nm")
-	private String bNm;		// 거래처명
+	private String bNm;			// 거래처명
 	private String sort;		// 구분 (개인, 법인)
 	
 	@Column(name = "p_nm")
-	private String pNm;		// 대표명
+	private String pNm;			// 대표명
 	
 	@Column(name = "b_sector")
-	private String bSector;	// 업태
+	private String bSector;		// 업태
 	
 	@Column(name = "b_type")
 	private String bType;		// 종목

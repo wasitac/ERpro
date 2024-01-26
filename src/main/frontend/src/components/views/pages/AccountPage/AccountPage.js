@@ -2,7 +2,7 @@
  * 김주원
  */
 import React, { useState, useEffect } from "react";
-import { Layout, theme, Divider, Table, Flex, Button } from "antd";
+import { Divider, Table, Flex, Button } from "antd";
 import axios from "axios";
 
 import AccountModal from "./AccountModal";

@@ -74,14 +74,14 @@ function AccountModal(props) {
           span: 18,
         }}
       >
-        <Form.Item 
+       {/*  <Form.Item 
           label="담당자"
           name="userid"
         >
           <Select>
             <Select.Option value="1">홍길동</Select.Option>
           </Select>
-        </Form.Item>
+        </Form.Item> */}
         <Form.Item
           label="거래처명"
           name="bnm"
