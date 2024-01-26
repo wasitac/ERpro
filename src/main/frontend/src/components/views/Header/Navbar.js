@@ -4,11 +4,11 @@
 
 import React, { useState } from "react";
 import { Menu } from "antd";
-import infoIcon from "../../../../img/infoIcon.png";
-import tradeIcon from "../../../../img/tradeIcon.png";
-import logisticsIcon from "../../../../img/logisticsIcon.png";
-import productionIcon from "../../../../img/productIcon.png";
-import logo from "../../../../img/logo.png";
+import infoIcon from "../../../img/infoIcon.png";
+import tradeIcon from "../../../img/tradeIcon.png";
+import logisticsIcon from "../../../img/logisticsIcon.png";
+import productionIcon from "../../../img/productIcon.png";
+import logo from "../../../img/logo.png";
 import "./reset.css";
 import Profiledropdown from "./Profiledropdown";
 

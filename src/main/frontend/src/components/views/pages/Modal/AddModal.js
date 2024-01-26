@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
-import { Button, Modal } from 'antd';
-import "../Header/reset.css";
-import OrderAdd from '../OrderPage/OrderAdd';
-import OrderAddDataTable from '../OrderPage/OrderAddDataTable';
-
+import React, { useState } from "react";
+import { Button, Modal } from "antd";
+import "../../Header/reset.css";
+import OrderAdd from "../OrderPage/OrderAdd";
+import OrderAddDataTable from "../OrderPage/OrderAddDataTable";
 
 const AddModal = () => {
   const [loading, setLoading] = useState(false);
@@ -32,20 +31,28 @@ const AddModal = () => {
         onOk={handleOk}
         onCancel={handleCancel}
         footer={[
-          <Button type="primary" style={{ backgroundColor: '#E8E9EA', color: 'black' }}>
+          <Button
+            type="primary"
+            style={{ backgroundColor: "#E8E9EA", color: "black" }}
+          >
             계속
           </Button>,
           <Button key="back" onClick={handleCancel}>
             취소
           </Button>,
-          <Button key="submit" type="primary" onClick={handleOk} style={{backgroundColor: '#66dd00' }}>
+          <Button
+            key="submit"
+            type="primary"
+            onClick={handleOk}
+            style={{ backgroundColor: "#66dd00" }}
+          >
             저장
           </Button>,
         ]}
         width={1000}
       >
-      <OrderAdd />
-      <OrderAddDataTable />
+        <OrderAdd />
+        <OrderAddDataTable />
       </Modal>
     </>
   );

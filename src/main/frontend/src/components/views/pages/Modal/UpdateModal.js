@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import { Button, Modal } from 'antd';
-import "../Header/reset.css";
-
+import React, { useState } from "react";
+import { Button, Modal } from "antd";
+import "../../Header/reset.css";
 
 const UpdateModal = () => {
   const [loading, setLoading] = useState(false);
@@ -21,7 +20,9 @@ const UpdateModal = () => {
   };
   return (
     <>
-      <span onClick={showModal}><a href='#'>버튼</a></span>
+      <span onClick={showModal}>
+        <a href="#">버튼</a>
+      </span>
       <Modal
         open={open}
         title="Title"
