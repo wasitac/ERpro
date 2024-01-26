@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
 import "../Header/reset.css";
+import OrderAdd from '../OrderPage/OrderAdd';
+import OrderAddDataTable from '../OrderPage/OrderAddDataTable';
 
 
 const UpdateModal = () => {
@@ -27,6 +29,7 @@ const UpdateModal = () => {
         title="Title"
         onOk={handleOk}
         onCancel={handleCancel}
+        width={1200}
         footer={[
           <Button key="back" onClick={handleCancel}>
             취소
@@ -37,12 +40,14 @@ const UpdateModal = () => {
             type="primary"
             loading={loading}
             onClick={handleOk}
+            style={{backgroundColor:"#66dd00"}}
           >
             수정
           </Button>,
         ]}
       >
-        <p>Some contents...</p>
+        <OrderAdd />
+        <OrderAddDataTable />
       </Modal>
     </>
   );

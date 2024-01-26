@@ -1,135 +1,177 @@
-import React, { useState } from 'react';
-import { Divider, Radio, Table } from 'antd';
+/**
+ * 김주원
+ */
+import React, { useState, useEffect }  from 'react';
+import { Layout, theme, Divider, Table, Flex, Button } from 'antd';
+import axios from "axios";
 
+import AccountModal from "./AccountModal";
 
-
-// rowSelection object indicates the need for row selection
-const rowSelection = {
-  onChange: (selectedRowKeys, selectedRows) => {
-    console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
-  },
-  getCheckboxProps: (record) => ({
-    disabled: record.name === 'Disabled User',
-    // Column configuration not to be checked
-    name: record.name,
-  }),
-};
 
 const AccountPage = () => {
-  const data = [
-    {
-      key: '1',
-      id: '1',
-      sort: '법인',
-      bNm: '가나테크',
-      bNo: '111-11-11111',
-      pNm: '홍길동',
-      bAdr: '서울특별시',
-      bSector: '제조업',
-      bType: '전자부품 제조업',
-      phone: '02-000-0000',
-      email: 'hong@gmail.com',
-    },
-    {
-      key: '2',
-      id: '2',
-      sort: '개인',
-      bNm: '가가전기',
-      bNo: '111-11-11111',
-      pNm: '홍길동',
-      bAdr: '서울특별시',
-      bSector: '제조업',
-      bType: '전자부품 제조업',
-      phone: '02-000-0000',
-      email: 'hong@gmail.com',
-    },
-    {
-      key: '3',
-      id: '3',
-      sort: '개인',
-      bNm: '나나상사',
-      bNo: '111-11-11111',
-      pNm: '홍길동',
-      bAdr: '서울특별시',
-      bSector: '제조업',
-      bType: '전자부품 제조업',
-      phone: '02-000-0000',
-      email: 'hong@gmail.com',
-    },
-    {
-      key: '4',
-      id: '4',
-      sort: '법인',
-      bNm: '다다전자',
-      bNo: '111-11-11111',
-      pNm: '홍길동',
-      bAdr: '서울특별시',
-      bSector: '제조업',
-      bType: '전자부품 제조업',
-      phone: '02-000-0000',
-      email: 'hong@gmail.com',
-    },
-  ];
-
+  
+  // 거래처 목록
+  const [accountList, setAccountList] = useState([]);
+  
+  // 거래처 목록 조회
+  const getAccountList = async () => {
+    const resp = await (await axios.get('/account')).data;
+    setAccountList(resp.data);
+  }
+  
+  // 거래처 목록 조회 실행
+  useEffect(() => {
+    getAccountList();
+  }, []);
+  
+  // 테이블 컬럼
   const columns = [
     {
       title: '코드',
       dataIndex: 'id',
-      render: (text) => <a>{text}</a>,
+      render: (text) => <a onClick={() => handleEdit(text)}>{text}</a>,
     },
     {
       title: '사업자 유형',
       dataIndex: 'sort',
+      render: (text, record) => <a onClick={() => handleEdit(record.id)}>{text}</a>,
     },
     {
       title: '거래처명',
-      dataIndex: 'bNm',
+      dataIndex: 'bnm',
+      render: (text, record) => <a onClick={() => handleEdit(record.id)}>{text}</a>,
     },
     {
       title: '사업자 번호',
-      dataIndex: 'bNo',
-    },
-    {
-      title: '사업장 주소',
-      dataIndex: 'bAdr',
+      dataIndex: 'bno',
+      render: (text, record) => <a onClick={() => handleEdit(record.id)}>{text}</a>,
     },
     {
       title: '대표자',
-      dataIndex: 'pNm',
+      dataIndex: 'pnm',
+      render: (text, record) => <a onClick={() => handleEdit(record.id)}>{text}</a>,
     },
     {
       title: '업태',
-      dataIndex: 'bSector',
+      dataIndex: 'bsector',
+      render: (text, record) => <a onClick={() => handleEdit(record.id)}>{text}</a>,
     },
     {
       title: '종목',
-      dataIndex: 'bType',
+      dataIndex: 'btype',
+      render: (text, record) => <a onClick={() => handleEdit(record.id)}>{text}</a>,
     },
     {
       title: '전화번호',
       dataIndex: 'phone',
-    },
-    {
-      title: '이메일',
-      dataIndex: 'email',
+      render: (text, record) => <a onClick={() => handleEdit(record.id)}>{text}</a>,
     },
   ];
- 
+  
+  // 체크박스 선택 데이터
+  const [selectedRows, setSelectedRows] = useState([]);
+  
+  // 체크박스 선택
+  const rowSelection = {
+    onChange: (selectedRowKeys, selectedRows) => {
+      // 체크박스 선택시 실행
+      console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+      setSelectedRows(selectedRows);
+    },
+    getCheckboxProps: (record) => ({
+      // 데이터에 disabled true시 체크불가 처리
+      disabled: record.disabled,
+      name: record.name,
+    }),
+  };
+  
+  // 선택 데이터 삭제
+  const deleteAccountList = async () => {
+    console.log(selectedRows);
+    // TODO:: 삭제 API 호출해서 데이터 삭제 확인
+    // const resp = await (await axios.get('')).data;
+    // setAccountList(resp.data);
+    // console.log(boardList);
+  }
+  
+  // 모달 상태
+  const [modalStatus, setModalStatus] = useState(false);
+  
+  // 수정 모달 오픈 시 모달 전달용 상세데이터
+  const [selectDetailData, setSelectDetailData] = useState(null);
+  
+  // 수정 모달 오픈
+  const handleEdit = async (dataId) => {
+    const resp = await (await axios.get('/account/'+dataId)).data;
+    console.log(resp.data);
+    setSelectDetailData(resp.data);
+    setModalStatus(true);
+  };
+  
+  // 모달 닫기
+  const handleCloseModal = () => {
+    setSelectDetailData(null);
+    setModalStatus(false);
+  };
+  
   return (
-    <div>
-      <Divider />
-      <Table
-        rowSelection={{
-          type: 'checkbox',
-          ...rowSelection,
+    <>
+      <div
+        style={{
+          minHeight: 280,
+          padding: 24,
         }}
-        pagination={{
-          position: ['bottomCenter']
-        }}
-        columns={columns}
-        dataSource={data}
-      />
-    </div>
+      >
+        
+        {/* 추가, 삭제 버튼영역 시작 */}
+        <Flex
+          gap="small"
+          wrap="wrap"
+          justify="flex-end"
+        >
+          <Button
+            type="primary"
+            onClick={(event) => {
+              setModalStatus(true);
+            }}
+            style={{ backgroundColor : '#66bd00'}}
+          >
+            추가
+          </Button>
+          <Button
+            type="primary"
+            onClick={deleteAccountList}
+            style={{ backgroundColor : 'black'}}
+          >
+            삭제
+          </Button>
+        </Flex>
+        {/* 추가, 삭제 버튼영역 끝 */}
+        
+        {/* 테이블 영역 시작 */}
+        <div>
+          <Divider />
+          <Table
+            rowSelection={{
+              type: 'checkbox',
+              ...rowSelection,
+            }}
+            pagination={{
+              position: ['bottomCenter'],
+            }}
+            columns={columns}
+            dataSource={accountList}
+            rowKey="id"
+          />
+        </div>
+      </div>
+      {/*  테이블 영역 끝 */}
+      
+      {/*  모달 영역 시작 */}
+      <AccountModal modalStatus={modalStatus} handleCloseModal={handleCloseModal} dataForEdit={selectDetailData}/>
+      {/* 모달 영역 끝 */}
+    
+    </>
   );
 };
 export default AccountPage;

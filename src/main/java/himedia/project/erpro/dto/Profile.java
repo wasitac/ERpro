@@ -1,5 +1,7 @@
 package himedia.project.erpro.dto;
 
+import java.time.LocalDate;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,10 +14,10 @@ import lombok.Setter;
 public class Profile {
 	String name;
 	String id;
-	String birth;
+	LocalDate birth;
 	String phone;
 	String email;
 	String department;
-	String position;
-	String insertDate;
+	String userRank;
+	LocalDate insertDate;
 }

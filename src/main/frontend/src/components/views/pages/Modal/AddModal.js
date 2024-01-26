@@ -35,6 +35,7 @@ const AddModal = () => {
         title="Title"
         onOk={handleOk}
         onCancel={handleCancel}
+        width={1200}
         footer={[
           <Button type="primary" style={{ backgroundColor: '#E8E9EA', color: 'black' }}>
             계속
@@ -46,7 +47,10 @@ const AddModal = () => {
             저장
           </Button>,
         ]}
+<<<<<<< HEAD
         width={1200}
+=======
+>>>>>>> 20b17f90c6eede9f9f589710d8f2946ecaa01836
       >
         <EstimateAdd />
         <EstimateAddDataTable />

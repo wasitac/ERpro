@@ -17,6 +17,7 @@ import SalesAdd from "./components/views/pages/OrderPage/SalesAdd";
 import SalesAddDataTable from "./components/views/pages/OrderPage/SalesAddDataTable";
 import EstimatePage from "./components/views/pages/EstimatePage/EstimatePage";
 import SalesPage from "./components/views/pages/OrderPage/SalesPage";
+import AccountPage from "./components/views/pages/AccountPage/AccountPage";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
           <Route path="/SalesAdd" element={<SalesAdd />} />
           <Route path="/SalesAddDataTable" element={<SalesAddDataTable />} />
           <Route path="/SalesPage" element={<SalesPage />} />
+          <Route path="/account" element={<AccountPage />} />
         </Routes>
       </BrowserRouter>
     </div>
