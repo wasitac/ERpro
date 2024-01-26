@@ -1,9 +1,9 @@
-package himedia.project.erpro.entity;
+package himedia.project.erpro.user.entity;
 
 import java.time.LocalDate;
 
-import himedia.project.erpro.enums.Department;
-import himedia.project.erpro.enums.UserRank;
+import himedia.project.erpro.user.enums.Department;
+import himedia.project.erpro.user.enums.UserRank;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

@@ -1,4 +1,4 @@
-package himedia.project.erpro.controller;
+package himedia.project.erpro.user.controller;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import himedia.project.erpro.dto.Password;
-import himedia.project.erpro.dto.Profile;
-import himedia.project.erpro.entity.User;
-import himedia.project.erpro.service.UserService;
+import himedia.project.erpro.user.dto.Password;
+import himedia.project.erpro.user.dto.Profile;
+import himedia.project.erpro.user.entity.User;
+import himedia.project.erpro.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 
 @RestController

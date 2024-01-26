@@ -1,4 +1,4 @@
-package himedia.project.erpro.dto;
+package himedia.project.erpro.user.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
