@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { Button, Table } from 'antd';
 const columns = [
   {
-    title: "견적ID",
+    title: "견적번호",
     dataIndex: "id",
   },
   {
@@ -13,7 +13,7 @@ const columns = [
     dataIndex: "bNm",
   },
   {
-    title: "물품ID",
+    title: "품목코드",
     dataIndex: "itemId",
   },
   {

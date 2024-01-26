@@ -6,7 +6,7 @@ import { Table } from "antd";
 
 const columns = [
   {
-    title: "물품ID",
+    title: "물품코드",
     dataIndex: "itemId",
   },
   {
@@ -30,8 +30,8 @@ const columns = [
     dataIndex: "price",
   },
   {
-    title: "매입단가",
-    dataIndex: "purchasePrice",
+    title: "공급가액",
+    dataIndex: "supplyPrice",
   },
   {
     title: "합계금액",
@@ -47,7 +47,9 @@ const data = [
     unit: "100",
     spec: "9.5",
     count: "1",
-    price: "700,000",
+    price: "500,000",
+    supplyPrice: "500,000",
+    total: "500,000"
   },
 ];
 

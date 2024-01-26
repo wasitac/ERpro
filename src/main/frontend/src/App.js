@@ -19,6 +19,7 @@ import EstimatePage from "./components/views/pages/EstimatePage/EstimatePage";
 import SalesPage from "./components/views/pages/OrderPage/SalesPage";
 import AccountPage from "./components/views/pages/AccountPage/AccountPage";
 import InvoicePage from "./components/views/pages/InvoicePage/InvoicePage";
+import InvoiceAdd from './components/views/pages/InvoicePage/InvoiceAdd';
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
           <Route path="/SalesPage" element={<SalesPage />} />
           <Route path="/account" element={<AccountPage />} />
           <Route path="/InvoicePage" element={<InvoicePage />} />
+          <Route path="/InvoiceAdd" element={<InvoiceAdd />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -6,10 +6,9 @@ import { Table } from "antd";
 
 const columns = [
   {
-    title: "물품ID",
+    title: "품목코드",
     dataIndex: "itemId",
   },
-
   {
     title: "품목명",
     dataIndex: "itemName",
@@ -28,11 +27,7 @@ const columns = [
   },
   {
     title: "매입단가",
-    dataIndex: "purchasePrice",
-  },
-  {
-    title: "매출단가",
-    dataIndex: "salesPrice",
+    dataIndex: "supplyPrice",
   },
 ];
 const data = [
@@ -45,7 +40,7 @@ const data = [
     spec: "9.5",
     count: "1",
     purchasePrice: "500,000",
-    salesPrice: "1,000,000",
+    supplyPrice: "500,000",
   },
 ];
 

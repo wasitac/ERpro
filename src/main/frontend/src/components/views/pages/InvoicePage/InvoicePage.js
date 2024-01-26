@@ -2,7 +2,8 @@
  * 정유진 
  */
 import React, { useState } from 'react';
-import { Button, Table } from 'antd';
+import { Table, Typography } from 'antd';
+
 const columns = [
   {
     title: "전표번호",
@@ -29,12 +30,12 @@ const columns = [
     dataIndex: "price",
   },
   {
-    title: "공급가",
-    dataIndex: "supplyPrice",
-  },
-  {
     title: "부가세",
     dataIndex: "vat",
+  },
+  {
+    title: "매출단가",
+    dataIndex: "sellPrice",
   },
   {
     title: "합계금액",
@@ -56,28 +57,34 @@ const columns = [
 
 const totalColumns = [
   {
-    title: "공급가",
-    dataIndex: "note",
+    title: "매출 단가",
+    dataIndex: "totalSellPrice",
+    align: 'right',
   },
   {
-    title: "부가세",
-    dataIndex: "note",
+    title: "매출 부가세",
+    dataIndex: "totalSellVat",
+    align: 'right',
   },
   {
-    title: "합계",
-    dataIndex: "note",
+    title: "매출 합계",
+    dataIndex: "sellTotal",
+    align: 'right',
   },
   {
-    title: "공급가",
-    dataIndex: "note",
+    title: "매입 단가",
+    dataIndex: "totalBuyPrice",
+    align: 'right',
   },
   {
-    title: "부가세",
-    dataIndex: "note",
+    title: "매입 부가세",
+    dataIndex: "totalBuyVat",
+    align: 'right',
   },
   {
-    title: "합계",
-    dataIndex: "note",
+    title: "매입 합계",
+    dataIndex: "BuyTotal",
+    align: 'right',
   },
 ];
 
@@ -90,13 +97,25 @@ for (let i = 0; i < 46; i++) {
     bNm: "고고상사",
     itemName: "Gellaxy24",
     count: "1",
-    purchacsePrice: "500,000",
+    sellPrice: "500,000",
     total: "500,000",
     dueDate: "2023-12-01",
     completionDate: "2024-12-10",
   });
 }
-const OrderPage = () => {
+
+const totalData = [
+  {
+    totalSellPrice: "500,000",
+    totalSellVat: "100,000",
+    sellTotal: "600,000",
+    totalBuyPrice: "222,000",
+    totalBuyVat: "333,000",
+    BuyTotal: "555,000"
+  }
+];
+
+const InvoicePage = () => {
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const onSelectChange = (newSelectedRowKeys) => {
     console.log('selectedRowKeys changed: ', newSelectedRowKeys);
@@ -107,35 +126,35 @@ const OrderPage = () => {
     onChange: onSelectChange,
   };
   const hasSelected = selectedRowKeys.length > 0;
+
   return (
     <div>
-    <div
-      style={{
-        marginBottom: 16,
-      }}
-    >
-      <span
+      <div
         style={{
-          marginLeft: 8,
+          marginBottom: 16,
         }}
       >
-        {hasSelected ? `Selected ${selectedRowKeys.length} items` : ''}
-      </span>
+        <span
+          style={{
+            marginLeft: 8,
+          }}
+        >
+          {hasSelected ? `Selected ${selectedRowKeys.length} items` : ''}
+        </span>
+      </div>
+      <Table rowSelection={rowSelection} columns={columns} dataSource={data} pagination={false} />
+
+      <>
+        <Table
+          columns={totalColumns}
+          dataSource={totalData}
+          size="small"
+          pagination={false}
+          style={{ marginTop: "50px" }}
+        />
+      </>
     </div>
-    <Table rowSelection={rowSelection} columns={columns} dataSource={data} />
-  
-    <>
-    <Table
-      columns={totalColumns}
-      dataSource={data}
-      size="small"
-      pagination={false}
-      
-    />
-  </>
-  </div>
-  
   );
 };
 
-export default OrderPage;
+export default InvoicePage;

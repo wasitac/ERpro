@@ -10,7 +10,7 @@ const EstimateAdd = () => {
   const onFormLayoutChange = ({ size }) => {
     setComponentSize(size);
   };
- 
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', }}>
       <Form
@@ -36,19 +36,19 @@ const EstimateAdd = () => {
         }}
       >
         <div style={{ width: '40%' }}>
-          <Form.Item label="견적ID" name="id">
+          <Form.Item label="견적번호" name="id">
             <Input disabled />
           </Form.Item>
-          <Form.Item label="거래처ID" name="accountId">
+          <Form.Item label="거래처코드" name="accountId">
             <Input />
           </Form.Item>
           <Form.Item label="작성일자" name="insertDate">
             <DatePicker />
           </Form.Item>
-          <Form.Item label="물품ID" name="itemId">
+          <Form.Item label="품목코드" name="itemId">
             <Input />
           </Form.Item>
-          <Form.Item label="물품명" name="itemName">
+          <Form.Item label="품목명" name="itemName">
             <Input />
           </Form.Item>
           <Form.Item label="납기일자" name="dueDate">
@@ -60,9 +60,9 @@ const EstimateAdd = () => {
           <Form.Item label="유효기간" name="expiration">
             <Input />
           </Form.Item>
-          </div>
-          <div style={{ width: '40%' }}>
-        <Form.Item label="단위" name="unit">
+        </div>
+        <div style={{ width: '40%' }}>
+          <Form.Item label="단위" name="unit">
             <Input />
           </Form.Item>
           <Form.Item label="규격" name="spec">
@@ -72,6 +72,9 @@ const EstimateAdd = () => {
             <Input />
           </Form.Item>
           <Form.Item label="단가" name="price">
+            <Input />
+          </Form.Item>
+          <Form.Item label="부가세" name="vat">
             <Input />
           </Form.Item>
           <Form.Item label="견적금액" name="total">

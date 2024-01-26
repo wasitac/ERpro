@@ -36,7 +36,7 @@ const OrderAdd = () => {
         }}
       >
         <div style={{ width: '48%' }}>
-          <Form.Item label="주문ID" name="id">
+          <Form.Item label="주문번호" name="id">
             <Input disabled />
           </Form.Item>
           <Form.Item label="구분" name="type">
@@ -45,10 +45,10 @@ const OrderAdd = () => {
               <Select.Option value="sell">판매</Select.Option>
             </Select>
           </Form.Item>
-          <Form.Item label="거래처ID" name="accountId">
+          <Form.Item label="거래처코드" name="accountId">
             <Input />
           </Form.Item>
-          <Form.Item label="물품ID" name="itemId">
+          <Form.Item label="품목코드" name="itemId">
             <Input />
           </Form.Item>
           <Form.Item label="품목명" name="itemName">
@@ -74,7 +74,7 @@ const OrderAdd = () => {
           <Form.Item label="단가" name="price">
             <Input />
           </Form.Item>
-          <Form.Item label="매입단가" name="purchacsePrice">
+          <Form.Item label="공급가액" name="supplyPrice">
             <Input />
           </Form.Item>
           <Form.Item label="합계금액" name="total">
@@ -90,8 +90,8 @@ const OrderAdd = () => {
           </Form.Item>
           <Form.Item label="사업자 구분" name="sort">
             <Select>
-              <Select.Option value="personal ">개인</Select.Option>
-              <Select.Option value="corporate">법인</Select.Option>
+              <Select.Option value="buy ">매입</Select.Option>
+              <Select.Option value="sell">매출</Select.Option>
             </Select>
           </Form.Item>
           <Form.Item label="사업자 등록번호" name="bNo" >

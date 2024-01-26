@@ -21,8 +21,12 @@ const columns = [
     dataIndex: "count",
   },
   {
+    title: "단가",
+    dataIndex: "price",
+  },
+  {
     title: "매입단가",
-    dataIndex: "purchacsePrice",
+    dataIndex: "supplyPrice",
   },
   {
     title: "합계금액",
@@ -46,7 +50,7 @@ for (let i = 0; i < 46; i++) {
     bNm: "고고상사",
     itemName: "Gellaxy24",
     count: "1",
-    purchacsePrice: "500,000",
+    supplyPrice: "500,000",
     total: "500,000",
     dueDate: "2023-12-01",
     completionDate: "2024-12-10",
