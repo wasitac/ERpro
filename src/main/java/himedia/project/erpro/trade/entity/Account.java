@@ -23,7 +23,7 @@ public class Account {
 	
 	@Column(name = "b_nm")
 	private String bNm;			// 거래처명
-	private String sort;		// 구분 (개인, 법인)
+	private String sort;		// 구분 (매입, 매출)
 	
 	@Column(name = "p_nm")
 	private String pNm;			// 대표명
