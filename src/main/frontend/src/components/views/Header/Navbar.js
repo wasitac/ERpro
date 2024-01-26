@@ -1,7 +1,6 @@
 /**
  * 정유진
  */
-
 import React, { useState } from "react";
 import { Menu } from "antd";
 import infoIcon from "../../../img/infoIcon.png";
@@ -11,6 +10,7 @@ import productionIcon from "../../../img/productIcon.png";
 import logo from "../../../img/logo.png";
 import "./reset.css";
 import Profiledropdown from "./Profiledropdown";
+import menus from "../commons/menus";
 
 const items = [
   {
@@ -20,24 +20,7 @@ const items = [
     children: [
       {
         type: "group",
-        children: [
-          {
-            label: "거래처 목록",
-            key: "account",
-          },
-          {
-            label: "물품 목록",
-            key: "item",
-          },
-          {
-            label: "BOM",
-            key: "bom",
-          },
-          {
-            label: "사원 대장",
-            key: "user",
-          },
-        ],
+        children: [menus.account, menus.item, menus.bom, menus.user],
       },
     ],
   },

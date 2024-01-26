@@ -5,6 +5,7 @@ import React, { useRef, useState, useEffect } from "react";
 import axios from "axios";
 import { Tabs } from "antd";
 import DataTable from "./DataTable";
+import menus from "../../commons/menus";
 
 // 이거대신 탭 기록 넣으면 됨
 // const defaultPanes = new Array(2).fill(null).map((_, index) => {
@@ -23,30 +24,19 @@ const TableTabs = (props) => {
   const onChange = (key) => {
     setActiveKey(key);
   };
-  const [data, setData] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`/home/${props.menu}`);
-        setData(response.data);
-        console.log(response.data);
-        add();
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    fetchData();
+    add();
   }, [props.menu]);
 
   const add = () => {
-    const isValueExist = items.some((value) => value.label === props.menu);
+    const isValueExist = items.some((value) => value.key === props.menu);
     if (!isValueExist) {
       setItems([
         ...items,
         {
-          label: props.menu,
-          children: <DataTable></DataTable>,
+          label: menus[props.menu].label,
+          children: <DataTable menu={menus[props.menu]}></DataTable>,
           key: props.menu,
         },
       ]);
@@ -67,14 +57,6 @@ const TableTabs = (props) => {
     setItems(newPanes);
   };
 
-  const onEdit = (targetKey, action) => {
-    if (action === "add") {
-      add();
-    } else {
-      remove(targetKey);
-    }
-  };
-
   return (
     <div>
       <div
@@ -87,7 +69,7 @@ const TableTabs = (props) => {
         onChange={onChange}
         activeKey={activeKey}
         type="editable-card"
-        onEdit={onEdit}
+        onEdit={remove}
         items={items}
       />
     </div>
