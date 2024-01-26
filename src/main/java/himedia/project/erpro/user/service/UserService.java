@@ -10,11 +10,19 @@ import himedia.project.erpro.user.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
 	private final UserRepository userRepository;
 	private final ModelMapper modelMapper;
+
+	// 사원목록 조회 - 김주원
+	public List<User> getUserAll() {
+		List<User> userList = userRepository.findAll();
+		return userList;
+	}
 
 	// 프로필 가져오기 - 이지홍
 	public Profile getUserProfile(Long userId) {
