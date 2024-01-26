@@ -12,6 +12,7 @@ import OrderAdd from "./components/views/pages/OrderPage/OrderAdd";
 import OrderAddDataTable from "./components/views/pages/OrderPage/OrderAddDataTable";
 import DataTable from "./components/views/pages/MainPage/DataTable";
 import EstimateAdd from "./components/views/pages/EstimatePage/EstimateAdd";
+import AccountPage from "./components/views/pages/AccountPage/AccountPage";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/OrderAddDataTable" element={<OrderAddDataTable />} />
           <Route path="/DataTable" element={<DataTable />} />
           <Route path="/EstimateAdd" element={<EstimateAdd />} />
+          <Route path="/account" element={<AccountPage />} />
         </Routes>
       </BrowserRouter>
     </div>

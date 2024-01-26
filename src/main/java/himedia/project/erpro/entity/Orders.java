@@ -1,7 +1,6 @@
 package himedia.project.erpro.entity;
 
-import himedia.project.erpro.enums.Department;
-import himedia.project.erpro.enums.UserRank;
+import himedia.project.erpro.enums.OrderType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -15,29 +14,32 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Getter
 @Setter
+@Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class User {
+public class Orders {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String name;
-	private String birth;	
-	private String phone;
-	private String email;
+	private Long accountId;
+	private Long itemId;
+	private Long userId;
 	
 	@Enumerated(EnumType.STRING)
-	private Department department;
+	private OrderType orderType;
+	private String unit;
+	private String spec;
+	private Integer count;
+	private Integer price;
 	
-	@Enumerated(EnumType.STRING)
-	@Column(name = "user_rank")
-	private UserRank userRank;
-	@Column(name = "work_type")
-	private String workType;
-	@Column(name = "insert_date")
-	private String insertDate;
-	@Column(name = "retire_date")
-	private String retireDate;
-	private String password;
+	@Column(name = "supply_price")
+	private Integer supplyPrice;
+	private Integer vat;
+	private Integer total;
+	
+	@Column(name = "due_date")
+	private String dueDate;
+	
+	@Column(name = "completion_date")
+	private String completionDate;
 }

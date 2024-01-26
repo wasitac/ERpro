@@ -24,11 +24,11 @@ public class ItemController {
 	public String additem(@RequestBody Item item) {
 		System.out.println("물품id : " + item.getId());
 		System.out.println("분류 : " + item.getSort());
-		System.out.println("품목명 : " + item.getItem_name());
+		System.out.println("품목명 : " + item.getItemName());
 		System.out.println("단위 : " + item.getUnit());
 		System.out.println("규격 : " + item.getSpec());		
-		System.out.println("매입단가 : " + item.getPurchase_price());		
-		System.out.println("매출 단가 : " + item.getSales_price());		
+		System.out.println("매입단가 : " + item.getPurchasePrice());		
+		System.out.println("매출 단가 : " + item.getSalesPrice());		
 		return "물품 등록";
 	}
 	
@@ -36,9 +36,9 @@ public class ItemController {
 	@PutMapping("/item")
 	public String editItem(@RequestBody Item item) {
 		System.out.println("물품id : " + item.getId());
-		System.out.println("품목명 : " + item.getItem_name());
-		System.out.println("매입단가 : " + item.getPurchase_price());		
-		System.out.println("매출 단가 : " + item.getSales_price());		
+		System.out.println("품목명 : " + item.getItemName());
+		System.out.println("매입단가 : " + item.getPurchasePrice());		
+		System.out.println("매출 단가 : " + item.getSalesPrice());		
 		return "물품 정보 수정";
 	}
 	
