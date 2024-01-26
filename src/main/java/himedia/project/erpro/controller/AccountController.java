@@ -26,24 +26,17 @@ public class AccountController {
 	
 	// 거래처 목록 - 김주원
 	@GetMapping("/account")
-	// public ResponseEntity<Map<String, List<Account>>> account() {
 	public ResponseEntity<Message> account() {
-		
 		List<Account> dataList = accountService.getAccountAll();
-  
 		Message returnData = new Message("", dataList);
-      
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	// 거래처 상세데이터 조회 - 김주원
 	@GetMapping("/account/{id}")
 	public ResponseEntity<Message> detailAccount(@PathVariable(value="id") Long id) {
-		
 		Optional<Account> data = accountService.getAccountById(id);
-		
 		Message returnData = new Message("", data);
-		
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
