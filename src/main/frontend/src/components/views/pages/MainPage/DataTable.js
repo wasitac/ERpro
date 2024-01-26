@@ -1,77 +1,56 @@
 /**
  * 이지홍
  */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Table, Button } from "antd";
-const columns = [
-  // 필터 설정
-  {
-    title: "Name",
-    dataIndex: "name",
-    filters: [
-      {
-        text: "Joe",
-        value: "Joe",
-      },
-      {
-        text: "Submenu",
-        value: "Submenu",
-        children: [
-          {
-            text: "Green",
-            value: "Green",
-          },
-          {
-            text: "Black",
-            value: "Black",
-          },
-        ],
-      },
-    ],
-    onFilter: (value, record) => record.name.indexOf(value) === 0,
-    sorter: (a, b) => a.name.length - b.name.length,
-    sortDirections: ["descend"],
-  },
-  {
-    title: "Age",
-    dataIndex: "age",
-    defaultSortOrder: "descend",
-    sorter: (a, b) => a.age - b.age,
-  },
-  {
-    title: "Address",
-    dataIndex: "address",
-    filters: [
-      {
-        text: "London",
-        value: "London",
-      },
-    ],
-    onFilter: (value, record) => record.address.indexOf(value) === 0,
-  },
-];
-
-const data = [];
-for (let i = 0; i < 200; i++) {
-  data.push({
-    key: i,
-    name: `Edward King ${i}`,
-    age: 32,
-    address: `London, Park Lane no. ${i}`,
-  });
-}
+import menus from "../../commons/menus";
+import axios from "axios";
+import CustomModal from "../../commons/Modal/CustomModal";
 
 const onChange = (filters, sorter, extra) => {
   console.log("params", filters, sorter, extra);
 };
-const DataTable = () => {
+const DataTable = (props) => {
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
-  const createRow = () => {
-    // 추가 모달 생성
+  const [data, setData] = useState([]);
+  const columns = menus[props.keyOfmenu].column;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`/${props.keyOfmenu}`);
+        console.log(response.data.data);
+        setData(response.data.data);
+      } catch (error) {
+        console.error("Error fetching data", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const handleCreate = async () => {
+    
   };
-  const deleteRow = () => {
-    //선택된 로우 삭제
+
+  const handleEdit = async (dataId) => {
+    try {
+      const response = await axios.put(`/${props.keyOfmenu}/${dataId}`);
+      console.log(response.data.data);
+    } catch (error) {
+      console.error("Error put data", error);
+    }
   };
+
+  const handleDelete = async (dataId) => {
+    try {
+      const response = await axios.delete(`/${props.keyOfmenu}/${dataId}`);
+      console.log(response.data.data);
+    } catch (error) {
+      console.error("Error delete data", error);
+    }
+  };
+
   const onSelectChange = (newSelectedRowKeys) => {
     console.log("selectedRowKeys changed: ", newSelectedRowKeys);
     setSelectedRowKeys(newSelectedRowKeys);
@@ -80,6 +59,7 @@ const DataTable = () => {
     selectedRowKeys,
     onChange: onSelectChange,
   };
+
   const hasSelected = selectedRowKeys.length > 0;
   return (
     <div>
@@ -94,14 +74,14 @@ const DataTable = () => {
         <span></span>
         <Button
           type="primary"
-          onClick={createRow}
+          onClick={handleCreate}
           style={{
             marginRight: 5,
           }}
         >
           추가
         </Button>
-        <Button type="primary" onClick={deleteRow} disabled={!hasSelected}>
+        <Button type="primary" onClick={handleDelete} disabled={!hasSelected}>
           삭제
         </Button>
         <div>
@@ -115,14 +95,23 @@ const DataTable = () => {
         </div>
       </div>
       <Table
-        columns={columns}
         rowSelection={rowSelection}
-        dataSource={data}
+        rowKey="id"
         size="small"
         pagination={false}
         onChange={onChange}
+        columns={columns}
+        dataSource={data}
         scroll={{ y: `calc(40vh - 32px)` }}
       />
+      {/*  모달 영역 시작 */}
+      <CustomModal
+        // name={props.keyOfmenu}
+        // modalStatus={modalStatus}
+        // handleCloseModal={handleCloseModal}
+        // dataForEdit={selectDetailData}
+      />
+      {/* 모달 영역 끝 */}
     </div>
   );
 };

@@ -1,8 +1,7 @@
 /**
  * 이지홍
  */
-import React, { useRef, useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
 import { Tabs } from "antd";
 import DataTable from "./DataTable";
 import menus from "../../commons/menus";
@@ -21,27 +20,28 @@ import menus from "../../commons/menus";
 const TableTabs = (props) => {
   const [activeKey, setActiveKey] = useState([]);
   const [items, setItems] = useState([]);
+
   const onChange = (key) => {
     setActiveKey(key);
   };
 
   useEffect(() => {
     add();
-  }, [props.menu]);
+  }, [props.keyOfmenu]);
 
   const add = () => {
-    const isValueExist = items.some((value) => value.key === props.menu);
+    const isValueExist = items.some((value) => value.key === props.keyOfmenu);
     if (!isValueExist) {
       setItems([
         ...items,
         {
-          label: menus[props.menu].label,
-          children: <DataTable menu={menus[props.menu]}></DataTable>,
-          key: props.menu,
+          label: menus[props.keyOfmenu].label,
+          children: <DataTable keyOfmenu={props.keyOfmenu}></DataTable>,
+          key: props.keyOfmenu,
         },
       ]);
     }
-    setActiveKey(props.menu);
+    setActiveKey(props.keyOfmenu);
   };
 
   const remove = (targetKey) => {

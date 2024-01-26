@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Button, Modal } from "antd";
 import "../../Header/reset.css";
-import OrderAdd from "../OrderPage/OrderAdd";
-import OrderAddDataTable from "../OrderPage/OrderAddDataTable";
+import OrderAdd from "../../pages/OrderPage/OrderAdd";
+import OrderAddDataTable from "../../pages/OrderPage/OrderAddDataTable";
 
 const AddModal = () => {
   const [loading, setLoading] = useState(false);

@@ -5,8 +5,8 @@ import FindPasswordPage from "./components/views/pages/FindPasswordPage/FindPass
 import MainPage from "./components/views/pages/MainPage/MainPage";
 import ProfilePage from "./components/views/pages/ProfilePage/ProfilePage";
 import Navbar from "./components/views/Header/Navbar";
-import AddModal from "./components/views/pages/Modal/AddModal";
-import UpdateModal from "./components/views/pages/Modal/UpdateModal";
+import AddModal from "./components/views/commons/Modal/AddModal";
+import UpdateModal from "./components/views/commons/Modal/UpdateModal";
 import OrderPage from "./components/views/pages/OrderPage/OrderPage";
 import OrderAdd from "./components/views/pages/OrderPage/OrderAdd";
 import OrderAddDataTable from "./components/views/pages/OrderPage/OrderAddDataTable";

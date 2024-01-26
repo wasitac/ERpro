@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HomeController {
 	// 메인페이지 - 이지홍
-	@GetMapping("/home/{menu}")
+	@GetMapping("/data/{menu}")
 	public String home(@PathVariable(value="menu") String menu) {
 		// menu로 테이블 찾아서 반환하기
 		return menu + "테이블";
