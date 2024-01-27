@@ -2,6 +2,9 @@ import { Form, Input, Radio, Select } from "antd";
 const AccountForm = () => {
   return (
     <div>
+      <Form.Item name="id" noStyle>
+        <Input type="hidden" />
+      </Form.Item>
       <Form.Item label="담당자" name="userId">
         <Select>
           <Select.Option value={1001}>홍길동</Select.Option>
