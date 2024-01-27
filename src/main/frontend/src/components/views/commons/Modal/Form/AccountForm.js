@@ -1,8 +1,7 @@
-import { Form, Input, Divider, Radio, Select } from "antd";
+import { Form, Input, Radio, Select } from "antd";
 const AccountForm = () => {
   return (
     <div>
-     
         <Form.Item label="담당자" name="userid">
           <Select>
             <Select.Option value="1">홍길동</Select.Option>

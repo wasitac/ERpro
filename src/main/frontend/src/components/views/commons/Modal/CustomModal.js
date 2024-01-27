@@ -2,8 +2,9 @@
  * 김주원
  */
 import React, { useState, useEffect } from "react";
-import { Modal, Form, Input, Divider, Radio, Select } from "antd";
+import { Modal, Form,  Divider } from "antd";
 import AccountForm from "./Form/AccountForm";
+import menus from "../../commons/menus";
 
 function CustomModal(props) {
   // antd의 Form관련 hook 사용을 위함
@@ -33,8 +34,10 @@ function CustomModal(props) {
 
         if (mode === "add") {
           // TODO: 저장 API 호출
+          console.log("저장");
         } else if (mode === "edit") {
           // TODO: 수정 API 호출
+          console.log("수정");
         }
       })
       .catch((errorInfo) => {
@@ -51,7 +54,7 @@ function CustomModal(props) {
 
   return (
     <Modal
-      title={mode === "add" ? "거래처 등록" : "거래처 수정"}
+      title={mode === "add" ? `${menus[props.keyOfmenu].label} 등록` : `${menus[props.keyOfmenu].label} 수정`}
       open={props.modalStatus}
       onCancel={onCancel}
       cancelText="취소"
