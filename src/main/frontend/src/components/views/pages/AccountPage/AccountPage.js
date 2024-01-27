@@ -2,7 +2,7 @@
  * 김주원
  */
 import React, { useState, useEffect } from "react";
-import { Layout, theme, Divider, Table, Flex, Button } from "antd";
+import { Divider, Table, Flex, Button } from "antd";
 import axios from "axios";
 import menus from "../../commons/menus";
 import AccountModal from "./AccountModal";
@@ -13,8 +13,8 @@ const AccountPage = () => {
 
   // 거래처 목록 조회
   const getAccountList = async () => {
-    const resp = await (await axios.get("/account")).data;
-    setAccountList(resp.data);
+    const response = await (await axios.get("/account")).data;
+    setAccountList(response.data);
   };
 
   // 거래처 목록 조회 실행
@@ -105,10 +105,29 @@ const AccountPage = () => {
   // 선택 데이터 삭제
   const deleteAccountList = async () => {
     console.log(selectedRows);
-    // TODO:: 삭제 API 호출해서 데이터 삭제 확인
-    // const resp = await (await axios.get('')).data;
-    // setAccountList(resp.data);
-    // console.log(boardList);
+    if (selectedRows.length == 0) {
+      alert("삭제하실 데이터를 선택해주세요.");
+      return;
+    }
+
+    if (window.confirm("선택된 데이터를 삭제 하시겠습니까?")) {
+      // 삭제 데이터 id 추출
+      const idList = selectedRows.map((obj) => obj.id);
+      console.log(idList);
+
+      const response = await axios.delete("/account", {
+        data: idList, // 요청 본문에 데이터 전달
+        headers: {
+          "Content-Type": "application/json", // 요청 본문의 데이터 타입 설정
+        },
+      });
+
+      if (response.data?.message) {
+        getAccountList();
+      } else {
+        alert("삭제에 실패하였습니다. 다시 시도해주세요.");
+      }
+    }
   };
 
   // 모달 상태
@@ -119,9 +138,8 @@ const AccountPage = () => {
 
   // 수정 모달 오픈
   const handleEdit = async (dataId) => {
-    const resp = await (await axios.get("/account/" + dataId)).data;
-    console.log(resp.data);
-    setSelectDetailData(resp.data);
+    const response = await (await axios.get(`/account/${dataId}`)).data;
+    setSelectDetailData(response.data);
     setModalStatus(true);
   };
 
@@ -181,9 +199,11 @@ const AccountPage = () => {
 
       {/*  모달 영역 시작 */}
       <AccountModal
+        title="거래처"
         modalStatus={modalStatus}
         handleCloseModal={handleCloseModal}
         dataForEdit={selectDetailData}
+        loadAccountList={getAccountList}
       />
       {/* 모달 영역 끝 */}
     </>

@@ -1,5 +1,9 @@
 package himedia.project.erpro.user.controller;
 
+import himedia.project.erpro.common.Message;
+import himedia.project.erpro.trade.entity.Account;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +18,8 @@ import himedia.project.erpro.user.entity.User;
 import himedia.project.erpro.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 public class UserController {
@@ -21,8 +27,10 @@ public class UserController {
 	
 	// 사원 대장 - 김주원\
 	@GetMapping("/user")
-	public String user() {
-		return "사원 대장";
+	public ResponseEntity<Message> user() {
+		List<User> dataList = userService.getUserAll();
+		Message returnData = new Message("", dataList);
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	// 사원 추가 - 김주원
@@ -34,8 +42,8 @@ public class UserController {
 		System.out.println("생년월일 : " + user.getBirth());
 		System.out.println("연락처 : " + user.getPhone());
 		System.out.println("이메일 : " + user.getEmail());
-		System.out.println("부서 : " + user.getDepartment());
-		System.out.println("직책 : " + user.getUserRank());
+//		System.out.println("부서 : " + user.getDepartment());
+//		System.out.println("직책 : " + user.getUserRank());
 		System.out.println("입사일 : " + user.getInsertDate());
 		return "사원 추가";
 	}
@@ -44,7 +52,7 @@ public class UserController {
 	@PutMapping("/user")
 	public String editUser(@RequestBody User user) {
 		System.out.println("이메일 : " + user.getEmail());
-		System.out.println("직책 : " + user.getUserRank());
+//		System.out.println("직책 : " + user.getUserRank());
 		System.out.println("연락처 : " + user.getPhone());
 		return "사원 정보 수정";
 	}
