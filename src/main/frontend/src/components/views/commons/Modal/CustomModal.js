@@ -1,8 +1,9 @@
 /**
- * 김주원
+ * 김주원, 이지홍
  */
 import React, { useState, useEffect } from "react";
-import { Modal, Form,  Divider } from "antd";
+import { Modal, Form, Divider } from "antd";
+import axios from "axios";
 import AccountForm from "./Form/AccountForm";
 import menus from "../../commons/menus";
 
@@ -26,23 +27,38 @@ function CustomModal(props) {
   }, [props.modalStatus]);
 
   // form submit
-  const onSubmit = (values) => {
-    form
-      .validateFields() // 현재 입력 필드를 유효성 검사
-      .then((values) => {
+  const onSubmit = async (values) => {
+    try {
+      let formData; // form 입력 데이터
+      // 현재 입력 필드를 유효성 검사
+      await form.validateFields().then((values) => {
         console.log("Received values:", values);
-
-        if (mode === "add") {
-          // TODO: 저장 API 호출
-          console.log("저장");
-        } else if (mode === "edit") {
-          // TODO: 수정 API 호출
-          console.log("수정");
-        }
-      })
-      .catch((errorInfo) => {
-        // 유효성 검사 실패 시 수행할 로직
+        formData = values;
       });
+
+      if (mode === "add") {
+        // 정보 저장
+        const response = await axios.post(`/${props.keyOfmenu}`, formData);
+        if (response.data?.data?.id) {
+          props.fetchData();
+          onCancel();
+        } else {
+          alert("저장에 실패하였습니다. 다시 시도해 주세요.");
+        }
+      } else if (mode === "edit") {
+        // 정보 수정
+        const response = await axios.put(`/${props.keyOfmenu}`, formData);
+        console.log(response);
+        if (response.data?.data?.id) {
+          props.fetchData();
+          onCancel();
+        } else {
+          alert("저장에 실패하였습니다. 다시 시도해 주세요.");
+        }
+      }
+    } catch (errorInfo) {
+      // 유효성 검사 실패 시 수행할 로직
+    }
   };
 
   // 모달 닫힘
@@ -54,7 +70,11 @@ function CustomModal(props) {
 
   return (
     <Modal
-      title={mode === "add" ? `${menus[props.keyOfmenu].label} 등록` : `${menus[props.keyOfmenu].label} 수정`}
+      title={
+        mode === "add"
+          ? `${menus[props.keyOfmenu].label} 등록`
+          : `${menus[props.keyOfmenu].label} 수정`
+      }
       open={props.modalStatus}
       onCancel={onCancel}
       cancelText="취소"
