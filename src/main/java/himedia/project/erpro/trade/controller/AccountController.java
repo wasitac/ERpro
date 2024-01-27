@@ -58,9 +58,9 @@ public class AccountController {
 	
 	// 거래처 삭제 - 김주원
 	@DeleteMapping("/account")
-	public ResponseEntity<Message> deleteAccount(@RequestParam(name = "id") Long id) {
-		List<Account> deleteData = accountService.deleteAccount(id);
-		Message returnData = new Message("삭제 성공", deleteData);
+	public ResponseEntity<Message> deleteAccount(@RequestBody List<Long> idList) {
+		boolean result = accountService.deleteAcoountList(idList);
+		Message returnData = new Message(Boolean.toString(result));
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 }

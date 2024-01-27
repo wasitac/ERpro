@@ -14,5 +14,7 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
 	
 	// 거래처 목록 
 	public List<Account> findAll();
-	
+
+	// 거래처 목록 삭제
+	public int deleteAllByIdIn(List<Long> idList);
 }
