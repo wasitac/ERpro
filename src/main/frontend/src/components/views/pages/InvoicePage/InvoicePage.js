@@ -6,7 +6,7 @@ import { Table, Typography } from 'antd';
 
 const columns = [
   {
-    title: "전표번호",
+    title: "입출고번호",
     dataIndex: "id",
   },
   {

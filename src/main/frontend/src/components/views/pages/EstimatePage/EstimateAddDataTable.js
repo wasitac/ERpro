@@ -6,7 +6,7 @@ import { Table } from "antd";
 
 const columns = [
   {
-    title: "품목코드",
+    title: "품목번호",
     dataIndex: "itemId",
   },
   {

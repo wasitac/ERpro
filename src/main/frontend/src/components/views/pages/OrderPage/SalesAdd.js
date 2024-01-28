@@ -45,10 +45,10 @@ const SalesAdd = () => {
               <Select.Option value="sell">판매</Select.Option>
             </Select>
           </Form.Item>
-          <Form.Item label="거래처코드" name="accountId">
+          <Form.Item label="거래처번호" name="accountId">
             <Input />
           </Form.Item>
-          <Form.Item label="품목코드" name="itemId">
+          <Form.Item label="품목번호" name="itemId">
             <Input />
           </Form.Item>
           <Form.Item label="품목명" name="itemName">

@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import LoginPage  from './components/views/pages/LoginPage/LoginPage';
+import LoginPage from './components/views/pages/LoginPage/LoginPage';
 import FindPasswordPage from './components/views/pages/FindPasswordPage/FindPasswordPage';
 import MainPage from "./components/views/pages/MainPage/MainPage";
 import ProfilePage from "./components/views/pages/ProfilePage/ProfilePage";
@@ -20,14 +20,15 @@ import SalesPage from "./components/views/pages/OrderPage/SalesPage";
 import AccountPage from "./components/views/pages/AccountPage/AccountPage";
 import InvoicePage from "./components/views/pages/InvoicePage/InvoicePage";
 import InvoiceAdd from './components/views/pages/InvoicePage/InvoiceAdd';
+import EstimateModal from './components/views/pages/EstimatePage/EstimateModal';
 
 function App() {
   return (
     <div>
       <BrowserRouter>
-      	<Routes>
-	      	<Route path="login" element={<LoginPage/>}/>
-          <Route path="findpassword" element={<FindPasswordPage/>}/>
+        <Routes>
+          <Route path="login" element={<LoginPage />} />
+          <Route path="findpassword" element={<FindPasswordPage />} />
           <Route path="/" element={<MainPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/header" element={<Navbar />} />
@@ -46,6 +47,7 @@ function App() {
           <Route path="/account" element={<AccountPage />} />
           <Route path="/InvoicePage" element={<InvoicePage />} />
           <Route path="/InvoiceAdd" element={<InvoiceAdd />} />
+          <Route path="/EstimateModal" element={<EstimateModal />} />
         </Routes>
       </BrowserRouter>
     </div>
