@@ -51,10 +51,12 @@ const DataTable = (props) => {
       }
     }
   };
+
   const onSelectChange = (newSelectedRowKeys) => {
     console.log("selectedRowKeys changed: ", newSelectedRowKeys);
     setSelectedRowKeys(newSelectedRowKeys);
   };
+
   const rowSelection = {
     selectedRowKeys,
     onChange: onSelectChange,
@@ -125,6 +127,7 @@ const DataTable = (props) => {
           </Flex>
         </div>
       </div>
+      {/* todo: 테이블 개수 동적처리 */}
       <Table
         rowSelection={rowSelection}
         rowKey="id"

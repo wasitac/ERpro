@@ -7,6 +7,7 @@ const menus = {
       {
         title: "코드",
         dataIndex: "id",
+        // 정렬
         defaultSortOrder: "descend",
         sorter: (a, b) => a.id - b.id,
       },
@@ -15,12 +16,16 @@ const menus = {
         dataIndex: "sort",
         filters: [
           {
-            text: "매입",
-            value: "매입",
+            text: "매입처",
+            value: "매입처",
           },
           {
-            text: "매출",
-            value: "매출",
+            text: "매출처",
+            value: "매출처",
+          },
+          {
+            text: "혼합",
+            value: "혼합",
           },
           // {
           //   text: "Submenu",
@@ -84,22 +89,26 @@ const menus = {
     key: "user",
   },
 
-  // 구매 발주서
+  // 구매/판매 주문서 - 정유진
   buy: {
-    label: "구매 발주서",
-    key: "buy",
+    label: "구매/판매 주문서",
+    key: "order",
+    column: [
+      //컬럼들
+      {
+        title: "코드",
+        dataIndex: "id",
+        // 정렬
+        defaultSortOrder: "descend",
+        sorter: (a, b) => a.id - b.id,
+      },
+    ],
   },
 
   // 견적서
   estimate: {
     label: "견적서",
     key: "estimate",
-  },
-
-  // 판매 주문서
-  sell: {
-    label: "판매 주문서",
-    key: "sell",
   },
 
   // 매입/매출 전표

@@ -23,15 +23,6 @@ function App() {
           <Route path="findpassword" element={<FindPasswordPage />} />
           <Route path="/" element={<MainPage />} />
           <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/header" element={<Navbar />} />
-          <Route path="/AddModal" element={<AddModal />} />
-          <Route path="/UpdateModal" element={<UpdateModal />} />
-          <Route path="/OrderPage" element={<OrderPage />} />
-          <Route path="/OrderAdd" element={<OrderAdd />} />
-          <Route path="/OrderAddDataTable" element={<OrderAddDataTable />} />
-          <Route path="/DataTable" element={<DataTable />} />
-          <Route path="/EstimateAdd" element={<EstimateAdd />} />
-          <Route path="/account" element={<AccountPage />} />
         </Routes>
       </BrowserRouter>
     </div>

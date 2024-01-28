@@ -6,6 +6,7 @@ import { Modal, Form, Divider } from "antd";
 import axios from "axios";
 import AccountForm from "./Form/AccountForm";
 import menus from "../../commons/menus";
+import OrderForm from "./Form/OrderForm";
 
 function CustomModal(props) {
   // antd의 Form관련 hook 사용을 위함
@@ -85,7 +86,7 @@ function CustomModal(props) {
         },
       }}
       onOk={onSubmit}
-      style={{ minWidth: "650px" }}
+      style={{ minWidth: "1000px" }}
     >
       <Divider />
       <Form
@@ -98,8 +99,11 @@ function CustomModal(props) {
           span: 18,
         }}
       >
+        {/* Form */}
         <AccountForm />
-        <Divider />
+        {/* <OrderForm /> */}
+
+        {/* Tabel */}
       </Form>
     </Modal>
   );
