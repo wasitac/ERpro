@@ -1,7 +1,6 @@
 package himedia.project.erpro.user.controller;
 
 import himedia.project.erpro.common.Message;
-import himedia.project.erpro.trade.entity.Account;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -35,17 +34,21 @@ public class UserController {
 	
 	// 사원 추가 - 김주원
 	@PostMapping("/user")
-	public String addUser(@RequestBody User user) {
-		System.out.println("사번 : " + user.getId());
+	public ResponseEntity<Message> addUser(@RequestBody User user) {
 		System.out.println("비밀번호 : " + user.getPassword());
 		System.out.println("이름 : " + user.getName());
 		System.out.println("생년월일 : " + user.getBirth());
 		System.out.println("연락처 : " + user.getPhone());
 		System.out.println("이메일 : " + user.getEmail());
-//		System.out.println("부서 : " + user.getDepartment());
-//		System.out.println("직책 : " + user.getUserRank());
+		System.out.println("부서 : " + user.getDepartment());
+		System.out.println("직책 : " + user.getUserRank());
+		System.out.println("권한 : " + user.getRole());
 		System.out.println("입사일 : " + user.getInsertDate());
-		return "사원 추가";
+
+		String result = userService.createUser(user);
+		Message message = new Message<>(result);
+
+		return new ResponseEntity<>(message, HttpStatus.OK);
 	}
 	
 	// 사원 수정 - 김주원

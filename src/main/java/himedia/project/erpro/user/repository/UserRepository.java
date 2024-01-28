@@ -9,5 +9,6 @@ import himedia.project.erpro.user.entity.User;
 
 public interface UserRepository extends JpaRepository<User, Long>{
 	public List<User> findAll();
+	public boolean existsByEmail(String email);
 	public Optional<User> findById(Long id);
 }
