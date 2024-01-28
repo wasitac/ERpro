@@ -2,14 +2,16 @@
  * 정유진
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Menu } from 'antd';
+
 import infoIcon from '../../../../img/infoIcon.png';
 import tradeIcon from '../../../../img/tradeIcon.png';
 import logisticsIcon from '../../../../img/logisticsIcon.png';
 import productionIcon from '../../../../img/productIcon.png';
 import logo from '../../../../img/logo.png';
 import profile from '../../../../img/profileIcon.png';
+
 import "./reset.css";
 
 const items = [
@@ -133,6 +135,7 @@ const Navbar = () => {
 		</div>
 		<img style={{ marginLeft: 'auto', marginRight: '30px' }} src={profile} alt="profile" />
 	</div>
+
 };
 
 export default Navbar;
