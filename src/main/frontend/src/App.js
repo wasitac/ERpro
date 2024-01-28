@@ -13,13 +13,14 @@ import OrderAddDataTable from "./components/views/pages/OrderPage/OrderAddDataTa
 import DataTable from "./components/views/pages/MainPage/DataTable";
 import EstimateAdd from "./components/views/pages/EstimatePage/EstimateAdd";
 import AccountPage from "./components/views/pages/AccountPage/AccountPage";
+import ErrorPage from "./components/views/pages/Common/ErrorPage";
 
 function App() {
   return (
     <div>
       <BrowserRouter>
       	<Routes>
-	      	<Route path="login" element={<LoginPage/>}/>
+          <Route path="login" element={<LoginPage/>}/>
           <Route path="findpassword" element={<FindPasswordPage/>}/>
           <Route path="/" element={<MainPage />} />
           <Route path="/profile" element={<ProfilePage />} />
@@ -32,6 +33,7 @@ function App() {
           <Route path="/DataTable" element={<DataTable />} />
           <Route path="/EstimateAdd" element={<EstimateAdd />} />
           <Route path="/account" element={<AccountPage />} />
+          <Route path="/error" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>
     </div>
