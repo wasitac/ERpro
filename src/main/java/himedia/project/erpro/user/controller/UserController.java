@@ -1,7 +1,7 @@
 package himedia.project.erpro.user.controller;
 
-import himedia.project.erpro.common.Message;
-import himedia.project.erpro.trade.entity.Account;
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,13 +12,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import himedia.project.erpro.common.Message;
 import himedia.project.erpro.user.dto.Password;
 import himedia.project.erpro.user.dto.Profile;
 import himedia.project.erpro.user.entity.User;
 import himedia.project.erpro.user.service.UserService;
 import lombok.RequiredArgsConstructor;
-
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -68,9 +67,8 @@ public class UserController {
 	@GetMapping("/profile")
 	public Profile profile() {
 		// 유저정보와 일치하는 유저데이터 받아오기
-		Long userId = 1L;
+		Long userId = 1001L;
 		Profile profile = userService.getUserProfile(userId);
-		System.out.println(profile.getUserRank());
 		return profile;	
 	}
 
@@ -78,7 +76,7 @@ public class UserController {
 	@PutMapping("/profile")
 	public String putProfile(@RequestBody Profile profile) {
 		// 첫번째 파라미터 userid로 바꾸기
-		userService.updateProfile(1l, profile);
+		userService.updateProfile(1001l, profile);
 		return "redirect:/profile";
 	}
 
@@ -86,7 +84,7 @@ public class UserController {
 	@PutMapping("/password")
 	public String putPassword(@RequestBody Password password) {
 		// 첫번째 파라미터 userid로 바꾸기
-		userService.updatePassword(1l, password);
+		userService.updatePassword(1001l, password);
 		return "redirect:/profile";
 	}
 }

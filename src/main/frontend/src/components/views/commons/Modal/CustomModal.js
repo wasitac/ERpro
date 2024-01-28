@@ -1,5 +1,5 @@
 /**
- * 김주원, 이지홍
+ * 김주원
  */
 import React, { useState, useEffect } from "react";
 import { Modal, Form, Divider } from "antd";

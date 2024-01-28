@@ -1,5 +1,7 @@
 package himedia.project.erpro.user.service;
 
+import java.util.List;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -9,8 +11,6 @@ import himedia.project.erpro.user.entity.User;
 import himedia.project.erpro.user.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -36,10 +36,7 @@ public class UserService {
 	public void updateProfile(Long userId, Profile profile) {
 		User user = userRepository.findById(userId)
 				.orElseThrow(() -> new EntityNotFoundException("User not found with ID: " + userId));
-		
-		user.setName(profile.getName());
-		user.setEmail(profile.getEmail());
-		user.setPhone(profile.getPhone());
+		user = modelMapper.map(profile, User.class);
 		userRepository.save(user);
 	}
 

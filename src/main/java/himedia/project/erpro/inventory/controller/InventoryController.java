@@ -8,20 +8,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import himedia.project.erpro.common.Message;
-import himedia.project.erpro.inventory.entity.Store;
-import himedia.project.erpro.inventory.service.StoreService;
+import himedia.project.erpro.inventory.entity.Inventory;
+import himedia.project.erpro.inventory.service.InventoryService;
 import lombok.RequiredArgsConstructor;
+
 
 @RestController
 @RequiredArgsConstructor
-public class StoreController {
-	private final StoreService storeService;
+public class InventoryController {
+	private final InventoryService inventoryService;
 	
-	@GetMapping("/store")
+	@GetMapping("/inventory")
 	public ResponseEntity<Message> inventory() {
-		List<Store> dataList = storeService.getStoreAll();
+		List<Inventory> dataList = inventoryService.getInventoryAll();
 		Message returnData = new Message("", dataList);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
-		
 	}
+	
 }
