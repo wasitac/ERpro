@@ -8,6 +8,17 @@ import axios from "axios";
 import AccountModal from "./AccountModal";
 
 const AccountPage = () => {
+  // 토큰을 가져오는 함수
+  const getToken = () => {
+    return localStorage.getItem('token');
+  };
+
+  // 토큰이 있는 경우에만 설정
+  const token = getToken();
+  if (token) {
+    axios.defaults.headers.common['Authorization'] = `${token}`;
+  }
+
   // 거래처 목록
   const [accountList, setAccountList] = useState([]);
 
