@@ -4,23 +4,73 @@
  */
 import React from 'react';
 import {useNavigate} from "react-router-dom";
+import axios from "axios";
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Form, Input, Row, Col, Image } from 'antd';
 
 import logo2 from '../../../../img/logo2.png';
 
 function LoginPage() {
+  const [form] = Form.useForm();
+
   const navigate = useNavigate();
   
   // form submit
-  const onFinish = (values) => {
+  const onFinish = async (values) => {
     console.log('Received values of form: ', values);
-    // TODO:: login api 호출
+
+    const postData = new FormData();
+    postData.append('username', values.userid);
+    postData.append('password', values.password);
+    try {
+      const response = await axios.post('/login', postData);
+      const token = response.headers.authorization;
+      // 토큰을 로컬 스토리지에 저장
+      localStorage.setItem('token', token);
+
+      const userInfo = JSON.parse(parseJwt(token));
+      // userInfo 객체의 key, value를 순회하며 로컬 스토리지에 저장
+      Object.entries(userInfo).forEach(([key, value]) => {
+        localStorage.setItem(key, value);
+      });
+
+      // 메인페이지 이동
+      navigate('/');
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        alert("인증에 실패하였습니다.");
+
+        // 로컬 스토리지 초기화
+        localStorage.clear();
+
+        // form 데이터 초기화
+        form.resetFields();
+      } else {
+        // 다른 예외 상황에 대한 처리
+        console.error('An error occurred during login:', error.message);
+      }
+    }
     
-    // TODO:: login api 결과에 따른 페이지 이동 제어, 무조건 메인으로 이동하도록 임시 하드코딩
-    navigate('/');
   };
-  
+
+  /**
+   * ! $parseJwt :: json 을 파싱해주는 함수
+   * @param {any} _token
+   * @returns {string}
+   */
+  const parseJwt = (_token) => {
+    const base64Url = _token.split('.')[1]
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/')
+    return decodeURIComponent(
+        atob(base64)
+            .split('')
+            .map(function (c) {
+              return `%${`00${c.charCodeAt(0).toString(16)}`.slice(-2)}`
+            })
+            .join(''),
+    )
+  }
+
   return (
     <Row justify="center" align="middle" style={{ height: "100vh" }}>
       <Col span={6}>
@@ -28,6 +78,7 @@ function LoginPage() {
           <Image src={logo2} alt="Company Logo" preview={false} style={{ width: "60%"}}/>
         </div>
         <Form
+          form={form}
           name="normal_login"
           className="login-form"
           initialValues={{
