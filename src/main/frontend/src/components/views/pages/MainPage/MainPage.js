@@ -3,17 +3,17 @@
  */
 import React, { useState } from "react";
 import TableTabs from "./TableTabs";
-import Navbar from "../Header/Navbar";
+import Navbar from "../../Header/Navbar";
 const MainPage = () => {
-  const [menu, setMenu] = useState("account");
-  const handleMenuChange = (changedMenu) => {
-    setMenu(changedMenu);
+  const [keyOfmenu, setKeyOfmenu] = useState("account");
+  const handleMenuChange = (changedKeyOfmenu) => {
+    setKeyOfmenu(changedKeyOfmenu);
   };
 
   return (
     <>
       <Navbar onMenuChange={handleMenuChange} />
-      <TableTabs menu={menu}></TableTabs>
+      <TableTabs keyOfmenu={keyOfmenu}></TableTabs>
     </>
   );
 };

@@ -9,7 +9,7 @@ function AccountModal(props) {
   const [form] = Form.useForm();
 
   // 모달 모드(add:등록, edit:수정)
-  const [mode, setMode] = useState('add');
+  const [mode, setMode] = useState("add");
 
   // 담당자 목록
   const [userList, setUserList] = useState([]);
@@ -18,11 +18,11 @@ function AccountModal(props) {
     // 모달이 열릴 때마다 모드를 설정
     if (props.dataForEdit != null) {
       // 수정 모드일 때
-      setMode('edit');
+      setMode("edit");
       form.setFieldsValue(props.dataForEdit); // 폼에 원래값 설정
     } else {
       // 등록 모드일 때
-      setMode('add');
+      setMode("add");
     }
 
     // 담당자 목록조회
@@ -35,7 +35,7 @@ function AccountModal(props) {
       const response = await fetchApi.get('/user');
       setUserList(response.data.data);
     } catch (error) {
-      console.error('담당자 목록 조회 에러:', error);
+      console.error("담당자 목록 조회 에러:", error);
     }
   };
 
@@ -49,27 +49,25 @@ function AccountModal(props) {
         formData = values;
       });
 
-      if (mode === 'add') {
+      if (mode === "add") {
         // 거래처 정보 저장
         const response = await fetchApi.post('/account', formData);
         if(response.data?.data?.id) {
           props.loadAccountList();
           onCancel();
-        }else {
+        } else {
           alert("저장에 실패하였습니다. 다시 시도해 주세요.");
         }
-
-      } else if (mode === 'edit') {
+      } else if (mode === "edit") {
         // 거래처 정보 수정
         const response = await fetchApi.put('/account', formData);
         if(response.data?.data?.id) {
           props.loadAccountList();
           onCancel();
-        }else {
+        } else {
           alert("저장에 실패하였습니다. 다시 시도해 주세요.");
         }
       }
-
     } catch (errorInfo) {
       // 유효성 검사 실패 시 수행할 로직
     }
@@ -84,18 +82,18 @@ function AccountModal(props) {
 
   return (
     <Modal
-      title={mode === 'add'? `${props.title} 등록`:`${props.title} 수정`}
+      title={mode === "add" ? "거래처 등록" : "거래처 수정"}
       open={props.modalStatus}
       onCancel={onCancel}
       cancelText="취소"
-      okText={mode === 'add'? "저장":"수정"}
+      okText={mode === "add" ? "저장" : "수정"}
       okButtonProps={{
         style: {
-          backgroundColor: '#66bd00'
+          backgroundColor: "#66bd00",
         },
       }}
       onOk={onSubmit}
-      style={{ minWidth: '650px'}}
+      style={{ minWidth: "650px" }}
     >
       <Divider />
       <Form
@@ -108,21 +106,15 @@ function AccountModal(props) {
           span: 18,
         }}
       >
-        <Form.Item
-          name="id"
-          noStyle
-        >
+        <Form.Item name="id" noStyle>
           <Input type="hidden" />
         </Form.Item>
-        <Form.Item
-          label="담당자"
-          name="userId"
-        >
+        <Form.Item label="담당자" name="userId">
           <Select>
             {userList.map((user) => (
-                <Select.Option key={user.id} value={user.id}>
-                  {user.name}
-                </Select.Option>
+              <Select.Option key={user.id} value={user.id}>
+                {user.name}
+              </Select.Option>
             ))}
           </Select>
         </Form.Item>
@@ -132,7 +124,7 @@ function AccountModal(props) {
           rules={[
             {
               required: true,
-              message: '거래처명을 입력해주세요',
+              message: "거래처명을 입력해주세요",
             },
           ]}
         >
@@ -144,7 +136,7 @@ function AccountModal(props) {
           rules={[
             {
               required: true,
-              message: '사업자번호를 입력해주세요',
+              message: "사업자번호를 입력해주세요",
             },
           ]}
         >
@@ -156,7 +148,7 @@ function AccountModal(props) {
           rules={[
             {
               required: true,
-              message: '유형을 선택해주세요',
+              message: "유형을 선택해주세요",
             },
           ]}
         >
@@ -171,7 +163,7 @@ function AccountModal(props) {
           rules={[
             {
               required: true,
-              message: '대표자명을 입력해주세요',
+              message: "대표자명을 입력해주세요",
             },
           ]}
         >
@@ -183,7 +175,7 @@ function AccountModal(props) {
           rules={[
             {
               required: true,
-              message: '사업장주소를 입력해주세요',
+              message: "사업장주소를 입력해주세요",
             },
           ]}
         >
@@ -195,7 +187,7 @@ function AccountModal(props) {
           rules={[
             {
               required: true,
-              message: '업태를 입력해주세요',
+              message: "업태를 입력해주세요",
             },
           ]}
         >
@@ -208,7 +200,7 @@ function AccountModal(props) {
           rules={[
             {
               required: true,
-              message: '업종을 입력해주세요',
+              message: "업종을 입력해주세요",
             },
           ]}
         >
@@ -220,7 +212,7 @@ function AccountModal(props) {
           rules={[
             {
               required: true,
-              message: '전화번호를 입력해주세요',
+              message: "전화번호를 입력해주세요",
             },
           ]}
         >
@@ -232,11 +224,11 @@ function AccountModal(props) {
           rules={[
             {
               required: true,
-              message: '이메일을 입력해주세요',
+              message: "이메일을 입력해주세요",
             },
             {
-              type: 'email',
-              message: '올바른 이메일 형식이 아닙니다.',
+              type: "email",
+              message: "올바른 이메일 형식이 아닙니다.",
             },
           ]}
         >

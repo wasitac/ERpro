@@ -24,6 +24,7 @@ const AccountPage = () => {
   }, []);
 
   // 테이블 컬럼
+  // menus.account.column
   const columns = [
     {
       title: "코드",
@@ -104,25 +105,24 @@ const AccountPage = () => {
       return;
     }
 
-    if(window.confirm("선택된 데이터를 삭제 하시겠습니까?")) {
+    if (window.confirm("선택된 데이터를 삭제 하시겠습니까?")) {
       // 삭제 데이터 id 추출
       const idList = selectedRows.map(obj => obj.id);
 
       const response = await fetchApi.delete('/account', {
         data: idList,  // 요청 본문에 데이터 전달
         headers: {
-          'Content-Type': 'application/json'  // 요청 본문의 데이터 타입 설정
-        }
+          "Content-Type": "application/json", // 요청 본문의 데이터 타입 설정
+        },
       });
 
-      if(response.data?.message) {
+      if (response.data?.message) {
         getAccountList();
       } else {
         alert("삭제에 실패하였습니다. 다시 시도해주세요.");
       }
     }
-
-  }
+  };
 
   // 모달 상태
   const [modalStatus, setModalStatus] = useState(false);

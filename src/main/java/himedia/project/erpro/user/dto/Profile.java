@@ -3,21 +3,22 @@ package himedia.project.erpro.user.dto;
 import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
+@Builder
 @Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Profile {
-	String name;
-	String id;
-	LocalDate birth;
-	String phone;
-	String email;
-	String department;
-	String userRank;
-	LocalDate insertDate;
+	private String name;
+	private String id;
+	private LocalDate birth;
+	private String phone;
+	private String email;
+	private String department;
+	private String userRank;
+	private LocalDate insertDate;
+	
 }
