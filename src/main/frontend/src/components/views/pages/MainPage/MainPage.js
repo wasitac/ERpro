@@ -1,24 +1,20 @@
 /**
  * 이지홍
  */
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import TableTabs from "./TableTabs";
-
+import Navbar from "../../Header/Navbar";
 const MainPage = () => {
-  const [data, setData] = useState("");
-  useEffect(() => {
-    fetch("/main")
-      .then((response) => response.text())
-      .then((data) => {
-        setData(data);
-      });
-  }, []);
+  const [menu, setMenu] = useState("account");
+  const handleMenuChange = (changedMenu) => {
+    setMenu(changedMenu);
+  };
 
   return (
-    <div>
-      메인페이지
-      <TableTabs menu="메뉴1"></TableTabs>
-    </div>
+    <>
+      <Navbar onMenuChange={handleMenuChange} />
+      <TableTabs menu={menu}></TableTabs>
+    </>
   );
 };
 

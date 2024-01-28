@@ -2,31 +2,63 @@
  * 이지홍
  */
 import { Button, Form, Input, DatePicker } from "antd";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import moment from "moment";
 import axios from "axios";
 
 // 정보수정 폼. 사원 대장에서 비밀번호만 빼고 모달로 사용하면 될것같음
-const onFinish = (values) => {
-  console.log("Success:", values);
+const onFinish = async (values) => {
+  console.log("sucsses:", values);
+  try {
+    const response = await axios.put("/profile", values);
+    console.log("PUT request successful", response.data);
+  } catch (error) {
+    console.error("Error making PUT request", error);
+  }
 };
+
 const onFinishFailed = (errorInfo) => {
   console.log("Failed:", errorInfo);
 };
-const ProfileForm = () => {
-  const [data, setData] = useState("data");
 
-  const handlePutRequest = async () => {
-    try {
-      const response = await axios.put("/profile", data);
-      console.log("PUT request successful", response.data);
-    } catch (error) {
-      console.error("Error making PUT request", error);
+const ProfileForm = () => {
+  const [data, setData] = useState({});
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("/profile");
+        setData(response.data);
+      } catch (error) {
+        console.error("Error fetching data", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  // profile이 변경될 때마다 Form의 initialValues 업데이트
+  useEffect(() => {
+    if (Object.keys(data).length > 0) {
+      form.setFieldsValue({
+        name: data.name,
+        id: data.id,
+        birth: moment(data.birth),
+        phone: data.phone,
+        email: data.email,
+        department: data.department,
+        position: data.userRank,
+        insertDate: moment(data.insertDate),
+      });
     }
-  };
+  }, [data]);
+
+  const [form] = Form.useForm();
+
   return (
     <Form
-      name="basic"
+      form={form}
+      name="putProfile"
       labelCol={{
         span: 8,
       }}
@@ -36,85 +68,28 @@ const ProfileForm = () => {
       style={{
         maxWidth: 600,
       }}
-      initialValues={{
-        username: "홍길동",
-        userid: 111111,
-        birth: moment("2022-01-26"),
-        phone: "010-9085-3892",
-        email: "honggil@gmail.com",
-        department: "영업",
-        position: "부장",
-        insertdate: moment("2022-01-26"),
-      }}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
       autoComplete="off"
     >
       <Form.Item
         label="이름"
-        name="username"
+        name="name"
         rules={[
           {
             required: true,
-            message: "Please input your username!",
+            message: "Please input your name!",
           },
         ]}
       >
         <Input />
       </Form.Item>
-      <Form.Item label="사번" name="userid">
+      <Form.Item label="사번" name="id">
         <Input disabled />
       </Form.Item>
 
-      <Form.Item
-        label="Password"
-        name="password"
-        rules={[
-          {
-            required: true,
-            message: "Please input your password!",
-          },
-        ]}
-      >
-        <Input.Password />
-      </Form.Item>
-
-      <Form.Item
-        name="confirm"
-        label="Confirm Password"
-        dependencies={["password"]}
-        hasFeedback
-        rules={[
-          {
-            required: true,
-            message: "Please confirm your password!",
-          },
-          ({ getFieldValue }) => ({
-            validator(_, value) {
-              if (!value || getFieldValue("password") === value) {
-                return Promise.resolve();
-              }
-              return Promise.reject(
-                new Error("The new password that you entered do not match!")
-              );
-            },
-          }),
-        ]}
-      >
-        <Input.Password />
-      </Form.Item>
-
-      <Form.Item
-        label="생년월일"
-        name="birth"
-        rules={[
-          {
-            required: true,
-            message: "Please input your birth!",
-          },
-        ]}
-      >
-        <DatePicker />
+      <Form.Item label="생년월일" name="birth">
+        <DatePicker disabled format="YYYY-MM-DD" />
       </Form.Item>
 
       <Form.Item
@@ -123,7 +98,7 @@ const ProfileForm = () => {
         rules={[
           {
             required: true,
-            message: "Please input your username!",
+            message: "Please input your phone!",
           },
         ]}
       >
@@ -151,8 +126,8 @@ const ProfileForm = () => {
         <Input disabled />
       </Form.Item>
 
-      <Form.Item label="입사일" name="insertdate">
-        <DatePicker disabled />
+      <Form.Item label="입사일" name="insertDate">
+        <DatePicker disabled format="YYYY-MM-DD" />
       </Form.Item>
 
       <Form.Item
@@ -161,8 +136,8 @@ const ProfileForm = () => {
           span: 16,
         }}
       >
-        <Button type="primary" onClick={handlePutRequest}>
-          변경하기
+        <Button type="primary" htmlType="submit">
+          내 정보 수정하기
         </Button>
       </Form.Item>
     </Form>
