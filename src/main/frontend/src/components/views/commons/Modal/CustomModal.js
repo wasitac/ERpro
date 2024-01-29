@@ -3,10 +3,9 @@
  */
 import React, { useState, useEffect } from "react";
 import { Modal, Form, Divider } from "antd";
-import axios from "axios";
+import fetchApi from "../../../../modules/api";
 import AccountForm from "./Form/AccountForm";
 import menus from "../../commons/menus";
-import OrderForm from "./Form/OrderForm";
 
 function CustomModal(props) {
   // antd의 Form관련 hook 사용을 위함
@@ -39,7 +38,7 @@ function CustomModal(props) {
 
       if (mode === "add") {
         // 정보 저장
-        const response = await axios.post(`/${props.keyOfmenu}`, formData);
+        const response = await fetchApi.post(`/${props.keyOfmenu}`, formData);
         if (response.data?.data?.id) {
           props.fetchData();
           onCancel();
@@ -48,7 +47,7 @@ function CustomModal(props) {
         }
       } else if (mode === "edit") {
         // 정보 수정
-        const response = await axios.put(`/${props.keyOfmenu}`, formData);
+        const response = await fetchApi.put(`/${props.keyOfmenu}`, formData);
         console.log(response);
         if (response.data?.data?.id) {
           props.fetchData();
