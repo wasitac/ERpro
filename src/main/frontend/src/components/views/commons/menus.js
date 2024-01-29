@@ -8,7 +8,7 @@ const menus = {
         title: "코드",
         dataIndex: "id",
         // 정렬
-        defaultSortOrder: "descend",
+        defaultSortOrder: "ascend",
         sorter: (a, b) => a.id - b.id,
       },
       {
@@ -75,6 +75,39 @@ const menus = {
   item: {
     label: "물품 목록",
     key: "item",
+    column: [
+      {
+        title: "품목번호",
+        dataIndex: "id",
+        // 정렬
+        defaultSortOrder: "ascend",
+        sorter: (a, b) => a.id - b.id,
+      },
+      {
+        title: "품목구분",
+        dataIndex: "sort",
+      },
+      {
+        title: "품목명",
+        dataIndex: "itemName",
+      },
+      {
+        title: "단위",
+        dataIndex: "unit",
+      },
+      {
+        title: "규격",
+        dataIndex: "spec",
+      },
+      {
+        title: "매입단가",
+        dataIndex: "buyPrice",
+      },
+      {
+        title: "매출단가",
+        dataIndex: "sellPrice",
+      },
+    ],
   },
 
   // BOM
@@ -87,6 +120,47 @@ const menus = {
   user: {
     label: "사원 대장",
     key: "user",
+    column: [
+      {
+        title: "사번",
+        dataIndex: "id",
+        // 정렬
+        defaultSortOrder: "ascend",
+        sorter: (a, b) => a.id - b.id,
+      },
+      {
+        title: "이름",
+        dataIndex: "name",
+      },
+      {
+        title: "생년월일",
+        dataIndex: "birth",
+      },
+      {
+        title: "연락처",
+        dataIndex: "phone",
+      },
+      {
+        title: "부서",
+        dataIndex: "department",
+      },
+      {
+        title: "직급",
+        dataIndex: "userRank",
+      },
+      {
+        title: "근무 형태",
+        dataIndex: "workType",
+      },
+      {
+        title: "입사일",
+        dataIndex: "insertDate",
+      },
+      {
+        title: "퇴사일",
+        dataIndex: "retireDate",
+      },
+    ],
   },
 
   // 구매/판매 주문서 - 정유진
