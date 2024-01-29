@@ -8,7 +8,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import himedia.project.erpro.trade.entity.Account;
 import himedia.project.erpro.user.dto.Password;
 import himedia.project.erpro.user.dto.Profile;
 import himedia.project.erpro.user.entity.User;
