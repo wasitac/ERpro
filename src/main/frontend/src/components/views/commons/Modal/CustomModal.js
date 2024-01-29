@@ -14,6 +14,7 @@ import OrderForm from "./Form/OrderForm";
 // import InvoiceForm from "./Form/InvoiceForm";
 import StoreForm from "./Form/StoreForm";
 import InventoryForm from "./Form/InventoryForm";
+import fetchApi from "../../../../modules/api";
 // import ProductionForm from "./Form/ProductionForm";
 // import InspectionForm from "./Form/InspectionForm";
 
@@ -48,7 +49,7 @@ function CustomModal(props) {
 
       if (mode === "add") {
         // 정보 저장
-        const response = await axios.post(`/${props.keyOfmenu}`, formData);
+        const response = await fetchApi.post(`/${props.keyOfmenu}`, formData);
         if (response.data?.data?.id) {
           props.fetchData();
           onCancel();
@@ -57,7 +58,7 @@ function CustomModal(props) {
         }
       } else if (mode === "edit") {
         // 정보 수정
-        const response = await axios.put(`/${props.keyOfmenu}`, formData);
+        const response = await fetchApi.put(`/${props.keyOfmenu}`, formData);
         console.log(response);
         if (response.data?.data?.id) {
           props.fetchData();
