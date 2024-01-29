@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import himedia.project.erpro.common.Message;
-import himedia.project.erpro.inventory.entity.Inventory;
+import himedia.project.erpro.inventory.dto.InventoryDto;
 import himedia.project.erpro.inventory.service.InventoryService;
 import lombok.RequiredArgsConstructor;
 
@@ -20,7 +20,7 @@ public class InventoryController {
 	
 	@GetMapping("/inventory")
 	public ResponseEntity<Message> inventory() {
-		List<Inventory> dataList = inventoryService.getInventoryAll();
+		List<InventoryDto> dataList = inventoryService.getInventoryAll();
 		Message returnData = new Message("", dataList);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
