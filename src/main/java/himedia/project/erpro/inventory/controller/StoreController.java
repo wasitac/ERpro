@@ -22,6 +22,5 @@ public class StoreController {
 		List<Store> dataList = storeService.getStoreAll();
 		Message returnData = new Message("", dataList);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
-		
 	}
 }

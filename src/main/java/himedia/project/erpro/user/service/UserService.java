@@ -115,6 +115,7 @@ public class UserService {
 			userRepository.save(user);
 			return;
 		} 
+		System.out.println(user.getName());
 		// 비밀번호가 틀렸을 경우 추가
 	}
 	
