@@ -1,4 +1,4 @@
-package himedia.project.erpro.inventory.dto;
+package himedia.project.erpro.production.dto;
 
 import java.time.LocalDate;
 
@@ -11,18 +11,15 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class StoreDto {
-	private Long id;
-	private Long accountId;
+public class ProductionDto {
+	private Long id; // 지시 번호
+	private Long accountName;
 	private Long orderId;
 	private Long itemId;
 	private String itemName;
 	private String unit;
 	private String spec;
 	private Integer count;
-	private Integer price;
-	private Integer supplyPrice;
-	private Integer vat;
-	private Integer total;
-	private LocalDate storeDate;
+	private Integer userName; // 담당자명
+	private LocalDate productionDate;
 }

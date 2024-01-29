@@ -67,7 +67,7 @@ public class UserController {
 	}
 	
 	// 회원정보 수정폼 - 이지홍
-	@GetMapping("/profile")
+	@GetMapping("/profile/{userId}")
 	public ResponseEntity<Message> profile(@PathVariable Long userId) {
 		// 유저정보와 일치하는 유저데이터 받아오기
 		Profile data = userService.getUserProfile(userId);

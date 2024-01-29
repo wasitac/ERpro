@@ -11,7 +11,7 @@ import fetchApi from "../../../../modules/api";
 const onFinish = async (values) => {
   console.log("sucsses:", values);
   try {
-    const response = await fetchApi.put("/profile", values);
+    const response = await axios.put("/profile", values);
     console.log("PUT request successful", response.data);
   } catch (error) {
     console.error("Error making PUT request", error);
@@ -29,7 +29,7 @@ const ProfileForm = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetchApi.get(`/profile/${userId}`);
+        const response = await axios.get(`/profile/${userId}`);
         setData(response.data);
       } catch (error) {
         console.error("Error fetching data", error);

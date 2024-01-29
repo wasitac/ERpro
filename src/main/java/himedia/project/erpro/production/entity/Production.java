@@ -1,4 +1,6 @@
-package himedia.project.erpro.inventory.entity;
+package himedia.project.erpro.production.entity;
+
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,21 +18,34 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class Item {
+public class Production {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String sort;
+
+	@Column(name = "order_id")
+	private Long orderId;
+
+	@Column(name = "account_id")
+	private Long accountId;
+
+	@Column(name = "user_id")
+	private Long userId;
+
+	@Column(name = "item_id")
+	private Long itemId;
 
 	@Column(name = "item_name")
 	private String itemName;
-	
+
 	private String unit;
+	
 	private String spec;
+
+	@Column(name = "count")
+	private Integer count;
 	
-	@Column(name = "purchase_price")
-	private Integer purchasePrice;
-	
-	@Column(name = "sales_price")
-	private Integer salesPrice;
+	@Column(name = "production_date")
+	private LocalDate productionDate;
 }
