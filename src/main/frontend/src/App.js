@@ -1,9 +1,10 @@
-import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import LoginPage  from './components/views/pages/LoginPage/LoginPage';
-import FindPasswordPage from './components/views/pages/FindPasswordPage/FindPasswordPage';
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import LoginPage from "./components/views/pages/LoginPage/LoginPage";
+import FindPasswordPage from "./components/views/pages/FindPasswordPage/FindPasswordPage";
 import MainPage from "./components/views/pages/MainPage/MainPage";
 import ProfilePage from "./components/views/pages/ProfilePage/ProfilePage";
+<<<<<<< HEAD
 import Navbar from "./components/views/Header/Navbar";
 import AddModal from "./components/views/pages/Modal/AddModal";
 import UpdateModal from "./components/views/pages/Modal/UpdateModal";
@@ -20,16 +21,20 @@ import SalesPage from "./components/views/pages/OrderPage/SalesPage";
 import AccountPage from "./components/views/pages/AccountPage/AccountPage";
 import InvoicePage from "./components/views/pages/InvoicePage/InvoicePage";
 import InvoiceAdd from './components/views/pages/InvoicePage/InvoiceAdd';
+=======
+import ErrorPage from "./components/views/pages/Common/ErrorPage";
+>>>>>>> bd91030459c723c4b898865165a09faa3868a030
 
 function App() {
   return (
     <div>
       <BrowserRouter>
-      	<Routes>
-	      	<Route path="login" element={<LoginPage/>}/>
-          <Route path="findpassword" element={<FindPasswordPage/>}/>
+        <Routes>
+          <Route path="login" element={<LoginPage />} />
+          <Route path="findpassword" element={<FindPasswordPage />} />
           <Route path="/" element={<MainPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+<<<<<<< HEAD
           <Route path="/header" element={<Navbar />} />
           <Route path="/AddModal" element={<AddModal />} />
           <Route path="/UpdateModal" element={<UpdateModal />} />
@@ -46,6 +51,9 @@ function App() {
           <Route path="/account" element={<AccountPage />} />
           <Route path="/InvoicePage" element={<InvoicePage />} />
           <Route path="/InvoiceAdd" element={<InvoiceAdd />} />
+=======
+          <Route path="/error" element={<ErrorPage />} />
+>>>>>>> bd91030459c723c4b898865165a09faa3868a030
         </Routes>
       </BrowserRouter>
     </div>

@@ -1,5 +1,9 @@
 package himedia.project.erpro.user.controller;
 
+
+import java.util.List;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -8,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import himedia.project.erpro.common.Message;
 import himedia.project.erpro.user.dto.Password;
 import himedia.project.erpro.user.dto.Profile;
 import himedia.project.erpro.user.entity.User;
@@ -21,14 +26,15 @@ public class UserController {
 	
 	// 사원 대장 - 김주원\
 	@GetMapping("/user")
-	public String user() {
-		return "사원 대장";
+	public ResponseEntity<Message> user() {
+		List<User> dataList = userService.getUserAll();
+		Message returnData = new Message("", dataList);
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	// 사원 추가 - 김주원
 	@PostMapping("/user")
-	public String addUser(@RequestBody User user) {
-		System.out.println("사번 : " + user.getId());
+	public ResponseEntity<Message> addUser(@RequestBody User user) {
 		System.out.println("비밀번호 : " + user.getPassword());
 		System.out.println("이름 : " + user.getName());
 		System.out.println("생년월일 : " + user.getBirth());
@@ -36,15 +42,20 @@ public class UserController {
 		System.out.println("이메일 : " + user.getEmail());
 		System.out.println("부서 : " + user.getDepartment());
 		System.out.println("직책 : " + user.getUserRank());
+		System.out.println("권한 : " + user.getRole());
 		System.out.println("입사일 : " + user.getInsertDate());
-		return "사원 추가";
+
+		String result = userService.createUser(user);
+		Message message = new Message<>(result);
+
+		return new ResponseEntity<>(message, HttpStatus.OK);
 	}
 	
 	// 사원 수정 - 김주원
 	@PutMapping("/user")
 	public String editUser(@RequestBody User user) {
 		System.out.println("이메일 : " + user.getEmail());
-		System.out.println("직책 : " + user.getUserRank());
+//		System.out.println("직책 : " + user.getUserRank());
 		System.out.println("연락처 : " + user.getPhone());
 		return "사원 정보 수정";
 	}
@@ -60,9 +71,8 @@ public class UserController {
 	@GetMapping("/profile")
 	public Profile profile() {
 		// 유저정보와 일치하는 유저데이터 받아오기
-		Long userId = 1L;
+		Long userId = 1001L;
 		Profile profile = userService.getUserProfile(userId);
-		System.out.println(profile.getUserRank());
 		return profile;	
 	}
 
@@ -70,7 +80,7 @@ public class UserController {
 	@PutMapping("/profile")
 	public String putProfile(@RequestBody Profile profile) {
 		// 첫번째 파라미터 userid로 바꾸기
-		userService.updateProfile(1l, profile);
+		userService.updateProfile(1001l, profile);
 		return "redirect:/profile";
 	}
 
@@ -78,7 +88,7 @@ public class UserController {
 	@PutMapping("/password")
 	public String putPassword(@RequestBody Password password) {
 		// 첫번째 파라미터 userid로 바꾸기
-		userService.updatePassword(1l, password);
+		userService.updatePassword(1001l, password);
 		return "redirect:/profile";
 	}
 }

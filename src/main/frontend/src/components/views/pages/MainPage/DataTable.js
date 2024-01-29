@@ -1,177 +1,155 @@
 /**
  * 이지홍
  */
-import React, { useState } from "react";
-import { Table, Button } from "antd";
-const columns = [
-  // 필터 설정
-  {
-    title: "Name",
-    dataIndex: "name",
-    filters: [
-      {
-        text: "Joe",
-        value: "Joe",
-      },
-      {
-        text: "Submenu",
-        value: "Submenu",
-        children: [
-          {
-            text: "Green",
-            value: "Green",
-          },
-          {
-            text: "Black",
-            value: "Black",
-          },
-        ],
-      },
-    ],
-    onFilter: (value, record) => record.name.indexOf(value) === 0,
-    sorter: (a, b) => a.name.length - b.name.length,
-    sortDirections: ["descend"],
-  },
-  {
-    title: "Age",
-    dataIndex: "age",
-    defaultSortOrder: "descend",
-    sorter: (a, b) => a.age - b.age,
-  },
-  {
-    title: "Address",
-    dataIndex: "address",
-    filters: [
-      {
-        text: "London",
-        value: "London",
-      },
-    ],
-    onFilter: (value, record) => record.address.indexOf(value) === 0,
-  },
-];
-
-const data = [];
-for (let i = 0; i < 200; i++) {
-  data.push({
-    key: i,
-    name: `Edward King ${i}`,
-    age: 32,
-    address: `London, Park Lane no. ${i}`,
-  });
-}
+import React, { useState, useEffect } from "react";
+import { Table, Button, Flex } from "antd";
+import menus from "../../commons/menus";
+import axios from "axios";
+import CustomModal from "../../commons/Modal/CustomModal";
 
 const onChange = (filters, sorter, extra) => {
   console.log("params", filters, sorter, extra);
 };
-const DataTable = () => {
+const DataTable = (props) => {
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
-  const createRow = () => {
-    // 추가 모달 생성
+  const [data, setData] = useState([]);
+  const columns = menus[props.keyOfmenu].column.map((item) => {
+    return {
+      ...item,
+      render: (text, record) => (
+        <a onClick={() => handleEdit(record.id)}>{text}</a>
+      ),
+    };
+  });
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(`/${props.keyOfmenu}`);
+      setData(response.data.data);
+    } catch (error) {
+      console.error("Error fetching data", error);
+    }
   };
-  const deleteRow = () => {
-    //선택된 로우 삭제
+  useEffect(() => {
+    fetchData();
+  }, [data]);
+
+  // 선택 데이터 삭제 - 김주원
+  const handleDelete = async () => {
+    if (window.confirm("선택된 데이터를 삭제 하시겠습니까?")) {
+      const idList = selectedRowKeys.map((obj) => obj.id);
+      try {
+        const response = await axios.delete(`/${props.keyOfmenu}`, {
+          data: idList, // 요청 본문에 데이터 전달
+          headers: {
+            "Content-Type": "application/json", // 요청 본문의 데이터 타입 설정
+          },
+        });
+        setData(response.data.data);
+      } catch (error) {
+        console.error("Error delete data", error);
+      }
+    }
   };
+
   const onSelectChange = (newSelectedRowKeys) => {
     console.log("selectedRowKeys changed: ", newSelectedRowKeys);
     setSelectedRowKeys(newSelectedRowKeys);
   };
+
   const rowSelection = {
     selectedRowKeys,
     onChange: onSelectChange,
   };
+
   const hasSelected = selectedRowKeys.length > 0;
+
+  // 모달
+  // 모달 상태 - 김주원
+  const [modalStatus, setModalStatus] = useState(false);
+  // 수정 모달 오픈 시 모달 전달용 상세데이터 - 김주원
+  const [selectDetailData, setSelectDetailData] = useState(null);
+
+  // 수정 모달 오픈 - 김주원
+  const handleEdit = async (dataId) => {
+    try {
+      const response = await axios.get(`/${props.keyOfmenu}/${dataId}`);
+      setSelectDetailData(response.data.data);
+      setModalStatus(true);
+    } catch (error) {
+      console.error("Error put data", error);
+    }
+  };
+  // 모달 닫기
+  const handleCloseModal = () => {
+    setSelectDetailData(null);
+    setModalStatus(false);
+  };
+
   return (
     <div>
       <div
         style={{
           marginBottom: 5,
           display: "grid",
-          gridTemplateColumns: "1fr auto auto 0.15fr",
+          gridTemplateColumns: "1fr auto",
           alignItems: "center",
         }}
       >
-        <span></span>
-        <Button
-          type="primary"
-          onClick={createRow}
-          style={{
-            marginRight: 5,
-          }}
-        >
-          추가
-        </Button>
-        <Button type="primary" onClick={deleteRow} disabled={!hasSelected}>
-          삭제
-        </Button>
         <div>
           <span
             style={{
-              marginLeft: 8,
+              marginLeft: 20,
             }}
           >
             {hasSelected ? `${selectedRowKeys.length} 개 선택됨` : ""}
           </span>
         </div>
+        <div style={{ marginRight: 10 }}>
+          <Flex gap="small" wrap="wrap" justify="flex-end">
+            <Button
+              type="primary"
+              onClick={(event) => {
+                setModalStatus(true);
+              }}
+              style={{ backgroundColor: "#66bd00" }}
+            >
+              추가
+            </Button>
+            <Button
+              type="primary"
+              onClick={handleDelete}
+              disabled={!hasSelected}
+              style={{ backgroundColor: "#c4c4c4" }}
+            >
+              삭제
+            </Button>
+          </Flex>
+        </div>
       </div>
+      {/* todo: 테이블 개수 동적처리 */}
       <Table
-        columns={columns}
         rowSelection={rowSelection}
-        dataSource={data}
+        rowKey="id"
         size="small"
         pagination={false}
         onChange={onChange}
+        columns={columns}
+        dataSource={data}
         scroll={{ y: `calc(40vh - 32px)` }}
       />
+
+      {/*  모달 영역 시작 */}
+      <CustomModal
+        keyOfmenu={props.keyOfmenu}
+        modalStatus={modalStatus}
+        handleCloseModal={handleCloseModal}
+        dataForEdit={selectDetailData} // 로우 데이터
+        fetchData={fetchData}
+      />
+      {/* 모달 영역 끝 */}
     </div>
   );
 };
 
-// const DataTable = () => (
-//   // 위아래로 2등분
-//   <>
-//     <Divider>Small size table</Divider>
-//     <Table
-//       columns={columns}
-//       dataSource={data}
-//       size="small"
-//       pagination={false}
-//       scroll={{ y: `calc(0vh - 32px)` }}
-//     />
-//     <Divider>Small size table</Divider>
-//     <Table
-//       columns={columns}
-//       dataSource={data}
-//       size="small"
-//       pagination={false}
-//       scroll={{ y: 240 }}
-//     />
-//   </>
-// 좌우로 2등분
-// <>
-//   <div style={{ display: "flex" }}>
-//     <div style={{ marginRight: "16px" }}>
-//       <Divider>Small size table</Divider>
-//       <Table
-//         columns={columns}
-//         dataSource={data}
-//         size="small"
-//         pagination={false}
-//         scroll={{ y: 240 }}
-//       />
-//     </div>
-
-//     <div>
-//       <Divider>Small size table</Divider>
-//       <Table
-//         columns={columns}
-//         dataSource={data}
-//         size="small"
-//         pagination={false}
-//         scroll={{ y: 240 }}
-//       />
-//     </div>
-//   </div>
-// </>
-// );
 export default DataTable;

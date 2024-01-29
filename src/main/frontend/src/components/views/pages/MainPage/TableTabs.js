@@ -1,55 +1,47 @@
 /**
  * 이지홍
  */
-import React, { useRef, useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
 import { Tabs } from "antd";
 import DataTable from "./DataTable";
+import menus from "../../commons/menus";
 
 // 이거대신 탭 기록 넣으면 됨
-const defaultPanes = new Array(2).fill(null).map((_, index) => {
-  const id = String(index + 1);
-  return {
-    label: `Tab ${id}`,
-    children: `Content of Tab Pane ${index + 1}`,
-    key: id,
-  };
-});
+// const defaultPanes = new Array(2).fill(null).map((_, index) => {
+//   const id = String(index + 1);
+//   return {
+//     label: `Tab ${id}`,
+//     children: `Content of Tab Pane ${index + 1}`,
+//     key: id,
+//   };
+// });
 
 // 저장한 탭 기록 출력
 const TableTabs = (props) => {
-  const [activeKey, setActiveKey] = useState(defaultPanes[0].key);
-  const [items, setItems] = useState(defaultPanes);
-  const newTabIndex = useRef(0);
+  const [activeKey, setActiveKey] = useState([]);
+  const [items, setItems] = useState([]);
+
   const onChange = (key) => {
     setActiveKey(key);
   };
-  const [data, setData] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`/home/${props.menu}`);
-        setData(response.data);
-        add();
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    fetchData();
-  }, [props.menu]);
+    add();
+  }, [props.keyOfmenu]);
 
   const add = () => {
-    const newActiveKey = `newTab${newTabIndex.current++}`;
-    setItems([
-      ...items,
-      {
-        label: props.menu,
-        children: <DataTable></DataTable>,
-        key: newActiveKey,
-      },
-    ]);
-    setActiveKey(newActiveKey);
+    const isValueExist = items.some((value) => value.key === props.keyOfmenu);
+    if (!isValueExist) {
+      setItems([
+        ...items,
+        {
+          label: menus[props.keyOfmenu].label,
+          children: <DataTable keyOfmenu={props.keyOfmenu}></DataTable>,
+          key: props.keyOfmenu,
+        },
+      ]);
+    }
+    setActiveKey(props.keyOfmenu);
   };
 
   const remove = (targetKey) => {
@@ -65,14 +57,6 @@ const TableTabs = (props) => {
     setItems(newPanes);
   };
 
-  const onEdit = (targetKey, action) => {
-    if (action === "add") {
-      add();
-    } else {
-      remove(targetKey);
-    }
-  };
-  
   return (
     <div>
       <div
@@ -85,7 +69,7 @@ const TableTabs = (props) => {
         onChange={onChange}
         activeKey={activeKey}
         type="editable-card"
-        onEdit={onEdit}
+        onEdit={remove}
         items={items}
       />
     </div>

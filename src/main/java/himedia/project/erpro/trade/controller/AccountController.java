@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import himedia.project.erpro.common.Message;
 import himedia.project.erpro.trade.entity.Account;
 import himedia.project.erpro.trade.service.AccountService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequiredArgsConstructor
@@ -42,31 +42,25 @@ public class AccountController {
 	
 	// 거래처 추가 - 김주원
 	@PostMapping("/account")
-	public String addAccount(@RequestBody Account account) {
-		System.out.println("거래처id : " + account.getId());
-		System.out.println("사업자 등록 번호 : " + account.getBNo());
-		System.out.println("거래처명 : " + account.getBNm());
-		System.out.println("사업자 구분 : " + account.getSort());
-		System.out.println("대표자 : " + account.getPNm());
-		System.out.println("업태 : " + account.getBSector());
-		System.out.println("종목 : " + account.getBType());
-		return "거래처 등록";
+	public ResponseEntity<Message> addAccount(@RequestBody Account account) {
+		Account data = accountService.createAccount(account);
+		Message returnData = new Message("저장 성공", data);
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	// 거래처 수정 - 김주원
 	@PutMapping("/account")
-	public String editAccount(@RequestBody Account account) {
-		System.out.println("거래처id : " + account.getId());
-		System.out.println("사업자 등록 번호 : " + account.getBNo());
-		System.out.println("거래처명 : " + account.getBNm());
-		System.out.println("종목 : " + account.getBType());
-		return "거래처 정보 수정";
+	public ResponseEntity<Message> editAccount(@RequestBody Account account) {
+		Optional<Account> editData = accountService.updateAccount(account);
+		Message returnData = new Message("수정 성공", editData);
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	// 거래처 삭제 - 김주원
 	@DeleteMapping("/account")
-	public String deleteAccount(@RequestParam(name = "id") long id) {
-	   System.out.println("거래처 id: " + id);
-	   return "거래처 삭제";
+	public ResponseEntity<Message> deleteAccount(@RequestBody List<Long> idList) {
+		boolean result = accountService.deleteAcoountList(idList);
+		Message returnData = new Message(Boolean.toString(result));
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 }
