@@ -1,17 +1,8 @@
-<<<<<<< HEAD:src/main/frontend/src/components/views/pages/Modal/UpdateModal.js
-import React, { useState } from 'react';
-import { Button, Modal } from 'antd';
-import "../../Header/reset.css";
-import OrderAdd from '../OrderPage/OrderAdd';
-import OrderAddDataTable from '../OrderPage/OrderAddDataTable';
-
-=======
 import React, { useState } from "react";
 import { Button, Modal } from "antd";
 import "../../Header/reset.css";
 import OrderAdd from "../../pages/OrderPage/OrderAdd";
 import OrderAddDataTable from "../../pages/OrderPage/OrderAddDataTable";
->>>>>>> bd91030459c723c4b898865165a09faa3868a030:src/main/frontend/src/components/views/commons/Modal/UpdateModal.js
 
 const UpdateModal = () => {
   const [loading, setLoading] = useState(false);
