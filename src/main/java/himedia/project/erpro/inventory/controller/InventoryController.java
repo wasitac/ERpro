@@ -17,6 +17,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class InventoryController {
 	private final InventoryService inventoryService;
+
 	
 	@GetMapping("/inventory")
 	public ResponseEntity<Message> inventory() {

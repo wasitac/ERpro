@@ -68,11 +68,11 @@ public class UserController {
 	
 	// 회원정보 수정폼 - 이지홍
 	@GetMapping("/profile")
-	public Profile profile() {
+	public ResponseEntity<Message> profile(@PathVariable Long userId) {
 		// 유저정보와 일치하는 유저데이터 받아오기
-		Long userId = 1001L;
-		Profile profile = userService.getUserProfile(userId);
-		return profile;	
+		Profile data = userService.getUserProfile(userId);
+		Message returnData = new Message("", data);
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 
 	// 회원정보 수정 - 이지홍

@@ -5,12 +5,13 @@ import { Button, Form, Input, DatePicker } from "antd";
 import React, { useState, useEffect } from "react";
 import moment from "moment";
 import axios from "axios";
+import fetchApi from "../../../../modules/api";
 
 // 정보수정 폼. 사원 대장에서 비밀번호만 빼고 모달로 사용하면 될것같음
 const onFinish = async (values) => {
   console.log("sucsses:", values);
   try {
-    const response = await axios.put("/profile", values);
+    const response = await fetchApi.put("/profile", values);
     console.log("PUT request successful", response.data);
   } catch (error) {
     console.error("Error making PUT request", error);
@@ -23,11 +24,12 @@ const onFinishFailed = (errorInfo) => {
 
 const ProfileForm = () => {
   const [data, setData] = useState({});
+  const userId = localStorage.getItem("userId");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/profile");
+        const response = await fetchApi.get(`/profile/${userId}`);
         setData(response.data);
       } catch (error) {
         console.error("Error fetching data", error);

@@ -42,7 +42,9 @@ public class Inventory {
 	
 	@Column(name = "appropriate_inventory")
 	private Integer appropriateInventory;
+	
 	private Integer lack;
+	
 	private Integer sales;
 	
 	@Column(name = "expected_order")
