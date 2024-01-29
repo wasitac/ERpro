@@ -1,0 +1,11 @@
+diff a/src/main/resources/application.properties b/src/main/resources/application.properties	(rejected hunks)
+@@ -1,8 +0,0 @@
+-## DB
+-spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+-spring.datasource.url=jdbc:mysql://localhost:3306/erpro
+-spring.datasource.username=root
+-spring.datasource.password=1111
+-
+-## JWT ?? ??? key
+-spring.jwt.secre=akldsjlffijdrhweoreuhqozmnlghhldshkhdkldkeljjoirrjpajfkt
+\ No newline at end of file
