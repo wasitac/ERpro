@@ -3,6 +3,7 @@ package himedia.project.erpro.user.entity;
 import java.time.LocalDate;
 
 import himedia.project.erpro.user.enums.Department;
+import himedia.project.erpro.user.enums.Role;
 import himedia.project.erpro.user.enums.UserRank;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,9 +12,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,7 +21,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @AllArgsConstructor
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,7 +37,10 @@ public class User {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "user_rank")
 	private UserRank userRank;
-	
+
+	@Enumerated(EnumType.STRING)
+	private Role role;
+
 	@Column(name = "work_type")
 	private String workType;
 	@Column(name = "insert_date")

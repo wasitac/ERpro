@@ -1,8 +1,8 @@
 /**
  * 김주원
  */
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import fetchApi from "../../../../modules/api";
 import { Modal, Form, Input, Divider, Radio, Select } from "antd";
 function AccountModal(props) {
   // antd의 Form관련 hook 사용을 위함
@@ -32,7 +32,7 @@ function AccountModal(props) {
   // 담당자 목록 조회
   const fetchUserList = async () => {
     try {
-      const response = await axios.get("/user");
+      const response = await fetchApi.get('/user');
       setUserList(response.data.data);
     } catch (error) {
       console.error("담당자 목록 조회 에러:", error);
@@ -51,8 +51,8 @@ function AccountModal(props) {
 
       if (mode === "add") {
         // 거래처 정보 저장
-        const response = await axios.post("/account", formData);
-        if (response.data?.data?.id) {
+        const response = await fetchApi.post('/account', formData);
+        if(response.data?.data?.id) {
           props.loadAccountList();
           onCancel();
         } else {
@@ -60,9 +60,8 @@ function AccountModal(props) {
         }
       } else if (mode === "edit") {
         // 거래처 정보 수정
-        const response = await axios.put("/account", formData);
-        console.log(response);
-        if (response.data?.data?.id) {
+        const response = await fetchApi.put('/account', formData);
+        if(response.data?.data?.id) {
           props.loadAccountList();
           onCancel();
         } else {

@@ -13,8 +13,6 @@ function FindPasswordPage() {
   
   // form submit
   const onFinish = (values) => {
-    console.log('Received values of form: ', values);
-    
     // TODO:: 임시 비밀번호 발송 API 호출 및 임시비밀번호 발송 결과에 따른 메시지 open 호출
     openNotification( true);
   };
@@ -54,7 +52,7 @@ function FindPasswordPage() {
       <Row justify="center" align="middle" style={{ height: "100vh" }}>
         <Col span={6}>
           <div style={{ textAlign: "center", marginBottom: "25px" }}>
-            <Image src={logo2} alt="Company Logo" preview={false} style={{ width: '60%'}}/>
+            <Image src={logo2} alt="Company Logo" preview={false} style={{ width: "60%" , margin: "auto"}} />
           </div>
           <h1 style={{ textAlign: "center", marginBottom: "25px", fontWeight:"bold" }}>
             비밀번호 찾기
