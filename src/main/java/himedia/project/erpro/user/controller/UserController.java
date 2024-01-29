@@ -2,14 +2,16 @@ package himedia.project.erpro.user.controller;
 
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import himedia.project.erpro.common.Message;
@@ -24,7 +26,7 @@ import lombok.RequiredArgsConstructor;
 public class UserController {
 	private final UserService userService;
 	
-	// 사원 대장 - 김주원\
+	// 사원 대장 - 김주원
 	@GetMapping("/user")
 	public ResponseEntity<Message> user() {
 		List<User> dataList = userService.getUserAll();
@@ -32,39 +34,36 @@ public class UserController {
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
-	// 사원 추가 - 김주원
-	@PostMapping("/user")
-	public ResponseEntity<Message> addUser(@RequestBody User user) {
-		System.out.println("비밀번호 : " + user.getPassword());
-		System.out.println("이름 : " + user.getName());
-		System.out.println("생년월일 : " + user.getBirth());
-		System.out.println("연락처 : " + user.getPhone());
-		System.out.println("이메일 : " + user.getEmail());
-		System.out.println("부서 : " + user.getDepartment());
-		System.out.println("직책 : " + user.getUserRank());
-		System.out.println("권한 : " + user.getRole());
-		System.out.println("입사일 : " + user.getInsertDate());
-
-		String result = userService.createUser(user);
-		Message message = new Message<>(result);
-
-		return new ResponseEntity<>(message, HttpStatus.OK);
+	// 사원 상세 정보 조회
+	@GetMapping("/user/{id}")
+	public ResponseEntity<Message> detailUser(@PathVariable(value="id") Long id) {
+		Optional<User> data = userService.getUserById(id);
+		Message returnData = new Message("", data);
+		return new ResponseEntity<>(returnData, HttpStatus.OK);	
 	}
 	
-	// 사원 수정 - 김주원
+	// 사원 추가 - 김주원
+	@PostMapping("/user")
+	public ResponseEntity<Message> createUser(@RequestBody User user) {
+		String result = userService.createUser(user);
+		Message returnData = new Message<>("저장 성공",result);
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
+	}
+	
+	// 사원 대장 수정 - 김주원
 	@PutMapping("/user")
-	public String editUser(@RequestBody User user) {
-		System.out.println("이메일 : " + user.getEmail());
-//		System.out.println("직책 : " + user.getUserRank());
-		System.out.println("연락처 : " + user.getPhone());
-		return "사원 정보 수정";
+	public ResponseEntity<Message> editUser(@RequestBody User user) {
+		Optional<User> editData = userService.updateUser(user);
+		Message returnData = new Message("수정 성공", editData);
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	// 사원 삭제 - 김주원
 	@DeleteMapping("/user")
-	public String deleteUser(@RequestParam(name="id") long id) {
-		System.out.println("사번 : " + id);
-		return "사원 삭제";
+	public ResponseEntity<Message> deleteUser(@RequestBody List<Long> idList) {
+		boolean result = userService.deleteUserList(idList);
+		Message returnData = new Message(Boolean.toString(result));
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	// 회원정보 수정폼 - 이지홍
