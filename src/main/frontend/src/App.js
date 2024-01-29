@@ -23,6 +23,7 @@ function App() {
           <Route path="findpassword" element={<FindPasswordPage />} />
           <Route path="/" element={<MainPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/account" element={<AccountPage />} />
         </Routes>
       </BrowserRouter>
     </div>
