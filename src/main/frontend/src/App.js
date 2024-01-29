@@ -5,6 +5,7 @@ import FindPasswordPage from "./components/views/pages/FindPasswordPage/FindPass
 import MainPage from "./components/views/pages/MainPage/MainPage";
 import ProfilePage from "./components/views/pages/ProfilePage/ProfilePage";
 import ErrorPage from "./components/views/pages/Common/ErrorPage";
+import AccountPage from "./components/views/pages/AccountPage/AccountPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="findpassword" element={<FindPasswordPage />} />
           <Route path="/" element={<MainPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/account" element={<AccountPage />} />
           <Route path="/error" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>
