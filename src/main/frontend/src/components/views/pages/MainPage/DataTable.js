@@ -4,7 +4,7 @@
 import React, { useState, useEffect } from "react";
 import { Table, Button, Flex } from "antd";
 import menus from "../../commons/menus";
-import axios from "axios";
+import fetchApi from "../../../../modules/api";
 import CustomModal from "../../commons/Modal/CustomModal";
 
 const onChange = (filters, sorter, extra) => {
@@ -24,7 +24,7 @@ const DataTable = (props) => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`/${props.keyOfmenu}`);
+      const response = await fetchApi.get(`/${props.keyOfmenu}`);
       setData(response.data.data);
     } catch (error) {
       console.error("Error fetching data", error);
@@ -37,10 +37,9 @@ const DataTable = (props) => {
   // 선택 데이터 삭제 - 김주원
   const handleDelete = async () => {
     if (window.confirm("선택된 데이터를 삭제 하시겠습니까?")) {
-      const idList = selectedRowKeys.map((obj) => obj.id);
       try {
-        const response = await axios.delete(`/${props.keyOfmenu}`, {
-          data: idList, // 요청 본문에 데이터 전달
+        const response = await fetchApi.delete(`/${props.keyOfmenu}`, {
+          data: selectedRowKeys, // 요청 본문에 데이터 전달
           headers: {
             "Content-Type": "application/json", // 요청 본문의 데이터 타입 설정
           },
@@ -73,7 +72,7 @@ const DataTable = (props) => {
   // 수정 모달 오픈 - 김주원
   const handleEdit = async (dataId) => {
     try {
-      const response = await axios.get(`/${props.keyOfmenu}/${dataId}`);
+      const response = await fetchApi.get(`/${props.keyOfmenu}`);
       setSelectDetailData(response.data.data);
       setModalStatus(true);
     } catch (error) {
