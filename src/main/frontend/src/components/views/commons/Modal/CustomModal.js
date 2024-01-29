@@ -3,9 +3,20 @@
  */
 import React, { useState, useEffect } from "react";
 import { Modal, Form, Divider } from "antd";
-import fetchApi from "../../../../modules/api";
-import AccountForm from "./Form/AccountForm";
+import axios from "axios";
 import menus from "../../commons/menus";
+import AccountForm from "./Form/AccountForm";
+// import ItemForm from "./Form/ItemForm";
+// import BomForm from "./Form/BomForm";
+// import UserForm from "./Form/UserForm";
+import OrderForm from "./Form/OrderForm";
+// import EstimateForm from "./Form/EstimateForm";
+// import InvoiceForm from "./Form/InvoiceForm";
+import StoreForm from "./Form/StoreForm";
+import InventoryForm from "./Form/InventoryForm";
+import fetchApi from "../../../../modules/api";
+// import ProductionForm from "./Form/ProductionForm";
+// import InspectionForm from "./Form/InspectionForm";
 
 function CustomModal(props) {
   // antd의 Form관련 hook 사용을 위함
@@ -68,6 +79,46 @@ function CustomModal(props) {
     props.handleCloseModal();
   };
 
+  var inputForm;
+  switch (props.keyOfmenu) {
+    case "account":
+      inputForm = <AccountForm />;
+      break;
+    // case "item":
+    //   inputForm = <ItemForm />;
+    //   break;
+    // case "bom":
+    //   inputForm = <BomForm />;
+    //   break;
+    // case "user":
+    //   inputForm = <UserForm />;
+    //   break;
+    case "order":
+      inputForm = <OrderForm />;
+      break;
+    // case "estimate":
+    //   inputForm = <EstimateForm />;
+    //   break;
+    // case "invoice":
+    //   inputForm = <InvoiceForm />;
+    //   break;
+    case "store":
+      inputForm = <StoreForm />;
+      break;
+    case "inventory":
+      inputForm = <InventoryForm />;
+      break;
+    // case "production":
+    //   inputForm = <ProductionForm />;
+    //   break;
+    // case "inspection":
+    //   inputForm = <InspectionForm />;
+    //   break;
+
+    default:
+      break;
+  }
+
   return (
     <Modal
       title={
@@ -99,9 +150,7 @@ function CustomModal(props) {
         }}
       >
         {/* Form */}
-        <AccountForm />
-        {/* <OrderForm /> */}
-
+        {inputForm}
         {/* Tabel */}
       </Form>
     </Modal>

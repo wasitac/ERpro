@@ -32,7 +32,7 @@ const DataTable = (props) => {
   };
   useEffect(() => {
     fetchData();
-  }, [data]);
+  }, []);
 
   // 선택 데이터 삭제 - 김주원
   const handleDelete = async () => {
@@ -72,7 +72,7 @@ const DataTable = (props) => {
   // 수정 모달 오픈 - 김주원
   const handleEdit = async (dataId) => {
     try {
-      const response = await fetchApi.get(`/${props.keyOfmenu}`);
+      const response = await fetchApi.get(`/${props.keyOfmenu}/${dataId}`);
       setSelectDetailData(response.data.data);
       setModalStatus(true);
     } catch (error) {

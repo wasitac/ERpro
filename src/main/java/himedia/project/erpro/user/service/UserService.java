@@ -1,8 +1,10 @@
 package himedia.project.erpro.user.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.BeanUtils;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +27,12 @@ public class UserService {
 		List<User> userList = userRepository.findAll();
 		return userList;
 	}
+	
+	// 사원 상세 정보 조회 - 김주원
+	public Optional<User> getUserById(Long userId) {
+		Optional<User> user = userRepository.findById(userId);
+		return user;
+	}
 
 	// 사원 추가 - 김주원
 	public String createUser(User user) {
@@ -41,6 +49,44 @@ public class UserService {
 		userRepository.save(user);
 
 		return "success";
+	}
+	
+	// 사원 대장 수정
+	public Optional<User> updateUser(User user) {
+		Optional<User> existUser = userRepository.findById(user.getId());
+		
+		if(existUser.isPresent()) {
+			User updateUser = existUser.get();
+
+			// 모든 필드를 업데이트
+			BeanUtils.copyProperties(user, updateUser);
+
+			userRepository.save(updateUser);
+			return Optional.of(updateUser);
+		} else {
+			return Optional.empty();
+		}
+	}
+	
+	// 사원 대장 삭제
+	public List<User> deleteUser(Long id) {
+		Optional<User> existAccount = userRepository.findById(id); 
+		if(existAccount.isPresent()) {
+			userRepository.deleteById(id);
+			return userRepository.findAll();
+		} else {
+			 throw new EntityNotFoundException("존재하지 않는 아이디 입니다.");
+		}
+	}
+
+	// 사원 대장 다중 삭제
+	public boolean deleteUserList(List<Long> idList) {
+		int deletedCount = userRepository.deleteAllByIdIn(idList);
+		if(deletedCount > 0 && deletedCount == idList.size()) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	// 프로필 가져오기 - 이지홍
@@ -69,6 +115,7 @@ public class UserService {
 			userRepository.save(user);
 			return;
 		} 
+		System.out.println(user.getName());
 		// 비밀번호가 틀렸을 경우 추가
 	}
 	
