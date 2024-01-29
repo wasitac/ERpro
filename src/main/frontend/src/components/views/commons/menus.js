@@ -90,31 +90,224 @@ const menus = {
   },
 
   // 구매/판매 주문서 - 정유진
-  buy: {
+  order: {
     label: "구매/판매 주문서",
     key: "order",
     column: [
       //컬럼들
       {
-        title: "코드",
+        title: "주문번호",
         dataIndex: "id",
         // 정렬
         defaultSortOrder: "descend",
         sorter: (a, b) => a.id - b.id,
       },
+      {
+        title: "구분",
+        dataIndex: "type",
+        filters: [
+          {
+            text: "구매",
+            value: "buy",
+          },
+          {
+            text: "판매",
+            value: "sell",
+          },
+        ]
+      },
+      {
+        title: "거래처번호",
+        dataIndex: "accountId",
+      },
+      {
+        title: "품목번호",
+        dataIndex: "itemId",
+      },
+      {
+        title: "품목명",
+        dataIndex: "itemName",
+      },
+      {
+        title: "예정일",
+        dataIndex: "dueDate",
+      },
+      {
+        title: "완료일",
+        dataIndex: "completionDate",
+      },
+      {
+        title: "유효기간",
+        dataIndex: "expiration",
+      },
+      {
+        title: "단위",
+        dataIndex: "unit",
+      },
+      {
+        title: "규격",
+        dataIndex: "spec",
+      },
+      {
+        title: "수량",
+        dataIndex: "count",
+      },
+      {
+        title: "단가",
+        dataIndex: "price",
+      },
+      {
+        title: "공급가액",
+        dataIndex: "supplyPrice",
+      },
+      {
+        title: "부가세",
+        dataIndex: "vat",
+      },
+      {
+        title: "합계",
+        dataIndex: "total",
+      },
     ],
   },
 
-  // 견적서
+  // 견적서 - 정유진
   estimate: {
     label: "견적서",
     key: "estimate",
+    column: [
+      {
+        title: "견적번호",
+        dataIndex: "id",
+        defaultSortOrder: "descend",
+        sorter: (a, b) => a.id - b.id,
+      },
+      {
+        title: "거래처번호",
+        dataIndex: "accountId",
+      },
+      {
+        title: "품목번호",
+        dataIndex: "itemId",
+      },
+      {
+        title: "품목명",
+        dataIndex: "itemName",
+      },
+      {
+        title: "작성일자",
+        dataIndex: "insertDate",
+      },
+      {
+        title: "납기일자",
+        dataIndex: "dueDate",
+      },
+      {
+        title: "주문처리",
+        dataIndex: "order",
+      },
+      {
+        title: "유효기간",
+        dataIndex: "expiration",
+      },
+      {
+        title: "단위",
+        dataIndex: "unit",
+      },
+      {
+        title: "규격",
+        dataIndex: "spec",
+      },
+      {
+        title: "수량",
+        dataIndex: "count",
+      },
+      {
+        title: "단가",
+        dataIndex: "price",
+
+      },
+      {
+        title: "견적금액",
+        dataIndex: "total",
+      },
+    ]
   },
 
-  // 매입/매출 전표
+  // 매입/매출 전표 - 정유진
   invoice: {
     label: "매입/매출 전표",
     key: "invoice",
+    column: [
+      {
+        title: "전표번호",
+        dataIndex: "id",
+        defaultSortOrder: "descend",
+        sorter: (a, b) => a.id - b.id,
+      },
+      {
+        title: "입출고번호",
+        dataIndex: "storeId",
+      },
+      {
+        title: "구분",
+        dataIndex: "sort",
+        filters: [
+          {
+            text: "구매",
+            value: "buy",
+          },
+          {
+            text: "판매",
+            value: "sell",
+          },
+        ]
+      },
+      {
+        title: "결제방법",
+        dataIndex: "payment",
+      },
+      {
+        title: "거래처명",
+        dataIndex: "bNm",
+      },
+      {
+        title: "품목번호",
+        dataIndex: "itemId",
+      },
+      {
+        title: "품목명",
+        dataIndex: "itemName",
+      },
+      {
+        title: "거래일자",
+        dataIndex: "date",
+      },
+      {
+        title: "비고",
+        dataIndex: "note",
+      },
+      {
+        title: "수량",
+        dataIndex: "count",
+      },
+      {
+        title: "단가",
+        dataIndex: "price",
+      },
+      {
+        title: "매출금액",
+        dataIndex: "sellPrice",
+      },
+      {
+        title: "부가세",
+        dataIndex: "vat",
+      },
+      {
+        title: "합계",
+        dataIndex: "total",
+      },
+    ]
   },
 
   // 입고/출고 관리 - 이지홍

@@ -33,16 +33,12 @@ const items = [
         type: "group",
         children: [
           {
-            label: "구매 발주서",
-            key: "buy",
+            label: "구매/판매 발주서",
+            key: "order",
           },
           {
             label: "견적서",
             key: "estimate",
-          },
-          {
-            label: "판매 주문서",
-            key: "sell",
           },
           {
             label: "매입/매출 전표",

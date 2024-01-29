@@ -107,7 +107,7 @@ const EstimateAdd = () => {
           <Form.Item label="사업자 구분" name="sort">
             <Input disabled />
           </Form.Item>
-          <Form.Item label="전화" name="phone">
+          <Form.Item label="연락처" name="phone">
             <Input />
           </Form.Item>
           <Form.Item label="종목" name="bType">

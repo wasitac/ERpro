@@ -2,7 +2,7 @@
  * 정유진 
  */
 import React, { useState } from 'react';
-import { Table, Typography } from 'antd';
+import { Table } from 'antd';
 
 const columns = [
   {

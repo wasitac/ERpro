@@ -1,11 +1,20 @@
-// 이지홍
+// 정유진
 import { Form, Input, Select, DatePicker } from "antd";
-const OrderForm = () => {
+const EstimateForm = () => {
   return (
     <div>
       <div style={{ width: "48%" }}>
-        <Form.Item label="주문번호" name="id">
-          <Input disabled />
+        <Form.Item
+          label="견적번호"
+          name="id"
+          rules={[
+            {
+              required: true,
+              message: "견적번호를 입력해주세요",
+            },
+          ]}
+        >
+          <Input />
         </Form.Item>
         <Form.Item label="구분" name="type">
           <Select>
@@ -50,16 +59,26 @@ const OrderForm = () => {
           <Input />
         </Form.Item>
         <Form.Item
-          label="예정일"
+          label="작성일자"
+          name="insertDate"
+        >
+          <DatePicker />
+        </Form.Item>
+        <Form.Item
+          label="납기일자"
           name="dueDate"
         >
           <DatePicker />
         </Form.Item>
         <Form.Item
-          label="완료일"
-          name="completionDate"
+          label="주문처리"
+          name="order"
         >
-          <DatePicker />
+          <Select>
+            <Select.Option value="ongoing">진행중</Select.Option>
+            <Select.Option value="completion">완료</Select.Option>
+            <Select.Option value="cancel">취소됨</Select.Option>
+          </Select>
         </Form.Item>
         <Form.Item
           label="유효기간"
@@ -118,18 +137,6 @@ const OrderForm = () => {
           <Input />
         </Form.Item>
         <Form.Item
-          label="공급가액"
-          name="supplyPrice"
-          rules={[
-            {
-              required: true,
-              message: "공급가액을 입력해주세요",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
           label="부가세"
           name="vat"
           rules={[
@@ -142,12 +149,12 @@ const OrderForm = () => {
           <Input />
         </Form.Item>
         <Form.Item
-          label="합계"
+          label="견적금액"
           name="total"
           rules={[
             {
               required: true,
-              message: "합계를 입력해주세요",
+              message: "견적금액을 입력해주세요",
             },
           ]}
         >
@@ -156,34 +163,16 @@ const OrderForm = () => {
       </div>
       <div style={{ width: "48%" }}>
         <Form.Item
-          label="거래처명"
+          label="회사명"
           name="bNm"
           rules={[
             {
               required: true,
-              message: "거래처명을 입력해주세요",
+              message: "회사명을 입력해주세요",
             },
           ]}
         >
           <Input />
-        </Form.Item>
-        <Form.Item
-          label="대표자"
-          name="pNm"
-          rules={[
-            {
-              required: true,
-              message: "대표자명을 입력해주세요",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item label="사업자 구분" name="sort">
-          <Select>
-            <Select.Option value="buy ">매입처</Select.Option>
-            <Select.Option value="sell">매출처</Select.Option>
-          </Select>
         </Form.Item>
         <Form.Item
           label="사업자 등록번호"
@@ -196,6 +185,18 @@ const OrderForm = () => {
           ]}
         >
           <Input />
+        </Form.Item>
+        <Form.Item
+          label="대표자"
+          name="pNm"
+        >
+          <Input disabled />
+        </Form.Item>
+        <Form.Item label="사업자 구분" name="sort">
+          <Select>
+            <Select.Option value="buy ">매입</Select.Option>
+            <Select.Option value="sell">매출</Select.Option>
+          </Select>
         </Form.Item>
         <Form.Item
           label="담당자"
@@ -274,4 +275,4 @@ const OrderForm = () => {
   );
 };
 
-export default OrderForm;
+export default EstimateForm;

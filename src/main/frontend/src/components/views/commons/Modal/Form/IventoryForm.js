@@ -6,6 +6,13 @@ const InventoryForm = () => {
       <Form.Item name="id" noStyle>
         <Input type="hidden" />
       </Form.Item>
+      <Form.Item 
+      label="입출고번호" 
+      name="storeId"
+      
+      >
+            <Input disabled />
+          </Form.Item>
       <Form.Item label="담당자" name="userId">
         <Select>
           <Select.Option value={1001}>홍길동</Select.Option>
