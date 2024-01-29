@@ -3,6 +3,8 @@
  */
 import React, { useState } from 'react';
 import { Button, Table } from 'antd';
+import EstimateModal from './EstimateModal';
+
 const columns = [
   {
     title: "견적번호",
@@ -13,7 +15,7 @@ const columns = [
     dataIndex: "bNm",
   },
   {
-    title: "품목코드",
+    title: "품목번호",
     dataIndex: "itemId",
   },
   {
@@ -105,6 +107,7 @@ const EstimatePage = () => {
       </div>
       <Table rowSelection={rowSelection} columns={columns} dataSource={data} />
     </div>
+
   );
 };
 

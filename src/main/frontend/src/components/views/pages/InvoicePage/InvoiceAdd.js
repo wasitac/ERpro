@@ -35,19 +35,22 @@ const InvoiceAdd = () => {
         }}
       >
         <div style={{ width: '48%' }}>
-          <Form.Item label="전표번호" name="id">
+          <Form.Item label="입출고번호" name="storeId">
             <Input disabled />
           </Form.Item>
-          <Form.Item label="거래구분" name="type">
+          <Form.Item label="거래구분" name="sort">
             <Select>
               <Select.Option value="buy">구매</Select.Option>
               <Select.Option value="sell">판매</Select.Option>
             </Select>
           </Form.Item>
+          <Form.Item label="결제방법" name="payment">
+            <Input />
+          </Form.Item>
           <Form.Item label="거래처명" name="bNm">
             <Input />
           </Form.Item>
-          <Form.Item label="품목코드" name="itemId">
+          <Form.Item label="품목번호" name="itemId">
             <Input />
           </Form.Item>
           <Form.Item label="품목명" name="itemName">
