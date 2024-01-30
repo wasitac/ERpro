@@ -1,14 +1,18 @@
-// 이지홍
-import { Form, Input, Select, DatePicker } from "antd";
+// 정유진
+import { Form, Input, Select, DatePicker, Row, Col } from "antd";
+import "../Css/Input.css";
+
 const OrderForm = () => {
   return (
-    <div>
-      <div style={{ width: "48%" }}>
+    <div style={{ display: "flex" }}>
+
+      {/* 좌 */}
+      <div style={{ width: "140%", marginRight: "-130px" }}>
         <Form.Item label="주문번호" name="id">
-          <Input disabled />
+          <Input disabled className="input-style" />
         </Form.Item>
         <Form.Item label="구분" name="type">
-          <Select>
+          <Select style={{ width: "200px" }}>
             <Select.Option value="buy">구매</Select.Option>
             <Select.Option value="sell">판매</Select.Option>
           </Select>
@@ -23,31 +27,7 @@ const OrderForm = () => {
             },
           ]}
         >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          label="품목번호"
-          name="itemId"
-          rules={[
-            {
-              required: true,
-              message: "품목 번호를 입력해주세요",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          label="품목명"
-          name="itemName"
-          rules={[
-            {
-              required: true,
-              message: "품목명을 입력해주세요",
-            },
-          ]}
-        >
-          <Input />
+          <Input className="input-style" />
         </Form.Item>
         <Form.Item
           label="예정일"
@@ -68,93 +48,10 @@ const OrderForm = () => {
           <DatePicker />
         </Form.Item>
       </div>
-      <div style={{ width: "48%" }}>
-        <Form.Item
-          label="단위"
-          name="unit"
-          rules={[
-            {
-              required: true,
-              message: "단위를 입력해주세요",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          label="규격"
-          name="spec"
-          rules={[
-            {
-              required: true,
-              message: "규격을 입력해주세요",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          label="수량"
-          name="count"
-          rules={[
-            {
-              required: true,
-              message: "수량을 입력해주세요",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          label="단가"
-          name="price"
-          rules={[
-            {
-              required: true,
-              message: "단가를 입력해주세요",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          label="공급가액"
-          name="supplyPrice"
-          rules={[
-            {
-              required: true,
-              message: "공급가액을 입력해주세요",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          label="부가세"
-          name="vat"
-          rules={[
-            {
-              required: true,
-              message: "부가세를 입력해주세요",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          label="합계"
-          name="total"
-          rules={[
-            {
-              required: true,
-              message: "합계를 입력해주세요",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-      </div>
-      <div style={{ width: "48%" }}>
+
+
+      {/* 하단 좌 */}
+      <div style={{ width: "100%", marginLeft: "-100px" }}>
         <Form.Item
           label="거래처명"
           name="bNm"
@@ -165,7 +62,7 @@ const OrderForm = () => {
             },
           ]}
         >
-          <Input />
+          <Input className="input-style" />
         </Form.Item>
         <Form.Item
           label="대표자"
@@ -177,10 +74,10 @@ const OrderForm = () => {
             },
           ]}
         >
-          <Input />
+          <Input className="input-style" />
         </Form.Item>
         <Form.Item label="사업자 구분" name="sort">
-          <Select>
+          <Select style={{ width: "200px" }}>
             <Select.Option value="buy ">매입처</Select.Option>
             <Select.Option value="sell">매출처</Select.Option>
           </Select>
@@ -194,8 +91,9 @@ const OrderForm = () => {
               message: "사업자 등록번호를 입력해주세요",
             },
           ]}
+          style={{ width: "800px" }}
         >
-          <Input />
+          <Input className="input-style" />
         </Form.Item>
         <Form.Item
           label="담당자"
@@ -207,7 +105,7 @@ const OrderForm = () => {
             },
           ]}
         >
-          <Input />
+          <Input className="input-style" />
         </Form.Item>
         <Form.Item
           label="연락처"
@@ -219,8 +117,12 @@ const OrderForm = () => {
             },
           ]}
         >
-          <Input />
+          <Input className="input-style" />
         </Form.Item>
+      </div>
+
+      {/* 하단 우 */}
+      <div style={{ width: "100%", marginLeft: "-400px" }}>
         <Form.Item
           label="Email"
           name="email"
@@ -231,7 +133,7 @@ const OrderForm = () => {
             },
           ]}
         >
-          <Input />
+          <Input className="input-style" />
         </Form.Item>
         <Form.Item
           label="주소"
@@ -243,7 +145,7 @@ const OrderForm = () => {
             },
           ]}
         >
-          <Input />
+          <Input className="input-style" />
         </Form.Item>
         <Form.Item
           label="업태"
@@ -255,7 +157,7 @@ const OrderForm = () => {
             },
           ]}
         >
-          <Input />
+          <Input className="input-style" />
         </Form.Item>
         <Form.Item
           label="종목"
@@ -267,9 +169,10 @@ const OrderForm = () => {
             },
           ]}
         >
-          <Input />
+          <Input className="input-style" />
         </Form.Item>
       </div>
+
     </div>
   );
 };

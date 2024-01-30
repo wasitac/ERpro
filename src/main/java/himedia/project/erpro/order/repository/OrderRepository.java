@@ -9,5 +9,5 @@ import himedia.project.erpro.order.entity.Order;
 
 public interface OrderRepository extends JpaRepository<Order, Long>{
 	public List<Order> findAll();
-	public Optional<Order> getOrderFindById(Long id);
+	public Optional<Order> findById(Long id);
 }

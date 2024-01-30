@@ -30,7 +30,7 @@ const AddModal = () => {
         title="Title"
         onOk={handleOk}
         onCancel={handleCancel}
-        width={1200}
+        width={2000}
         footer={[
           <Button
             type="primary"

@@ -15,8 +15,8 @@ fetchApi.interceptors.request.use(
             config.headers.Authorization = `${token}`;
         } else {
             // 로컬 스토리지 비우기
-            localStorage.clear();
-            window.location.href = '/error';
+            // localStorage.clear();
+            // window.location.href = '/error';
         }
         return config;
     },
@@ -31,10 +31,10 @@ fetchApi.interceptors.response.use(
     (error) => {
         if (error.response.status === 403) { // 토큰인증 만료
             // 로컬 스토리지 비우기
-            localStorage.clear();
+            // localStorage.clear();
 
             error.response.statusText = 'Unauthorized';
-            window.location.href = '/error';
+            // window.location.href = '/error';
         }
         return Promise.reject(error);
     },

@@ -136,7 +136,7 @@ function CustomModal(props) {
         },
       }}
       onOk={onSubmit}
-      style={{ minWidth: "1000px" }}
+      style={{ minWidth: "1200px" }}
     >
       <Divider />
       <Form
