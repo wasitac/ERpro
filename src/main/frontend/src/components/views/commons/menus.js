@@ -23,10 +23,6 @@ const menus = {
             text: "매출처",
             value: "매출처",
           },
-          {
-            text: "혼합",
-            value: "혼합",
-          },
           // {
           //   text: "Submenu",
           //   value: "Submenu",
