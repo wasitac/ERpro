@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import { Modal, Form, Divider } from "antd";
 import menus from "../../commons/menus";
 import AccountForm from "./Form/AccountForm";
-// import ItemForm from "./Form/ItemForm";
+import ItemForm from "./Form/ItemForm";
 import BomForm from "./Form/BomForm";
 import MemberForm from "./Form/MemberForm";
 import OrderForm from "./Form/OrderForm";
@@ -82,9 +82,9 @@ function CustomModal(props) {
     case "account":
       inputForm = <AccountForm />;
       break;
-    // case "item":
-    //   inputForm = <ItemForm />;
-    //   break;
+    case "item":
+      inputForm = <ItemForm />;
+      break;
     case "bom":
       inputForm = <BomForm form={form}/>;
       break;
