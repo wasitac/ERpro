@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import himedia.project.erpro.common.Message;
+import himedia.project.erpro.order.dto.OrdersDto;
 import himedia.project.erpro.order.entity.Orders;
 import himedia.project.erpro.order.service.OrdersService;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +21,7 @@ public class OrdersController {
 	private final OrdersService ordersService;
 	
 	@GetMapping("/orders")
-	public ResponseEntity<Message> account() {
+	public ResponseEntity<Message> orders() {
 		List<Orders> dataList = ordersService.getOrdersAll();
 		Message returnData = new Message("", dataList);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
