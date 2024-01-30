@@ -58,8 +58,17 @@ public class MemberService {
 		if(existMember.isPresent()) {
 			Member updateMember = existMember.get();
 
-			// 모든 필드를 업데이트
-			BeanUtils.copyProperties(member, updateMember);
+			// 비밀번호 제외한 필드를 수동으로 업데이트
+			updateMember.setName(member.getName());
+			updateMember.setBirth(member.getBirth());
+			updateMember.setPhone(member.getPhone());
+			updateMember.setEmail(member.getEmail());
+			updateMember.setDepartment(member.getDepartment());
+			updateMember.setMemberRank(member.getMemberRank());
+			updateMember.setRole(member.getRole());
+			updateMember.setWorkType(member.getWorkType());
+			updateMember.setInsertDate(member.getInsertDate());
+			updateMember.setRetireDate(member.getRetireDate());
 
 			memberRepository.save(updateMember);
 			return Optional.of(updateMember);
