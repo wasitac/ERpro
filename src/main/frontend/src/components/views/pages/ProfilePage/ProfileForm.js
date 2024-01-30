@@ -5,6 +5,7 @@ import { Button, Form, Input, DatePicker } from "antd";
 import React, { useState, useEffect } from "react";
 import moment from "moment";
 import axios from "axios";
+import fetchApi from "../../../../modules/api";
 
 // 정보수정 폼. 사원 대장에서 비밀번호만 빼고 모달로 사용하면 될것같음
 const onFinish = async (values) => {
@@ -23,11 +24,12 @@ const onFinishFailed = (errorInfo) => {
 
 const ProfileForm = () => {
   const [data, setData] = useState({});
+  const memberId = localStorage.getItem("memberId");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/profile");
+        const response = await axios.get(`/profile/${memberId}`);
         setData(response.data);
       } catch (error) {
         console.error("Error fetching data", error);
@@ -47,7 +49,7 @@ const ProfileForm = () => {
         phone: data.phone,
         email: data.email,
         department: data.department,
-        position: data.userRank,
+        position: data.memberRank,
         insertDate: moment(data.insertDate),
       });
     }

@@ -1,4 +1,4 @@
-package himedia.project.erpro.user.controller;
+package himedia.project.erpro.member.controller;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;

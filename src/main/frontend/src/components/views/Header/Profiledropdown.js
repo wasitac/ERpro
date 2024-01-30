@@ -29,7 +29,7 @@ function Profiledropdown() {
   return (
     <div className="menu-container">
       <button onClick={onClick} className="menu-trigger">
-        <img src={profile} alt="User avatar" />
+        <img src={profile} alt="Member avatar" />
       </button>
       <nav
         ref={dropdownRef}

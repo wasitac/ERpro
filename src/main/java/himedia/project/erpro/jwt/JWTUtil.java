@@ -1,9 +1,10 @@
 package himedia.project.erpro.jwt;
 
-import himedia.project.erpro.user.dto.CustomUserDetails;
 import io.jsonwebtoken.Jwts;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
+import himedia.project.erpro.member.dto.CustomMemberDetails;
 
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
@@ -20,9 +21,9 @@ public class JWTUtil {
         this.secretKey = new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), Jwts.SIG.HS256.key().build().getAlgorithm());
     }
 
-    public String getUserId(String token) {
+    public String getMemberId(String token) {
 
-        return Jwts.parser().verifyWith(secretKey).build().parseSignedClaims(token).getPayload().get("userId", String.class);
+        return Jwts.parser().verifyWith(secretKey).build().parseSignedClaims(token).getPayload().get("memberId", String.class);
     }
 
     public String getRole(String token) {
@@ -35,13 +36,13 @@ public class JWTUtil {
         return Jwts.parser().verifyWith(secretKey).build().parseSignedClaims(token).getPayload().getExpiration().before(new Date());
     }
 
-    public String createJwt(CustomUserDetails userInfo, String role, Long expireMs) {
+    public String createJwt(CustomMemberDetails userInfo, String role, Long expireMs) {
 
         return Jwts.builder()
-                .claim("userId", userInfo.getUsername())
+                .claim("memberId", userInfo.getUsername())
                 .claim("name", userInfo.getName())
                 .claim("department", userInfo.getDepartment())
-                .claim("rank", userInfo.getUserRank())
+                .claim("rank", userInfo.getMemberRank())
                 .claim("email", userInfo.getEmail())
                 .claim("role", role)
                 .issuedAt(new Date(System.currentTimeMillis()))

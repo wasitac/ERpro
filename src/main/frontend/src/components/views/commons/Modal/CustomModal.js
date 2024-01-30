@@ -7,15 +7,14 @@ import menus from "../../commons/menus";
 import AccountForm from "./Form/AccountForm";
 // import ItemForm from "./Form/ItemForm";
 // import BomForm from "./Form/BomForm";
-import UserForm from "./Form/UserForm";
+import MemberForm from "./Form/MemberForm";
 import OrderForm from "./Form/OrderForm";
 // import EstimateForm from "./Form/EstimateForm";
 // import InvoiceForm from "./Form/InvoiceForm";
 import StoreForm from "./Form/StoreForm";
-import InventoryForm from "./Form/InventoryForm";
 import fetchApi from "../../../../modules/api";
 // import ProductionForm from "./Form/ProductionForm";
-// import InspectionForm from "./Form/InspectionForm";
+import InspectionForm from "./Form/InspectionForm";
 
 function CustomModal(props) {
   // antd의 Form관련 hook 사용을 위함
@@ -89,8 +88,8 @@ function CustomModal(props) {
     // case "bom":
     //   inputForm = <BomForm />;
     //   break;
-    case "user":
-      inputForm = <UserForm mode={mode}/>;
+    case "member":
+      inputForm = <MemberForm />;
       break;
     case "order":
       inputForm = <OrderForm />;
@@ -104,16 +103,12 @@ function CustomModal(props) {
     case "store":
       inputForm = <StoreForm />;
       break;
-    case "inventory":
-      inputForm = <InventoryForm />;
-      break;
     // case "production":
     //   inputForm = <ProductionForm />;
     //   break;
-    // case "inspection":
-    //   inputForm = <InspectionForm />;
-    //   break;
-
+    case "inspection":
+      inputForm = <InspectionForm />;
+      break;
     default:
       break;
   }

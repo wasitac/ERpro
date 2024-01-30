@@ -1,7 +1,7 @@
 package himedia.project.erpro.trade.entity;
 
 
-import himedia.project.erpro.user.enums.OrderType;
+import himedia.project.erpro.member.enums.OrderType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -24,7 +24,7 @@ public class Orders {
 	private Long id;
 	private Long accountId;
 	private Long itemId;
-	private Long userId;
+	private Long memberId;
 	
 	@Enumerated(EnumType.STRING)
 	private OrderType orderType;

@@ -8,13 +8,15 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Getter
-@Setter
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Store {
 
@@ -22,31 +24,16 @@ public class Store {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "account_id")
+	@Column(name = "store_sort")
+	private String storeSort;
+
+	@Column(name = "b_nm")
 	private Long accountId;
 
 	@Column(name = "order_id")
 	private Long orderId;
 
-	@Column(name = "item_id")
-	private Long itemId;
-
-	@Column(name = "item_name")
-	private String itemName;
-
-	private String unit;
-	private String spec;
-
-	@Column(name = "count")
-	private Integer count;
-	private Integer price;
-
-	@Column(name = "supply_price")
-	private Integer supplyPrice;
-	
-	private Integer vat;
-	private Integer total;
-
 	@Column(name = "store_date")
 	private LocalDate storeDate;
+
 }

@@ -113,9 +113,9 @@ const menus = {
   },
 
   // 사원 대장
-  user: {
+  member: {
     label: "사원 대장",
-    key: "user",
+    key: "member",
     column: [
       {
         title: "사번",
@@ -142,7 +142,7 @@ const menus = {
       },
       {
         title: "직급",
-        dataIndex: "userRank",
+        dataIndex: "memberRank",
       },
       {
         title: "근무 형태",
@@ -193,6 +193,25 @@ const menus = {
     key: "store",
     column: [
       {
+        title: "입출고 일자",
+        dataIndex: "storeDate",
+      },
+      {
+        title: "구분",
+        dataIndex: "storeSort",
+        filters: [
+          {
+            text: "입고",
+            value: "in",
+          },
+          {
+            text: "출고",
+            value: "out",
+          },
+        ],
+        onFilter: (value, record) => record.sort.indexOf(value) === 0,
+      },
+      {
         title: "입출고 번호",
         dataIndex: "id",
         defaultSortOrder: "descend",
@@ -213,10 +232,6 @@ const menus = {
       {
         title: "품목명",
         dataIndex: "itemName",
-      },
-      {
-        title: "단위",
-        dataIndex: "unit",
       },
       {
         title: "규격",
@@ -241,10 +256,6 @@ const menus = {
       {
         title: "합계금액",
         dataIndex: "total",
-      },
-      {
-        title: "입출고 일자",
-        dataIndex: "storeDate",
       },
     ],
   },
@@ -320,15 +331,15 @@ const menus = {
       },
       {
         title: "주문 번호",
-        dataIndex: "order_id",
+        dataIndex: "orderId",
       },
       {
         title: "거래처 코드",
-        dataIndex: "account_id",
+        dataIndex: "accountId",
       },
       {
         title: "담당자 코드",
-        dataIndex: "user_id",
+        dataIndex: "memberId",
       },
       {
         title: "물품 코드",

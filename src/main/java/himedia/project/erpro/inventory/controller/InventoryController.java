@@ -17,11 +17,12 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class InventoryController {
 	private final InventoryService inventoryService;
+
 	
 	@GetMapping("/inventory")
 	public ResponseEntity<Message> inventory() {
 		List<InventoryDto> dataList = inventoryService.getInventoryAll();
-		Message returnData = new Message("", dataList);
+		Message returnData = new Message("재고 목록 불러오기", dataList);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
