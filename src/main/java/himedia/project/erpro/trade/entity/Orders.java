@@ -24,7 +24,7 @@ public class Orders {
 	private Long id;
 	private Long accountId;
 	private Long itemId;
-	private Long userId;
+	private Long memberId;
 	
 	@Enumerated(EnumType.STRING)
 	private OrderType orderType;
