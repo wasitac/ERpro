@@ -1,8 +1,8 @@
 package himedia.project.erpro.jwt;
 
-import himedia.project.erpro.user.dto.CustomUserDetails;
-import himedia.project.erpro.user.entity.User;
-import himedia.project.erpro.user.enums.Role;
+import himedia.project.erpro.member.dto.CustomMemberDetails;
+import himedia.project.erpro.member.entity.Member;
+import himedia.project.erpro.member.enums.Role;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -48,20 +48,20 @@ public class JWTFilter extends OncePerRequestFilter {
         }
 
         // 토큰에서 계정정보와 role 획득
-        String userId = jwtUtil.getUserId(token);
+        String memberId = jwtUtil.getMemberId(token);
         String role = jwtUtil.getRole(token);
 
         // User Entity를 생성하여 값 set
-        User user = new User();
-        user.setId(Long.parseLong(userId));
-        user.setPassword(""); //password 강제로 입력 필요, 매번 DB조회는 부담으로 null값 강제 입력
-        user.setRole(Role.valueOf(role));
+        Member member = new Member();
+        member.setId(Long.parseLong(memberId));
+        member.setPassword(""); //password 강제로 입력 필요, 매번 DB조회는 부담으로 null값 강제 입력
+        member.setRole(Role.valueOf(role));
 
         // CustomUserDetails에 사원 정보 객체 담기
-        CustomUserDetails customUserDetails = new CustomUserDetails(user);
+        CustomMemberDetails customMemberDetails = new CustomMemberDetails(member);
 
         // 스프링 시큐리티 인증 토근 생성
-        Authentication authToken = new UsernamePasswordAuthenticationToken(customUserDetails, null, customUserDetails.getAuthorities());
+        Authentication authToken = new UsernamePasswordAuthenticationToken(customMemberDetails, null, customMemberDetails.getAuthorities());
 
         // 세션에 사용자 등록
         SecurityContextHolder.getContext().setAuthentication(authToken);

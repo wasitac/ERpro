@@ -1,4 +1,4 @@
-package himedia.project.erpro.user.dto;
+package himedia.project.erpro.member.dto;
 
 import java.time.LocalDate;
 
@@ -18,7 +18,7 @@ public class Profile {
 	private String phone;
 	private String email;
 	private String department;
-	private String userRank;
+	private String memberRank;
 	private LocalDate insertDate;
 	
 }

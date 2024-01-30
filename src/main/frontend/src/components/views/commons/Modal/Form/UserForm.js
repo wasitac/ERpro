@@ -1,5 +1,5 @@
 import { Form, Input, Radio, Select } from "antd";
-const UserForm = () => {
+const MemberForm = () => {
   return (
     <div>
       <Form.Item name="id" noStyle>
@@ -19,7 +19,7 @@ const UserForm = () => {
       </Form.Item>
       <Form.Item
         label="생년월일"
-        name="bnm"
+        name="birth"
         rules={[
           {
             required: true,
@@ -30,89 +30,12 @@ const UserForm = () => {
         <Input />
       </Form.Item>
       <Form.Item
-        label="사업자번호"
-        name="bno"
-        rules={[
-          {
-            required: true,
-            message: "사업자번호를 입력해주세요",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        label="유형"
-        name="sort"
-        rules={[
-          {
-            required: true,
-            message: "유형을 선택해주세요",
-          },
-        ]}
-      >
-        <Radio.Group value="매출처">
-          <Radio value="매출처">매출처</Radio>
-          <Radio value="매입처">매입처</Radio>
-          <Radio value="혼합">혼합</Radio>
-        </Radio.Group>
-      </Form.Item>
-      <Form.Item
-        label="대표자명"
-        name="pnm"
-        rules={[
-          {
-            required: true,
-            message: "대표자명을 입력해주세요",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        label="사업장주소"
-        name="badr"
-        rules={[
-          {
-            required: true,
-            message: "사업장주소를 입력해주세요",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        label="업태"
-        name="bsector"
-        rules={[
-          {
-            required: true,
-            message: "업태를 입력해주세요",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-
-      <Form.Item
-        label="종목"
-        name="btype"
-        rules={[
-          {
-            required: true,
-            message: "업종을 입력해주세요",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        label="전화번호"
+        label="연락처"
         name="phone"
         rules={[
           {
             required: true,
-            message: "전화번호를 입력해주세요",
+            message: "연락처를 입력해주세요",
           },
         ]}
       >
@@ -126,6 +49,93 @@ const UserForm = () => {
             required: true,
             message: "이메일을 입력해주세요",
           },
+          {
+            type: "email",
+            message: "올바른 이메일 형식이 아닙니다.",
+          },
+        ]}
+      >
+        <Radio.Group value="매출처">
+          <Radio value="매출처">매출처</Radio>
+          <Radio value="매입처">매입처</Radio>
+          <Radio value="혼합">혼합</Radio>
+        </Radio.Group>
+      </Form.Item>
+      <Form.Item
+        label="부서"
+        name="department"
+        rules={[
+          {
+            required: true,
+            message: "부서를 선택해주세요",
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="직급"
+        name="memberRank"
+        rules={[
+          {
+            required: true,
+            message: "직급을 선택해주세요",
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="권한"
+        name="role"
+        rules={[
+          {
+            required: true,
+            message: "권한을 선택해주세요",
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+
+      <Form.Item
+        label="계약형태"
+        name="workType"
+        rules={[
+          {
+            required: true,
+            message: "계약형태를 선택해주세요",
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="입사일"
+        name="insertData"
+        rules={[
+          {
+            required: true,
+            message: "입사일을 선택해주세요",
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="퇴사일"
+        name="retireData"
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="비밀번호"
+        name="password"
+        rules={[
+            {
+                required: true,
+                message: "발급할 임시 비밀번호를 입력해주세요",
+            },
         ]}
       >
         <Input />
@@ -134,4 +144,4 @@ const UserForm = () => {
   );
 };
 
-export default UserForm;
+export default MemberForm;

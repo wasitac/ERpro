@@ -1,18 +1,14 @@
-import { Form, Input, Radio, Select } from "antd";
+import { Form, Input, Radio } from "antd";
+import DataTable from "../../../pages/MainPage/DataTable";
 const StoreForm = () => {
   return (
     <div>
       <Form.Item name="id" noStyle>
         <Input type="hidden" />
       </Form.Item>
-      <Form.Item label="담당자" name="userId">
-        <Select>
-          <Select.Option value={1001}>홍길동</Select.Option>
-        </Select>
-      </Form.Item>
       <Form.Item
         label="거래처명"
-        name="bnm"
+        name="accountName"
         rules={[
           {
             required: true,
@@ -23,19 +19,19 @@ const StoreForm = () => {
         <Input />
       </Form.Item>
       <Form.Item
-        label="사업자번호"
-        name="bno"
+        label="주문번호"
+        name="orderId"
         rules={[
           {
             required: true,
-            message: "사업자번호를 입력해주세요",
+            message: "주문번호를 입력해주세요",
           },
         ]}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        label="유형"
+        label="구분"
         name="sort"
         rules={[
           {
@@ -44,85 +40,132 @@ const StoreForm = () => {
           },
         ]}
       >
-        <Radio.Group value="매출처">
-          <Radio value="매출처">매출처</Radio>
-          <Radio value="매입처">매입처</Radio>
-          <Radio value="혼합">혼합</Radio>
+        <Radio.Group value="구분">
+          <Radio value="출고">출고</Radio>
+          <Radio value="입고">입고</Radio>
         </Radio.Group>
       </Form.Item>
       <Form.Item
-        label="대표자명"
-        name="pnm"
+        label="품목번호"
+        name="itemId"
         rules={[
           {
             required: true,
-            message: "대표자명을 입력해주세요",
+            message: "품목번호를 입력해주세요",
           },
         ]}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        label="사업장주소"
-        name="badr"
+        label="품목명"
+        name="itemName"
         rules={[
           {
             required: true,
-            message: "사업장주소를 입력해주세요",
+            message: "품목명을 입력해주세요",
           },
         ]}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        label="업태"
-        name="bsector"
+        label="단위"
+        name="unit"
         rules={[
           {
             required: true,
-            message: "업태를 입력해주세요",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-
-      <Form.Item
-        label="종목"
-        name="btype"
-        rules={[
-          {
-            required: true,
-            message: "업종을 입력해주세요",
+            message: "주문번호를 입력해주세요",
           },
         ]}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        label="전화번호"
-        name="phone"
+        label="규격"
+        name="spec"
         rules={[
           {
             required: true,
-            message: "전화번호를 입력해주세요",
+            message: "주문번호를 입력해주세요",
           },
         ]}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        label="이메일"
-        name="email"
+        label="수량"
+        name="count"
         rules={[
           {
             required: true,
-            message: "이메일을 입력해주세요",
+            message: "수량을 입력해주세요",
           },
         ]}
       >
         <Input />
       </Form.Item>
+      <Form.Item
+        label="단가"
+        name="price"
+        rules={[
+          {
+            required: true,
+            message: "단가를 입력해주세요",
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="공급가"
+        name="supplyPrice"
+        rules={[
+          {
+            required: true,
+            message: "공급가를 입력해주세요",
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="부가세"
+        name="vat"
+        rules={[
+          {
+            required: true,
+            message: "부가세를 입력해주세요",
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="총합"
+        name="total"
+        rules={[
+          {
+            required: true,
+            message: "총합금액을 입력해주세요",
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="입/출고일자"
+        name="storeDate"
+        rules={[
+          {
+            required: true,
+            message: "입/출고일자를 입력해주세요",
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+      {/* <DataTable keyOfmenu="order" />, */}
     </div>
   );
 };

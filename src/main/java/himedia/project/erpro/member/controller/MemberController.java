@@ -1,4 +1,4 @@
-package himedia.project.erpro.user.controller;
+package himedia.project.erpro.member.controller;
 
 
 import java.util.List;
@@ -15,71 +15,71 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import himedia.project.erpro.common.Message;
-import himedia.project.erpro.user.dto.Password;
-import himedia.project.erpro.user.dto.Profile;
-import himedia.project.erpro.user.entity.User;
-import himedia.project.erpro.user.service.UserService;
+import himedia.project.erpro.member.dto.Password;
+import himedia.project.erpro.member.dto.Profile;
+import himedia.project.erpro.member.entity.Member;
+import himedia.project.erpro.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
-public class UserController {
-	private final UserService userService;
+public class MemberController {
+	private final MemberService memberService;
 	
 	// 사원 대장 - 김주원
-	@GetMapping("/user")
-	public ResponseEntity<Message> user() {
-		List<User> dataList = userService.getUserAll();
+	@GetMapping("/member")
+	public ResponseEntity<Message> member() {
+		List<Member> dataList = memberService.getMemberAll();
 		Message returnData = new Message("", dataList);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	// 사원 상세 정보 조회
-	@GetMapping("/user/{id}")
-	public ResponseEntity<Message> detailUser(@PathVariable(value="id") Long id) {
-		Optional<User> data = userService.getUserById(id);
+	@GetMapping("/member/{id}")
+	public ResponseEntity<Message> detailMember(@PathVariable(value="id") Long id) {
+		Optional<Member> data = memberService.getMemberById(id);
 		Message returnData = new Message("", data);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);	
 	}
 	
 	// 사원 추가 - 김주원
-	@PostMapping("/user")
-	public ResponseEntity<Message> createUser(@RequestBody User user) {
-		String result = userService.createUser(user);
+	@PostMapping("/member")
+	public ResponseEntity<Message> createMember(@RequestBody Member member) {
+		String result = memberService.createMember(member);
 		Message returnData = new Message<>("저장 성공",result);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	// 사원 대장 수정 - 김주원
-	@PutMapping("/user")
-	public ResponseEntity<Message> editUser(@RequestBody User user) {
-		Optional<User> editData = userService.updateUser(user);
+	@PutMapping("/member")
+	public ResponseEntity<Message> editMember(@RequestBody Member member) {
+		Optional<Member> editData = memberService.updateMember(member);
 		Message returnData = new Message("수정 성공", editData);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	// 사원 삭제 - 김주원
-	@DeleteMapping("/user")
-	public ResponseEntity<Message> deleteUser(@RequestBody List<Long> idList) {
-		boolean result = userService.deleteUserList(idList);
+	@DeleteMapping("/member")
+	public ResponseEntity<Message> deleteMember(@RequestBody List<Long> idList) {
+		boolean result = memberService.deleteMemberList(idList);
 		Message returnData = new Message(Boolean.toString(result));
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	// 회원정보 수정폼 - 이지홍
-	@GetMapping("/profile")
-	public Profile profile() {
+	@GetMapping("/profile/{memberId}")
+	public ResponseEntity<Message> profile(@PathVariable Long memberId) {
 		// 유저정보와 일치하는 유저데이터 받아오기
-		Long userId = 1001L;
-		Profile profile = userService.getUserProfile(userId);
-		return profile;	
+		Profile data = memberService.getMemberProfile(memberId);
+		Message returnData = new Message("", data);
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 
 	// 회원정보 수정 - 이지홍
 	@PutMapping("/profile")
 	public String putProfile(@RequestBody Profile profile) {
-		// 첫번째 파라미터 userid로 바꾸기
-		userService.updateProfile(1001l, profile);
+		// 첫번째 파라미터 memberid로 바꾸기
+		memberService.updateProfile(1001l, profile);
 		return "redirect:/profile";
 	}
 
@@ -87,7 +87,7 @@ public class UserController {
 	@PutMapping("/password")
 	public String putPassword(@RequestBody Password password) {
 		// 첫번째 파라미터 userid로 바꾸기
-		userService.updatePassword(1001l, password);
+		memberService.updatePassword(1001l, password);
 		return "redirect:/profile";
 	}
 }

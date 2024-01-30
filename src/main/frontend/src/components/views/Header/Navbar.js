@@ -20,7 +20,7 @@ const items = [
     children: [
       {
         type: "group",
-        children: [menus.account, menus.item, menus.bom, menus.user],
+        children: [menus.account, menus.item, menus.bom, menus.member],
       },
     ],
   },

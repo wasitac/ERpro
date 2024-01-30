@@ -1,4 +1,4 @@
-package himedia.project.erpro.user.enums;
+package himedia.project.erpro.member.enums;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 //이지홍
 @Getter
 @RequiredArgsConstructor
-public enum UserRank {
+public enum MemberRank {
 	EMPLOYEE("사원"), 
 	MANAGER("대리"), 
 	DIRECTOR("과장"), 

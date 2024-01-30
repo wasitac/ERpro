@@ -67,7 +67,7 @@ function FindPasswordPage() {
             onFinish={onFinish}
           >
             <Form.Item
-              name="userid"
+              name="memberid"
               rules={[
                 {
                   required: true,

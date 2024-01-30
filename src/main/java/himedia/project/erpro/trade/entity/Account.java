@@ -15,8 +15,8 @@ public class Account {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;			// 거래처 코드
 	
-	@Column(name = "user_id")
-	private Long userId;		// 담당자 id	user에서 id를 외래키로 참조
+	@Column(name = "member_name")
+	private String memberName;		// 담당자 id	user에서 id를 외래키로 참조
 	
 	@Column(name = "b_no")
 	private String bNo;			// 사업자 등록 번호

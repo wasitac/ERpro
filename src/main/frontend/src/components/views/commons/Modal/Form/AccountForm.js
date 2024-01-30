@@ -4,17 +4,17 @@ import { Form, Input, Radio, Select } from "antd";
 
 const AccountForm = () => {
     // 담당자 목록
-    const [userList, setUserList] = useState([]);
+    const [memberList, setMemberList] = useState([]);
 
     useEffect(() => {
-        fetchUserList();
+        fetchMemberList();
     }, []);
 
     // 담당자 목록 조회
-    const fetchUserList = async () => {
+    const fetchMemberList = async () => {
         try {
-            const response = await fetchApi.get('/user');
-            setUserList(response.data.data);
+            const response = await fetchApi.get('/member');
+            setMemberList(response.data.data);
         } catch (error) {
             console.error("담당자 목록 조회 에러:", error);
         }
@@ -25,11 +25,11 @@ const AccountForm = () => {
           <Form.Item name="id" noStyle>
             <Input type="hidden" />
           </Form.Item>
-          <Form.Item label="담당자" name="userId">
+          <Form.Item label="담당자" name="memberId">
               <Select>
-                {userList.map((user) => (
-                    <Select.Option key={user.id} value={user.id}>
-                        {user.name}
+                {memberList.map((member) => (
+                    <Select.Option key={member.id} value={member.id}>
+                        {member.name}
                     </Select.Option>
                 ))}
               </Select>
@@ -142,6 +142,10 @@ const AccountForm = () => {
               {
                 required: true,
                 message: "이메일을 입력해주세요",
+              },
+              {
+                type: "email",
+                message: "올바른 이메일 형식이 아닙니다.",
               },
             ]}
           >
