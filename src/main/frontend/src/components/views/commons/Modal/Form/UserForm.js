@@ -1,5 +1,5 @@
 import {DatePicker, Form, Input, Radio, Select, Space} from "antd";
-const UserForm = () => {
+const UserForm = (props) => {
   return (
     <div>
       <Form.Item name="id" noStyle>
@@ -143,18 +143,20 @@ const UserForm = () => {
       >
         <DatePicker />
       </Form.Item>
-      <Form.Item
-        label="비밀번호"
-        name="password"
-        rules={[
-            {
-                required: true,
-                message: "임시 비밀번호를 입력해주세요",
-            },
-        ]}
-      >
-        <Input />
-      </Form.Item>
+      { props.mode == 'add' && (
+          <Form.Item
+            label="임시비밀번호"
+            name="password"
+            rules={[
+                {
+                    required: true,
+                    message: "임시 비밀번호를 입력해주세요",
+                },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+      )}
     </div>
   );
 };

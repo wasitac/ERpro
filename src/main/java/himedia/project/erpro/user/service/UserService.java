@@ -3,6 +3,7 @@ package himedia.project.erpro.user.service;
 import java.util.List;
 import java.util.Optional;
 
+import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -17,6 +18,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class UserService {
 	private final UserRepository userRepository;
 	private final ModelMapper modelMapper;
@@ -58,8 +60,17 @@ public class UserService {
 		if(existUser.isPresent()) {
 			User updateUser = existUser.get();
 
-			// 모든 필드를 업데이트
-			BeanUtils.copyProperties(user, updateUser);
+			// 비밀번호를 제외한 필드를 수동으로 업데이트
+			updateUser.setName(user.getName());
+			updateUser.setBirth(user.getBirth());
+			updateUser.setPhone(user.getPhone());
+			updateUser.setEmail(user.getEmail());
+			updateUser.setDepartment(user.getDepartment());
+			updateUser.setUserRank(user.getUserRank());
+			updateUser.setRole(user.getRole());
+			updateUser.setWorkType(user.getWorkType());
+			updateUser.setInsertDate(user.getInsertDate());
+			updateUser.setRetireDate(user.getRetireDate());
 
 			userRepository.save(updateUser);
 			return Optional.of(updateUser);

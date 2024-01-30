@@ -90,7 +90,7 @@ function CustomModal(props) {
     //   inputForm = <BomForm />;
     //   break;
     case "user":
-      inputForm = <UserForm />;
+      inputForm = <UserForm mode={mode}/>;
       break;
     case "order":
       inputForm = <OrderForm />;
