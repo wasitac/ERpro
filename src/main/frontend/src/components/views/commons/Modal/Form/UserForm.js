@@ -1,5 +1,5 @@
 import { Form, Input, Radio, Select } from "antd";
-const UserForm = () => {
+const MemberForm = () => {
   return (
     <div>
       <Form.Item name="id" noStyle>
@@ -75,7 +75,7 @@ const UserForm = () => {
       </Form.Item>
       <Form.Item
         label="직급"
-        name="userRank"
+        name="memberRank"
         rules={[
           {
             required: true,
@@ -144,4 +144,4 @@ const UserForm = () => {
   );
 };
 
-export default UserForm;
+export default MemberForm;

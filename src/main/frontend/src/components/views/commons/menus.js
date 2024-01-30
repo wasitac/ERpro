@@ -113,9 +113,9 @@ const menus = {
   },
 
   // 사원 대장
-  user: {
+  member: {
     label: "사원 대장",
-    key: "user",
+    key: "member",
     column: [
       {
         title: "사번",
@@ -142,7 +142,7 @@ const menus = {
       },
       {
         title: "직급",
-        dataIndex: "userRank",
+        dataIndex: "memberRank",
       },
       {
         title: "근무 형태",
@@ -339,7 +339,7 @@ const menus = {
       },
       {
         title: "담당자 코드",
-        dataIndex: "userId",
+        dataIndex: "memberId",
       },
       {
         title: "물품 코드",

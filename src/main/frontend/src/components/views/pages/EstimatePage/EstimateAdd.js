@@ -62,7 +62,7 @@ const EstimateAdd = () => {
           <Form.Item label="사업자 번호" name="bNo">
             <Input disabled />
           </Form.Item>
-          <Form.Item label="담당자" name="userId">
+          <Form.Item label="담당자" name="memberId">
             <Input />
           </Form.Item>
           <Form.Item label="Email" name="email">

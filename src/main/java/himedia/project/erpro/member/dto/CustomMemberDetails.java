@@ -1,18 +1,18 @@
-package himedia.project.erpro.user.dto;
-
-import himedia.project.erpro.user.entity.User;
-import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+package himedia.project.erpro.member.dto;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Optional;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import himedia.project.erpro.member.entity.Member;
+import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class CustomUserDetails implements UserDetails {
+public class CustomMemberDetails implements UserDetails {
 
-    private final User user;
+    private final Member member;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -24,7 +24,7 @@ public class CustomUserDetails implements UserDetails {
             @Override
             public String getAuthority() {
 
-                return user.getRole().toString();
+                return member.getRole().toString();
             }
         });
 
@@ -33,12 +33,12 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        return user.getPassword();
+        return member.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return user.getId().toString();
+        return member.getId().toString();
     }
 
     @Override
@@ -62,19 +62,19 @@ public class CustomUserDetails implements UserDetails {
     }
 
     public String getName() {
-        return user.getName();
+        return member.getName();
     }
 
     public String getDepartment() {
-        return user.getDepartment().toString();
+        return member.getDepartment().toString();
     }
 
-    public String getUserRank() {
-        return user.getUserRank().toString();
+    public String getMemberRank() {
+        return member.getMemberRank().toString();
     }
 
     public String getEmail() {
-        return user.getEmail();
+        return member.getEmail();
     }
 
 }

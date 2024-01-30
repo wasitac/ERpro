@@ -24,12 +24,12 @@ const onFinishFailed = (errorInfo) => {
 
 const ProfileForm = () => {
   const [data, setData] = useState({});
-  const userId = localStorage.getItem("userId");
+  const memberId = localStorage.getItem("memberId");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/profile/${userId}`);
+        const response = await axios.get(`/profile/${memberId}`);
         setData(response.data);
       } catch (error) {
         console.error("Error fetching data", error);
@@ -49,7 +49,7 @@ const ProfileForm = () => {
         phone: data.phone,
         email: data.email,
         department: data.department,
-        position: data.userRank,
+        position: data.memberRank,
         insertDate: moment(data.insertDate),
       });
     }

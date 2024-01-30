@@ -1,7 +1,7 @@
 package himedia.project.erpro.trade.entity;
 
 
-import himedia.project.erpro.user.enums.OrderType;
+import himedia.project.erpro.member.enums.OrderType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

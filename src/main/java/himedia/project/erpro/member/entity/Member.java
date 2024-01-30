@@ -1,10 +1,10 @@
-package himedia.project.erpro.user.entity;
+package himedia.project.erpro.member.entity;
 
 import java.time.LocalDate;
 
-import himedia.project.erpro.user.enums.Department;
-import himedia.project.erpro.user.enums.Role;
-import himedia.project.erpro.user.enums.UserRank;
+import himedia.project.erpro.member.enums.Department;
+import himedia.project.erpro.member.enums.Role;
+import himedia.project.erpro.member.enums.MemberRank;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -22,7 +22,7 @@ import lombok.Setter;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class Member {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -39,8 +39,8 @@ public class User {
 	private Department department;
 	
 	@Enumerated(EnumType.STRING)
-	@Column(name = "user_rank")
-	private UserRank userRank;
+	@Column(name = "member_rank")
+	private MemberRank memberRank;
 
 	@Enumerated(EnumType.STRING)
 	private Role role;

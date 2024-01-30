@@ -1,6 +1,6 @@
 import { DatePicker, Form, Input, Radio, Select } from "antd";
 const ProductionForm = () => {
-  
+
   return (
     <div>
       <Form.Item name="id" noStyle>
@@ -95,7 +95,7 @@ const ProductionForm = () => {
       </Form.Item>
       <Form.Item
         label="담당자"
-        name="userName"
+        name="memberName"
         rules={[
           {
             required: true,

@@ -16,7 +16,7 @@ fetchApi.interceptors.request.use(
     } else {
       // 로컬 스토리지 비우기
       //   localStorage.clear();
-      window.location.href = "/error";
+    //   window.location.href = "/error";
     }
     return config;
   },

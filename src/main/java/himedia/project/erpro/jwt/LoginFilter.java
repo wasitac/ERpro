@@ -1,6 +1,5 @@
 package himedia.project.erpro.jwt;
 
-import himedia.project.erpro.user.dto.CustomUserDetails;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -13,6 +12,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import himedia.project.erpro.member.dto.CustomMemberDetails;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -42,7 +43,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication) {
 
-        CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
+        CustomMemberDetails customMemberDetails = (CustomMemberDetails) authentication.getPrincipal();
 
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
         Iterator<? extends GrantedAuthority> iterator = authorities.iterator();
@@ -50,7 +51,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
         String role = auth.getAuthority();
         log.info(role);
-        String token = jwtUtil.createJwt(customUserDetails, role, 10*60*60*1000L);
+        String token = jwtUtil.createJwt(customMemberDetails, role, 10*60*60*1000L);
 
         response.addHeader("Authorization","Bearer " + token );
     }

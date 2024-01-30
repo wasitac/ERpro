@@ -8,7 +8,7 @@ import menus from "../../commons/menus";
 import AccountForm from "./Form/AccountForm";
 // import ItemForm from "./Form/ItemForm";
 // import BomForm from "./Form/BomForm";
-// import UserForm from "./Form/UserForm";
+// import MemberForm from "./Form/MemberForm";
 import OrderForm from "./Form/OrderForm";
 // import EstimateForm from "./Form/EstimateForm";
 // import InvoiceForm from "./Form/InvoiceForm";
@@ -89,8 +89,8 @@ function CustomModal(props) {
     // case "bom":
     //   inputForm = <BomForm />;
     //   break;
-    // case "user":
-    //   inputForm = <UserForm />;
+    // case "member":
+    //   inputForm = <MemberForm />;
     //   break;
     case "order":
       inputForm = <OrderForm />;
