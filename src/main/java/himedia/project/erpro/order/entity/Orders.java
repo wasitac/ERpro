@@ -23,6 +23,9 @@ public class Orders {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	private Long accountId;
+	private Long itemId;
+	private Long memberId;
 	
 	@Column(name="b_nm")
 	private String bNm;	
