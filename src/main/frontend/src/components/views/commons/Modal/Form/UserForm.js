@@ -1,4 +1,4 @@
-import { Form, Input, Radio, Select } from "antd";
+import {DatePicker, Form, Input, Radio, Select, Space} from "antd";
 const UserForm = () => {
   return (
     <div>
@@ -27,7 +27,7 @@ const UserForm = () => {
           },
         ]}
       >
-        <Input />
+        <DatePicker />
       </Form.Item>
       <Form.Item
         label="연락처"
@@ -55,11 +55,7 @@ const UserForm = () => {
           },
         ]}
       >
-        <Radio.Group value="매출처">
-          <Radio value="매출처">매출처</Radio>
-          <Radio value="매입처">매입처</Radio>
-          <Radio value="혼합">혼합</Radio>
-        </Radio.Group>
+          <Input />
       </Form.Item>
       <Form.Item
         label="부서"
@@ -71,7 +67,13 @@ const UserForm = () => {
           },
         ]}
       >
-        <Input />
+        <Select>
+          <Select.Option value="SALES">영업</Select.Option>
+          <Select.Option value="PRODUCTION">생산</Select.Option>
+          <Select.Option value="HR">인사</Select.Option>
+          <Select.Option value="LOGISTICS">물류</Select.Option>
+          <Select.Option value="ADMIN">관리</Select.Option>
+        </Select>
       </Form.Item>
       <Form.Item
         label="직급"
@@ -83,7 +85,13 @@ const UserForm = () => {
           },
         ]}
       >
-        <Input />
+        <Select>
+          <Select.Option value="EXECUTIVE">부장</Select.Option>
+          <Select.Option value="TEAM_LEADER">차장</Select.Option>
+          <Select.Option value="DIRECTOR">과장</Select.Option>
+          <Select.Option value="MANAGER">대리</Select.Option>
+          <Select.Option value="EMPLOYEE">사원</Select.Option>
+        </Select>
       </Form.Item>
       <Form.Item
         label="권한"
@@ -95,7 +103,11 @@ const UserForm = () => {
           },
         ]}
       >
-        <Input />
+          <Select>
+              <Select.Option value="ROLE_SUPERADMIN">최고관리자</Select.Option>
+              <Select.Option value="ROLE_ADMIN">관리자</Select.Option>
+              <Select.Option value="ROLE_MEMBER">직원</Select.Option>
+          </Select>
       </Form.Item>
 
       <Form.Item
@@ -108,11 +120,14 @@ const UserForm = () => {
           },
         ]}
       >
-        <Input />
+        <Radio.Group value="정규직">
+          <Radio value="정규직">정규직</Radio>
+          <Radio value="비정규직">비정규직</Radio>
+        </Radio.Group>
       </Form.Item>
       <Form.Item
         label="입사일"
-        name="insertData"
+        name="insertDate"
         rules={[
           {
             required: true,
@@ -120,13 +135,13 @@ const UserForm = () => {
           },
         ]}
       >
-        <Input />
+        <DatePicker />
       </Form.Item>
       <Form.Item
         label="퇴사일"
-        name="retireData"
+        name="retireDate"
       >
-        <Input />
+        <DatePicker />
       </Form.Item>
       <Form.Item
         label="비밀번호"
@@ -134,7 +149,7 @@ const UserForm = () => {
         rules={[
             {
                 required: true,
-                message: "발급할 임시 비밀번호를 입력해주세요",
+                message: "임시 비밀번호를 입력해주세요",
             },
         ]}
       >
