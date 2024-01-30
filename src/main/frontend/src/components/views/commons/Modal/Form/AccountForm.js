@@ -25,10 +25,10 @@ const AccountForm = () => {
           <Form.Item name="id" noStyle>
             <Input type="hidden" />
           </Form.Item>
-          <Form.Item label="담당자" name="memberId">
+          <Form.Item label="담당자" name="memberName">
               <Select>
                 {memberList.map((member) => (
-                    <Select.Option key={member.id} value={member.id}>
+                    <Select.Option key={member.id} value={member.name}>
                         {member.name}
                     </Select.Option>
                 ))}
