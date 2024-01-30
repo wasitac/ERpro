@@ -26,9 +26,9 @@ public class Item {
 	private String unit;
 	private String spec;
 	
-	@Column(name = "purchase_price")
-	private Integer purchasePrice;
+	@Column(name = "buy_price")
+	private Integer buyPrice;
 	
-	@Column(name = "sales_price")
-	private Integer salesPrice;
+	@Column(name = "sell_price")
+	private Integer sellPrice;
 }
