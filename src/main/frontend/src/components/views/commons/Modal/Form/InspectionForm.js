@@ -3,7 +3,7 @@ import DataTable from "../../../pages/MainPage/DataTable";
 // 이지홍
 const StoreForm = () => {
   return (
-// 신청자 / 검수자 id가 아니라 name인 것 주의
+    // 신청자 / 검수자 id가 아니라 name인 것 주의
     <div>
       <Form.Item name="id" noStyle>
         <Input type="hidden" />

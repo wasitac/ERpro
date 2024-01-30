@@ -18,22 +18,31 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class Store {
+public class StoreItem {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "store_sort")
-	private String storeSort;
+	@Column(name = "store_id")
+	private Long storeId;
 
-	@Column(name = "b_nm")
-	private Long accountId;
+	@Column(name = "item_id")
+	private LocalDate itemId;
 
-	@Column(name = "order_id")
-	private Long orderId;
+	@Column(name = "item_name")
+	private Long itemName;
 
-	@Column(name = "store_date")
-	private LocalDate storeDate;
+	private String unit;
+
+	private String spec;
+
+	private Integer count;
+
+	private Integer price;
+
+	private Integer vat;
+
+	private Integer total;
 
 }
