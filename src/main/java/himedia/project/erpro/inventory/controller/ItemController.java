@@ -1,5 +1,10 @@
 package himedia.project.erpro.inventory.controller;
 
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -8,44 +13,47 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import himedia.project.erpro.common.Message;
 import himedia.project.erpro.inventory.entity.Item;
+import himedia.project.erpro.inventory.service.ItemService;
+import himedia.project.erpro.trade.entity.Account;
+import lombok.RequiredArgsConstructor;
 
 @RestController
+@RequiredArgsConstructor
 public class ItemController {
+	
+	private final ItemService itemService;
 	
 	// 물품 목록 - 김주원
 	@GetMapping("/item")
-	public String item() {
-		return "물품 목록";
+	public ResponseEntity<Message> item() {
+		List<Item> dataList = itemService.getItemAll();
+		Message returnData = new Message("", dataList);
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	// 물품 추가 - 김주원
 	@PostMapping("/item")
-	public String additem(@RequestBody Item item) {
-		System.out.println("물품id : " + item.getId());
-		System.out.println("분류 : " + item.getSort());
-		System.out.println("품목명 : " + item.getItemName());
-		System.out.println("단위 : " + item.getUnit());
-		System.out.println("규격 : " + item.getSpec());		
-		System.out.println("매입단가 : " + item.getPurchasePrice());		
-		System.out.println("매출 단가 : " + item.getSalesPrice());		
-		return "물품 등록";
+	public ResponseEntity<Message> additem(@RequestBody Item item) {
+		Item data = itemService.createItem(item);
+		Message returnData = new Message("저장 성공", data);
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	// 물품 수정 - 김주원
 	@PutMapping("/item")
-	public String editItem(@RequestBody Item item) {
-		System.out.println("물품id : " + item.getId());
-		System.out.println("품목명 : " + item.getItemName());
-		System.out.println("매입단가 : " + item.getPurchasePrice());		
-		System.out.println("매출 단가 : " + item.getSalesPrice());		
-		return "물품 정보 수정";
+	public ResponseEntity<Message> editItem(@RequestBody Item item) {
+		Optional<Item> editData = itemService.updateItem(item);
+		Message returnData = new Message("수정 성공", editData);
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	// 물품 삭제 - 김주원
 	@DeleteMapping("/item")
-	public String deleteItem(@RequestParam(name = "id") long id) {
-	   System.out.println("거래처 id: " + id);
-	   return "물품 삭제";
+	public ResponseEntity<Message> deleteItem(@RequestBody List<Long> idList) {
+		boolean result = itemService.deleteItemList(idList);
+		Message returnData = new Message(Boolean.toString(result));
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 }
