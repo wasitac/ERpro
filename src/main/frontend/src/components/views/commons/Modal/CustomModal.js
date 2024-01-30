@@ -9,9 +9,9 @@ import AccountForm from "./Form/AccountForm";
 // import ItemForm from "./Form/ItemForm";
 // import BomForm from "./Form/BomForm";
 // import UserForm from "./Form/UserForm";
-import OrderForm from "./Form/OrderForm";
-// import EstimateForm from "./Form/EstimateForm";
-// import InvoiceForm from "./Form/InvoiceForm";
+import OrdersForm from "./Form/OrdersForm";
+import EstimateForm from "./Form/EstimateForm";
+import InvoiceForm from "./Form/InvoiceForm";
 import StoreForm from "./Form/StoreForm";
 import InventoryForm from "./Form/InventoryForm";
 import fetchApi from "../../../../modules/api";
@@ -93,15 +93,15 @@ function CustomModal(props) {
     // case "user":
     //   inputForm = <UserForm />;
     //   break;
-    case "order":
-      inputForm = <OrderForm />;
+    case "orders":
+      inputForm = <OrdersForm />;
       break;
-    // case "estimate":
-    //   inputForm = <EstimateForm />;
-    //   break;
-    // case "invoice":
-    //   inputForm = <InvoiceForm />;
-    //   break;
+    case "estimate":
+      inputForm = <EstimateForm />;
+      break;
+    case "invoice":
+      inputForm = <InvoiceForm />;
+      break;
     case "store":
       inputForm = <StoreForm />;
       break;

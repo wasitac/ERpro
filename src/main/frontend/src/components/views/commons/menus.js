@@ -166,7 +166,7 @@ const menus = {
   // 구매/판매 주문서 - 정유진
   order: {
     label: "구매/판매 주문서",
-    key: "order",
+    key: "orders",
     column: [
       //컬럼들
       {

@@ -1,6 +1,5 @@
 // 정유진
 import { Form, Input, Select, DatePicker, Row, Col } from "antd";
-import "../Css/Input.css";
 
 const OrderForm = () => {
   return (
@@ -9,7 +8,7 @@ const OrderForm = () => {
       {/* 좌 */}
       <div style={{ width: "140%", marginRight: "-130px" }}>
         <Form.Item label="주문번호" name="id">
-          <Input disabled className="input-style" />
+          <Input disabled style={{ width: "200px" }} />
         </Form.Item>
         <Form.Item label="구분" name="type">
           <Select style={{ width: "200px" }}>
@@ -27,7 +26,7 @@ const OrderForm = () => {
             },
           ]}
         >
-          <Input className="input-style" />
+          <Input style={{ width: "200px" }} />
         </Form.Item>
         <Form.Item
           label="예정일"
@@ -50,7 +49,7 @@ const OrderForm = () => {
       </div>
 
 
-      {/* 하단 좌 */}
+      {/* 중앙 */}
       <div style={{ width: "100%", marginLeft: "-100px" }}>
         <Form.Item
           label="거래처명"
@@ -62,7 +61,7 @@ const OrderForm = () => {
             },
           ]}
         >
-          <Input className="input-style" />
+          <Input style={{ width: "200px" }} />
         </Form.Item>
         <Form.Item
           label="대표자"
@@ -74,7 +73,7 @@ const OrderForm = () => {
             },
           ]}
         >
-          <Input className="input-style" />
+          <Input style={{ width: "200px" }} />
         </Form.Item>
         <Form.Item label="사업자 구분" name="sort">
           <Select style={{ width: "200px" }}>
@@ -93,7 +92,7 @@ const OrderForm = () => {
           ]}
           style={{ width: "800px" }}
         >
-          <Input className="input-style" />
+          <Input style={{ width: "200px" }} />
         </Form.Item>
         <Form.Item
           label="담당자"
@@ -105,7 +104,7 @@ const OrderForm = () => {
             },
           ]}
         >
-          <Input className="input-style" />
+          <Input style={{ width: "200px" }} />
         </Form.Item>
         <Form.Item
           label="연락처"
@@ -117,11 +116,11 @@ const OrderForm = () => {
             },
           ]}
         >
-          <Input className="input-style" />
+          <Input style={{ width: "200px" }} />
         </Form.Item>
       </div>
 
-      {/* 하단 우 */}
+      {/* 우 */}
       <div style={{ width: "100%", marginLeft: "-400px" }}>
         <Form.Item
           label="Email"
@@ -133,7 +132,7 @@ const OrderForm = () => {
             },
           ]}
         >
-          <Input className="input-style" />
+          <Input style={{ width: "200px" }} />
         </Form.Item>
         <Form.Item
           label="주소"
@@ -145,7 +144,7 @@ const OrderForm = () => {
             },
           ]}
         >
-          <Input className="input-style" />
+          <Input style={{ width: "200px" }} />
         </Form.Item>
         <Form.Item
           label="업태"
@@ -157,7 +156,7 @@ const OrderForm = () => {
             },
           ]}
         >
-          <Input className="input-style" />
+          <Input style={{ width: "200px" }} />
         </Form.Item>
         <Form.Item
           label="종목"
@@ -169,7 +168,7 @@ const OrderForm = () => {
             },
           ]}
         >
-          <Input className="input-style" />
+          <Input style={{ width: "200px" }} />
         </Form.Item>
       </div>
 
