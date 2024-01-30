@@ -5,6 +5,8 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -16,6 +18,7 @@ import java.util.Collection;
 import java.util.Iterator;
 
 @RequiredArgsConstructor
+@Slf4j
 public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
     private final AuthenticationManager authenticationManager;
@@ -46,7 +49,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
         GrantedAuthority auth = iterator.next();
 
         String role = auth.getAuthority();
-
+        log.info(role);
         String token = jwtUtil.createJwt(customUserDetails, role, 10*60*60*1000L);
 
         response.addHeader("Authorization","Bearer " + token );

@@ -13,10 +13,9 @@ import OrderForm from "./Form/OrderForm";
 // import EstimateForm from "./Form/EstimateForm";
 // import InvoiceForm from "./Form/InvoiceForm";
 import StoreForm from "./Form/StoreForm";
-import InventoryForm from "./Form/InventoryForm";
 import fetchApi from "../../../../modules/api";
 // import ProductionForm from "./Form/ProductionForm";
-// import InspectionForm from "./Form/InspectionForm";
+import InspectionForm from "./Form/InspectionForm";
 
 function CustomModal(props) {
   // antd의 Form관련 hook 사용을 위함
@@ -105,16 +104,12 @@ function CustomModal(props) {
     case "store":
       inputForm = <StoreForm />;
       break;
-    case "inventory":
-      inputForm = <InventoryForm />;
-      break;
     // case "production":
     //   inputForm = <ProductionForm />;
     //   break;
-    // case "inspection":
-    //   inputForm = <InspectionForm />;
-    //   break;
-
+    case "inspection":
+      inputForm = <InspectionForm />;
+      break;
     default:
       break;
   }

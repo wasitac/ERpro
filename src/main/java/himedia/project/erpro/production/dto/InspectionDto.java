@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 public class InspectionDto {
 	private Long id;
 	private Long storeId;
-	private Long proposerId;
-	private Long inspectorId;
+	private String proposerName;
+	private String inspectorName;
 	private Long itemId;
 	private String itemName;
 	private Integer unit;

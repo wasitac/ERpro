@@ -26,9 +26,13 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	private String name;
+	
 	private LocalDate birth;	
+	
 	private String phone;
+	
 	private String email;
 	
 	@Enumerated(EnumType.STRING)
@@ -43,9 +47,12 @@ public class User {
 
 	@Column(name = "work_type")
 	private String workType;
+	
 	@Column(name = "insert_date")
 	private LocalDate insertDate;
+	
 	@Column(name = "retire_date")
 	private LocalDate retireDate;
+	
 	private String password;
 }
