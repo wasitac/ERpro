@@ -5,8 +5,8 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import himedia.project.erpro.order.entity.Orders;
 import himedia.project.erpro.order.repository.OrdersRepository;
-import himedia.project.erpro.trade.entity.Orders;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 public class OrdersService {
 	private final OrdersRepository ordersRepository;
 	
-	public List<Orders> getOrderAll() {
+	public List<Orders> getOrdersAll() {
 		List<Orders> ordersList = ordersRepository.findAll();
 		return ordersList;
 	}

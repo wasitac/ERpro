@@ -1,6 +1,6 @@
 package himedia.project.erpro.order.entity;
 
-import himedia.project.erpro.user.enums.OrderType;
+import himedia.project.erpro.member.enums.OrdersType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor
-public class Order {
+public class Orders {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -30,9 +30,9 @@ public class Order {
 	@Column(name="b_no")
 	private String bNo;	
 	
-	@Column(name="type")
+	@Column(name="sort")
 	@Enumerated(EnumType.STRING)
-	private OrderType type;
+	private OrdersType type;
 	
 	@Column(name="due_date")
 	private String dueDate;

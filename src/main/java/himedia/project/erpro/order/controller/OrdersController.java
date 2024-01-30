@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import himedia.project.erpro.common.Message;
+import himedia.project.erpro.order.entity.Orders;
 import himedia.project.erpro.order.service.OrdersService;
-import himedia.project.erpro.trade.entity.Orders;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -21,7 +21,7 @@ public class OrdersController {
 	
 	@GetMapping("/orders")
 	public ResponseEntity<Message> account() {
-		List<Orders> dataList = ordersService.getOrderAll();
+		List<Orders> dataList = ordersService.getOrdersAll();
 		Message returnData = new Message("", dataList);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}

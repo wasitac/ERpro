@@ -1,6 +1,6 @@
 package himedia.project.erpro.order.entity;
 
-import himedia.project.erpro.user.enums.OrderType;
+import himedia.project.erpro.member.enums.OrdersType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -35,7 +35,7 @@ public class OrdersStore {
 
 	@Column(name = "sort")
 	@Enumerated(EnumType.STRING)
-	private OrderType sort;
+	private OrdersType sort;
 	
 	@Column(name = "user_id")
 	private Long userId;
