@@ -27,6 +27,8 @@ function LoginPage() {
       localStorage.setItem("token", token);
 
       const memberInfo = JSON.parse(parseJwt(token));
+      localStorage.setItem("memberInfo", JSON.stringify(memberInfo));
+
       // memberInfo 객체의 key, value를 순회하며 로컬 스토리지에 저장
       Object.entries(memberInfo).forEach(([key, value]) => {
         localStorage.setItem(key, value);
