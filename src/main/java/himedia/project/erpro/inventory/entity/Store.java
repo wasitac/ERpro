@@ -2,6 +2,7 @@ package himedia.project.erpro.inventory.entity;
 
 import java.util.Date;
 
+import himedia.project.erpro.inventory.dto.StoreDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,9 +16,9 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
-@Builder
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+@Builder
 public class Store {
 
 	@Id
@@ -28,12 +29,21 @@ public class Store {
 	private String storeSort;
 
 	@Column(name = "b_nm")
-	private Long accountId;
+	private Long bNm;
 
 	@Column(name = "order_id")
 	private Long orderId;
 
 	@Column(name = "store_date")
 	private Date storeDate;
-
+	
+	public StoreDto toDto() {
+		return StoreDto.builder()
+				.id(this.id)
+				.storeSort(this.storeSort)
+				.bNm(this.bNm)
+				.orderId(this.orderId)
+				.storeDate(this.storeDate)
+				.build();
+	}
 }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import himedia.project.erpro.common.Message;
 import himedia.project.erpro.member.dto.PasswordFormDto;
 import himedia.project.erpro.member.dto.ProfileFormDto;
-import himedia.project.erpro.member.service.MemberService;
+import himedia.project.erpro.member.service.ProfileService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -31,16 +31,13 @@ public class ProfileController {
 	// 회원정보 수정 - 이지홍
 	@PutMapping("/profile")
 	public String putProfile(@RequestBody ProfileFormDto profile) {
-		// 첫번째 파라미터 memberid로 바꾸기
 		profileService.updateProfile(profile);
-		return "redirect:/profile";
+		return "/";
 	}
 
 	// 비밀번호 수정 - 이지홍
 	@PutMapping("/password")
-	public String putPassword(@RequestBody PasswordFormDto password) {
-		// 첫번째 파라미터 memberid로 바꾸기
-		profileService.updatePassword(password);
-		return "redirect:/profile";
+	public ResponseEntity<Message> putPassword(@RequestBody PasswordFormDto password) {
+		return profileService.updatePassword(password);
 	}
 }

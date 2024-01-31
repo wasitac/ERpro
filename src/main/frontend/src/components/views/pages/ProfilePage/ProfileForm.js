@@ -25,11 +25,10 @@ const onFinishFailed = (errorInfo) => {
 
 const ProfileForm = () => {
   const [data, setData] = useState({});
-  const memberId = localStorage.getItem("memberId");
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetchApi.get(`/profile/${memberId}`);
+        const response = await fetchApi.get(`/profile`);
         setData(response.data);
       } catch (error) {
         console.error("Error fetching data", error);
@@ -41,19 +40,16 @@ const ProfileForm = () => {
 
   // profile이 변경될 때마다 Form의 initialValues 업데이트
   useEffect(() => {
-    console.log(new Date(localStorage.getItem("insertDate")));
     if (Object.keys(data).length > 0) {
       form.setFieldsValue({
         name: localStorage.getItem("name"),
-        id: memberId,
+        id: localStorage.getItem("memberId"),
         // birth: localStorage.getItem("birth"),
-        birth: dayjs(localStorage.getItem("birth")),
         phone: localStorage.getItem("phone"),
         email: localStorage.getItem("email"),
         department: localStorage.getItem("department"),
         rank: localStorage.getItem("rank"),
         // insertDate: localStorage.getItem("insertDate"),
-        insertDate: moment(localStorage.getItem("insertDate")),
       });
     }
   }, [data]);

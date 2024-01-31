@@ -24,7 +24,7 @@ public class CustomMemberDetailService implements UserDetailsService {
 
         Member member = memberRepository.findById(Long.parseLong(memberId))
                 .orElseThrow(() -> new EntityNotFoundException("User not found with ID: " + memberId));
-        MemberDto memberDto = mapper.toDto(member, MemberDto.class);
+        MemberDto memberDto = mapper.map(member, MemberDto.class);
         if(member != null) {
             return new CustomMemberDetails(memberDto);
         }

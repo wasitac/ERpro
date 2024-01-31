@@ -1,5 +1,6 @@
 package himedia.project.erpro.inventory.entity;
 
+import himedia.project.erpro.trade.entity.Account;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -51,4 +52,21 @@ public class Inventory {
 	
 	@Column(name = "expected_order")
 	private String expectedOrder;
+
+	public InventoryDto toDto() {
+        return InventoryDto.builder()
+								.id(this.id)
+								.itemId(this.itemId)
+								.storeId(this.storeId)
+								.openingCount(this.openingCount)
+								.openingAmount(this.openingAmount)
+								.storeIn(this.storeIn)
+								.storeOut(this.storeOut)
+								.currentInventory(this.currentInventory)
+								.appropriateInventory(this.appropriateInventory)
+								.lack(this.lack)
+								.sales(this.sales)
+								.expectedOrder(this.expectedOrder)
+                .build();
+    }
 }
