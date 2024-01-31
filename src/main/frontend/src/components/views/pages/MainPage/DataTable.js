@@ -80,9 +80,17 @@ const DataTable = (props) => {
     try {
       const response = await fetchApi.get(`/${props.keyOfmenu}/${dataId}`);
       const regex = /\d{4}-\d{2}-\d{2}/;
-      const data = (response.data.data)
+      var detailData = response.data.data;
+      const keys = Object.keys(detailData);
+      const entries = Object.entries(detailData);
       
-      setSelectDetailData(data);
+      for (var i = 0; i < keys.length; i++) {
+        if(regex.test(entries[i])){
+          detailData[keys[i]] = dayjs(entries[i])
+        }
+      }
+
+      setSelectDetailData(selectDetailData);
       setModalStatus(true);
     } catch (error) {
       console.error("Error put data", error);

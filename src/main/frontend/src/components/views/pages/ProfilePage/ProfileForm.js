@@ -6,12 +6,13 @@ import React, { useState, useEffect } from "react";
 import moment from "moment";
 import axios from "axios";
 import fetchApi from "../../../../modules/api";
+import dayjs from "dayjs";
 
 // 정보수정 폼. 사원 대장에서 비밀번호만 빼고 모달로 사용하면 될것같음
 const onFinish = async (values) => {
   console.log("sucsses:", values);
   try {
-    const response = await axios.put("/profile", values);
+    const response = await fetchApi.put("/profile", values);
     console.log("PUT request successful", response.data);
   } catch (error) {
     console.error("Error making PUT request", error);
@@ -25,11 +26,10 @@ const onFinishFailed = (errorInfo) => {
 const ProfileForm = () => {
   const [data, setData] = useState({});
   const memberId = localStorage.getItem("memberId");
-
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/profile/${memberId}`);
+        const response = await fetchApi.get(`/profile/${memberId}`);
         setData(response.data);
       } catch (error) {
         console.error("Error fetching data", error);
@@ -41,16 +41,19 @@ const ProfileForm = () => {
 
   // profile이 변경될 때마다 Form의 initialValues 업데이트
   useEffect(() => {
+    console.log(new Date(localStorage.getItem("insertDate")));
     if (Object.keys(data).length > 0) {
       form.setFieldsValue({
-        name: data.name,
-        id: data.id,
-        birth: moment(data.birth),
-        phone: data.phone,
-        email: data.email,
-        department: data.department,
-        position: data.memberRank,
-        insertDate: moment(data.insertDate),
+        name: localStorage.getItem("name"),
+        id: memberId,
+        // birth: localStorage.getItem("birth"),
+        birth: dayjs(localStorage.getItem("birth")),
+        phone: localStorage.getItem("phone"),
+        email: localStorage.getItem("email"),
+        department: localStorage.getItem("department"),
+        rank: localStorage.getItem("rank"),
+        // insertDate: localStorage.getItem("insertDate"),
+        insertDate: moment(localStorage.getItem("insertDate")),
       });
     }
   }, [data]);
@@ -124,7 +127,7 @@ const ProfileForm = () => {
         <Input disabled />
       </Form.Item>
 
-      <Form.Item label="직책" name="position">
+      <Form.Item label="직책" name="rank">
         <Input disabled />
       </Form.Item>
 

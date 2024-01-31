@@ -3,11 +3,12 @@
  */
 import { Button, Form, Input } from "antd";
 import axios from "axios";
+import fetchApi from "../../../../modules/api";
 
 const onFinish = async (values) => {
   console.log("sucsses:", values);
   try {
-    const response = await axios.put("/password", values);
+    const response = await fetchApi.put("/password", values);
     console.log("PUT request successful", response.data);
   } catch (error) {
     console.error("Error making PUT request", error);
