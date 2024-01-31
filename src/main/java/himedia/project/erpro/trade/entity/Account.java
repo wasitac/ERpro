@@ -1,15 +1,14 @@
 package himedia.project.erpro.trade.entity;
 
+import himedia.project.erpro.trade.dto.AccountDto;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Getter
-@Setter
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+@Builder
 public class Account {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,4 +37,20 @@ public class Account {
 	@Column(name = "b_adr")
 	private String bAdr;		// 거래처 주소
 	private String email;		// 이메일
+
+	public AccountDto toAccountDto() {
+		return AccountDto.builder()
+				.id(this.id)
+				.memberName(this.memberName)
+				.bNo(this.bNo)
+				.bNm(this.bNm)
+				.sort(this.sort)
+				.pNm(this.pNm)
+				.bSector(this.bSector)
+				.bType(this.bType)
+				.phone(this.phone)
+				.bAdr(this.bAdr)
+				.email(this.email)
+				.build();
+	}
 }
