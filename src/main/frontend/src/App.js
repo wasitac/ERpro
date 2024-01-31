@@ -6,6 +6,7 @@ import MainPage from "./components/views/pages/MainPage/MainPage";
 import ProfilePage from "./components/views/pages/ProfilePage/ProfilePage";
 import ErrorPage from "./components/views/pages/Common/ErrorPage";
 import AccountPage from "./components/views/pages/AccountPage/AccountPage";
+import OrderPage from "./components/views/pages/OrderPage/OrdersPage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/account" element={<AccountPage />} />
+          <Route path="/orders" element={<OrderPage />} />
           <Route path="/error" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>

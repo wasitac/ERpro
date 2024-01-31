@@ -173,7 +173,7 @@ const menus = {
         sorter: (a, b) => a.id - b.id,
       },
       {
-        title: "구분",
+        title: "유형",
         dataIndex: "type",
         filters: [
           {
@@ -187,8 +187,12 @@ const menus = {
         ]
       },
       {
-        title: "거래처번호",
-        dataIndex: "accountId",
+        title: "거래처명",
+        dataIndex: "bNm",
+      },
+      {
+        title: "사업자 등록번호",
+        dataIndex: "bNo",
       },
       {
         title: "품목번호",

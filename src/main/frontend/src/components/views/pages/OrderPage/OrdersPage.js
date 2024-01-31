@@ -2,7 +2,8 @@
  * 정유진 
  */
 import React, { useState } from 'react';
-import { Button, Table } from 'antd';
+import { Table } from 'antd';
+
 const columns = [
   {
     title: "발주번호",
@@ -25,10 +26,6 @@ const columns = [
     dataIndex: "price",
   },
   {
-    title: "매입단가",
-    dataIndex: "supplyPrice",
-  },
-  {
     title: "합계금액",
     dataIndex: "total",
   },
@@ -41,22 +38,9 @@ const columns = [
     dataIndex: "completionDate",
   },
 ];
-const data = [];
-for (let i = 0; i < 46; i++) {
-  data.push({
-    key: i,
-    id: `${i}`,
-    type: "구매",
-    bNm: "고고상사",
-    itemName: "Gellaxy24",
-    count: "1",
-    supplyPrice: "500,000",
-    total: "500,000",
-    dueDate: "2023-12-01",
-    completionDate: "2024-12-10",
-  });
-}
-const OrderPage = () => {
+
+const OrdersPage = () => {
+
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const onSelectChange = (newSelectedRowKeys) => {
     console.log('selectedRowKeys changed: ', newSelectedRowKeys);
@@ -82,9 +66,9 @@ const OrderPage = () => {
           {hasSelected ? `Selected ${selectedRowKeys.length} items` : ''}
         </span>
       </div>
-      <Table rowSelection={rowSelection} columns={columns} dataSource={data} />
+      <Table rowSelection={rowSelection} columns={columns} />
     </div>
   );
 };
 
-export default OrderPage;
+export default OrdersPage;
