@@ -1,5 +1,6 @@
 package himedia.project.erpro.inventory.entity;
 
+import himedia.project.erpro.inventory.dto.ItemDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,9 +10,8 @@ import lombok.*;
 
 @Entity
 @Getter
-@Setter
 @Builder
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Item {
 	@Id
@@ -30,4 +30,16 @@ public class Item {
 	
 	@Column(name = "sell_price")
 	private Integer sellPrice;
+
+	public ItemDto toItemDto() {
+		return ItemDto.builder()
+				.id(id)
+				.sort(sort)
+				.itemName(itemName)
+				.unit(unit)
+				.spec(spec)
+				.buyPrice(buyPrice)
+				.sellPrice(sellPrice)
+				.build();
+	}
 }

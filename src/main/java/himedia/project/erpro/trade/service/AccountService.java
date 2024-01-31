@@ -21,16 +21,6 @@ public class AccountService {
 	
 	@Autowired
 	private final AccountRepository accountRepository;
-  
-	// 거래처 상세 조회
-	public AccountDto getAccountById(Long id) {
-		Account account = accountRepository.findById(id)
-				.orElseThrow(() -> new EntityNotFoundException("Account not found with ID: " + id));
-
-		AccountDto accountDto = account.toAccountDto();
-
-		return accountDto;
-	}
 	  
 	// 거래처 목록
 	public List<AccountDto> getAccountAll() {
@@ -41,6 +31,16 @@ public class AccountService {
 				.collect(Collectors.toList());
 
 		return accountDtoList;
+	}
+
+	// 거래처 상세 조회
+	public AccountDto getAccountById(Long id) {
+		Account account = accountRepository.findById(id)
+				.orElseThrow(() -> new EntityNotFoundException("Account not found with ID: " + id));
+
+		AccountDto accountDto = account.toAccountDto();
+
+		return accountDto;
 	}
   
 	// 거래처 추가
@@ -58,8 +58,8 @@ public class AccountService {
 		Optional<Account> existAccount = accountRepository.findById(account.getId());
 		
 		if(existAccount.isPresent()) {
-			Account saveAccount = accountRepository.save(account);
-			return saveAccount.toAccountDto();
+			Account updateAccount = accountRepository.save(account);
+			return updateAccount.toAccountDto();
 		} else {
 			return null;
 		}

@@ -2,7 +2,10 @@ package himedia.project.erpro.inventory.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
+import himedia.project.erpro.inventory.dto.ItemDto;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -12,51 +15,55 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class ItemService {
 	private final ItemRepository itemRepository;
-	
-	public List<Item> getItemAll() {
+
+	// 물품 목록 - 김주원
+	public List<ItemDto> getItemAll() {
 		List<Item> itemList = itemRepository.findAll();
-		return itemList;
+
+		List<ItemDto> itemDtoList = itemList.stream()
+				.map(Item::toItemDto)
+				.collect(Collectors.toList());
+
+		return itemDtoList;
 	}
-	
-	public Optional<Item> getItemById(Long itemId) {
-		Optional<Item> item = itemRepository.findById(itemId);
-		return item;
+
+	// 물품 상세 조회 - 김주원
+	public ItemDto getItemById(Long itemId) {
+		Item item = itemRepository.findById(itemId)
+				.orElseThrow(() -> new EntityNotFoundException("Item not found with ID: " + itemId));
+
+		ItemDto itemDto = item.toItemDto();
+
+		return itemDto;
 	}
-	
-	public Item createItem(Item item) {
-		itemRepository.save(item);
-		return item;
+
+	// 물품 등록 - 김주원
+	public ItemDto createItem(ItemDto itemDto) {
+		Item item = itemDto.toEntity();
+		Item saveItem = itemRepository.save(item);
+
+		return saveItem.toItemDto();
 	}
-	
-	public Optional<Item> updateItem(Item item) {
+
+	// 물품 수정 - 김주원
+	public ItemDto updateItem(ItemDto itemDto) {
+		Item item = itemDto.toEntity();
+
 		Optional<Item> existItem = itemRepository.findById(item.getId());
 		
 		if(existItem.isPresent()) {
-			Item updateItem = existItem.get();
-
-			// 모든 필드를 업데이트
-			BeanUtils.copyProperties(item, updateItem);
-
-			itemRepository.save(updateItem);
-			return Optional.of(updateItem);
+			Item updateItem = itemRepository.save(item);
+			return updateItem.toItemDto();
 		} else {
-			return Optional.empty();
+			return null;
 		}
 	}
-	
-	public List<Item> deleteItem(Long id) {
-		Optional<Item> existItem = itemRepository.findById(id);
-		if(existItem.isPresent()) {
-			itemRepository.deleteById(id);
-			return itemRepository.findAll();
-		} else {
-			throw new EntityNotFoundException("존재하지 않는 아이디 입니다.");
-		}
-	}
-	
+
+	// 물품 삭제 - 김주원
 	public boolean deleteItemList(List<Long> idList) {
 		int deletedCount = itemRepository.deleteAllByIdIn(idList);
 		if(deletedCount > 0 && deletedCount == idList.size()) {
