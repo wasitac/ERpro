@@ -3,12 +3,11 @@
  */
 import React, { useState, useEffect } from "react";
 import { Modal, Form, Divider } from "antd";
-import axios from "axios";
 import menus from "../../commons/menus";
 import AccountForm from "./Form/AccountForm";
-// import ItemForm from "./Form/ItemForm";
-// import BomForm from "./Form/BomForm";
-// import MemberForm from "./Form/MemberForm";
+import ItemForm from "./Form/ItemForm";
+import BomForm from "./Form/BomForm";
+import MemberForm from "./Form/MemberForm";
 import OrderForm from "./Form/OrderForm";
 // import EstimateForm from "./Form/EstimateForm";
 // import InvoiceForm from "./Form/InvoiceForm";
@@ -49,7 +48,7 @@ function CustomModal(props) {
       if (mode === "add") {
         // 정보 저장
         const response = await fetchApi.post(`/${props.keyOfmenu}`, formData);
-        if (response.data?.data?.id) {
+        if (response.data?.data) {
           props.fetchData();
           onCancel();
         } else {
@@ -83,15 +82,15 @@ function CustomModal(props) {
     case "account":
       inputForm = <AccountForm />;
       break;
-    // case "item":
-    //   inputForm = <ItemForm />;
-    //   break;
-    // case "bom":
-    //   inputForm = <BomForm />;
-    //   break;
-    // case "member":
-    //   inputForm = <MemberForm />;
-    //   break;
+    case "item":
+      inputForm = <ItemForm />;
+      break;
+    case "bom":
+      inputForm = <BomForm form={form}/>;
+      break;
+    case "member":
+      inputForm = <MemberForm mode={mode}/>;
+      break;
     case "order":
       inputForm = <OrderForm />;
       break;
