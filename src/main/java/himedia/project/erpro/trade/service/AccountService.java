@@ -2,9 +2,10 @@ package himedia.project.erpro.trade.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
+import himedia.project.erpro.trade.dto.AccountDto;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,48 +23,45 @@ public class AccountService {
 	private final AccountRepository accountRepository;
   
 	// 거래처 상세 조회
-	public Optional<Account> getAccountById(Long id) {
-		Optional<Account> account = accountRepository.findById(id);
-	    return account;
+	public AccountDto getAccountById(Long id) {
+		Account account = accountRepository.findById(id)
+				.orElseThrow(() -> new EntityNotFoundException("Account not found with ID: " + id));
+
+		AccountDto accountDto = account.toAccountDto();
+
+		return accountDto;
 	}
 	  
 	// 거래처 목록
-	public List<Account> getAccountAll() {
+	public List<AccountDto> getAccountAll() {
 		List<Account> accountList = accountRepository.findAll();
-		return accountList;
+
+		List<AccountDto> accountDtoList = accountList.stream()
+				.map(Account::toAccountDto)
+				.collect(Collectors.toList());
+
+		return accountDtoList;
 	}
   
 	// 거래처 추가
-	public Account createAccount(Account account) {
-		accountRepository.save(account);
-		return account;
+	public AccountDto createAccount(AccountDto accountDto) {
+		Account account = accountDto.toEntity();
+		Account saveAccount = accountRepository.save(account);
+
+		return saveAccount.toAccountDto();
 	}
   
 	// 거래처 수정
-	public Optional<Account> updateAccount(Account account) {
+	public AccountDto updateAccount(AccountDto accountDto) {
+		Account account = accountDto.toEntity();
+
 		Optional<Account> existAccount = accountRepository.findById(account.getId());
 		
 		if(existAccount.isPresent()) {
-			Account updateAccount = existAccount.get();
-
-			// 모든 필드를 업데이트
-			BeanUtils.copyProperties(account, updateAccount);
-
-			accountRepository.save(updateAccount);
-			return Optional.of(updateAccount);
+			Account saveAccount = accountRepository.save(account);
+			return saveAccount.toAccountDto();
 		} else {
-			return Optional.empty();
-		}
-	}
-	
-	// 거래처 삭제
-	public List<Account> deleteAccount(Long id) {
-		Optional<Account> existAccount = accountRepository.findById(id); 
-		if(existAccount.isPresent()) {
-			accountRepository.deleteById(id);
-			return accountRepository.findAll();
-		} else {
-			 throw new EntityNotFoundException("존재하지 않는 아이디 입니다.");
+			return null;
 		}
 	}
 
