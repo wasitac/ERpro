@@ -2,17 +2,17 @@ package himedia.project.erpro.member.dto;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import himedia.project.erpro.member.entity.Member;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class CustomMemberDetails implements UserDetails {
 
-    private final Member member;
+    private final MemberDto memberDto;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -24,7 +24,7 @@ public class CustomMemberDetails implements UserDetails {
             @Override
             public String getAuthority() {
 
-                return member.getRole().toString();
+                return memberDto.getRole().toString();
             }
         });
 
@@ -33,12 +33,12 @@ public class CustomMemberDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        return member.getPassword();
+        return memberDto.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return member.getId().toString();
+        return memberDto.getId().toString();
     }
 
     @Override
@@ -62,19 +62,31 @@ public class CustomMemberDetails implements UserDetails {
     }
 
     public String getName() {
-        return member.getName();
+        return memberDto.getName();
+    }
+    public Date getBirth() {
+        return memberDto.getBirth();
+    }
+    public String getPhone() {
+        return memberDto.getPhone();
+    }
+    public String getEmail() {
+        return memberDto.getEmail();
     }
 
     public String getDepartment() {
-        return member.getDepartment().toString();
+        return memberDto.getDepartment().getKor();
     }
 
     public String getMemberRank() {
-        return member.getMemberRank().toString();
+        return memberDto.getMemberRank().getKor();
     }
+    
+    public Date getInsertDate() {
+        return memberDto.getInsertDate();
+    }
+    
+    
 
-    public String getEmail() {
-        return member.getEmail();
-    }
 
 }

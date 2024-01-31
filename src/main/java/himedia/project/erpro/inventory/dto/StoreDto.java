@@ -1,6 +1,6 @@
 package himedia.project.erpro.inventory.dto;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,5 +18,5 @@ public class StoreDto {
 	private String storeSort;
 	private Long accountId;
 	private Long orderId;
-	private LocalDate storeDate;
+	private Date storeDate;
 }

@@ -1,6 +1,6 @@
 package himedia.project.erpro.production.entity;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -47,5 +47,5 @@ public class Production {
 	private Integer count;
 	
 	@Column(name = "production_date")
-	private LocalDate productionDate;
+	private Date productionDate;
 }

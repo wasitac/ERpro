@@ -1,6 +1,6 @@
 package himedia.project.erpro.production.entity;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -51,5 +51,5 @@ public class Inspection {
 	private String pass;
 	
 	@Column(name = "inspection_date")
-	private LocalDate inspectionDate;
+	private Date inspectionDate;
 }

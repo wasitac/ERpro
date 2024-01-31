@@ -27,8 +27,8 @@ public class StoreService {
 		return storeDtoList;
 	}
 	
-	public List<StoreItemDto> getStoreItem() {
-		List<StoreItem> storeItemList = storeItemRepository.findByStoreId();
+	public List<StoreItemDto> getStoreItem(Long storeId) {
+		List<StoreItem> storeItemList = storeItemRepository.findByStoreId(storeId);
 		List<StoreItemDto> storeItemDtoList = mapper.toDtoList(storeItemList, StoreItemDto.class);
 		return storeItemDtoList;
 	}

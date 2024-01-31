@@ -9,5 +9,6 @@ import himedia.project.erpro.inventory.entity.StoreItem;
 
 public interface StoreItemRepository extends JpaRepository<StoreItem, Long>{
 	public List<StoreItem> findAll();
+	public List<StoreItem> findByStoreId(Long storeId);
 	public Optional<StoreItem> findById(Long id);
 }

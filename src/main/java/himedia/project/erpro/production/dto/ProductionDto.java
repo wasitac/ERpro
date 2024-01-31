@@ -1,6 +1,6 @@
 package himedia.project.erpro.production.dto;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,5 +21,5 @@ public class ProductionDto {
 	private String spec;
 	private Integer count;
 	private String memberName; // 담당자명
-	private LocalDate productionDate;
+	private Date productionDate;
 }

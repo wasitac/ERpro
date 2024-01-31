@@ -1,6 +1,6 @@
 package himedia.project.erpro.inventory.entity;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -28,7 +28,7 @@ public class StoreItem {
 	private Long storeId;
 
 	@Column(name = "item_id")
-	private LocalDate itemId;
+	private Date itemId;
 
 	@Column(name = "item_name")
 	private Long itemName;
