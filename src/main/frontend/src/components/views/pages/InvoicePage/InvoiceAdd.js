@@ -40,8 +40,8 @@ const InvoiceAdd = () => {
           </Form.Item>
           <Form.Item label="거래구분" name="sort">
             <Select>
-              <Select.Option value="buy">구매</Select.Option>
-              <Select.Option value="sell">판매</Select.Option>
+              <Select.Option value="BUY">구매</Select.Option>
+              <Select.Option value="SELL">판매</Select.Option>
             </Select>
           </Form.Item>
           <Form.Item label="결제방법" name="payment">

@@ -1,10 +1,10 @@
 package himedia.project.erpro.order.entity;
 
-import himedia.project.erpro.member.enums.OrdersType;
+import java.time.LocalDate;
+
+import himedia.project.erpro.member.enums.SortType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -17,23 +17,24 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class Orders {
+public class Invoice {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "b_nm")
-	private String bnm;
+	@Column(name = "store_id")
+	private Long storeid;
 	
-	@Column(name = "b_no")
-	private String bNno;
+	@Column(name = "sort")
+	private SortType sort;
 
-	@Column(name = "type")
-	private OrdersType type;
+	@Column(name = "payment")
+	private String payment;
 	
-	@Column(name = "due_date")
-	private String duedate;
+	@Column(name = "note")
+	private String dueDate;
 	
-	@Column(name = "completion_date")
-	private String completiondate;
+	@Column(name = "date")
+	private LocalDate date;
+
 }

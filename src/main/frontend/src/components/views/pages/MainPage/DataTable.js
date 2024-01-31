@@ -28,6 +28,7 @@ const DataTable = (props) => {
     try {
       const response = await fetchApi.get(`/${props.keyOfmenu}`);
       setData(response.data.data);
+      console.log(response.data.data);
     } catch (error) {
       console.error("Error fetching data", error);
     }
@@ -80,7 +81,7 @@ const DataTable = (props) => {
     try {
       const response = await fetchApi.get(`/${props.keyOfmenu}/${dataId}`);
 
-      if(`${props.keyOfmenu} == 'user'`) {
+      if (`${props.keyOfmenu} == 'user'`) {
         response.data.data.birth = dayjs(response.data.data.birth);
         response.data.data.insertDate = dayjs(response.data.data.insertDate);
         response.data.data.retireDate = response.data.data.retireDate != null ? dayjs(response.data.data.retireDate) : null;

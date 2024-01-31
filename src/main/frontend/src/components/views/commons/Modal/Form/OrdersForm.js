@@ -10,10 +10,13 @@ const OrdersForm = () => {
         <Form.Item label="주문번호" name="id">
           <Input disabled style={{ width: "200px" }} />
         </Form.Item>
-        <Form.Item label="구분" name="type">
+        <Form.Item 
+          label="구분" 
+          name="type"
+          >
           <Select style={{ width: "200px" }}>
-            <Select.Option value="buy">구매</Select.Option>
-            <Select.Option value="sell">판매</Select.Option>
+            <Select.Option value="BUY">구매</Select.Option>
+            <Select.Option value="SELL">판매</Select.Option>
           </Select>
         </Form.Item>
         <Form.Item
@@ -77,8 +80,8 @@ const OrdersForm = () => {
         </Form.Item>
         <Form.Item label="사업자 구분" name="sort">
           <Select style={{ width: "200px" }}>
-            <Select.Option value="buy ">매입처</Select.Option>
-            <Select.Option value="sell">매출처</Select.Option>
+            <Select.Option value="BUY ">매입처</Select.Option>
+            <Select.Option value="SELL">매출처</Select.Option>
           </Select>
         </Form.Item>
         <Form.Item

@@ -206,34 +206,26 @@ const menus = {
         sorter: (a, b) => a.id - b.id,
       },
       {
+        title: "거래처명",
+        dataIndex: "bnm",
+      },
+      {
+        title: "사업자 등록번호",
+        dataIndex: "bno",
+      },
+      {
         title: "유형",
         dataIndex: "type",
         filters: [
           {
             text: "구매",
-            value: "buy",
+            value: "BUY",
           },
           {
             text: "판매",
-            value: "sell",
+            value: "SELL",
           },
         ]
-      },
-      {
-        title: "거래처명",
-        dataIndex: "bNm",
-      },
-      {
-        title: "사업자 등록번호",
-        dataIndex: "bNo",
-      },
-      {
-        title: "품목번호",
-        dataIndex: "itemId",
-      },
-      {
-        title: "품목명",
-        dataIndex: "itemName",
       },
       {
         title: "예정일",
@@ -242,38 +234,6 @@ const menus = {
       {
         title: "완료일",
         dataIndex: "completionDate",
-      },
-      {
-        title: "유효기간",
-        dataIndex: "expiration",
-      },
-      {
-        title: "단위",
-        dataIndex: "unit",
-      },
-      {
-        title: "규격",
-        dataIndex: "spec",
-      },
-      {
-        title: "수량",
-        dataIndex: "count",
-      },
-      {
-        title: "단가",
-        dataIndex: "price",
-      },
-      {
-        title: "공급가액",
-        dataIndex: "supplyPrice",
-      },
-      {
-        title: "부가세",
-        dataIndex: "vat",
-      },
-      {
-        title: "합계",
-        dataIndex: "total",
       },
     ],
   },
@@ -291,52 +251,27 @@ const menus = {
       },
       {
         title: "거래처번호",
-        dataIndex: "accountId",
-      },
-      {
-        title: "품목번호",
-        dataIndex: "itemId",
-      },
-      {
-        title: "품목명",
-        dataIndex: "itemName",
+        dataIndex: "accountid",
       },
       {
         title: "작성일자",
-        dataIndex: "insertDate",
-      },
-      {
-        title: "납기일자",
-        dataIndex: "dueDate",
-      },
-      {
-        title: "주문처리",
-        dataIndex: "order",
+        dataIndex: "insertdate",
       },
       {
         title: "유효기간",
-        dataIndex: "expiration",
+        dataIndex: "expirationdate",
       },
       {
-        title: "단위",
-        dataIndex: "unit",
+        title: "납기일자",
+        dataIndex: "duedate",
       },
       {
-        title: "규격",
-        dataIndex: "spec",
-      },
-      {
-        title: "수량",
-        dataIndex: "count",
-      },
-      {
-        title: "단가",
-        dataIndex: "price",
-
-      },
-      {
-        title: "견적금액",
+        title: "합계금액",
         dataIndex: "total",
+      },
+      {
+        title: "주문처리",
+        dataIndex: "isorder",
       },
     ]
   },
@@ -354,10 +289,10 @@ const menus = {
       },
       {
         title: "입출고번호",
-        dataIndex: "storeId",
+        dataIndex: "storeid",
       },
       {
-        title: "구분",
+        title: "거래구분",
         dataIndex: "sort",
         filters: [
           {
@@ -375,44 +310,12 @@ const menus = {
         dataIndex: "payment",
       },
       {
-        title: "거래처명",
-        dataIndex: "bNm",
-      },
-      {
-        title: "품목번호",
-        dataIndex: "itemId",
-      },
-      {
-        title: "품목명",
-        dataIndex: "itemName",
-      },
-      {
-        title: "거래일자",
-        dataIndex: "date",
-      },
-      {
         title: "비고",
         dataIndex: "note",
       },
       {
-        title: "수량",
-        dataIndex: "count",
-      },
-      {
-        title: "단가",
-        dataIndex: "price",
-      },
-      {
-        title: "매출금액",
-        dataIndex: "sellPrice",
-      },
-      {
-        title: "부가세",
-        dataIndex: "vat",
-      },
-      {
-        title: "합계",
-        dataIndex: "total",
+        title: "거래일자",
+        dataIndex: "date",
       },
     ]
   },

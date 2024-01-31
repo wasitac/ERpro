@@ -1,14 +1,13 @@
 package himedia.project.erpro.order.entity;
 
+import java.time.LocalDate;
+
 import himedia.project.erpro.member.enums.OrdersType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,24 +15,27 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class Orders {
+@NoArgsConstructor
+public class Estimate {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "b_nm")
-	private String bnm;
-	
-	@Column(name = "b_no")
-	private String bNno;
+	@Column(name = "account_id")
+	private Long accountid;
 
-	@Column(name = "type")
-	private OrdersType type;
+	@Column(name = "insert_date")
+	private LocalDate insertdate;
+	
+	@Column(name = "expiration_date")
+	private String expirationdate;
 	
 	@Column(name = "due_date")
 	private String duedate;
-	
-	@Column(name = "completion_date")
-	private String completiondate;
+
+	@Column(name = "total")
+	private Integer total;
+
+	@Column(name = "is_order")
+	private String isorder;
 }

@@ -22,15 +22,15 @@ public class OrdersController {
 	
 	@GetMapping("/orders")
 	public ResponseEntity<Message> orders() {
-		List<Orders> dataList = ordersService.getOrdersAll();
+		List<OrdersDto> dataList = ordersService.getOrdersAll();
 		Message returnData = new Message("", dataList);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
-	@GetMapping("/orders/{id}")
-	public ResponseEntity<Message> detatilOrders(@PathVariable(value="id") Long id) {
-		Optional<Orders> data = ordersService.getOrdersById(id);
-		Message returnData = new Message("", data);
-		return new ResponseEntity<>(returnData, HttpStatus.OK);
-	}
-
+	
+//	@GetMapping("/orders/{id}")
+//	public ResponseEntity<Message> detatilOrders(@PathVariable(value="id") Long id) {
+//		Optional<OrdersDto> data = ordersService.getOrdersById(id);
+//		Message returnData = new Message("", data);
+//		return new ResponseEntity<>(returnData, HttpStatus.OK);
+//	}
 }

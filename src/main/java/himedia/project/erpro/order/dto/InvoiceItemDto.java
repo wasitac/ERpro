@@ -1,6 +1,5 @@
 package himedia.project.erpro.order.dto;
 
-import himedia.project.erpro.member.enums.OrdersType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -10,10 +9,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class OdersItemDto {
+public class InvoiceItemDto {
 	private Long id;
-	private Long ordersId;
-	private OrdersType sort;
+	private Long invoiceid;
 	private Long itemid;
 	private String itemname;
 	private String unit;

@@ -1,6 +1,8 @@
 package himedia.project.erpro.order.dto;
 
-import himedia.project.erpro.member.enums.OrdersType;
+import java.time.LocalDate;
+
+import himedia.project.erpro.member.enums.SortType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -10,11 +12,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrdersDto {
+public class InvoiceDto {
 	private Long id;
-	private String bnm;
-	private String bno;
-	private OrdersType type;
-	private String duedate;
-	private String completiondate;
+	private Long storeid;
+	private SortType sort;
+	private String payment;
+	private String note;
+	private LocalDate date;
 }
