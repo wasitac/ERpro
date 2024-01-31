@@ -30,8 +30,8 @@ public class Production {
 	@Column(name = "account_id")
 	private Long accountId;
 
-	@Column(name = "user_id")
-	private Long userId;
+	@Column(name = "member_id")
+	private Long memberId;
 
 	@Column(name = "item_id")
 	private Long itemId;

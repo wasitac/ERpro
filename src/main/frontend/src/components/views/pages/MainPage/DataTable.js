@@ -17,7 +17,7 @@ const DataTable = (props) => {
     return {
       ...item,
       render: (text, record) => (
-        <a onClick={() => handleEdit(record.id)}>{text}</a>
+        <a onDoubleClick={() => handleEdit(record.id)}>{text}</a>
       ),
     };
   });
@@ -73,7 +73,10 @@ const DataTable = (props) => {
   const handleEdit = async (dataId) => {
     try {
       const response = await fetchApi.get(`/${props.keyOfmenu}/${dataId}`);
-      setSelectDetailData(response.data.data);
+      const regex = /\d{4}-\d{2}-\d{2}/;
+      const data = (response.data.data)
+      
+      setSelectDetailData(data);
       setModalStatus(true);
     } catch (error) {
       console.error("Error put data", error);

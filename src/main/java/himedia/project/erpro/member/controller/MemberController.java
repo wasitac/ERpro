@@ -86,7 +86,7 @@ public class MemberController {
 	// 비밀번호 수정 - 이지홍
 	@PutMapping("/password")
 	public String putPassword(@RequestBody Password password) {
-		// 첫번째 파라미터 userid로 바꾸기
+		// 첫번째 파라미터 memberid로 바꾸기
 		memberService.updatePassword(1001l, password);
 		return "redirect:/profile";
 	}

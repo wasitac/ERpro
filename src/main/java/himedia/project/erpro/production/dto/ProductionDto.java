@@ -20,6 +20,6 @@ public class ProductionDto {
 	private String unit;
 	private String spec;
 	private Integer count;
-	private Integer userName; // 담당자명
+	private String memberName; // 담당자명
 	private LocalDate productionDate;
 }

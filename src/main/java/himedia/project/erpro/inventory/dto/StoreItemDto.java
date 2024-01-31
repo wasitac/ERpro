@@ -13,10 +13,15 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class StoreDto {
+public class StoreItemDto {
 	private Long id;
-	private String storeSort;
-	private Long accountId;
-	private Long orderId;
-	private LocalDate storeDate;
+	private Long storeId;
+	private LocalDate itemId;
+	private Long itemName;
+	private String unit;
+	private String spec;
+	private Integer count;
+	private Integer price;
+	private Integer vat;
+	private Integer total;
 }

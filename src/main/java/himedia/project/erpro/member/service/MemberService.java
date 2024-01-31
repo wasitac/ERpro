@@ -24,13 +24,13 @@ public class MemberService {
 
 	// 사원목록 조회 - 김주원
 	public List<Member> getMemberAll() {
-		List<Member> userList = memberRepository.findAll();
-		return userList;
+		List<Member> memberList = memberRepository.findAll();
+		return memberList;
 	}
 	
 	// 사원 상세 정보 조회 - 김주원
-	public Optional<Member> getMemberById(Long userId) {
-		Optional<Member> member = memberRepository.findById(userId);
+	public Optional<Member> getMemberById(Long memberId) {
+		Optional<Member> member = memberRepository.findById(memberId);
 		return member;
 	}
 
