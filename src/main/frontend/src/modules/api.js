@@ -35,7 +35,7 @@ fetchApi.interceptors.response.use(
       //   localStorage.clear();
 
       error.response.statusText = "Unauthorized";
-      window.location.href = "/error";
+      //window.location.href = "/error";
     }
     return Promise.reject(error);
   }

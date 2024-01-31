@@ -5,14 +5,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -28,9 +25,9 @@ public class Item {
 	private String unit;
 	private String spec;
 	
-	@Column(name = "purchase_price")
-	private Integer purchasePrice;
+	@Column(name = "buy_price")
+	private Integer buyPrice;
 	
-	@Column(name = "sales_price")
-	private Integer salesPrice;
+	@Column(name = "sell_price")
+	private Integer sellPrice;
 }

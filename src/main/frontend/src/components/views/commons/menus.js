@@ -110,6 +110,39 @@ const menus = {
   bom: {
     label: "BOM",
     key: "bom",
+    column: [
+      {
+        title: "품목번호",
+        dataIndex: "id",
+        // 정렬
+        defaultSortOrder: "ascend",
+        sorter: (a, b) => a.id - b.id,
+      },
+      {
+        title: "품목구분",
+        dataIndex: "sort",
+      },
+      {
+        title: "품목명",
+        dataIndex: "itemName",
+      },
+      {
+        title: "단위",
+        dataIndex: "unit",
+      },
+      {
+        title: "규격",
+        dataIndex: "spec",
+      },
+      {
+        title: "매입단가",
+        dataIndex: "buyPrice",
+      },
+      {
+        title: "매출단가",
+        dataIndex: "sellPrice",
+      },
+    ],
   },
 
   // 사원 대장

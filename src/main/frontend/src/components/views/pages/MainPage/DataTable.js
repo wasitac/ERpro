@@ -7,6 +7,8 @@ import menus from "../../commons/menus";
 import fetchApi from "../../../../modules/api";
 import CustomModal from "../../commons/Modal/CustomModal";
 
+import dayjs from 'dayjs';
+
 const onChange = (filters, sorter, extra) => {
   console.log("params", filters, sorter, extra);
 };
@@ -44,7 +46,11 @@ const DataTable = (props) => {
             "Content-Type": "application/json", // 요청 본문의 데이터 타입 설정
           },
         });
-        setData(response.data.data);
+        if (response.data?.message) {
+          fetchData();
+        } else {
+          alert("삭제에 실패하였습니다. 다시 시도해주세요.");
+        }
       } catch (error) {
         console.error("Error delete data", error);
       }
@@ -73,6 +79,13 @@ const DataTable = (props) => {
   const handleEdit = async (dataId) => {
     try {
       const response = await fetchApi.get(`/${props.keyOfmenu}/${dataId}`);
+
+      if(`${props.keyOfmenu} == 'user'`) {
+        response.data.data.birth = dayjs(response.data.data.birth);
+        response.data.data.insertDate = dayjs(response.data.data.insertDate);
+        response.data.data.retireDate = response.data.data.retireDate != null ? dayjs(response.data.data.retireDate) : null;
+      }
+
       setSelectDetailData(response.data.data);
       setModalStatus(true);
     } catch (error) {
