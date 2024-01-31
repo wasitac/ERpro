@@ -193,7 +193,7 @@ const menus = {
   },
 
   // 구매/판매 주문서 - 정유진
-  order: {
+  orders: {
     label: "구매/판매 주문서",
     key: "orders",
     column: [

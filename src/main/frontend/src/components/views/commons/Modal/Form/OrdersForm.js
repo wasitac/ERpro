@@ -1,7 +1,7 @@
 // 정유진
-import { Form, Input, Select, DatePicker, Row, Col } from "antd";
+import { Form, Input, Select, DatePicker } from "antd";
 
-const OrderForm = () => {
+const OrdersForm = () => {
   return (
     <div style={{ display: "flex" }}>
 
@@ -176,4 +176,4 @@ const OrderForm = () => {
   );
 };
 
-export default OrderForm;
+export default OrdersForm;

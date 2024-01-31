@@ -1,8 +1,9 @@
 /**
  * 정유진 
  */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Table } from 'antd';
+import fetchApi from '../../../../modules/api';
 
 const columns = [
   {
@@ -41,6 +42,20 @@ const columns = [
 
 const OrdersPage = () => {
 
+  // 거래처 목록
+  const [ordersList, setOrdersList] = useState([]);
+
+  // 거래처 목록 조회
+  const getOrdersList = async () => {
+    const response = await (await fetchApi.get("/orders")).data;
+    setOrdersList(response.data);
+  };
+
+  // 거래처 목록 조회 실행
+  useEffect(() => {
+    getOrdersList();
+  }, []);
+
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const onSelectChange = (newSelectedRowKeys) => {
     console.log('selectedRowKeys changed: ', newSelectedRowKeys);
@@ -66,7 +81,7 @@ const OrdersPage = () => {
           {hasSelected ? `Selected ${selectedRowKeys.length} items` : ''}
         </span>
       </div>
-      <Table rowSelection={rowSelection} columns={columns} />
+      <Table rowSelection={rowSelection} columns={columns} dataSource={ordersList} />
     </div>
   );
 };
