@@ -260,54 +260,7 @@ const menus = {
       },
     ],
   },
-  storeItem: {
-    label: "입출고 품목 상세",
-    key: "storeItem",
-    column: [
-      {
-        title: "입출고품목번호",
-        dataIndex: "id",
-        defaultSortOrder: "descend",
-        sorter: (a, b) => a.id - b.id,
-      },
-      {
-        title: "입출고번호",
-        dataIndex: "storeId",
-      },
-      {
-        title: "품목번호",
-        dataIndex: "itemId",
-      },
-      {
-        title: "품목명",
-        dataIndex: "itemName",
-      },
-      {
-        title: "단위",
-        dataIndex: "unit",
-      },
-      {
-        title: "규격",
-        dataIndex: "spec",
-      },
-      {
-        title: "수량",
-        dataIndex: "count",
-      },
-      {
-        title: "단가",
-        dataIndex: "price",
-      },
-      {
-        title: "부가세",
-        dataIndex: "vat",
-      },
-      {
-        title: "합계금액",
-        dataIndex: "total",
-      },
-    ],
-  },
+
   // 재고 관리 - 이지홍
   inventory: {
     label: "재고 관리",
@@ -474,6 +427,204 @@ const menus = {
       {
         title: "검수일자",
         dataIndex: "inspectionDate",
+      },
+    ],
+  },
+  orderItem: {
+    label: "주문 품목 상세",
+    key: "estimateItem",
+    column: [
+      {
+        title: "주문품목번호",
+        dataIndex: "id",
+        defaultSortOrder: "descend",
+        sorter: (a, b) => a.id - b.id,
+      },
+      {
+        title: "주문번호",
+        dataIndex: "ordersId",
+      },
+      {
+        title: "구분",
+        dataIndex: "sort",
+      },
+      {
+        title: "품목번호",
+        dataIndex: "itemId",
+      },
+      {
+        title: "품목명",
+        dataIndex: "itemName",
+      },
+      {
+        title: "단위",
+        dataIndex: "unit",
+      },
+      {
+        title: "규격",
+        dataIndex: "spec",
+      },
+      {
+        title: "수량",
+        dataIndex: "count",
+      },
+      {
+        title: "단가",
+        dataIndex: "price",
+      },
+      {
+        title: "부가세",
+        dataIndex: "vat",
+      },
+      {
+        title: "합계금액",
+        dataIndex: "total",
+      },
+    ],
+  },
+  storeItem: {
+    label: "입출고 품목 상세",
+    key: "storeItem",
+    column: [
+      {
+        title: "입출고품목번호",
+        dataIndex: "id",
+        defaultSortOrder: "descend",
+        sorter: (a, b) => a.id - b.id,
+      },
+      {
+        title: "입출고번호",
+        dataIndex: "storeId",
+      },
+      {
+        title: "품목번호",
+        dataIndex: "itemId",
+      },
+      {
+        title: "품목명",
+        dataIndex: "itemName",
+      },
+      {
+        title: "단위",
+        dataIndex: "unit",
+      },
+      {
+        title: "규격",
+        dataIndex: "spec",
+      },
+      {
+        title: "수량",
+        dataIndex: "count",
+      },
+      {
+        title: "단가",
+        dataIndex: "price",
+      },
+      {
+        title: "부가세",
+        dataIndex: "vat",
+      },
+      {
+        title: "합계금액",
+        dataIndex: "total",
+      },
+    ],
+  },
+
+  invoiceItem: {
+    label: "전표 품목 상세",
+    key: "invoiceItem",
+    column: [
+      {
+        title: "전표품목번호",
+        dataIndex: "id",
+        defaultSortOrder: "descend",
+        sorter: (a, b) => a.id - b.id,
+      },
+      {
+        title: "전표번호",
+        dataIndex: "invoice",
+      },
+      {
+        title: "품목번호",
+        dataIndex: "item",
+      },
+      {
+        title: "품목명",
+        dataIndex: "item",
+      },
+      {
+        title: "단위",
+        dataIndex: "unit",
+      },
+      {
+        title: "규격",
+        dataIndex: "spec",
+      },
+      {
+        title: "수량",
+        dataIndex: "count",
+      },
+      {
+        title: "단가",
+        dataIndex: "price",
+      },
+      {
+        title: "부가세",
+        dataIndex: "vat",
+      },
+      {
+        title: "합계금액",
+        dataIndex: "total",
+      },
+    ],
+  },
+
+  estimateItem: {
+    label: "견적 품목 상세",
+    key: "estimateItem",
+    column: [
+      {
+        title: "견적품목번호",
+        dataIndex: "id",
+        defaultSortOrder: "descend",
+        sorter: (a, b) => a.id - b.id,
+      },
+      {
+        title: "견적번호",
+        dataIndex: "estimateId",
+      },
+      {
+        title: "품목번호",
+        dataIndex: "itemId",
+      },
+      {
+        title: "품목명",
+        dataIndex: "itemName",
+      },
+      {
+        title: "단위",
+        dataIndex: "unit",
+      },
+      {
+        title: "규격",
+        dataIndex: "spec",
+      },
+      {
+        title: "수량",
+        dataIndex: "count",
+      },
+      {
+        title: "단가",
+        dataIndex: "price",
+      },
+      {
+        title: "부가세",
+        dataIndex: "vat",
+      },
+      {
+        title: "합계금액",
+        dataIndex: "total",
       },
     ],
   },
