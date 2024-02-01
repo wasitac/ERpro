@@ -36,6 +36,7 @@ const DataTable = (props) => {
     try {
       const response = await fetchApi.get(`/${props.keyOfmenu}`);
       setData(response.data.data);
+      console.log(response.data.data);
     } catch (error) {
       console.error("Error fetching data", error);
     }

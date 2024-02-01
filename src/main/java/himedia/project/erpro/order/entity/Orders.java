@@ -1,7 +1,6 @@
-package himedia.project.erpro.trade.entity;
+package himedia.project.erpro.order.entity;
 
-
-import himedia.project.erpro.member.enums.OrderType;
+import himedia.project.erpro.order.enums.OrdersType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -15,28 +14,21 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Setter
 @Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Orders {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Long accountId;
-	private Long itemId;
-	private Long memberId;
+
+	@Column(name = "b_nm")
+	private String bNm;
 	
-	@Enumerated(EnumType.STRING)
-	private OrderType orderType;
-	private String unit;
-	private String spec;
-	private Integer count;
-	private Integer price;
+	@Column(name = "b_no")
+	private String bNo;
 	
-	@Column(name = "supply_price")
-	private Integer supplyPrice;
-	private Integer vat;
-	private Integer total;
+	@Column(name = "type")
+	private String type;
 	
 	@Column(name = "due_date")
 	private String dueDate;

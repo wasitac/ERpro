@@ -193,31 +193,131 @@ const menus = {
   },
 
   // 구매/판매 주문서 - 정유진
-  order: {
+  orders: {
     label: "구매/판매 주문서",
-    key: "order",
+    key: "orders",
     column: [
       //컬럼들
       {
-        title: "번호",
+        title: "주문번호",
         dataIndex: "id",
         // 정렬
         defaultSortOrder: "descend",
         sorter: (a, b) => a.id - b.id,
       },
+      {
+        title: "거래처명",
+        dataIndex: "bnm",
+      },
+      {
+        title: "사업자 등록번호",
+        dataIndex: "bno",
+      },
+      {
+        title: "유형",
+        dataIndex: "type",
+        filters: [
+          {
+            text: "구매",
+            value: "BUY",
+          },
+          {
+            text: "판매",
+            value: "SELL",
+          },
+        ]
+      },
+      {
+        title: "예정일",
+        dataIndex: "dueDate",
+      },
+      {
+        title: "완료일",
+        dataIndex: "completionDate",
+      },
     ],
   },
 
-  // 견적서
+  // 견적서 - 정유진
   estimate: {
     label: "견적서",
     key: "estimate",
+    column: [
+      {
+        title: "견적번호",
+        dataIndex: "id",
+        defaultSortOrder: "descend",
+        sorter: (a, b) => a.id - b.id,
+      },
+      {
+        title: "거래처번호",
+        dataIndex: "accountId",
+      },
+      {
+        title: "작성일자",
+        dataIndex: "insertDate",
+      },
+      {
+        title: "유효기간",
+        dataIndex: "expirationDate",
+      },
+      {
+        title: "납기일자",
+        dataIndex: "dueDate",
+      },
+      {
+        title: "합계금액",
+        dataIndex: "total",
+      },
+      {
+        title: "주문처리",
+        dataIndex: "isOrder",
+      },
+    ]
   },
 
-  // 매입/매출 전표
+  // 매입/매출 전표 - 정유진
   invoice: {
     label: "매입/매출 전표",
     key: "invoice",
+    column: [
+      {
+        title: "전표번호",
+        dataIndex: "id",
+        defaultSortOrder: "descend",
+        sorter: (a, b) => a.id - b.id,
+      },
+      {
+        title: "입출고번호",
+        dataIndex: "storeid",
+      },
+      {
+        title: "거래구분",
+        dataIndex: "sort",
+        filters: [
+          {
+            text: "구매",
+            value: "buy",
+          },
+          {
+            text: "판매",
+            value: "sell",
+          },
+        ]
+      },
+      {
+        title: "결제방법",
+        dataIndex: "payment",
+      },
+      {
+        title: "비고",
+        dataIndex: "note",
+      },
+      {
+        title: "거래일자",
+        dataIndex: "date",
+      },
+    ]
   },
 
   // 입고/출고 관리 - 이지홍

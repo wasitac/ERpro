@@ -8,9 +8,9 @@ import AccountForm from "./Form/AccountForm";
 import ItemForm from "./Form/ItemForm";
 import BomForm from "./Form/BomForm";
 import MemberForm from "./Form/MemberForm";
-import OrderForm from "./Form/OrderForm";
-// import EstimateForm from "./Form/EstimateForm";
-// import InvoiceForm from "./Form/InvoiceForm";
+import OrdersForm from "./Form/OrdersForm";
+import EstimateForm from "./Form/EstimateForm";
+import InvoiceForm from "./Form/InvoiceForm";
 import StoreForm from "./Form/StoreForm";
 import fetchApi from "../../../../modules/api";
 // import ProductionForm from "./Form/ProductionForm";
@@ -86,20 +86,20 @@ function CustomModal(props) {
       inputForm = <ItemForm />;
       break;
     case "bom":
-      inputForm = <BomForm form={form}/>;
+      inputForm = <BomForm form={form} />;
       break;
     case "member":
-      inputForm = <MemberForm mode={mode}/>;
+      inputForm = <MemberForm mode={mode} />;
       break;
-    case "order":
-      inputForm = <OrderForm />;
+    case "orders":
+      inputForm = <OrdersForm />;
       break;
-    // case "estimate":
-    //   inputForm = <EstimateForm />;
-    //   break;
-    // case "invoice":
-    //   inputForm = <InvoiceForm />;
-    //   break;
+    case "estimate":
+      inputForm = <EstimateForm />;
+      break;
+    case "invoice":
+      inputForm = <InvoiceForm />;
+      break;
     case "store":
       inputForm = <StoreForm />;
       break;
@@ -130,7 +130,7 @@ function CustomModal(props) {
         },
       }}
       onOk={onSubmit}
-      style={{ minWidth: "1000px" }}
+      style={{ minWidth: "1200px" }}
     >
       <Divider />
       <Form

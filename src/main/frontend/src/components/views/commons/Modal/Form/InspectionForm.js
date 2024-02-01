@@ -151,7 +151,7 @@ const StoreForm = () => {
       >
         <Input />
       </Form.Item>
-      <DataTable keyOfmenu="order" />,
+      <DataTable keyOfmenu="orders" />,
     </div>
   );
 };

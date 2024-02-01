@@ -6,7 +6,7 @@ import { Table } from "antd";
 
 const columns = [
   {
-    title: "품목번호",
+    title: "물품번호",
     dataIndex: "itemId",
   },
   {
@@ -14,37 +14,51 @@ const columns = [
     dataIndex: "itemName",
   },
   {
-    title: "단위",
-    dataIndex: "unit",
-  },
-  {
     title: "규격",
     dataIndex: "spec",
+  },
+  {
+    title: "단위",
+    dataIndex: "unit",
   },
   {
     title: "수량",
     dataIndex: "count",
   },
   {
-    title: "매입단가",
+    title: "단가",
+    dataIndex: "price",
+  },
+  {
+    title: "공급가액",
     dataIndex: "supplyPrice",
+  },
+  {
+    title: "부가세액",
+    dataIndex: "vat",
+  },
+  {
+    title: "합계금액",
+    dataIndex: "total",
   },
 ];
 const data = [
   {
     key: "1",
     itemId: "K2301",
-    sort: "제품",
+    sort: "자재",
     itemName: "Gellaxy24",
     unit: "100",
     spec: "9.5",
     count: "1",
-    purchasePrice: "500,000",
-    supplyPrice: "500,000",
+    price: "700,000",
+    supplyPrice: "700,000",
+    vat: "70,000",
+    total: "770,000",
   },
 ];
 
-const OrderAddDataTable = () => (
+const SalesAddDataTable = () => (
   <>
     <div style={{ display: "flex" }}>
       <div style={{ marginRight: "16px" }}>
@@ -61,4 +75,4 @@ const OrderAddDataTable = () => (
     </div>
   </>
 );
-export default OrderAddDataTable;
+export default SalesAddDataTable;

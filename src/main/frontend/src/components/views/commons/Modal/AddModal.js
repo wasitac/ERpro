@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Button, Modal } from "antd";
 import "../../Header/reset.css";
-import OrderAdd from "../../pages/OrderPage/OrderAdd";
-import OrderAddDataTable from "../../pages/OrderPage/OrderAddDataTable";
 
 const AddModal = () => {
   const [loading, setLoading] = useState(false);
@@ -30,7 +28,7 @@ const AddModal = () => {
         title="Title"
         onOk={handleOk}
         onCancel={handleCancel}
-        width={1200}
+        width={2000}
         footer={[
           <Button
             type="primary"
@@ -51,8 +49,7 @@ const AddModal = () => {
           </Button>,
         ]}
       >
-        <OrderAdd />
-        <OrderAddDataTable />
+
       </Modal>
     </>
   );
