@@ -6,7 +6,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Getter
@@ -31,15 +36,16 @@ public class Item {
 	@Column(name = "sell_price")
 	private Integer sellPrice;
 
-	public ItemDto toItemDto() {
-		return ItemDto.builder()
-				.id(id)
-				.sort(sort)
-				.itemName(itemName)
-				.unit(unit)
-				.spec(spec)
-				.buyPrice(buyPrice)
-				.sellPrice(sellPrice)
-				.build();
-	}
+	 public ItemDto toDto() {
+        return ItemDto.builder()
+						.id(this.id)
+						.sort(this.sort)
+						.itemName(this.itemName)
+						.unit(this.unit)
+						.spec(this.spec)
+						.buyPrice(this.buyPrice)
+						.sellPrice(this.sellPrice)
+            .build();
+    }
+
 }

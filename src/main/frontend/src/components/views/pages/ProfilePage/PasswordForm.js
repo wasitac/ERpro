@@ -2,15 +2,29 @@
  * 이지홍
  */
 import { Button, Form, Input } from "antd";
-import axios from "axios";
+import fetchApi from "../../../../modules/api";
+import { useNavigate } from "react-router-dom";
 
 const onFinish = async (values) => {
   console.log("sucsses:", values);
   try {
-    const response = await axios.put("/password", values);
-    console.log("PUT request successful", response.data);
+    const response = await fetchApi.put("/password", values);
+    console.log("PUT request successful", response);
+
+    if (response.data.message !== null) {
+      // 성공적인 응답의 경우
+      console.log("Success message:", response.data.message);
+      alert(response.data.message);
+      window.location.href = "/";
+    } else {
+      // 에러 응답의 경우
+      console.error("Error message:", response.data.errorMessage);
+      alert(response.data.errorMessage);
+    }
   } catch (error) {
     console.error("Error making PUT request", error);
+    // 네트워크 에러 등 예외 처리
+    alert("Error making PUT request");
   }
 };
 
@@ -48,7 +62,16 @@ const PasswordForm = () => {
         <Input.Password />
       </Form.Item>
 
-      <Form.Item label="new Password" name="newPassword">
+      <Form.Item
+        label="new Password"
+        name="newPassword"
+        rules={[
+          {
+            required: true,
+            message: "Please input your password!",
+          },
+        ]}
+      >
         <Input.Password />
       </Form.Item>
 

@@ -1,7 +1,8 @@
 package himedia.project.erpro.inventory.dto;
 
-import java.time.LocalDate;
+import java.util.Date;
 
+import himedia.project.erpro.inventory.entity.Store;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,17 +16,19 @@ import lombok.Setter;
 @NoArgsConstructor
 public class StoreDto {
 	private Long id;
-	private Long accountId;
-	private Long orderId;
 	private String storeSort;
-	private Long itemId;
-	private String itemName;
-	private String unit;
-	private String spec;
-	private Integer count;
-	private Integer price;
-	private Integer supplyPrice;
-	private Integer vat;
-	private Integer total;
-	private LocalDate storeDate;
+	private String bNm;
+	private Long orderId;
+	private Date storeDate;
+	
+	public Store toEntity() {
+		return Store.builder()
+				.id(this.id)
+				.storeSort(this.storeSort)
+				.bNm(this.bNm)
+				.orderId(this.orderId)
+				.storeDate(this.storeDate)
+				.build();
+	}
+	
 }

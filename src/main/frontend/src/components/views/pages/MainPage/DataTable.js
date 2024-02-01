@@ -7,7 +7,7 @@ import menus from "../../commons/menus";
 import fetchApi from "../../../../modules/api";
 import CustomModal from "../../commons/Modal/CustomModal";
 
-import dayjs from 'dayjs';
+import dayjs from "dayjs";
 
 const onChange = (filters, sorter, extra) => {
   console.log("params", filters, sorter, extra);
@@ -15,11 +15,19 @@ const onChange = (filters, sorter, extra) => {
 const DataTable = (props) => {
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const [data, setData] = useState([]);
+  const [secondTable, setSecondTable] = useState("");
+
+  const [tableHeight, setTableHeight] = useState("70vh");
   const columns = menus[props.keyOfmenu].column.map((item) => {
     return {
       ...item,
       render: (text, record) => (
-        <a onClick={() => handleEdit(record.id)}>{text}</a>
+        <a
+          onDoubleClick={() => handleEdit(record.id)}
+          onClick={() => onClickHandler(record.id)}
+        >
+          {text}
+        </a>
       ),
     };
   });
@@ -28,6 +36,7 @@ const DataTable = (props) => {
     try {
       const response = await fetchApi.get(`/${props.keyOfmenu}`);
       setData(response.data.data);
+      console.log(response.data.data);
     } catch (error) {
       console.error("Error fetching data", error);
     }
@@ -80,10 +89,13 @@ const DataTable = (props) => {
     try {
       const response = await fetchApi.get(`/${props.keyOfmenu}/${dataId}`);
 
-      if(`${props.keyOfmenu} == 'user'`) {
+      if (`${props.keyOfmenu} == 'user'`) {
         response.data.data.birth = dayjs(response.data.data.birth);
         response.data.data.insertDate = dayjs(response.data.data.insertDate);
-        response.data.data.retireDate = response.data.data.retireDate != null ? dayjs(response.data.data.retireDate) : null;
+        response.data.data.retireDate =
+          response.data.data.retireDate != null
+            ? dayjs(response.data.data.retireDate)
+            : null;
       }
 
       setSelectDetailData(response.data.data);
@@ -92,10 +104,36 @@ const DataTable = (props) => {
       console.error("Error put data", error);
     }
   };
+
   // 모달 닫기
   const handleCloseModal = () => {
     setSelectDetailData(null);
     setModalStatus(false);
+  };
+
+  // 로우 클릭 시 상세 테이블 출력 - 이지홍
+  const onClickHandler = async (dataId) => {
+    if (`${props.keyOfmenu}Item` in menus) {
+      try {
+        const response = await fetchApi.get(
+          `/${props.keyOfmenu}Item/${dataId}`
+        );
+        setSecondTable(
+          <Table
+            rowKey="id"
+            size="small"
+            pagination={false}
+            onChange={onChange}
+            columns={menus[`${props.keyOfmenu}Item`].columns}
+            dataSource={response.data.data}
+            scroll={{ y: "30vh" }}
+          />
+        );
+        setTableHeight("40vh");
+      } catch (error) {
+        console.error("Error get data", error);
+      }
+    }
   };
 
   return (
@@ -148,9 +186,9 @@ const DataTable = (props) => {
         onChange={onChange}
         columns={columns}
         dataSource={data}
-        scroll={{ y: `calc(40vh - 32px)` }}
+        scroll={{ y: tableHeight }}
       />
-
+      {secondTable}
       {/*  모달 영역 시작 */}
       <CustomModal
         keyOfmenu={props.keyOfmenu}

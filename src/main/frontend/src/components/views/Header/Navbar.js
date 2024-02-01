@@ -20,7 +20,7 @@ const items = [
     children: [
       {
         type: "group",
-        children: [menus.account, menus.item, menus.bom, menus.member],
+        children: [menus.account, menus.item, menus.bom, menus.member]
       },
     ],
   },
@@ -31,24 +31,7 @@ const items = [
     children: [
       {
         type: "group",
-        children: [
-          {
-            label: "구매 발주서",
-            key: "buy",
-          },
-          {
-            label: "견적서",
-            key: "estimate",
-          },
-          {
-            label: "판매 주문서",
-            key: "sell",
-          },
-          {
-            label: "매입/매출 전표",
-            key: "invoice",
-          },
-        ],
+        children: [menus.orders, menus.estimate, menus.invoice]
       },
     ],
   },
@@ -59,16 +42,7 @@ const items = [
     children: [
       {
         type: "group",
-        children: [
-          {
-            label: "입고/출고 관리",
-            key: "store",
-          },
-          {
-            label: "재고 관리",
-            key: "inventory",
-          },
-        ],
+        children: [menus.store, menus.inventory]
       },
     ],
   },
@@ -79,16 +53,7 @@ const items = [
     children: [
       {
         type: "group",
-        children: [
-          {
-            label: "생산 지시",
-            key: "production",
-          },
-          {
-            label: "제품 검수",
-            key: "inspection",
-          },
-        ],
+        children: [menus.production, menus.inspection]
       },
     ],
   },

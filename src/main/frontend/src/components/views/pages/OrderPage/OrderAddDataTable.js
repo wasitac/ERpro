@@ -1,34 +1,29 @@
+/**
+ * 정유진 
+ */
 import React from "react";
 import { Table } from "antd";
 
 const columns = [
   {
-    title: "주문ID",
-    dataIndex: "id",
-  },
-  {
-    title: "구분",
-    dataIndex: "type",
-  },
-  {
-    title: "거래처ID",
-    dataIndex: "accountId",
+    title: "물품번호",
+    dataIndex: "itemId",
   },
   {
     title: "품목명",
     dataIndex: "itemName",
   },
   {
-    title: "단위",
-    dataIndex: "bNm",
+    title: "규격",
+    dataIndex: "spec",
   },
   {
-    title: "규격",
-    dataIndex: "pNm",
+    title: "단위",
+    dataIndex: "unit",
   },
   {
     title: "수량",
-    dataIndex: "bNo",
+    dataIndex: "count",
   },
   {
     title: "단가",
@@ -36,29 +31,25 @@ const columns = [
   },
   {
     title: "공급가액",
-    dataIndex: "provisionPrice",
+    dataIndex: "supplyPrice",
   },
   {
-    title: "부가세",
-    dataIndex: "vat",
-  },
-  {
-    title: "합계",
-    dataIndex: "bAdr",
+    title: "합계금액",
+    dataIndex: "total",
   },
 ];
 const data = [
   {
     key: "1",
-    id: "John Brown",
-    productName: "Hey",
-    size: "9.5",
-    measure: "예제",
-    quantity: "100",
-    salesPrice: "50000",
-    provisionPrice: "20000",
-    tax: "5000",
-    total: "",
+    itemId: "K2301",
+    sort: "자재",
+    itemName: "Gellaxy24",
+    unit: "100",
+    spec: "9.5",
+    count: "1",
+    price: "500,000",
+    supplyPrice: "500,000",
+    total: "500,000"
   },
 ];
 
