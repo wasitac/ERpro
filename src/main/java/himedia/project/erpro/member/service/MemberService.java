@@ -3,8 +3,10 @@ package himedia.project.erpro.member.service;
 import java.util.List;
 import java.util.Optional;
 
+import himedia.project.erpro.email.dto.EmailDto;
+import himedia.project.erpro.email.service.EmailService;
+import jakarta.mail.MessagingException;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.BeanUtils;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,7 @@ import himedia.project.erpro.member.entity.Member;
 import himedia.project.erpro.member.repository.MemberRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.thymeleaf.context.Context;
 
 @Service
 @RequiredArgsConstructor
@@ -21,6 +24,7 @@ public class MemberService {
 	private final MemberRepository memberRepository;
 	private final ModelMapper modelMapper;
 	private final BCryptPasswordEncoder bCryptPasswordEncoder;
+	private final EmailService emailService;
 
 	// 사원목록 조회 - 김주원
 	public List<Member> getMemberAll() {
@@ -46,9 +50,25 @@ public class MemberService {
 		}
 
 		member.setPassword(bCryptPasswordEncoder.encode(password));
-		memberRepository.save(member);
+		Member saveMember = memberRepository.save(member);
 
-		return "success";
+		try {
+			// 생성된 ID, PW 메일발송
+			EmailDto emailDto = new EmailDto();
+			emailDto.setMailAddr(email);
+			emailDto.setMailTitle("ERPRO 사원이 등록 되셨습니다.");
+			emailDto.setTemplateFile("member");
+			Context context = new Context();
+			context.setVariable("memberId", saveMember.getId() );
+			context.setVariable("password", password );
+
+			emailDto.setContext(context);
+			emailService.sendMailTemplate(emailDto);
+
+			return "success";
+		} catch (MessagingException e) {
+			return e.getMessage();
+		}
 	}
 	
 	// 사원 대장 수정
