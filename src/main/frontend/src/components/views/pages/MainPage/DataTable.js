@@ -15,13 +15,16 @@ const onChange = (filters, sorter, extra) => {
 const DataTable = (props) => {
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const [data, setData] = useState([]);
+  const [secondTable, setSecondTable] = useState("");
+
+  const [tableHeight, setTableHeight] = useState("70vh");
   const columns = menus[props.keyOfmenu].column.map((item) => {
     return {
       ...item,
       render: (text, record) => (
         <a
           onDoubleClick={() => handleEdit(record.id)}
-          onClick={() => secondTable(record.id)}
+          onClick={() => onClickHandler(record.id)}
         >
           {text}
         </a>
@@ -108,21 +111,29 @@ const DataTable = (props) => {
   };
 
   // 로우 클릭 시 상세 테이블 출력 - 이지홍
-  const secondTable = async (dataId) => {
-    try {
-      if (`${props.keyOfmenu}Item` in menus) {
+  const onClickHandler = async (dataId) => {
+    if (`${props.keyOfmenu}Item` in menus) {
+      try {
         const response = await fetchApi.get(
           `/${props.keyOfmenu}Item/${dataId}`
         );
-
-        setSelectDetailData(selectDetailData);
-        setModalStatus(true);
+        setSecondTable(
+          <Table
+            rowKey="id"
+            size="small"
+            pagination={false}
+            onChange={onChange}
+            columns={menus[`${props.keyOfmenu}Item`].columns}
+            dataSource={response.data.data}
+            scroll={{ y: "30vh" }}
+          />
+        );
+        setTableHeight("40vh");
+      } catch (error) {
+        console.error("Error get data", error);
       }
-    } catch (error) {
-      console.error("Error put data", error);
     }
   };
-  const tableHeight = `calc(40vh - 32px)`;
 
   return (
     <div>
@@ -176,17 +187,7 @@ const DataTable = (props) => {
         dataSource={data}
         scroll={{ y: tableHeight }}
       />
-      <Table
-        rowSelection={rowSelection}
-        rowKey="id"
-        size="small"
-        pagination={false}
-        onChange={onChange}
-        columns={columns}
-        dataSource={data}
-        scroll={{ y: tableHeight }}
-      />
-
+      {secondTable}
       {/*  모달 영역 시작 */}
       <CustomModal
         keyOfmenu={props.keyOfmenu}
