@@ -20,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 public class OrdersController {
 	private final OrdersService ordersService;
 	
+	// 구매/판매 목록
 	@GetMapping("/orders")
 	public ResponseEntity<Message> orders() {
 		List<OrdersDto> dataList = ordersService.getOrdersAll();
@@ -27,10 +28,11 @@ public class OrdersController {
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
-//	@GetMapping("/orders/{id}")
-//	public ResponseEntity<Message> detatilOrders(@PathVariable(value="id") Long id) {
-//		Optional<OrdersDto> data = ordersService.getOrdersById(id);
-//		Message returnData = new Message("", data);
-//		return new ResponseEntity<>(returnData, HttpStatus.OK);
-//	}
+	//구매/판매 상세 조회
+	@GetMapping("/orders/{id}")
+	public ResponseEntity<Message> detatilOrders(@PathVariable(value="id") Long id) {
+		Optional<OrdersDto> data = ordersService.getOrdersById(id);
+		Message returnData = new Message("", data);
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
+	}
 }

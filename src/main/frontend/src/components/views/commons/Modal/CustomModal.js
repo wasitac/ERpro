@@ -94,10 +94,10 @@ function CustomModal(props) {
     case "orders":
       inputForm = <OrdersForm />;
       break;
-    case "Estimate":
+    case "estimate":
       inputForm = <EstimateForm />;
       break;
-    case "Invoice":
+    case "invoice":
       inputForm = <InvoiceForm />;
       break;
     case "store":

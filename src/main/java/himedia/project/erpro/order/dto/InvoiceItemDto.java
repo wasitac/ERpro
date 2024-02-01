@@ -4,16 +4,18 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class InvoiceItemDto {
 	private Long id;
-	private Long invoiceid;
-	private Long itemid;
-	private String itemname;
+	private Long invoiceId;
+	private Long itemId;
+	private String itemName;
 	private String unit;
 	private String spec;
 	private Integer count;

@@ -1,6 +1,6 @@
 package himedia.project.erpro.order.entity;
 
-import himedia.project.erpro.member.enums.OrdersType;
+import himedia.project.erpro.order.enums.OrdersType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,33 +22,33 @@ public class OrdersItem {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column
+	@Column(name = "orders_Id")
 	private Long ordersId;
 	
-	@Column
+	@Column(name = "sort")
 	private OrdersType sort;
 	
-	@Column
+	@Column(name = "item_id")
 	private Long itemId;
 	
-	@Column
+	@Column(name = "item_name")
 	private String itemName;
 	
-	@Column
+	@Column(name = "unit")
 	private String unit;
 	
-	@Column
+	@Column(name = "spec")
 	private String spec;
 	
-	@Column
+	@Column(name = "count")
 	private Integer count;
 	
-	@Column
+	@Column(name = "price")
 	private Integer price;
 	
-	@Column
+	@Column(name = "vat")
 	private Integer vat;
 	
-	@Column
+	@Column(name = "total")
 	private Integer total;
 }

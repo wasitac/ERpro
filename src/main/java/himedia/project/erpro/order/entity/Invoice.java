@@ -1,8 +1,7 @@
 package himedia.project.erpro.order.entity;
 
-import java.time.LocalDate;
+import java.util.Date;
 
-import himedia.project.erpro.member.enums.SortType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,10 +22,10 @@ public class Invoice {
 	private Long id;
 
 	@Column(name = "store_id")
-	private Long storeid;
+	private Long storeId;
 	
 	@Column(name = "sort")
-	private SortType sort;
+	private String sort;
 
 	@Column(name = "payment")
 	private String payment;
@@ -35,6 +34,6 @@ public class Invoice {
 	private String dueDate;
 	
 	@Column(name = "date")
-	private LocalDate date;
+	private Date date;
 
 }

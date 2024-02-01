@@ -1,9 +1,10 @@
 // 정유진
 import { Form, Input, Select, DatePicker } from "antd";
+
 const EstimateForm = () => {
   return (
     <div>
-      <div style={{ width: "48%" }}>
+      <div>
         <Form.Item
           label="견적번호"
           name="id"
@@ -31,12 +32,24 @@ const EstimateForm = () => {
         <Form.Item
           label="작성일자"
           name="insertDate"
+          rules={[
+            {
+              required: true,
+              message: "작성일자를 입력해주세요",
+            },
+          ]}
         >
           <DatePicker />
         </Form.Item>
         <Form.Item
           label="유효기간"
           name="expiration"
+          rules={[
+            {
+              required: true,
+              message: "유효기간을 입력해주세요",
+            },
+          ]}
         >
           <DatePicker />
         </Form.Item>

@@ -2,7 +2,6 @@ package himedia.project.erpro.order.entity;
 
 import java.time.LocalDate;
 
-import himedia.project.erpro.member.enums.OrdersType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

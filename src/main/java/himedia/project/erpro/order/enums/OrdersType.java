@@ -1,4 +1,4 @@
-package himedia.project.erpro.member.enums;
+package himedia.project.erpro.order.enums;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

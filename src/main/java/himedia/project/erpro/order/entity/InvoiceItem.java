@@ -19,13 +19,13 @@ public class InvoiceItem {
 	private Long id;
 
 	@Column(name = "invoice_id")
-	private Long invoiceid;
+	private Long invoiceId;
 	
 	@Column(name = "item_id")
-	private Long itemid;
+	private Long itemId;
 
 	@Column(name = "item_name")
-	private String itemname;
+	private String itemName;
 	
 	@Column(name = "unit")
 	private String unit;

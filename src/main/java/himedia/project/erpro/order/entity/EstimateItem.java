@@ -1,6 +1,5 @@
 package himedia.project.erpro.order.entity;
 
-import himedia.project.erpro.member.enums.OrdersType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,13 +19,13 @@ public class EstimateItem {
 	private Long id;
 
 	@Column(name = "estimate_id")
-	private Long estimateid;
+	private Long estimateId;
 	
 	@Column(name = "item_id")
-	private Long itemid;
+	private Long itemId;
 
 	@Column(name = "item_name")
-	private String itemname;
+	private String itemName;
 	
 	@Column(name = "unit")
 	private Integer unit;

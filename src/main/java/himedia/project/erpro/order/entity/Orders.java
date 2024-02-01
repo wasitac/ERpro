@@ -1,6 +1,6 @@
 package himedia.project.erpro.order.entity;
 
-import himedia.project.erpro.member.enums.OrdersType;
+import himedia.project.erpro.order.enums.OrdersType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -15,7 +15,6 @@ import lombok.Setter;
 
 @Entity
 @Getter
-@Setter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Orders {
 	@Id
@@ -23,17 +22,17 @@ public class Orders {
 	private Long id;
 
 	@Column(name = "b_nm")
-	private String bnm;
+	private String bNm;
 	
 	@Column(name = "b_no")
-	private String bNno;
-
+	private String bNo;
+	
 	@Column(name = "type")
-	private OrdersType type;
+	private String type;
 	
 	@Column(name = "due_date")
-	private String duedate;
+	private String dueDate;
 	
 	@Column(name = "completion_date")
-	private String completiondate;
+	private String completionDate;
 }

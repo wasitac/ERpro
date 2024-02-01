@@ -251,19 +251,19 @@ const menus = {
       },
       {
         title: "거래처번호",
-        dataIndex: "accountid",
+        dataIndex: "accountId",
       },
       {
         title: "작성일자",
-        dataIndex: "insertdate",
+        dataIndex: "insertDate",
       },
       {
         title: "유효기간",
-        dataIndex: "expirationdate",
+        dataIndex: "expirationDate",
       },
       {
         title: "납기일자",
-        dataIndex: "duedate",
+        dataIndex: "dueDate",
       },
       {
         title: "합계금액",
@@ -271,7 +271,7 @@ const menus = {
       },
       {
         title: "주문처리",
-        dataIndex: "isorder",
+        dataIndex: "isOrder",
       },
     ]
   },

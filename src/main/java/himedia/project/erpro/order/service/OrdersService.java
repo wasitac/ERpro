@@ -23,9 +23,9 @@ public class OrdersService {
 		return ordersDtoList;
 	}
 	
-//	public Optional<OrdersDto> getOrdersById(Long id){
-//		Optional<Orders> ordersId = ordersRepository.findById(id);
-//		Optional<OrdersDto> ordersDtoId = mapper.toDto(ordersId, OrdersDto.class);
-//		return ordersDtoId;
-//	}
+	public Optional<OrdersDto> getOrdersById(Long id){
+		Optional<Orders> ordersId = ordersRepository.findById(id);
+		Optional<OrdersDto> ordersDtoId = mapper.toDto(ordersId, OrdersDto.class);
+		return ordersDtoId;
+	}
 }
