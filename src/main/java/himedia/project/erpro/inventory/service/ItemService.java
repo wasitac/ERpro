@@ -25,7 +25,7 @@ public class ItemService {
 		List<Item> itemList = itemRepository.findAll();
 
 		List<ItemDto> itemDtoList = itemList.stream()
-				.map(Item::toItemDto)
+				.map(Item::toDto)
 				.collect(Collectors.toList());
 
 		return itemDtoList;
@@ -36,7 +36,7 @@ public class ItemService {
 		Item item = itemRepository.findById(itemId)
 				.orElseThrow(() -> new EntityNotFoundException("Item not found with ID: " + itemId));
 
-		ItemDto itemDto = item.toItemDto();
+		ItemDto itemDto = item.toDto();
 
 		return itemDto;
 	}
@@ -46,7 +46,7 @@ public class ItemService {
 		Item item = itemDto.toEntity();
 		Item saveItem = itemRepository.save(item);
 
-		return saveItem.toItemDto();
+		return saveItem.toDto();
 	}
 
 	// 물품 수정 - 김주원
@@ -57,7 +57,7 @@ public class ItemService {
 		
 		if(existItem.isPresent()) {
 			Item updateItem = itemRepository.save(item);
-			return updateItem.toItemDto();
+			return updateItem.toDto();
 		} else {
 			return null;
 		}
