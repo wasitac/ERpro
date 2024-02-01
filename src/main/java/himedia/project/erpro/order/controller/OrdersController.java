@@ -31,7 +31,7 @@ public class OrdersController {
 	//구매/판매 상세 조회
 	@GetMapping("/orders/{id}")
 	public ResponseEntity<Message> detatilOrders(@PathVariable(value="id") Long id) {
-		Optional<OrdersDto> data = ordersService.getOrdersById(id);
+		OrdersDto data = ordersService.getOrdersById(id);
 		Message returnData = new Message("", data);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}

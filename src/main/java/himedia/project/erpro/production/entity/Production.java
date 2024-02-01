@@ -2,7 +2,7 @@ package himedia.project.erpro.production.entity;
 
 import java.util.Date;
 
-import himedia.project.erpro.trade.entity.Account;
+import himedia.project.erpro.production.dto.ProductionDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

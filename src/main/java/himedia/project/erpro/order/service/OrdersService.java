@@ -9,6 +9,7 @@ import himedia.project.erpro.common.CustomMapper;
 import himedia.project.erpro.order.dto.OrdersDto;
 import himedia.project.erpro.order.entity.Orders;
 import himedia.project.erpro.order.repository.OrdersRepository;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -23,9 +24,10 @@ public class OrdersService {
 		return ordersDtoList;
 	}
 	
-	public Optional<OrdersDto> getOrdersById(Long id){
-		Optional<Orders> ordersId = ordersRepository.findById(id);
-		Optional<OrdersDto> ordersDtoId = mapper.toDto(ordersId, OrdersDto.class);
+	public OrdersDto getOrdersById(Long id){
+		Orders ordersId = ordersRepository.findById(id)
+				.orElseThrow(()-> new EntityNotFoundException("Orders not found with ordersID : " + id));
+		OrdersDto ordersDtoId = mapper.map(ordersId, OrdersDto.class);
 		return ordersDtoId;
 	}
 }

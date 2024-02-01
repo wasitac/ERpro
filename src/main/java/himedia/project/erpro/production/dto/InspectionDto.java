@@ -1,6 +1,6 @@
 package himedia.project.erpro.production.dto;
 
-import himedia.project.erpro.trade.entity.Account;
+import himedia.project.erpro.production.entity.Inspection;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
