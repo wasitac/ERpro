@@ -21,7 +21,35 @@ public class InspectionController {
 	@GetMapping("/inspection")
 	public ResponseEntity<Message> inspection() {
 		List<InspectionDto> dataList = InspectionService.getInspectionAll();
-		Message returnData = new Message("", dataList);
+		Message returnData = new Message("제품 검수", dataList);
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
+	}
+	
+	@GetMapping("/inspection/{id}")
+	public ResponseEntity<Message> detailInspection(@PathVariable(value="id") Long id) {
+		InspectionDto data = inspectionService.getInspection(id);
+		Message returnData = new Message("제품 검수 상세", data);
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
+	}
+	
+	@PostMapping("/inspection")
+	public ResponseEntity<Message> addInspection(@RequestBody InspectionDto inspectionDto){
+		InspectionDto dataList = inspectionService.createInspection();
+		Message returnData = new Message("제품 검수 추가", dataList);
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
+	}
+	
+	@PutMapping("/inspection")
+	public ResponseEntity<Message> editInspection(@RequestBody InspectionDto inspectionDto){
+		InspectionDto message = inspectionService.updateInspection(inspectionDto);
+		Message returnData = new Message(message);
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
+	}
+	
+	@DeleteMapping("/inspection")
+	public ResponseEntity<Message> deleteInspection(@RequestBody List<Long> idList){
+		boolean result = accountService.deleteInspection(idList);
+		Message returnData = new Message("", result);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 }

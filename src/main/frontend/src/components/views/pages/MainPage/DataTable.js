@@ -34,8 +34,13 @@ const DataTable = (props) => {
   });
 
   const fetchData = async () => {
+    var url = `/${props.keyOfmenu}`;
+    console.log(props.id);
+    if (props.id !== undefined) {
+      url += `/${props.id}`;
+    }
     try {
-      const response = await fetchApi.get(`/${props.keyOfmenu}`);
+      const response = await fetchApi.get(url);
       setData(response.data.data);
     } catch (error) {
       console.error("Error fetching data", error);
@@ -123,6 +128,7 @@ const DataTable = (props) => {
         setSelectedRowKeys([dataId]);
         setSecondTable(
           <div>
+            {/* <DataTable keyOfmenu={`${props.keyOfmenu}Item`} id={dataId} /> */}
             <Tabs
               type="card"
               items={[{ label: "품목 상세", key: 0 }]}
@@ -187,7 +193,6 @@ const DataTable = (props) => {
           </Flex>
         </div>
       </div>
-      {/* todo: 테이블 개수 동적처리 */}
       <Table
         rowSelection={rowSelection}
         rowKey="id"

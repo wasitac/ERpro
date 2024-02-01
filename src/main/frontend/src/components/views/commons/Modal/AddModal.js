@@ -48,9 +48,7 @@ const AddModal = () => {
             저장
           </Button>,
         ]}
-      >
-
-      </Modal>
+      ></Modal>
     </>
   );
 };

@@ -1,5 +1,10 @@
 package himedia.project.erpro.member.service;
 
+import org.apache.commons.lang3.RandomStringUtils;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.thymeleaf.context.Context;
+
 import himedia.project.erpro.email.dto.EmailDto;
 import himedia.project.erpro.email.service.EmailService;
 import himedia.project.erpro.member.entity.Member;
@@ -7,10 +12,6 @@ import himedia.project.erpro.member.repository.MemberRepository;
 import jakarta.mail.MessagingException;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.apache.commons.lang3.RandomStringUtils;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Service;
-import org.thymeleaf.context.Context;
 
 @Service
 @RequiredArgsConstructor

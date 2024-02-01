@@ -20,7 +20,35 @@ public class ProductionController {
 	@GetMapping("/production")
 	public ResponseEntity<Message> production() {
 		List<ProductionDto> dataList = productionService.getProductionAll();
-		Message returnData = new Message("", dataList);
+		Message returnData = new Message("생산지시 목록", dataList);
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
+	}
+	
+	@GetMapping("/production/{id}")
+	public ResponseEntity<Message> detailProduction(@PathVariable(value="id") Long id) {
+		ProductionDto data = productionService.getProduction(id);
+		Message returnData = new Message("생산지시 상세", data);
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
+	}
+	
+	@PostMapping("/production")
+	public ResponseEntity<Message> addProduction(@RequestBody ProductionDto productionDto){
+		ProductionDto dataList = productionService.createProduction();
+		Message returnData = new Message("생산지시 추가", dataList);
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
+	}
+	
+	@PutMapping("/production")
+	public ResponseEntity<Message> editProduction(@RequestBody ProductionDto productionDto){
+		ProductionDto message = productionService.updateProduction(productionDto);
+		Message returnData = new Message(message);
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
+	}
+	
+	@DeleteMapping("/production")
+	public ResponseEntity<Message> deleteProduction(@RequestBody List<Long> idList){
+		boolean result = accountService.deleteProduction(idList);
+		Message returnData = new Message("", result);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 }

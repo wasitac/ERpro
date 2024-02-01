@@ -1,57 +1,32 @@
-import { DatePicker, Form, Input, Radio, Select } from "antd";
-const ProductionForm = () => {
-
+import { Form, Input, Radio } from "antd";
+const StoreItemForm = () => {
   return (
     <div>
       <Form.Item name="id" noStyle>
         <Input type="hidden" />
       </Form.Item>
-      <Form.Item label="지시 일자" name="productionDate">
-        <DatePicker></DatePicker>
+      <Form.Item name="storeId" noStyle>
+        <Input type="hidden" />
       </Form.Item>
       <Form.Item
-        label="주문처"
-        name="accountName"
-        rules={[
-          {
-            required: true,
-            message: "거래처명을 입력해주세요",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        label="주문번호"
-        name="orderId"
-        rules={[
-          {
-            required: true,
-            message: "주문번호를 입력해주세요",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        label="물품번호"
+        label="품목번호"
         name="itemId"
         rules={[
           {
             required: true,
-            message: "물품번호를 입력해주세요",
+            message: "품목번호를 입력해주세요",
           },
         ]}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        label="물품명"
+        label="품목명"
         name="itemName"
         rules={[
           {
             required: true,
-            message: "물품명을 입력해주세요",
+            message: "품목명을 입력해주세요",
           },
         ]}
       >
@@ -63,7 +38,7 @@ const ProductionForm = () => {
         rules={[
           {
             required: true,
-            message: "단위를 입력해주세요",
+            message: "주문번호를 입력해주세요",
           },
         ]}
       >
@@ -75,31 +50,67 @@ const ProductionForm = () => {
         rules={[
           {
             required: true,
-            message: "규격을 입력해주세요",
+            message: "주문번호를 입력해주세요",
           },
         ]}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        label="생산량"
+        label="수량"
         name="count"
         rules={[
           {
             required: true,
-            message: "생산량을 입력해주세요",
+            message: "수량을 입력해주세요",
           },
         ]}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        label="담당자"
-        name="memberName"
+        label="단가"
+        name="price"
         rules={[
           {
             required: true,
-            message: "담당자명을 입력해주세요",
+            message: "단가를 입력해주세요",
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="공급가"
+        name="supplyPrice"
+        rules={[
+          {
+            required: true,
+            message: "공급가를 입력해주세요",
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="부가세"
+        name="vat"
+        rules={[
+          {
+            required: true,
+            message: "부가세를 입력해주세요",
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="총합"
+        name="total"
+        rules={[
+          {
+            required: true,
+            message: "총합금액을 입력해주세요",
           },
         ]}
       >
@@ -109,4 +120,4 @@ const ProductionForm = () => {
   );
 };
 
-export default ProductionForm;
+export default StoreItemForm;

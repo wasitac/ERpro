@@ -4,7 +4,12 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import himedia.project.erpro.common.Message;
@@ -25,5 +30,31 @@ public class InventoryController {
 		Message returnData = new Message("재고 목록 불러오기", dataList);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
+	@GetMapping("/inventory/{id}")
+	public ResponseEntity<Message> detailInventory(@PathVariable(value="id") Long id) {
+		InventoryDto data = inventoryService.getInventory(id);
+		Message returnData = new Message("입/출고 상세 데이터", data);
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
+	}
 	
+	@PostMapping("/inventory")
+	public ResponseEntity<Message> addInventory(@RequestBody InventoryDto inventoryDto){
+		InventoryDto dataList = inventoryService.createInventory();
+		Message returnData = new Message("입/출고 추가", dataList);
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
+	}
+	
+	@PutMapping("/inventory")
+	public ResponseEntity<Message> editInventory(@RequestBody InventoryDto inventoryDto){
+		InventoryDto message = inventoryService.updateInventory(inventoryDto);
+		Message returnData = new Message(message);
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
+	}
+	
+	@DeleteMapping("/inventory")
+	public ResponseEntity<Message> deleteInventory(@RequestBody List<Long> idList){
+		boolean result = accountService.deleteInventory(idList);
+		Message returnData = new Message("", result);
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
+	}
 }
