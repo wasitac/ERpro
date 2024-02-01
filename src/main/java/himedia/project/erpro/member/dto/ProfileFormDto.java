@@ -1,6 +1,5 @@
 package himedia.project.erpro.member.dto;
 
-import himedia.project.erpro.trade.entity.Account;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

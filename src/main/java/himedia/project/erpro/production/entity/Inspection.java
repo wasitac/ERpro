@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @Builder
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Inspection {
 	@Id
@@ -28,11 +28,11 @@ public class Inspection {
 	@Column(name = "store_id")
 	private Long storeId;
 	
-	@Column(name = "proposer_id")
-	private Long proposerId;
+	@Column(name = "proposer_name")
+	private String proposerName;
 
-	@Column(name = "inspector_id")
-	private Long inspectorId;
+	@Column(name = "inspector_name")
+	private String inspectorName;
 
 	@Column(name = "item_id")
 	private Long itemId;
@@ -40,9 +40,9 @@ public class Inspection {
 	@Column(name = "item_name")
 	private String itemName;
 
-	private Integer unit;
+	private String unit;
 
-	private Integer spec;
+	private String spec;
 
 	private Integer count;
 
@@ -59,8 +59,8 @@ public class Inspection {
         return InspectionDto.builder()
 								.id(this.id)
 								.storeId(this.storeId)
-								.proposerId(this.proposerId)
-								.inspectorId(this.inspectorId)
+								.proposerName(this.proposerName)
+								.inspectorName(this.inspectorName)
 								.itemId(this.itemId)
 								.itemName(this.itemName)
 								.unit(this.unit)

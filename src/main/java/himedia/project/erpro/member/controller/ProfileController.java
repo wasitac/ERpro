@@ -16,9 +16,9 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequiredArgsConstructor
 public class ProfileController {
-	
+
 	private final ProfileService profileService;
-	
+
 	// 회원정보 수정폼 - 이지홍
 	@GetMapping("/profile")
 	public ResponseEntity<Message> profile() {
@@ -30,14 +30,15 @@ public class ProfileController {
 
 	// 회원정보 수정 - 이지홍
 	@PutMapping("/profile")
-	public String putProfile(@RequestBody ProfileFormDto profile) {
-		profileService.updateProfile(profile);
-		return "/";
+	public ResponseEntity<Message> putProfile(@RequestBody ProfileFormDto profile) {
+		Message message = profileService.updateProfile(profile);
+		return new ResponseEntity<>(message, HttpStatus.OK);
 	}
 
 	// 비밀번호 수정 - 이지홍
 	@PutMapping("/password")
 	public ResponseEntity<Message> putPassword(@RequestBody PasswordFormDto password) {
-		return profileService.updatePassword(password);
+		Message message = profileService.updatePassword(password);
+		return new ResponseEntity<>(message, HttpStatus.OK); 
 	}
 }
