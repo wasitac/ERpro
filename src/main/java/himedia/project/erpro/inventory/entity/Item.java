@@ -15,9 +15,8 @@ import lombok.Setter;
 
 @Entity
 @Getter
-@Setter
 @Builder
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Item {
 	@Id
@@ -48,4 +47,5 @@ public class Item {
 						.sellPrice(this.sellPrice)
             .build();
     }
+
 }

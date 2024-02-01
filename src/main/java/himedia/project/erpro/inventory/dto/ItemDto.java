@@ -1,14 +1,16 @@
 package himedia.project.erpro.inventory.dto;
 
 import himedia.project.erpro.inventory.entity.Item;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+
+import lombok.*;
 
 @Getter
 @Setter
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class ItemDto {
+
 	private Long id;
 	private String sort;
 	private String itemName;
@@ -19,13 +21,13 @@ public class ItemDto {
 
 	public Item toEntity() {
 		return Item.builder()
-				.id(this.id)
-				.sort(this.sort)
-				.itemName(this.itemName)
-				.unit(this.unit)
-				.spec(this.spec)
-				.buyPrice(this.buyPrice)
-				.sellPrice(this.sellPrice)
+				.id(id)
+				.sort(sort)
+				.itemName(itemName)
+				.unit(unit)
+				.spec(spec)
+				.buyPrice(buyPrice)
+				.sellPrice(sellPrice)
 				.build();
 	}
 }
