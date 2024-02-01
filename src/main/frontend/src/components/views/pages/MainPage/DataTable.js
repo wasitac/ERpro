@@ -84,23 +84,23 @@ const DataTable = (props) => {
   const handleEdit = async (dataId) => {
     try {
       const response = await fetchApi.get(`/${props.keyOfmenu}/${dataId}`);
-      const regex = /\d{4}-\d{2}-\d{2}/;
-      var detailData = response.data.data;
-      const keys = Object.keys(detailData);
-      const entries = Object.entries(detailData);
 
-      for (var i = 0; i < keys.length; i++) {
-        if (regex.test(entries[i])) {
-          detailData[keys[i]] = dayjs(entries[i]);
-        }
+      if (`${props.keyOfmenu} == 'user'`) {
+        response.data.data.birth = dayjs(response.data.data.birth);
+        response.data.data.insertDate = dayjs(response.data.data.insertDate);
+        response.data.data.retireDate =
+          response.data.data.retireDate != null
+            ? dayjs(response.data.data.retireDate)
+            : null;
       }
 
-      setSelectDetailData(selectDetailData);
+      setSelectDetailData(response.data.data);
       setModalStatus(true);
     } catch (error) {
       console.error("Error put data", error);
     }
   };
+
   // 모달 닫기
   const handleCloseModal = () => {
     setSelectDetailData(null);
@@ -111,7 +111,9 @@ const DataTable = (props) => {
   const secondTable = async (dataId) => {
     try {
       if (`${props.keyOfmenu}Item` in menus) {
-        const response = await fetchApi.get(`/${props.keyOfmenu}Item/${dataId}`);
+        const response = await fetchApi.get(
+          `/${props.keyOfmenu}Item/${dataId}`
+        );
 
         setSelectDetailData(selectDetailData);
         setModalStatus(true);
