@@ -71,7 +71,6 @@ const AccountForm = () => {
             <Radio.Group value="매출처">
               <Radio value="매출처">매출처</Radio>
               <Radio value="매입처">매입처</Radio>
-              <Radio value="혼합">혼합</Radio>
             </Radio.Group>
           </Form.Item>
           <Form.Item
