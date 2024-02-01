@@ -2,7 +2,7 @@
  * 이지홍
  */
 import React, { useState, useEffect } from "react";
-import { Table, Button, Flex } from "antd";
+import { Table, Button, Flex, Divider, Tabs } from "antd";
 import menus from "../../commons/menus";
 import fetchApi from "../../../../modules/api";
 import CustomModal from "../../commons/Modal/CustomModal";
@@ -120,21 +120,26 @@ const DataTable = (props) => {
         const response = await fetchApi.get(
           `/${props.keyOfmenu}Item/${dataId}`
         );
+        setSelectedRowKeys([dataId]);
         setSecondTable(
-          <TableTabs keyOfmenu={`${props.keyOfmenu}Item`} />
-          // <Table
-          //   rowKey="id"
-          //   size="small"
-          //   pagination={false}
-          //   onChange={onChange}
-          //   columns={menus[menu].column}
-          //   dataSource={response.data.data}
-          //   scroll={{ y: "30vh" }}
-          // />
+          <div>
+            <Tabs
+              type="card"
+              items={[{ label: "품목 상세", key: 0 }]}
+              style={{ marginLeft: "20px" }}
+            />
+            <Table
+              rowKey="id"
+              size="small"
+              pagination={false}
+              onChange={onChange}
+              columns={menus[menu].column}
+              dataSource={response.data.data}
+              scroll={{ y: "25vh" }}
+            />
+          </div>
         );
-        console.log(menus[menu].columns);
-        console.log(response.data.data);
-        setTableHeight("40vh");
+        setTableHeight("35vh");
       } catch (error) {
         console.error("Error get data", error);
       }
@@ -192,6 +197,7 @@ const DataTable = (props) => {
         columns={columns}
         dataSource={data}
         scroll={{ y: tableHeight }}
+        style={{ marginBottom: "30px" }}
       />
       {secondTable}
       {/*  모달 영역 시작 */}

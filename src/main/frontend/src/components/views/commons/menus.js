@@ -225,7 +225,7 @@ const menus = {
             text: "판매",
             value: "SELL",
           },
-        ]
+        ],
       },
       {
         title: "예정일",
@@ -273,7 +273,7 @@ const menus = {
         title: "주문처리",
         dataIndex: "isOrder",
       },
-    ]
+    ],
   },
 
   // 매입/매출 전표 - 정유진
@@ -303,7 +303,7 @@ const menus = {
             text: "판매",
             value: "sell",
           },
-        ]
+        ],
       },
       {
         title: "결제방법",
@@ -317,7 +317,7 @@ const menus = {
         title: "거래일자",
         dataIndex: "date",
       },
-    ]
+    ],
   },
 
   // 입고/출고 관리 - 이지홍
@@ -535,7 +535,7 @@ const menus = {
     key: "estimateItem",
     column: [
       {
-        title: "주문품목번호",
+        title: "품목번호",
         dataIndex: "id",
         defaultSortOrder: "descend",
         sorter: (a, b) => a.id - b.id,
@@ -587,7 +587,7 @@ const menus = {
     key: "storeItem",
     column: [
       {
-        title: "입출고품목번호",
+        title: "품목번호",
         dataIndex: "id",
         defaultSortOrder: "descend",
         sorter: (a, b) => a.id - b.id,
@@ -636,7 +636,7 @@ const menus = {
     key: "invoiceItem",
     column: [
       {
-        title: "전표품목번호",
+        title: "품목번호",
         dataIndex: "id",
         defaultSortOrder: "descend",
         sorter: (a, b) => a.id - b.id,
@@ -685,7 +685,7 @@ const menus = {
     key: "estimateItem",
     column: [
       {
-        title: "견적품목번호",
+        title: "품목번호",
         dataIndex: "id",
         defaultSortOrder: "descend",
         sorter: (a, b) => a.id - b.id,

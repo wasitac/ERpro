@@ -14,7 +14,10 @@ const onFinish = async (values) => {
   try {
     const response = await fetchApi.put("/profile", values);
     console.log("PUT request successful", response.data);
+    alert("내 정보 변경에 성공했습니다");
+    window.location.href = "/";
   } catch (error) {
+    alert("내 정보 변경에 실패했습니다");
     console.error("Error making PUT request", error);
   }
 };
@@ -28,8 +31,10 @@ const ProfileForm = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetchApi.get(`/profile`);
-        setData(response.data);
+        const response = await fetchApi.get(
+          `/member/${localStorage.getItem("memberId")}`
+        );
+        setData(response.data.data);
       } catch (error) {
         console.error("Error fetching data", error);
       }
@@ -42,14 +47,14 @@ const ProfileForm = () => {
   useEffect(() => {
     if (Object.keys(data).length > 0) {
       form.setFieldsValue({
-        name: localStorage.getItem("name"),
-        id: localStorage.getItem("memberId"),
-        // birth: localStorage.getItem("birth"),
-        phone: localStorage.getItem("phone"),
-        email: localStorage.getItem("email"),
-        department: localStorage.getItem("department"),
-        rank: localStorage.getItem("rank"),
-        // insertDate: localStorage.getItem("insertDate"),
+        name: data.name,
+        id: data.id,
+        birth: dayjs(data.birth),
+        phone: data.phone,
+        email: data.email,
+        department: data.department,
+        memberRank: data.memberRank,
+        insertDate: dayjs(data.insertDate),
       });
     }
   }, [data]);
@@ -123,7 +128,7 @@ const ProfileForm = () => {
         <Input disabled />
       </Form.Item>
 
-      <Form.Item label="직책" name="rank">
+      <Form.Item label="직책" name="memberRank">
         <Input disabled />
       </Form.Item>
 

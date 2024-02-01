@@ -32,14 +32,13 @@ public class Message <T>{
     this.message = null;
   }
   
-  public Message(String errorMessage)
+  public Message(String message)
   {
-	this.errorMessage = errorMessage;
+	this.message = message;
   }
   
   public Message(String message, T data)
   {
-	
     this.message = message;
     this.data = data;
   }
