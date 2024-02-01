@@ -6,6 +6,7 @@ import java.util.Optional;
 import himedia.project.erpro.email.dto.EmailDto;
 import himedia.project.erpro.email.service.EmailService;
 import jakarta.mail.MessagingException;
+import jakarta.transaction.Transactional;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,7 @@ import lombok.RequiredArgsConstructor;
 import org.thymeleaf.context.Context;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class MemberService {
 	private final MemberRepository memberRepository;
