@@ -5,7 +5,7 @@ const menus = {
     key: "account",
     column: [
       {
-        title: "코드",
+        title: "번호",
         dataIndex: "id",
         // 정렬
         defaultSortOrder: "ascend",
@@ -199,7 +199,7 @@ const menus = {
     column: [
       //컬럼들
       {
-        title: "코드",
+        title: "번호",
         dataIndex: "id",
         // 정렬
         defaultSortOrder: "descend",
@@ -226,8 +226,10 @@ const menus = {
     key: "store",
     column: [
       {
-        title: "입출고 일자",
-        dataIndex: "storeDate",
+        title: "입출고 번호",
+        dataIndex: "id",
+        defaultSortOrder: "descend",
+        sorter: (a, b) => a.id - b.id,
       },
       {
         title: "구분",
@@ -245,26 +247,44 @@ const menus = {
         onFilter: (value, record) => record.sort.indexOf(value) === 0,
       },
       {
-        title: "입출고 번호",
+        title: "거래처 명",
+        dataIndex: "bnm",
+      },
+      {
+        title: "주문 번호",
+        dataIndex: "orderId",
+      },
+      {
+        title: "입출고 일자",
+        dataIndex: "storeDate",
+      },
+    ],
+  },
+  storeItem: {
+    label: "입출고 품목 상세",
+    key: "storeItem",
+    column: [
+      {
+        title: "입출고품목번호",
         dataIndex: "id",
         defaultSortOrder: "descend",
         sorter: (a, b) => a.id - b.id,
       },
       {
-        title: "거래처 코드",
-        dataIndex: "accountId",
+        title: "입출고번호",
+        dataIndex: "storeId",
       },
       {
-        title: "발주 번호",
-        dataIndex: "orderId",
-      },
-      {
-        title: "품목 코드",
+        title: "품목번호",
         dataIndex: "itemId",
       },
       {
         title: "품목명",
         dataIndex: "itemName",
+      },
+      {
+        title: "단위",
+        dataIndex: "unit",
       },
       {
         title: "규격",
@@ -279,11 +299,7 @@ const menus = {
         dataIndex: "price",
       },
       {
-        title: "공급가액",
-        dataIndex: "supplyPrice",
-      },
-      {
-        title: "부가세액",
+        title: "부가세",
         dataIndex: "vat",
       },
       {
@@ -292,20 +308,19 @@ const menus = {
       },
     ],
   },
-
   // 재고 관리 - 이지홍
   inventory: {
     label: "재고 관리",
     key: "inventory",
     column: [
       {
-        title: "재고 코드",
+        title: "재고 번호",
         dataIndex: "id",
         defaultSortOrder: "descend",
         sorter: (a, b) => a.id - b.id,
       },
       {
-        title: "품목 코드",
+        title: "품목 번호",
         dataIndex: "itemId",
       },
       {
@@ -363,19 +378,15 @@ const menus = {
         sorter: (a, b) => a.id - b.id,
       },
       {
+        title: "거래처명",
+        dataIndex: "accountName",
+      },
+      {
         title: "주문 번호",
         dataIndex: "orderId",
       },
       {
-        title: "거래처 코드",
-        dataIndex: "accountId",
-      },
-      {
-        title: "담당자 코드",
-        dataIndex: "memberId",
-      },
-      {
-        title: "물품 코드",
+        title: "물품 번호",
         dataIndex: "itemId",
       },
       {
@@ -393,6 +404,10 @@ const menus = {
       {
         title: "생산량",
         dataIndex: "count",
+      },
+      {
+        title: "담당자 번호",
+        dataIndex: "memberName",
       },
       {
         title: "지시 일자",
@@ -418,14 +433,14 @@ const menus = {
       },
       {
         title: "신청자",
-        dataIndex: "proposerId",
+        dataIndex: "proposerName",
       },
       {
         title: "검수자",
-        dataIndex: "inspectorId",
+        dataIndex: "inspectorName",
       },
       {
-        title: "품목 코드",
+        title: "품목 번호",
         dataIndex: "itemId",
       },
       {

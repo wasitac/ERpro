@@ -2,7 +2,7 @@ package himedia.project.erpro.production.entity;
 
 import java.util.Date;
 
-import himedia.project.erpro.trade.entity.Account;
+import himedia.project.erpro.production.dto.ProductionDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,11 +28,11 @@ public class Production {
 	@Column(name = "order_id")
 	private Long orderId;
 
-	@Column(name = "account_id")
-	private Long accountId;
+	@Column(name = "b_nm")
+	private String accountName;
 
-	@Column(name = "member_id")
-	private Long memberId;
+	@Column(name = "member_name")
+	private String memberName;
 
 	@Column(name = "item_id")
 	private Long itemId;
@@ -52,16 +52,16 @@ public class Production {
 
 	   public ProductionDto toDto() {
         return ProductionDto.builder()
-								.id(this.id)
-								.orderId(this.orderId)
-								.accountId(this.accountId)
-								.memberId(this.memberId)
-								.itemId(this.itemId)
-								.itemName(this.itemName)
-								.unit(this.unit)
-								.spec(this.spec)
-								.count(this.count)
-								.productionDate(this.productionDate)
+				.id(this.id)
+				.orderId(this.orderId)
+				.accountName(this.accountName)
+				.memberName(this.memberName)
+				.itemId(this.itemId)
+				.itemName(this.itemName)
+				.unit(this.unit)
+				.spec(this.spec)
+				.count(this.count)
+				.productionDate(this.productionDate)
                 .build();
     }
 }

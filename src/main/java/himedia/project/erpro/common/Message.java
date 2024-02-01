@@ -39,6 +39,7 @@ public class Message <T>{
   
   public Message(String message, T data)
   {
+	
     this.message = message;
     this.data = data;
   }

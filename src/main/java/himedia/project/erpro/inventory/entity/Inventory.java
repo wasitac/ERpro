@@ -1,6 +1,6 @@
 package himedia.project.erpro.inventory.entity;
 
-import himedia.project.erpro.trade.entity.Account;
+import himedia.project.erpro.inventory.dto.InventoryDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

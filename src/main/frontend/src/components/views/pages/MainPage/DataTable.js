@@ -7,7 +7,7 @@ import menus from "../../commons/menus";
 import fetchApi from "../../../../modules/api";
 import CustomModal from "../../commons/Modal/CustomModal";
 
-import dayjs from 'dayjs';
+import dayjs from "dayjs";
 
 const onChange = (filters, sorter, extra) => {
   console.log("params", filters, sorter, extra);
@@ -19,7 +19,12 @@ const DataTable = (props) => {
     return {
       ...item,
       render: (text, record) => (
-        <a onDoubleClick={() => handleEdit(record.id)}>{text}</a>
+        <a
+          onDoubleClick={() => handleEdit(record.id)}
+          onClick={() => secondTable(record.id)}
+        >
+          {text}
+        </a>
       ),
     };
   });
@@ -83,10 +88,10 @@ const DataTable = (props) => {
       var detailData = response.data.data;
       const keys = Object.keys(detailData);
       const entries = Object.entries(detailData);
-      
+
       for (var i = 0; i < keys.length; i++) {
-        if(regex.test(entries[i])){
-          detailData[keys[i]] = dayjs(entries[i])
+        if (regex.test(entries[i])) {
+          detailData[keys[i]] = dayjs(entries[i]);
         }
       }
 
@@ -101,6 +106,21 @@ const DataTable = (props) => {
     setSelectDetailData(null);
     setModalStatus(false);
   };
+
+  // 로우 클릭 시 상세 테이블 출력 - 이지홍
+  const secondTable = async (dataId) => {
+    try {
+      if (`${props.keyOfmenu}Item` in menus) {
+        const response = await fetchApi.get(`/${props.keyOfmenu}Item/${dataId}`);
+
+        setSelectDetailData(selectDetailData);
+        setModalStatus(true);
+      }
+    } catch (error) {
+      console.error("Error put data", error);
+    }
+  };
+  const tableHeight = `calc(40vh - 32px)`;
 
   return (
     <div>
@@ -152,7 +172,17 @@ const DataTable = (props) => {
         onChange={onChange}
         columns={columns}
         dataSource={data}
-        scroll={{ y: `calc(40vh - 32px)` }}
+        scroll={{ y: tableHeight }}
+      />
+      <Table
+        rowSelection={rowSelection}
+        rowKey="id"
+        size="small"
+        pagination={false}
+        onChange={onChange}
+        columns={columns}
+        dataSource={data}
+        scroll={{ y: tableHeight }}
       />
 
       {/*  모달 영역 시작 */}

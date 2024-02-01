@@ -17,7 +17,7 @@ import lombok.Setter;
 public class StoreDto {
 	private Long id;
 	private String storeSort;
-	private Long bNm;
+	private String bNm;
 	private Long orderId;
 	private Date storeDate;
 	

@@ -1,11 +1,13 @@
 package himedia.project.erpro.inventory.dto;
 
 import himedia.project.erpro.inventory.entity.Item;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@Builder
 public class ItemDto {
 	private Long id;
 	private String sort;
