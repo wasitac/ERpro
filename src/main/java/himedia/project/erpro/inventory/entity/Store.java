@@ -3,7 +3,6 @@ package himedia.project.erpro.inventory.entity;
 import java.util.Date;
 
 import himedia.project.erpro.inventory.dto.StoreDto;
-import himedia.project.erpro.production.entity.Inspection;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

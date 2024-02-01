@@ -26,8 +26,8 @@ public class StoreController {
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
-	@GetMapping("/store/{storeId}")
-	public ResponseEntity<Message> storeItem(@PathVariable Long storeId) {
+	@GetMapping("/storeItem/{storeId}")
+	public ResponseEntity<Message> storeItem(@PathVariable(value="storeId") Long storeId) {
 		List<StoreItemDto> dataList = storeService.getStoreItem(storeId);
 		Message returnData = new Message("", dataList);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);

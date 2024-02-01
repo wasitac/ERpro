@@ -8,6 +8,7 @@ import fetchApi from "../../../../modules/api";
 import CustomModal from "../../commons/Modal/CustomModal";
 
 import dayjs from "dayjs";
+import TableTabs from "./TableTabs";
 
 const onChange = (filters, sorter, extra) => {
   console.log("params", filters, sorter, extra);
@@ -36,7 +37,6 @@ const DataTable = (props) => {
     try {
       const response = await fetchApi.get(`/${props.keyOfmenu}`);
       setData(response.data.data);
-      console.log(response.data.data);
     } catch (error) {
       console.error("Error fetching data", error);
     }
@@ -113,22 +113,27 @@ const DataTable = (props) => {
 
   // 로우 클릭 시 상세 테이블 출력 - 이지홍
   const onClickHandler = async (dataId) => {
-    if (`${props.keyOfmenu}Item` in menus) {
+    const menu = `${props.keyOfmenu}Item`;
+    console.log(menu in menus);
+    if (menu in menus) {
       try {
         const response = await fetchApi.get(
           `/${props.keyOfmenu}Item/${dataId}`
         );
         setSecondTable(
-          <Table
-            rowKey="id"
-            size="small"
-            pagination={false}
-            onChange={onChange}
-            columns={menus[`${props.keyOfmenu}Item`].columns}
-            dataSource={response.data.data}
-            scroll={{ y: "30vh" }}
-          />
+          <TableTabs keyOfmenu={`${props.keyOfmenu}Item`} />
+          // <Table
+          //   rowKey="id"
+          //   size="small"
+          //   pagination={false}
+          //   onChange={onChange}
+          //   columns={menus[menu].column}
+          //   dataSource={response.data.data}
+          //   scroll={{ y: "30vh" }}
+          // />
         );
+        console.log(menus[menu].columns);
+        console.log(response.data.data);
         setTableHeight("40vh");
       } catch (error) {
         console.error("Error get data", error);

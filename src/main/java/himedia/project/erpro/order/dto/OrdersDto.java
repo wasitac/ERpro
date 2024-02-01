@@ -1,6 +1,5 @@
 package himedia.project.erpro.order.dto;
 
-import himedia.project.erpro.order.enums.OrdersType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
