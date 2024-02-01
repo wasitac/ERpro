@@ -31,7 +31,7 @@ const items = [
     children: [
       {
         type: "group",
-        children: [menus.orders, menus.estimate, menus.invoice, menus.store]
+        children: [menus.orders, menus.estimate, menus.invoice]
       },
     ],
   },
