@@ -1,7 +1,8 @@
 package himedia.project.erpro.production.entity;
 
-import java.time.LocalDate;
+import java.util.Date;
 
+import himedia.project.erpro.trade.entity.Account;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,7 +17,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @Builder
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Production {
 
@@ -30,8 +31,8 @@ public class Production {
 	@Column(name = "account_id")
 	private Long accountId;
 
-	@Column(name = "user_id")
-	private Long userId;
+	@Column(name = "member_id")
+	private Long memberId;
 
 	@Column(name = "item_id")
 	private Long itemId;
@@ -47,5 +48,20 @@ public class Production {
 	private Integer count;
 	
 	@Column(name = "production_date")
-	private LocalDate productionDate;
+	private Date productionDate;
+
+	   public ProductionDto toDto() {
+        return ProductionDto.builder()
+								.id(this.id)
+								.orderId(this.orderId)
+								.accountId(this.accountId)
+								.memberId(this.memberId)
+								.itemId(this.itemId)
+								.itemName(this.itemName)
+								.unit(this.unit)
+								.spec(this.spec)
+								.count(this.count)
+								.productionDate(this.productionDate)
+                .build();
+    }
 }

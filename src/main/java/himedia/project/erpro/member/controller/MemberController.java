@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import himedia.project.erpro.common.Message;
-import himedia.project.erpro.member.dto.Password;
-import himedia.project.erpro.member.dto.Profile;
 import himedia.project.erpro.member.entity.Member;
 import himedia.project.erpro.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -66,28 +64,5 @@ public class MemberController {
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
-	// 회원정보 수정폼 - 이지홍
-	@GetMapping("/profile/{memberId}")
-	public ResponseEntity<Message> profile(@PathVariable Long memberId) {
-		// 유저정보와 일치하는 유저데이터 받아오기
-		Profile data = memberService.getMemberProfile(memberId);
-		Message returnData = new Message("", data);
-		return new ResponseEntity<>(returnData, HttpStatus.OK);
-	}
 
-	// 회원정보 수정 - 이지홍
-	@PutMapping("/profile")
-	public String putProfile(@RequestBody Profile profile) {
-		// 첫번째 파라미터 memberid로 바꾸기
-		memberService.updateProfile(1001l, profile);
-		return "redirect:/profile";
-	}
-
-	// 비밀번호 수정 - 이지홍
-	@PutMapping("/password")
-	public String putPassword(@RequestBody Password password) {
-		// 첫번째 파라미터 userid로 바꾸기
-		memberService.updatePassword(1001l, password);
-		return "redirect:/profile";
-	}
 }

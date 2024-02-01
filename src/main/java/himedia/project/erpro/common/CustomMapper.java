@@ -14,15 +14,17 @@ public class CustomMapper{
 	
 	private final ModelMapper modelMapper;
 	
-	public <E, D> D toDto(E entity, Class<D> dtoClass) {
-		return modelMapper.map(entity, dtoClass);
+	public void map(Object source, Object destination) {
+		modelMapper.map(source, destination);
 	}
 	
-	public <D, E> E toEntity(D dto, Class<E> entityClass) {
-		return modelMapper.map(dto, entityClass);
+	public <E, D> D map(E source, Class<D> destinationType) {
+		return modelMapper.map(source, destinationType);
 	}
 	
-	// findAll로 받은 Entity리스트를 Dto리스트로 변환해주는 메서드 - 이지홍
+	/**
+	 * 주어진 entityList를 dtoClass에 해당하는 DTO 리스트로 매핑합니다.
+	 */
 	public <E, D> List<D> toDtoList(List<E> entityList, Class<D> dtoClass) {
 		return entityList.stream()
 				.map(entity -> modelMapper.map(entity, dtoClass))

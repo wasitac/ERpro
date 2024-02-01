@@ -19,7 +19,7 @@ const DataTable = (props) => {
     return {
       ...item,
       render: (text, record) => (
-        <a onClick={() => handleEdit(record.id)}>{text}</a>
+        <a onDoubleClick={() => handleEdit(record.id)}>{text}</a>
       ),
     };
   });
@@ -87,7 +87,7 @@ const DataTable = (props) => {
         response.data.data.retireDate = response.data.data.retireDate != null ? dayjs(response.data.data.retireDate) : null;
       }
 
-      setSelectDetailData(response.data.data);
+      setSelectDetailData(selectDetailData);
       setModalStatus(true);
     } catch (error) {
       console.error("Error put data", error);

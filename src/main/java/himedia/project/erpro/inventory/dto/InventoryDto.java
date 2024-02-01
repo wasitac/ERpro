@@ -1,5 +1,6 @@
 package himedia.project.erpro.inventory.dto;
 
+import himedia.project.erpro.inventory.entity.Inventory;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -24,4 +25,21 @@ public class InventoryDto {
 	private Integer lack;
 	private Integer sales;
 	private String expectedOrder;
+
+	public Inventory toEntity() {
+		return Inventory.builder()
+						.id(this.id)
+						.itemId(this.itemId)
+						.storeId(this.storeId)
+						.openingCount(this.openingCount)
+						.openingAmount(this.openingAmount)
+						.storeIn(this.storeIn)
+						.storeOut(this.storeOut)
+						.currentInventory(this.currentInventory)
+						.appropriateInventory(this.appropriateInventory)
+						.lack(this.lack)
+						.sales(this.sales)
+						.expectedOrder(this.expectedOrder)
+						.build();
+}
 }

@@ -15,7 +15,7 @@ public class LoginController {
 	public String login() {
 		
 		// 로그인 계정정보, role 확인 예제코드
-		String userId = SecurityContextHolder.getContext().getAuthentication().getName();
+		String memberId = SecurityContextHolder.getContext().getAuthentication().getName();
 
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
@@ -24,7 +24,7 @@ public class LoginController {
 
 		String role = auth.getAuthority();
 
-		System.out.println("userId: "+userId);
+		System.out.println("memberId: "+memberId);
 		System.out.println("role: "+role);
 
 		return "로그인 페이지";

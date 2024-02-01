@@ -1,10 +1,10 @@
 package himedia.project.erpro.member.entity;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 import himedia.project.erpro.member.enums.Department;
-import himedia.project.erpro.member.enums.Role;
 import himedia.project.erpro.member.enums.MemberRank;
+import himedia.project.erpro.member.enums.Role;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -18,8 +18,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Setter
 @Getter
+@Setter
+//@AllArgsConstructor(access = AccessLevel.PRIVATE)
+//@NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor
 @NoArgsConstructor
 public class Member {
@@ -29,7 +31,7 @@ public class Member {
 	
 	private String name;
 	
-	private LocalDate birth;	
+	private Date birth;	
 	
 	private String phone;
 	
@@ -49,10 +51,10 @@ public class Member {
 	private String workType;
 	
 	@Column(name = "insert_date")
-	private LocalDate insertDate;
+	private Date insertDate;
 	
 	@Column(name = "retire_date")
-	private LocalDate retireDate;
+	private Date retireDate;
 	
 	private String password;
 }

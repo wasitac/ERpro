@@ -1,5 +1,7 @@
 package himedia.project.erpro.inventory.entity;
 
+import himedia.project.erpro.inventory.dto.ItemDto;
+import himedia.project.erpro.trade.entity.Account;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,4 +32,16 @@ public class Item {
 	
 	@Column(name = "sell_price")
 	private Integer sellPrice;
+
+	 public ItemDto toDto() {
+        return ItemDto.builder()
+						.id(this.id)
+						.sort(this.sort)
+						.itemName(this.itemName)
+						.unit(this.unit)
+						.spec(this.spec)
+						.buyPrice(this.buyPrice)
+						.sellPrice(this.sellPrice)
+            .build();
+    }
 }

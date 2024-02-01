@@ -1,7 +1,8 @@
 package himedia.project.erpro.production.dto;
 
-import java.time.LocalDate;
+import java.util.Date;
 
+import himedia.project.erpro.production.entity.Production;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,6 +21,21 @@ public class ProductionDto {
 	private String unit;
 	private String spec;
 	private Integer count;
-	private Integer userName; // 담당자명
-	private LocalDate productionDate;
+	private String memberName; // 담당자명
+	private Date productionDate;
+
+	public Production toEntity() {
+		return Production.builder()
+						.id(this.id)
+						.orderId(this.orderId)
+						.accountId(this.accountId)
+						.memberId(this.memberId)
+						.itemId(this.itemId)
+						.itemName(this.itemName)
+						.unit(this.unit)
+						.spec(this.spec)
+						.count(this.count)
+						.productionDate(this.productionDate)
+						.build();
+}
 }
