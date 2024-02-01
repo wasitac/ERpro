@@ -19,5 +19,5 @@ public class InvoiceDto {
 	private String sort;
 	private String payment;
 	private String note;
-	private Date date;
+	private Date invoiceDate;
 }

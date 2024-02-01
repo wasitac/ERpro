@@ -1,7 +1,6 @@
 package himedia.project.erpro.order.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -29,5 +28,14 @@ public class OrdersService {
 				.orElseThrow(()-> new EntityNotFoundException("Orders not found with ordersID : " + id));
 		OrdersDto ordersDtoId = mapper.map(ordersId, OrdersDto.class);
 		return ordersDtoId;
+	}
+	
+	public OrdersDto createOrders(OrdersDto ordersDto) {
+		// dto를 엔티티로 변환
+		Orders orders = mapper.map(ordersDto, Orders.class);
+		System.out.println(orders.getBNm());
+		Orders ordersSave = ordersRepository.save(orders);
+		OrdersDto ordersDtoSave = mapper.map(ordersSave, OrdersDto.class);
+		return ordersDtoSave;
 	}
 }

@@ -39,7 +39,7 @@ const EstimateForm = () => {
             },
           ]}
         >
-          <DatePicker />
+          {/* <DatePicker /> */}
         </Form.Item>
         <Form.Item
           label="유효기간"
@@ -51,13 +51,13 @@ const EstimateForm = () => {
             },
           ]}
         >
-          <DatePicker />
+          {/*  <DatePicker /> */}
         </Form.Item>
         <Form.Item
           label="납기일자"
           name="dueDate"
         >
-          <DatePicker />
+          {/*  <DatePicker /> */}
         </Form.Item>
         <Form.Item
           label="견적금액"

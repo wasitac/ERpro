@@ -289,7 +289,7 @@ const menus = {
       },
       {
         title: "입출고번호",
-        dataIndex: "storeid",
+        dataIndex: "storeId",
       },
       {
         title: "거래구분",
@@ -297,11 +297,11 @@ const menus = {
         filters: [
           {
             text: "구매",
-            value: "buy",
+            value: "PURCHASE",
           },
           {
             text: "판매",
-            value: "sell",
+            value: "SALES",
           },
         ]
       },
@@ -315,7 +315,7 @@ const menus = {
       },
       {
         title: "거래일자",
-        dataIndex: "date",
+        dataIndex: "invoiceDate",
       },
     ]
   },

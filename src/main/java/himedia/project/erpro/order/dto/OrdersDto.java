@@ -1,6 +1,7 @@
 package himedia.project.erpro.order.dto;
 
-import himedia.project.erpro.order.enums.OrdersType;
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -17,6 +18,6 @@ public class OrdersDto {
 	private String bNm;
 	private String bNo;
 	private String type;
-	private String dueDate;
-	private String completionDate;
+	private Date dueDate;
+	private Date completionDate;
 }

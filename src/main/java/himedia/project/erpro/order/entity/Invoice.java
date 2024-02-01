@@ -31,9 +31,9 @@ public class Invoice {
 	private String payment;
 	
 	@Column(name = "note")
-	private String dueDate;
+	private String note;
 	
-	@Column(name = "date")
-	private Date date;
+	@Column(name = "invoice_date")
+	private Date invoiceDate;
 
 }

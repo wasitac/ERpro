@@ -1,6 +1,6 @@
 package himedia.project.erpro.order.entity;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -21,20 +21,20 @@ public class Estimate {
 	private Long id;
 
 	@Column(name = "account_id")
-	private Long accountid;
+	private Long accountId;
 
 	@Column(name = "insert_date")
-	private LocalDate insertdate;
+	private Date insertDate;
 	
 	@Column(name = "expiration_date")
-	private String expirationdate;
+	private Date expirationDate;
 	
 	@Column(name = "due_date")
-	private String duedate;
+	private Date dueDate;
 
 	@Column(name = "total")
 	private Integer total;
 
 	@Column(name = "is_order")
-	private String isorder;
+	private String isOrder;
 }

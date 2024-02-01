@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import himedia.project.erpro.common.Message;
 import himedia.project.erpro.order.dto.InvoiceDto;
@@ -21,6 +22,13 @@ public class InvoiceController {
 	public ResponseEntity<Message> estimate() {
 		List<InvoiceDto> dataList = invoiceService.getInviceAll();
 		Message returnData = new Message("", dataList);
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
+	}
+	
+	@GetMapping("/invoice/{id}")
+	public ResponseEntity<Message> detatilOrders(@PathVariable(value="id") Long id) {
+		InvoiceDto data = invoiceService.getInvoiceById(id);
+		Message returnData = new Message("", data);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 }
