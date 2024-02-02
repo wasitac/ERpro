@@ -530,7 +530,7 @@ const menus = {
       },
     ],
   },
-  orderItem: {
+  ordersItem: {
     label: "주문 품목 상세",
     key: "estimateItem",
     column: [
