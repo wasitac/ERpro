@@ -44,7 +44,7 @@ public class MemberController {
 	@PostMapping("/member")
 	public ResponseEntity<Message> createMember(@RequestBody Member member) {
 		String result = memberService.createMember(member);
-		Message returnData = new Message<>("저장 성공",result);
+		Message returnData = new Message<>("",result);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	

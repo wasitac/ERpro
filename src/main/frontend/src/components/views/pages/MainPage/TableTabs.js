@@ -36,7 +36,7 @@ const TableTabs = (props) => {
         ...items,
         {
           label: menus[props.keyOfmenu].label,
-          children: <DataTable keyOfmenu={props.keyOfmenu} />,
+          children: <DataTable keyOfmenu={props.keyOfmenu}></DataTable>,
           key: props.keyOfmenu,
         },
       ]);
