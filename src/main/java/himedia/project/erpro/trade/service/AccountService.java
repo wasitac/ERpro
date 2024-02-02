@@ -66,7 +66,7 @@ public class AccountService {
 	}
 
 	// 거래처 다중 삭제
-	public boolean deleteAcountList(List<Long> idList) {
+	public boolean deleteAccountList(List<Long> idList) {
 		int deletedCount = accountRepository.deleteAllByIdIn(idList);
 		if(deletedCount > 0 && deletedCount == idList.size()) {
 			return true;
