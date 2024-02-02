@@ -59,7 +59,7 @@ public class OrdersService {
 		}
 	}
 	
-	// 구매/판매 주문서 리스트 삭제
+	// 구매/판매 주문서 삭제
 	public boolean deleteOrdersList(List<Long> idList) {
 		int deletedOrders = ordersRepository.deleteAllByIdIn(idList);
 		if(deletedOrders > 0 && deletedOrders == idList.size()) {
@@ -69,7 +69,8 @@ public class OrdersService {
 		}
 	}
 	
-	// 구매/판매 주문서 품목
+	// 구매/판매 주문서 품목 파트
+	
 	public List<OrdersItemDto> getOrdersItems(Long ordersId) {
 		List<OrdersItem> ordersItemList = ordersItemRepository.findAllByOrdersId(ordersId);
 		List<OrdersItemDto> ordersItemDtoList = mapper.toDtoList(ordersItemList, OrdersItemDto.class);

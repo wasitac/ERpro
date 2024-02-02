@@ -532,7 +532,7 @@ const menus = {
   },
   ordersItem: {
     label: "주문 품목 상세",
-    key: "estimateItem",
+    key: "ordersItem",
     column: [
       {
         title: "품목번호",
@@ -635,15 +635,15 @@ const menus = {
       },
       {
         title: "전표번호",
-        dataIndex: "invoice",
+        dataIndex: "invoiceId",
       },
       {
         title: "품목번호",
-        dataIndex: "item",
+        dataIndex: "itemId",
       },
       {
         title: "품목명",
-        dataIndex: "item",
+        dataIndex: "itemName",
       },
       {
         title: "단위",

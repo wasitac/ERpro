@@ -1,6 +1,8 @@
 package himedia.project.erpro.order.dto;
 
 import himedia.project.erpro.order.entity.OrdersItem;
+import jakarta.persistence.Table;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -10,8 +12,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@Table(name = "orders_item")
 public class OrdersItemDto {
 	private Long id;
 	private Long ordersId;
