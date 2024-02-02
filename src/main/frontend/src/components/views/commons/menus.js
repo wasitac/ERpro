@@ -333,15 +333,15 @@ const menus = {
       },
       {
         title: "구분",
-        dataIndex: "storeSort",
+        dataIndex: "sort",
         filters: [
           {
             text: "입고",
-            value: "in",
+            value: "입고",
           },
           {
             text: "출고",
-            value: "out",
+            value: "출고",
           },
         ],
         onFilter: (value, record) => record.sort.indexOf(value) === 0,
@@ -432,7 +432,7 @@ const menus = {
       },
       {
         title: "거래처명",
-        dataIndex: "accountName",
+        dataIndex: "bnm",
       },
       {
         title: "주문 번호",
@@ -530,7 +530,6 @@ const menus = {
       },
     ],
   },
-
   ordersItem: {
     label: "주문 품목 상세",
     key: "estimateItem",
@@ -589,17 +588,9 @@ const menus = {
     column: [
       {
         title: "품목번호",
-        dataIndex: "id",
+        dataIndex: "itemId",
         defaultSortOrder: "descend",
         sorter: (a, b) => a.id - b.id,
-      },
-      {
-        title: "입출고번호",
-        dataIndex: "storeId",
-      },
-      {
-        title: "품목번호",
-        dataIndex: "itemId",
       },
       {
         title: "품목명",

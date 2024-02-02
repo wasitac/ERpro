@@ -11,7 +11,7 @@ const ProductionForm = () => {
       </Form.Item>
       <Form.Item
         label="주문처"
-        name="accountName"
+        name="bnm"
         rules={[
           {
             required: true,

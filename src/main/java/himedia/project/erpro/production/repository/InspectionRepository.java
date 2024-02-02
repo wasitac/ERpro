@@ -9,5 +9,5 @@ import himedia.project.erpro.production.entity.Inspection;
 
 public interface InspectionRepository extends JpaRepository<Inspection, Long>{
 	public List<Inspection> findAll();
-	Optional<Inspection> findById(Long id);
+	public Optional<Inspection> findById(Long id);
 }

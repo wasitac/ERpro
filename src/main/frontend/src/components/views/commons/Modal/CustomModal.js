@@ -4,6 +4,7 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Form, Divider } from "antd";
 import menus from "../../commons/menus";
+import DataTable from "../../pages/MainPage/DataTable";
 import AccountForm from "./Form/AccountForm";
 import ItemForm from "./Form/ItemForm";
 import BomForm from "./Form/BomForm";
@@ -12,9 +13,10 @@ import OrdersForm from "./Form/OrdersForm";
 import EstimateForm from "./Form/EstimateForm";
 import InvoiceForm from "./Form/InvoiceForm";
 import StoreForm from "./Form/StoreForm";
-import fetchApi from "../../../../modules/api";
-// import ProductionForm from "./Form/ProductionForm";
+import StoreItemForm from "./Form/StoreItemForm";
+import ProductionForm from "./Form/ProductionForm";
 import InspectionForm from "./Form/InspectionForm";
+import fetchApi from "../../../../modules/api";
 
 function CustomModal(props) {
   // antd의 Form관련 hook 사용을 위함
@@ -22,6 +24,7 @@ function CustomModal(props) {
 
   // 모달 모드(add:등록, edit:수정)
   const [mode, setMode] = useState("add");
+  const [dataId, setDataId] = useState(undefined);
 
   useEffect(() => {
     // 모달이 열릴 때마다 모드를 설정
@@ -29,8 +32,10 @@ function CustomModal(props) {
       // 수정 모드일 때
       setMode("edit");
       form.setFieldsValue(props.dataForEdit); // 폼에 원래값 설정
+      setDataId(props.dataForEdit.id);
     } else {
       // 등록 모드일 때
+      setDataId(undefined);
       setMode("add");
     }
   }, [props.modalStatus]);
@@ -103,11 +108,14 @@ function CustomModal(props) {
     case "store":
       inputForm = <StoreForm />;
       break;
-    // case "production":
-    //   inputForm = <ProductionForm />;
-    //   break;
+    case "production":
+      inputForm = <ProductionForm />;
+      break;
     case "inspection":
       inputForm = <InspectionForm />;
+      break;
+    case "storeItem":
+      inputForm = <StoreItemForm />;
       break;
     default:
       break;
@@ -121,8 +129,6 @@ function CustomModal(props) {
           : `${menus[props.keyOfmenu].label} 수정`
       }
       open={props.modalStatus}
-      onCancel={onCancel}
-      cancelText="취소"
       okText={mode === "add" ? "저장" : "수정"}
       okButtonProps={{
         style: {
@@ -130,6 +136,8 @@ function CustomModal(props) {
         },
       }}
       onOk={onSubmit}
+      onCancel={onCancel}
+      cancelText="취소"
       style={{ minWidth: "1200px" }}
     >
       <Divider />
