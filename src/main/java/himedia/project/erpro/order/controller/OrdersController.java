@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import himedia.project.erpro.common.Message;
 import himedia.project.erpro.order.dto.OrdersDto;
+import himedia.project.erpro.order.dto.OrdersItemDto;
 import himedia.project.erpro.order.service.OrdersService;
 import lombok.RequiredArgsConstructor;
 
@@ -59,6 +60,48 @@ public class OrdersController {
 	public ResponseEntity<Message> deleteOrders(@RequestBody List<Long> idList) {
 		boolean dataDelete = ordersService.deleteOrdersList(idList);
 		Message returnData = new Message(Boolean.toString(dataDelete));
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
+	}
+	
+	// 구매/판매 품목
+	@GetMapping("/ordersItem")
+	public ResponseEntity<Message> ordersItem() {
+		Message returnData = new Message("ordersItem");
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
+	}
+	
+	@GetMapping("/ordersItem/{ordersId}")
+	public ResponseEntity<Message> ordersItems(@PathVariable(value="ordersId") Long ordersId) {
+		List<OrdersItemDto> dataList = ordersService.getOrdersItems(ordersId);
+		Message returnData = new Message("", dataList);
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
+	}
+	
+	@GetMapping("/ordersItem/{ordersId}/{rowId}")
+	public ResponseEntity<Message> ordersItemRow(@PathVariable(value="rowId") Long rowId) {
+		OrdersItemDto data = ordersService.getOrdersItem(rowId);
+		Message returnData = new Message("", data);
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
+	}
+	
+	@PostMapping("/ordersItem")
+	public ResponseEntity<Message> addOrdersItem(@RequestBody OrdersItemDto ordersItemDto) {
+		OrdersItemDto dataList = ordersService.createOrdersItem(ordersItemDto);
+		Message returnData = new Message("품목 추가", dataList);
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
+	}
+	
+	@PutMapping("/ordersItem")
+	public ResponseEntity<Message> updateOrdersItem(@RequestBody OrdersItemDto ordersItemDto) {
+		OrdersItemDto data = ordersService.updateOrdersItem(ordersItemDto);
+		Message returnData = new Message("품목 수정", data);
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
+	}
+
+	@DeleteMapping("/ordersItem")
+	public ResponseEntity<Message> deleteOrdersItem(@RequestBody List<Long> idList) {
+		ordersService.deleteOrdersItemList(idList);
+		Message returnData = new Message("품목 삭제");
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 }

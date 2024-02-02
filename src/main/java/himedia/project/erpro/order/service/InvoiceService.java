@@ -7,7 +7,10 @@ import org.springframework.stereotype.Service;
 
 import himedia.project.erpro.common.CustomMapper;
 import himedia.project.erpro.order.dto.InvoiceDto;
+import himedia.project.erpro.order.dto.InvoiceItemDto;
 import himedia.project.erpro.order.entity.Invoice;
+import himedia.project.erpro.order.entity.InvoiceItem;
+import himedia.project.erpro.order.repository.InvoiceItemRepository;
 import himedia.project.erpro.order.repository.InvoiceRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +19,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class InvoiceService {
 	private final InvoiceRepository invoiceRepository;
+	private final InvoiceItemRepository invoiceItemRepository;
 	private final CustomMapper mapper;
 	
 	public List<InvoiceDto> getInviceAll() {
@@ -57,5 +61,42 @@ public class InvoiceService {
 		} else {
 			return false;
 		}
+	}
+	
+	// 매입/매출 전표 품목 파트
+	
+	public List<InvoiceItemDto> getInvoiceItems(Long invoiceId) {
+		List<InvoiceItem> invoiceItemList = invoiceItemRepository.findAllByInvoiceId(invoiceId);
+		List<InvoiceItemDto> invoiceItemDtoList = mapper.toDtoList(invoiceItemList, InvoiceItemDto.class);
+		return invoiceItemDtoList;
+	}
+	
+	public InvoiceItemDto getInvoiceItem(Long id) {
+		InvoiceItemDto invoiceItemDto = invoiceItemRepository.findById(id)
+				.orElseThrow(() -> new EntityNotFoundException("InvoiceItem not found with ID : " + id))
+				.toInvoiceItemDto();
+		return invoiceItemDto;
+	}
+	
+	public InvoiceItemDto createInvoiceItem(InvoiceItemDto invoiceItemDto) {
+		InvoiceItemDto saveInvoiceItemDto = Optional.ofNullable(invoiceItemRepository.save(invoiceItemDto.toEntity()))
+						.orElseThrow(() -> new RuntimeException("Invoice save failed"))
+						.toInvoiceItemDto();
+		return saveInvoiceItemDto;
+	}
+	
+	public InvoiceItemDto updateInvoiceItem(InvoiceItemDto invoiceItemDto) {
+		Optional<InvoiceItem> invoiceItemUpt = invoiceItemRepository.findById(invoiceItemDto.getId());
+		
+		if(invoiceItemUpt.isEmpty()) {
+			throw new EntityNotFoundException("InvoiceItem not found with ID : " + invoiceItemDto.getId());		
+		}
+		
+		InvoiceItemDto saveInvoiceItemDto = invoiceItemRepository.save(invoiceItemDto.toEntity()).toInvoiceItemDto();
+		return saveInvoiceItemDto;
+	}
+	
+	public void deleteInvoiceItemList(List<Long> idList) {
+		invoiceItemRepository.deleteAllById(idList);
 	}
 }
