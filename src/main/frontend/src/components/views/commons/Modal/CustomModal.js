@@ -81,7 +81,7 @@ function CustomModal(props) {
     form.resetFields();
     props.handleCloseModal();
   };
-
+  var modalSize = "60%";
   var inputForm;
   switch (props.keyOfmenu) {
     case "account":
@@ -98,6 +98,7 @@ function CustomModal(props) {
       break;
     case "orders":
       inputForm = <OrdersForm />;
+      modalSize = 1200;
       break;
     case "estimate":
       inputForm = <EstimateForm />;
@@ -107,12 +108,14 @@ function CustomModal(props) {
       break;
     case "store":
       inputForm = <StoreForm />;
+
       break;
     case "production":
       inputForm = <ProductionForm />;
       break;
     case "inspection":
       inputForm = <InspectionForm />;
+      modalSize = 1000;
       break;
     case "storeItem":
       inputForm = <StoreItemForm />;
@@ -138,7 +141,7 @@ function CustomModal(props) {
       onOk={onSubmit}
       onCancel={onCancel}
       cancelText="취소"
-      style={{ minWidth: "1200px" }}
+      style={{ minWidth: modalSize }}
     >
       <Divider />
       <Form

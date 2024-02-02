@@ -1,13 +1,13 @@
 import { DatePicker, Form, Input, Radio, Select } from "antd";
 const ProductionForm = () => {
-
   return (
     <div>
       <Form.Item name="id" noStyle>
         <Input type="hidden" />
       </Form.Item>
       <Form.Item label="지시 일자" name="productionDate">
-        <DatePicker></DatePicker>
+        {/* <DatePicker></DatePicker> */}
+        <Input />
       </Form.Item>
       <Form.Item
         label="주문처"

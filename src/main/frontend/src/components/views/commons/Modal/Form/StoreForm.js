@@ -18,7 +18,7 @@ const StoreForm = () => {
           },
         ]}
       >
-        <Input style={{ width: "400px" }} />
+        <Input />
       </Form.Item>
       <Form.Item
         label="주문번호"
@@ -30,7 +30,7 @@ const StoreForm = () => {
           },
         ]}
       >
-        <Input style={{ width: "400px" }} />
+        <Input />
       </Form.Item>
       <Form.Item
         label="구분"
@@ -57,9 +57,8 @@ const StoreForm = () => {
           },
         ]}
       >
-        <Input style={{ width: "400px" }} />
+        <Input />
       </Form.Item>
-      
     </div>
   );
 };

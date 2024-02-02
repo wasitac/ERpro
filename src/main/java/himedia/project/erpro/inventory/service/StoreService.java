@@ -65,6 +65,7 @@ public class StoreService {
 		return storeItemDtoList;
 	}
 	
+	
 	public StoreItemDto getStoreItem(Long id) { 
 		StoreItemDto storeItemDto = storeItemRepository.findById(id)
 				.orElseThrow(() -> new EntityNotFoundException("StoreItem not found with ID: " + id))
