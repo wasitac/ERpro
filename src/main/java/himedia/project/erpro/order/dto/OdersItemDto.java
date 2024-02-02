@@ -23,4 +23,6 @@ public class OdersItemDto {
 	private Integer price;
 	private Integer vat;
 	private Integer total;
+	
+
 }
