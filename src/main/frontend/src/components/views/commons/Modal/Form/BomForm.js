@@ -3,7 +3,7 @@ import fetchApi from "../../../../../modules/api";
 import { Button, Form, Input, Select, Space } from "antd";
 import {MinusCircleOutlined, PlusOutlined} from "@ant-design/icons";
 
-const BomForm = ({ form }) => {
+const BomForm = ({ form, mode }) => {
     // 물품 목록
     const [itemList, setItemList] = useState([]);
 
@@ -11,6 +11,31 @@ const BomForm = ({ form }) => {
         // 물품 목록조회
         fetchItemList();
     }, []);
+
+    // 수정 모드일때 수동으로 매입단가 및 금액 계산
+    useEffect(() => {
+        if(mode == "edit") {
+            const bomList = form.getFieldValue('bomList');
+            const updatedBomList = [...bomList];
+
+            for (let index = 0; index < updatedBomList.length; index++) {
+                const bom = updatedBomList[index];
+                const materialId = bom.materialId;
+                const selectedMaterialItem = itemList.find(item => item.id === materialId);
+                const buyPrice = selectedMaterialItem ? selectedMaterialItem.buyPrice : null;
+
+                updatedBomList[index] = {
+                    ...bom,
+                    buyPrice: buyPrice,
+                    price: !isNaN(buyPrice * bom.requiredAmount)? buyPrice * bom.requiredAmount : "",
+                };
+            }
+
+            form.setFieldsValue({
+                bomList: updatedBomList,
+            });
+        }
+    }, [form.getFieldValue('bomList')]);
 
     // 물품 목록 조회
     const fetchItemList = async () => {
@@ -26,33 +51,33 @@ const BomForm = ({ form }) => {
     const onMaterialSelect = (value, formInstance, name) => {
         const selectedMaterial = itemList.find(item => item.id === value);
         if (selectedMaterial) {
-            const subItemList = formInstance.getFieldValue('subItemList');
-            const updatedSubItemList = [...subItemList];
-            updatedSubItemList[name].buyPrice = selectedMaterial.buyPrice;
+            const bomList = formInstance.getFieldValue('bomList');
+            const updatedBomList = [...bomList];
+            updatedBomList[name].buyPrice = selectedMaterial.buyPrice;
 
             // 금액 변경
-            if(!isNaN(updatedSubItemList[name].buyPrice * updatedSubItemList[name].requiredAmount)) {
-                updatedSubItemList[name].price = updatedSubItemList[name].buyPrice * updatedSubItemList[name].requiredAmount;
+            if(!isNaN(updatedBomList[name].buyPrice * updatedBomList[name].requiredAmount)) {
+                updatedBomList[name].price = updatedBomList[name].buyPrice * updatedBomList[name].requiredAmount;
             }
 
 
             formInstance.setFieldsValue({
-                subItemList: updatedSubItemList,
+                bomList: updatedBomList,
             });
         }
     };
 
     // 소요량 입력에 따른 금액 계산
     const onPriceChange  = (value, formInstance, name) => {
-        const subItemList = formInstance.getFieldValue('subItemList');
-        const updatedSubItemList = [...subItemList];
+        const bomList = formInstance.getFieldValue('bomList');
+        const updatedBomList = [...bomList];
 
-        if(!isNaN(updatedSubItemList[name].buyPrice * updatedSubItemList[name].requiredAmount)) {
-            updatedSubItemList[name].price = updatedSubItemList[name].buyPrice * updatedSubItemList[name].requiredAmount;
+        if(!isNaN(updatedBomList[name].buyPrice * updatedBomList[name].requiredAmount)) {
+            updatedBomList[name].price = updatedBomList[name].buyPrice * updatedBomList[name].requiredAmount;
         }
 
         formInstance.setFieldsValue({
-            subItemList: updatedSubItemList,
+            bomList: updatedBomList,
         });
     };
 
@@ -66,7 +91,9 @@ const BomForm = ({ form }) => {
                 name="itemId"
                 rules={[{ required: true, message: '제품을 선택해주세요.' }]}
             >
-                <Select>
+                <Select
+                    disabled={mode == 'add' ? false : true}
+                >
                     {itemList.map((item) => (
                         item.sort === "제품" && (
                             <Select.Option key={item.id} value={item.id}>
@@ -81,18 +108,6 @@ const BomForm = ({ form }) => {
             >
                 <Form.List
                     name="bomList"
-                    // initialValue={[
-                    //   {
-                    //     itemId: 1,
-                    //     price: 1000,
-                    //     note: "",
-                    //   },
-                    //   {
-                    //     itemId: 3,
-                    //     price: 3000,
-                    //     note: "",
-                    //   },
-                    // ]}
                 >
                     {(fields, { add, remove }) => (
                         <div

@@ -63,7 +63,7 @@ function CustomModal(props) {
         // 정보 수정
         const response = await fetchApi.put(`/${props.keyOfmenu}`, formData);
         console.log(response);
-        if (response.data?.data?.id) {
+        if (response.data?.data) {
           props.fetchData();
           onCancel();
         } else {
@@ -91,7 +91,7 @@ function CustomModal(props) {
       inputForm = <ItemForm />;
       break;
     case "bom":
-      inputForm = <BomForm form={form} />;
+      inputForm = <BomForm form={form} mode={mode} />;
       break;
     case "member":
       inputForm = <MemberForm mode={mode} />;

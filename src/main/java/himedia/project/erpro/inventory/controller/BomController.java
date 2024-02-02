@@ -44,28 +44,25 @@ public class BomController {
     // Bom 추가 - 김주원
     @PostMapping("/bom")
     public ResponseEntity<Message> addBom(@RequestBody BomDetailDto bomDetailDto) {
-//    	BomDto data = bomService.createBom(bomDto);
-//    	Message returnData = new Message("", data);
-//    	return new ResponseEntity<>(returnData, HttpStatus.OK);
-    	return null;
+    	Boolean result = bomService.createBom(bomDetailDto);
+    	Message returnData = new Message("", result);
+    	return new ResponseEntity<>(returnData, HttpStatus.OK);
     }
     
     // Bom 수정 - 김주원
     @PutMapping("/bom")
     public ResponseEntity<Message> editBom(@RequestBody BomDetailDto bomDetailDto) {
-//		BomDetailDto editData = bomService.updateBom(bomDetailDto);
-//		Message returnData = new Message("", editData);
-//    	return new ResponseEntity<>(returnData, HttpStatus.OK);
-    	return null;
+        Boolean result = bomService.updateBom(bomDetailDto);
+		Message returnData = new Message("", result);
+    	return new ResponseEntity<>(returnData, HttpStatus.OK);
     }
     
     // Bom 삭제 - 김주원
     @DeleteMapping("/bom")
     public ResponseEntity<Message> deleteBom(@RequestBody List<Long> itemIdList) {
-//    	boolean result = bomService.deleteBomList(itemIdList);
-//    	Message returnData = new Message(Boolean.toString(result));
-//    	return new ResponseEntity<>(returnData, HttpStatus.OK);
-    	return null;
+    	boolean result = bomService.deleteBomList(itemIdList);
+    	Message returnData = new Message(Boolean.toString(result));
+    	return new ResponseEntity<>(returnData, HttpStatus.OK);
     }
    
 }
