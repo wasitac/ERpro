@@ -12,7 +12,7 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class OdersItemDto {
+public class OrdersItemDto {
 	private Long id;
 	private Long ordersId;
 	private String sort;

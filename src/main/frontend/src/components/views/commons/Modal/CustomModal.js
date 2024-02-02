@@ -16,6 +16,7 @@ import StoreForm from "./Form/StoreForm";
 import StoreItemForm from "./Form/StoreItemForm";
 import ProductionForm from "./Form/ProductionForm";
 import InspectionForm from "./Form/InspectionForm";
+import OrdersItemForm from "./Form/OrdersItemForm";
 import fetchApi from "../../../../modules/api";
 
 function CustomModal(props) {
@@ -119,6 +120,9 @@ function CustomModal(props) {
       break;
     case "storeItem":
       inputForm = <StoreItemForm />;
+      break;
+    case "ordersItem":
+      inputForm = <OrdersItemForm />;
       break;
     default:
       break;
