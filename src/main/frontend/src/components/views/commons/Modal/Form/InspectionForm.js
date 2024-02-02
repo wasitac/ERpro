@@ -158,7 +158,8 @@ const StoreForm = () => {
               },
             ]}
           >
-            <DatePicker/>
+            {/* <DatePicker/> */}
+            <Input style={{ width: "300px" }} />
           </Form.Item>
         </Col>
       </Row>
