@@ -1,13 +1,12 @@
 package himedia.project.erpro.inventory.entity;
 
-import java.util.Date;
-
 import himedia.project.erpro.inventory.dto.StoreItemDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,6 +18,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+@Table(name = "store_item")
 public class StoreItem {
 
 	@Id
@@ -29,10 +29,10 @@ public class StoreItem {
 	private Long storeId;
 
 	@Column(name = "item_id")
-	private Date itemId;
+	private Long itemId;
 
 	@Column(name = "item_name")
-	private Long itemName;
+	private String itemName;
 
 	private String unit;
 

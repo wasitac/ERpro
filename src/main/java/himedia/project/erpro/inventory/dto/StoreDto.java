@@ -16,7 +16,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class StoreDto {
 	private Long id;
-	private String storeSort;
+	private String sort;
 	private String bNm;
 	private Long orderId;
 	private Date storeDate;
@@ -24,7 +24,7 @@ public class StoreDto {
 	public Store toEntity() {
 		return Store.builder()
 				.id(this.id)
-				.storeSort(this.storeSort)
+				.sort(this.sort)
 				.bNm(this.bNm)
 				.orderId(this.orderId)
 				.storeDate(this.storeDate)

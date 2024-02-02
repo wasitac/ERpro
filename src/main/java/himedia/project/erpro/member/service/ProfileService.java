@@ -47,10 +47,10 @@ public class ProfileService {
 		Message<String> message = null;
 		 try {
 			 updateMember = memberRepository.save(member);
-			 message = new Message("내 정보 변경에 성공했습니다", true);
+			 message = new Message("내 정보 변경에 성공했습니다");
 	        } catch (Exception e) {
 	            e.printStackTrace();
-	            message = new Message("내 정보 변경에 실패했습니다");
+	            message = new Message("", "내 정보 변경에 실패했습니다", null);
 	        }
 		 return message;
 		
@@ -68,17 +68,17 @@ public class ProfileService {
 		// 입력 비밀번호가 저장된 비밀번호와 일치한다면 newPassword로 변경
 		if (bCryptPasswordEncoder.matches(password.getPassword(), member.getPassword())) {
 			if(password.getPassword().equals(password.getNewPassword())) {
-				message = new Message("같은 비밀번호로 변경할 수 없습니다");
+				message = new Message("", "같은 비밀번호로 변경할 수 없습니다", null);
 			}
 			memberDto.setPassword(bCryptPasswordEncoder.encode(password.getNewPassword()));			
 			Member updateMember = mapper.map(memberDto, Member.class);			
 			Optional<Member> result = Optional.ofNullable(memberRepository.save(updateMember));
 			if(result.isPresent()) {
-				message = new Message("비밀번호 변경에 성공했습니다", true);			
+				message = new Message("비밀번호 변경에 성공했습니다", null);			
 			} 
-			message = new Message("비밀번호 변경실패");	
+			message = new Message("", "비밀번호 변경실패", null);	
 		}
-		message = new Message("비밀번호가 일치하지 않습니다");
+		message = new Message("", "비밀번호가 일치하지 않습니다", null);
 		return message;				
 	}
 }

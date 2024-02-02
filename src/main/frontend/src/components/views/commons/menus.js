@@ -225,7 +225,7 @@ const menus = {
             text: "판매",
             value: "SELL",
           },
-        ]
+        ],
       },
       {
         title: "예정일",
@@ -273,7 +273,7 @@ const menus = {
         title: "주문처리",
         dataIndex: "isOrder",
       },
-    ]
+    ],
   },
 
   // 매입/매출 전표 - 정유진
@@ -289,7 +289,7 @@ const menus = {
       },
       {
         title: "입출고번호",
-        dataIndex: "storeid",
+        dataIndex: "storeId",
       },
       {
         title: "거래구분",
@@ -297,13 +297,13 @@ const menus = {
         filters: [
           {
             text: "구매",
-            value: "buy",
+            value: "PURCHASE",
           },
           {
             text: "판매",
-            value: "sell",
+            value: "SALES",
           },
-        ]
+        ],
       },
       {
         title: "결제방법",
@@ -315,9 +315,9 @@ const menus = {
       },
       {
         title: "거래일자",
-        dataIndex: "date",
+        dataIndex: "invoiceDate",
       },
-    ]
+    ],
   },
 
   // 입고/출고 관리 - 이지홍
@@ -333,15 +333,15 @@ const menus = {
       },
       {
         title: "구분",
-        dataIndex: "storeSort",
+        dataIndex: "sort",
         filters: [
           {
             text: "입고",
-            value: "in",
+            value: "입고",
           },
           {
             text: "출고",
-            value: "out",
+            value: "출고",
           },
         ],
         onFilter: (value, record) => record.sort.indexOf(value) === 0,
@@ -432,7 +432,7 @@ const menus = {
       },
       {
         title: "거래처명",
-        dataIndex: "accountName",
+        dataIndex: "bnm",
       },
       {
         title: "주문 번호",
@@ -530,12 +530,12 @@ const menus = {
       },
     ],
   },
-  orderItem: {
+  ordersItem: {
     label: "주문 품목 상세",
     key: "estimateItem",
     column: [
       {
-        title: "주문품목번호",
+        title: "품목번호",
         dataIndex: "id",
         defaultSortOrder: "descend",
         sorter: (a, b) => a.id - b.id,
@@ -587,18 +587,10 @@ const menus = {
     key: "storeItem",
     column: [
       {
-        title: "입출고품목번호",
-        dataIndex: "id",
-        defaultSortOrder: "descend",
-        sorter: (a, b) => a.id - b.id,
-      },
-      {
-        title: "입출고번호",
-        dataIndex: "storeId",
-      },
-      {
         title: "품목번호",
         dataIndex: "itemId",
+        defaultSortOrder: "descend",
+        sorter: (a, b) => a.id - b.id,
       },
       {
         title: "품목명",
@@ -636,7 +628,7 @@ const menus = {
     key: "invoiceItem",
     column: [
       {
-        title: "전표품목번호",
+        title: "품목번호",
         dataIndex: "id",
         defaultSortOrder: "descend",
         sorter: (a, b) => a.id - b.id,
@@ -685,7 +677,7 @@ const menus = {
     key: "estimateItem",
     column: [
       {
-        title: "견적품목번호",
+        title: "품목번호",
         dataIndex: "id",
         defaultSortOrder: "descend",
         sorter: (a, b) => a.id - b.id,

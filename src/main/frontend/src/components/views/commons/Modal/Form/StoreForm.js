@@ -1,5 +1,7 @@
 import { Form, Input, Radio } from "antd";
 import DataTable from "../../../pages/MainPage/DataTable";
+import { Divider } from "rc-menu";
+
 const StoreForm = () => {
   return (
     <div>
@@ -8,7 +10,7 @@ const StoreForm = () => {
       </Form.Item>
       <Form.Item
         label="거래처명"
-        name="accountName"
+        name="bnm"
         rules={[
           {
             required: true,
@@ -46,114 +48,6 @@ const StoreForm = () => {
         </Radio.Group>
       </Form.Item>
       <Form.Item
-        label="품목번호"
-        name="itemId"
-        rules={[
-          {
-            required: true,
-            message: "품목번호를 입력해주세요",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        label="품목명"
-        name="itemName"
-        rules={[
-          {
-            required: true,
-            message: "품목명을 입력해주세요",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        label="단위"
-        name="unit"
-        rules={[
-          {
-            required: true,
-            message: "주문번호를 입력해주세요",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        label="규격"
-        name="spec"
-        rules={[
-          {
-            required: true,
-            message: "주문번호를 입력해주세요",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        label="수량"
-        name="count"
-        rules={[
-          {
-            required: true,
-            message: "수량을 입력해주세요",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        label="단가"
-        name="price"
-        rules={[
-          {
-            required: true,
-            message: "단가를 입력해주세요",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        label="공급가"
-        name="supplyPrice"
-        rules={[
-          {
-            required: true,
-            message: "공급가를 입력해주세요",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        label="부가세"
-        name="vat"
-        rules={[
-          {
-            required: true,
-            message: "부가세를 입력해주세요",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        label="총합"
-        name="total"
-        rules={[
-          {
-            required: true,
-            message: "총합금액을 입력해주세요",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
         label="입/출고일자"
         name="storeDate"
         rules={[
@@ -165,7 +59,6 @@ const StoreForm = () => {
       >
         <Input />
       </Form.Item>
-      {/* <DataTable keyOfmenu="order" />, */}
     </div>
   );
 };

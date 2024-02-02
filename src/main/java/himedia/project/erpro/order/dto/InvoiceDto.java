@@ -2,6 +2,7 @@ package himedia.project.erpro.order.dto;
 
 import java.util.Date;
 
+import himedia.project.erpro.order.entity.Invoice;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,5 +20,16 @@ public class InvoiceDto {
 	private String sort;
 	private String payment;
 	private String note;
-	private Date date;
+	private Date invoiceDate;
+	
+	public Invoice toEntity() {
+		return Invoice.builder()
+				.id(this.id)
+				.storeId(this.storeId)
+				.sort(this.sort)
+				.payment(this.payment)
+				.note(this.note)
+				.invoiceDate(this.invoiceDate)
+				.build();
+	}
 }

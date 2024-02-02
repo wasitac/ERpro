@@ -13,6 +13,7 @@ public class ModelConfig {
 	protected ModelMapper modelMapper() {
 		ModelMapper modelMapper = new ModelMapper();
 		modelMapper.getConfiguration()
+				.setFieldAccessLevel(org.modelmapper.config.Configuration.AccessLevel.PRIVATE)
 				.setMatchingStrategy(MatchingStrategies.STRICT);
 		return modelMapper;
 	}

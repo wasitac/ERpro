@@ -2,12 +2,13 @@
  * 이지홍
  */
 import React, { useState, useEffect } from "react";
-import { Table, Button, Flex } from "antd";
+import { Table, Button, Flex, Divider, Tabs } from "antd";
 import menus from "../../commons/menus";
 import fetchApi from "../../../../modules/api";
 import CustomModal from "../../commons/Modal/CustomModal";
 
 import dayjs from "dayjs";
+import TableTabs from "./TableTabs";
 
 const onChange = (filters, sorter, extra) => {
   console.log("params", filters, sorter, extra);
@@ -33,17 +34,20 @@ const DataTable = (props) => {
   });
 
   const fetchData = async () => {
+    var url = `/${props.keyOfmenu}`;
+    if (props.id !== undefined) {
+      url += `/${props.id}`;
+    }
     try {
-      const response = await fetchApi.get(`/${props.keyOfmenu}`);
+      const response = await fetchApi.get(url);
       setData(response.data.data);
-      console.log(response.data.data);
     } catch (error) {
       console.error("Error fetching data", error);
     }
   };
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [props.id]);
 
   // 선택 데이터 삭제 - 김주원
   const handleDelete = async () => {
@@ -86,8 +90,12 @@ const DataTable = (props) => {
 
   // 수정 모달 오픈 - 김주원
   const handleEdit = async (dataId) => {
+    var url = `/${props.keyOfmenu}/${dataId}`;
+    if (props.id !== undefined) {
+      url = `/${props.keyOfmenu}/${localStorage.getItem("rowId")}/${dataId}`;
+    }
     try {
-      const response = await fetchApi.get(`/${props.keyOfmenu}/${dataId}`);
+      const response = await fetchApi.get(url);
 
       if (`${props.keyOfmenu} == 'user'`) {
         response.data.data.birth = dayjs(response.data.data.birth);
@@ -113,23 +121,23 @@ const DataTable = (props) => {
 
   // 로우 클릭 시 상세 테이블 출력 - 이지홍
   const onClickHandler = async (dataId) => {
-    if (`${props.keyOfmenu}Item` in menus) {
+    const menu = `${props.keyOfmenu}Item`;
+    console.log(menu in menus);
+    if (menu in menus) {
       try {
-        const response = await fetchApi.get(
-          `/${props.keyOfmenu}Item/${dataId}`
-        );
+        localStorage.setItem("rowId", dataId);
+        setSelectedRowKeys([dataId]);
         setSecondTable(
-          <Table
-            rowKey="id"
-            size="small"
-            pagination={false}
-            onChange={onChange}
-            columns={menus[`${props.keyOfmenu}Item`].columns}
-            dataSource={response.data.data}
-            scroll={{ y: "30vh" }}
-          />
+          <div>
+            <Tabs
+              type="card"
+              items={[{ label: "품목 상세", key: 0 }]}
+              style={{ marginLeft: "20px" }}
+            />
+            <DataTable keyOfmenu={`${props.keyOfmenu}Item`} id={dataId} />
+          </div>
         );
-        setTableHeight("40vh");
+        setTableHeight("35vh");
       } catch (error) {
         console.error("Error get data", error);
       }
@@ -177,7 +185,6 @@ const DataTable = (props) => {
           </Flex>
         </div>
       </div>
-      {/* todo: 테이블 개수 동적처리 */}
       <Table
         rowSelection={rowSelection}
         rowKey="id"
@@ -187,6 +194,7 @@ const DataTable = (props) => {
         columns={columns}
         dataSource={data}
         scroll={{ y: tableHeight }}
+        style={{ marginBottom: "30px" }}
       />
       {secondTable}
       {/*  모달 영역 시작 */}

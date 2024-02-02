@@ -3,7 +3,6 @@ package himedia.project.erpro.inventory.entity;
 import java.util.Date;
 
 import himedia.project.erpro.inventory.dto.StoreDto;
-import himedia.project.erpro.production.entity.Inspection;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,8 +25,8 @@ public class Store {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "store_sort")
-	private String storeSort;
+	@Column(name = "sort")
+	private String sort;
 
 	@Column(name = "b_nm")
 	private String bNm;
@@ -41,7 +40,7 @@ public class Store {
 	public StoreDto toDto() {
 		return StoreDto.builder()
 				.id(this.id)
-				.storeSort(this.storeSort)
+				.sort(this.sort)
 				.bNm(this.bNm)
 				.orderId(this.orderId)
 				.storeDate(this.storeDate)
