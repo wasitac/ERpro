@@ -17,12 +17,10 @@ import himedia.project.erpro.inventory.dto.InventoryDto;
 import himedia.project.erpro.inventory.service.InventoryService;
 import lombok.RequiredArgsConstructor;
 
-
 @RestController
 @RequiredArgsConstructor
 public class InventoryController {
 	private final InventoryService inventoryService;
-
 	
 	@GetMapping("/inventory")
 	public ResponseEntity<Message> inventory() {
@@ -33,28 +31,28 @@ public class InventoryController {
 	@GetMapping("/inventory/{id}")
 	public ResponseEntity<Message> detailInventory(@PathVariable(value="id") Long id) {
 		InventoryDto data = inventoryService.getInventory(id);
-		Message returnData = new Message("입/출고 상세 데이터", data);
+		Message returnData = new Message("재고 상세 데이터", data);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	@PostMapping("/inventory")
 	public ResponseEntity<Message> addInventory(@RequestBody InventoryDto inventoryDto){
-		InventoryDto dataList = inventoryService.createInventory();
+		InventoryDto dataList = inventoryService.createInventory(inventoryDto);
 		Message returnData = new Message("입/출고 추가", dataList);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	@PutMapping("/inventory")
 	public ResponseEntity<Message> editInventory(@RequestBody InventoryDto inventoryDto){
-		InventoryDto message = inventoryService.updateInventory(inventoryDto);
-		Message returnData = new Message(message);
+		InventoryDto data = inventoryService.updateInventory(inventoryDto);
+		Message returnData = new Message("재고 수정", data);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/inventory")
 	public ResponseEntity<Message> deleteInventory(@RequestBody List<Long> idList){
-		boolean result = inventoryService.deleteInventory(idList);
-		Message returnData = new Message("", result);
+		inventoryService.deleteInventoryList(idList);
+		Message returnData = new Message("재고 삭제");
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 }

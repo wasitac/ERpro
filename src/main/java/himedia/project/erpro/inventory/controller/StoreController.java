@@ -59,6 +59,7 @@ public class StoreController {
 	}
 	
 	
+	// 출고 품목 상세
 	@GetMapping("/storeItem")
 	public ResponseEntity<Message> storeItem() {
 		Message returnData = new Message("storeItem");

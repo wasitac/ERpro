@@ -68,6 +68,7 @@ public class Inspection {
 				.eligible(this.eligible)
 				.ineligible(this.ineligible)
 				.pass(this.pass)
+				.inspectionDate(this.inspectionDate)
                 .build();
     }
 }
