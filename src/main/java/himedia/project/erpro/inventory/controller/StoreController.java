@@ -58,17 +58,34 @@ public class StoreController {
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
+	
+	@GetMapping("/storeItem")
+	public ResponseEntity<Message> storeItem() {
+		Message returnData = new Message("storeItem");
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
+	}
+	
 	// 입출고 품목 상세
 	@GetMapping("/storeItem/{storeId}")
-	public ResponseEntity<Message> storeItem(@PathVariable(value="storeId") Long storeId) {
-		List<StoreItemDto> dataList = storeService.getStoreItemAll(storeId);
+	public ResponseEntity<Message> storeItems(@PathVariable(value="storeId") Long storeId) {
+		List<StoreItemDto> dataList = storeService.getStoreItems(storeId);
+		System.out.println(storeId);
 		Message returnData = new Message("", dataList);
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
+	}
+	
+	@GetMapping("/storeItem/{storeId}/{rowId}")
+	public ResponseEntity<Message> storeItem(@PathVariable(value="rowId") Long rowId) {
+		StoreItemDto data = storeService.getStoreItem(rowId);
+		Message returnData = new Message("", data);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	@PostMapping("/storeItem")
 	public ResponseEntity<Message> addStoreItem(@RequestBody StoreItemDto storeItemDto){
 		StoreItemDto dataList = storeService.createStoreItem(storeItemDto);
+		System.out.println(storeItemDto.getId());
+		System.out.println(storeItemDto.getStoreId());
 		Message returnData = new Message("입/출고 추가", dataList);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}

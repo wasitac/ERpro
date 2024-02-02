@@ -5,7 +5,11 @@ const StoreItemForm = () => {
       <Form.Item name="id" noStyle>
         <Input type="hidden" />
       </Form.Item>
-      <Form.Item name="storeId" noStyle>
+      <Form.Item
+        name="storeId"
+        initialValue={localStorage.getItem("rowId")}
+        noStyle
+      >
         <Input type="hidden" />
       </Form.Item>
       <Form.Item
@@ -75,18 +79,6 @@ const StoreItemForm = () => {
           {
             required: true,
             message: "단가를 입력해주세요",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        label="공급가"
-        name="supplyPrice"
-        rules={[
-          {
-            required: true,
-            message: "공급가를 입력해주세요",
           },
         ]}
       >

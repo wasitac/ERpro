@@ -53,7 +53,7 @@ public class InventoryController {
 	
 	@DeleteMapping("/inventory")
 	public ResponseEntity<Message> deleteInventory(@RequestBody List<Long> idList){
-		boolean result = accountService.deleteInventory(idList);
+		boolean result = inventoryService.deleteInventory(idList);
 		Message returnData = new Message("", result);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}

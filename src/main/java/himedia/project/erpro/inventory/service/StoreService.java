@@ -59,7 +59,7 @@ public class StoreService {
 		storeRepository.deleteAllById(idList);
 	}
 
-	public List<StoreItemDto> getStoreItemAll(Long storeId) {
+	public List<StoreItemDto> getStoreItems(Long storeId) {
 		List<StoreItem> storeItemList = storeItemRepository.findAllByStoreId(storeId);
 		List<StoreItemDto> storeItemDtoList = mapper.toDtoList(storeItemList, StoreItemDto.class);
 		return storeItemDtoList;

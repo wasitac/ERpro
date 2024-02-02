@@ -24,7 +24,7 @@ function CustomModal(props) {
 
   // 모달 모드(add:등록, edit:수정)
   const [mode, setMode] = useState("add");
-  // const [data, setData] = useState({});
+  const [dataId, setDataId] = useState(undefined);
 
   useEffect(() => {
     // 모달이 열릴 때마다 모드를 설정
@@ -32,22 +32,10 @@ function CustomModal(props) {
       // 수정 모드일 때
       setMode("edit");
       form.setFieldsValue(props.dataForEdit); // 폼에 원래값 설정
-
-      // const fetchData = async () => {
-      //   try {
-      //     const response = await fetchApi.get(
-      //       `/${props.keyOfmenu}Item/${props.dataForEdit.id}`
-      //     );
-      //     setData(response.data.data);
-      //     console.log(response.data.data);
-      //   } catch (error) {
-      //     console.error("Error fetching data", error);
-      //   }
-      // };
-
-      // fetchData();
+      setDataId(props.dataForEdit.id);
     } else {
       // 등록 모드일 때
+      setDataId(undefined);
       setMode("add");
     }
   }, [props.modalStatus]);

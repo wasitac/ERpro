@@ -35,7 +35,6 @@ const DataTable = (props) => {
 
   const fetchData = async () => {
     var url = `/${props.keyOfmenu}`;
-    console.log(props.id);
     if (props.id !== undefined) {
       url += `/${props.id}`;
     }
@@ -48,7 +47,7 @@ const DataTable = (props) => {
   };
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [props.id]);
 
   // 선택 데이터 삭제 - 김주원
   const handleDelete = async () => {
@@ -91,8 +90,12 @@ const DataTable = (props) => {
 
   // 수정 모달 오픈 - 김주원
   const handleEdit = async (dataId) => {
+    var url = `/${props.keyOfmenu}/${dataId}`;
+    if (props.id !== undefined) {
+      url = `/${props.keyOfmenu}/${localStorage.getItem("rowId")}/${dataId}`;
+    }
     try {
-      const response = await fetchApi.get(`/${props.keyOfmenu}/${dataId}`);
+      const response = await fetchApi.get(url);
 
       if (`${props.keyOfmenu} == 'user'`) {
         response.data.data.birth = dayjs(response.data.data.birth);
@@ -122,27 +125,16 @@ const DataTable = (props) => {
     console.log(menu in menus);
     if (menu in menus) {
       try {
-        const response = await fetchApi.get(
-          `/${props.keyOfmenu}Item/${dataId}`
-        );
+        localStorage.setItem("rowId", dataId);
         setSelectedRowKeys([dataId]);
         setSecondTable(
           <div>
-            {/* <DataTable keyOfmenu={`${props.keyOfmenu}Item`} id={dataId} /> */}
             <Tabs
               type="card"
               items={[{ label: "품목 상세", key: 0 }]}
               style={{ marginLeft: "20px" }}
             />
-            <Table
-              rowKey="id"
-              size="small"
-              pagination={false}
-              onChange={onChange}
-              columns={menus[menu].column}
-              dataSource={response.data.data}
-              scroll={{ y: "25vh" }}
-            />
+            <DataTable keyOfmenu={`${props.keyOfmenu}Item`} id={dataId} />
           </div>
         );
         setTableHeight("35vh");

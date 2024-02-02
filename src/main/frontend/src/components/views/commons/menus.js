@@ -588,7 +588,7 @@ const menus = {
     column: [
       {
         title: "품목번호",
-        dataIndex: "id",
+        dataIndex: "itemId",
         defaultSortOrder: "descend",
         sorter: (a, b) => a.id - b.id,
       },

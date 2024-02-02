@@ -59,7 +59,7 @@ const StoreForm = () => {
       >
         <Input style={{ width: "400px" }} />
       </Form.Item>
-      <DataTable keyOfmenu="storeItem" />
+      
     </div>
   );
 };
