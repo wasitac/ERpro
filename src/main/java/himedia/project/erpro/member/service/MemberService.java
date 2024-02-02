@@ -38,7 +38,7 @@ public class MemberService {
 	public MemberDto getMemberById(Long memberId) {
 		MemberDto memberDto = memberRepository.findById(memberId)
 				.orElseThrow(() -> new EntityNotFoundException("Member not found with ID: " + memberId))
-				.toDto();
+				.toFormDto();
 
 		return memberDto;
 	}
@@ -78,6 +78,11 @@ public class MemberService {
 	
 	// 사원 대장 수정
 	public Optional<MemberDto> updateMember(MemberDto memberDto) {
+
+		System.out.println(memberDto.getDepartment());
+		System.out.println(memberDto.getRole());
+		System.out.println(memberDto.getMemberRank());
+
 		Optional<Member> existMember = memberRepository.findById(memberDto.getId());
 		
 		if(existMember.isPresent()) {

@@ -67,4 +67,21 @@ public class Member {
 				.password(password)
 				.build();
 	}
+
+	public MemberDto toFormDto() {
+		return MemberDto.builder()
+				.id(id)
+				.name(name)
+				.birth(birth)
+				.phone(phone)
+				.email(email)
+				.department(department.toString())
+				.memberRank(memberRank.toString())
+				.role(role.toString())
+				.workType(workType)
+				.insertDate(insertDate)
+				.retireDate(retireDate)
+				.password(password)
+				.build();
+	}
 }
