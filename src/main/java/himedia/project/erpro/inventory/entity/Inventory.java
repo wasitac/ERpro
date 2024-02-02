@@ -67,6 +67,6 @@ public class Inventory {
 								.lack(this.lack)
 								.sales(this.sales)
 								.expectedOrder(this.expectedOrder)
-                .build();
+								.build();
     }
 }
