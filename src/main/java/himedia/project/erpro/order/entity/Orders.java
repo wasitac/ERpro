@@ -2,6 +2,7 @@ package himedia.project.erpro.order.entity;
 
 import java.util.Date;
 
+import himedia.project.erpro.order.dto.OrdersDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -39,4 +40,15 @@ public class Orders {
 	
 	@Column(name = "completion_date")
 	private Date completionDate;
+	
+	public OrdersDto toOrdersDto() {
+		return OrdersDto.builder()
+				.id(this.id)
+				.bNm(this.bNm)
+				.bNo(this.bNo)
+				.type(this.type)
+				.dueDate(this.dueDate)
+				.completionDate(this.completionDate)
+				.build();
+	}
 }

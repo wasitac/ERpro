@@ -32,31 +32,22 @@ const EstimateForm = () => {
         <Form.Item
           label="작성일자"
           name="insertDate"
-          rules={[
-            {
-              required: true,
-              message: "작성일자를 입력해주세요",
-            },
-          ]}
         >
+          <Input style={{ width: "400px" }} />
           {/* <DatePicker /> */}
         </Form.Item>
         <Form.Item
           label="유효기간"
-          name="expiration"
-          rules={[
-            {
-              required: true,
-              message: "유효기간을 입력해주세요",
-            },
-          ]}
+          name="expirationDate"
         >
+          <Input style={{ width: "400px" }} />
           {/*  <DatePicker /> */}
         </Form.Item>
         <Form.Item
           label="납기일자"
           name="dueDate"
         >
+          <Input style={{ width: "400px" }} />
           {/*  <DatePicker /> */}
         </Form.Item>
         <Form.Item
@@ -73,7 +64,7 @@ const EstimateForm = () => {
         </Form.Item>
         <Form.Item
           label="주문처리"
-          name="order"
+          name="isOrder"
           rules={[
             {
               required: true,

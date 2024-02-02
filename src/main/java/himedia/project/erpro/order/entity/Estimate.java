@@ -2,11 +2,15 @@ package himedia.project.erpro.order.entity;
 
 import java.util.Date;
 
+import himedia.project.erpro.order.dto.EstimateDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,7 +18,9 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
+@Builder
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Estimate {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,4 +43,16 @@ public class Estimate {
 
 	@Column(name = "is_order")
 	private String isOrder;
+	
+	public EstimateDto toEstimateDto() {
+		return EstimateDto.builder()
+				.id(this.id)
+				.accountId(this.accountId)
+				.insertDate(this.insertDate)
+				.expirationDate(this.expirationDate)
+				.dueDate(this.dueDate)
+				.total(this.total)
+				.isOrder(this.isOrder)
+				.build();
+	}
 }
