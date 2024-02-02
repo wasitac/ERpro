@@ -1,5 +1,6 @@
 package himedia.project.erpro.order.entity;
 
+import himedia.project.erpro.order.dto.OdersItemDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -50,4 +51,21 @@ public class OrdersItem {
 	
 	@Column(name = "total")
 	private Integer total;
+	
+	public OdersItemDto toOrdersItemDto() {
+		return OdersItemDto.builder()
+				.id(this.id)
+				.ordersId(this.ordersId)
+				.sort(this.sort)
+				.itemId(this.itemId)
+				.itemName(this.itemName)
+				.unit(this.unit)
+				.spec(this.spec)
+				.count(this.count)
+				.price(this.price)
+				.vat(this.vat)
+				.total(this.total)
+				.build();
+
+	}
 }
