@@ -1,5 +1,6 @@
 package himedia.project.erpro.member.service;
 
+import himedia.project.erpro.member.dto.MemberDto;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -29,20 +30,21 @@ public class LoginService {
             return "입력하신 사번이 존재하지 않습니다.";
         }
 
-        Member findMember = memberRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Member not found with ID: " + id));
+        MemberDto findMemberDto = memberRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Member not found with ID: " + id))
+                .toDto();
 
         // 임시 비밀번호 생성
         String tempPassword = RandomStringUtils.randomAlphanumeric(8);
 
         // member table에 암호화된 비밀번호 update
-        findMember.setPassword(bCryptPasswordEncoder.encode(tempPassword));
-        memberRepository.save(findMember);
+        findMemberDto.setPassword(bCryptPasswordEncoder.encode(tempPassword));
+        memberRepository.save(findMemberDto.toEntity());
 
         // 임시비밀번호 메일발송
         try {
             EmailDto emailDto = new EmailDto();
-            emailDto.setMailAddr(findMember.getEmail());
+            emailDto.setMailAddr(findMemberDto.getEmail());
             emailDto.setMailTitle("ERPRO 임시 비밀번호 보내드립니다.");
             emailDto.setTemplateFile("password");
 

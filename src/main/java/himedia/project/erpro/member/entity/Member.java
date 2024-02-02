@@ -2,35 +2,26 @@ package himedia.project.erpro.member.entity;
 
 import java.util.Date;
 
+import himedia.project.erpro.member.dto.MemberDto;
 import himedia.project.erpro.member.enums.Department;
 import himedia.project.erpro.member.enums.MemberRank;
 import himedia.project.erpro.member.enums.Role;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 
 @Entity
 @Getter
-@Setter
-//@AllArgsConstructor(access = AccessLevel.PRIVATE)
-//@NoArgsConstructor(access = AccessLevel.PRIVATE)
-@AllArgsConstructor
-@NoArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@Builder
 public class Member {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	private String name;
-	
+
+	@Temporal(TemporalType.DATE)
 	private Date birth;	
 	
 	private String phone;
@@ -49,12 +40,31 @@ public class Member {
 
 	@Column(name = "work_type")
 	private String workType;
-	
+
+	@Temporal(TemporalType.DATE)
 	@Column(name = "insert_date")
 	private Date insertDate;
-	
+
+	@Temporal(TemporalType.DATE)
 	@Column(name = "retire_date")
 	private Date retireDate;
 	
 	private String password;
+
+	public MemberDto toDto() {
+		return MemberDto.builder()
+				.id(id)
+				.name(name)
+				.birth(birth)
+				.phone(phone)
+				.email(email)
+				.department(department.getKor())
+				.memberRank(memberRank.getKor())
+				.role(role.getKor())
+				.workType(workType)
+				.insertDate(insertDate)
+				.retireDate(retireDate)
+				.password(password)
+				.build();
+	}
 }

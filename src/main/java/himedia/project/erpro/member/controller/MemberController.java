@@ -4,6 +4,7 @@ package himedia.project.erpro.member.controller;
 import java.util.List;
 import java.util.Optional;
 
+import himedia.project.erpro.member.dto.MemberDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,7 +28,7 @@ public class MemberController {
 	// 사원 대장 - 김주원
 	@GetMapping("/member")
 	public ResponseEntity<Message> member() {
-		List<Member> dataList = memberService.getMemberAll();
+		List<MemberDto> dataList = memberService.getMemberAll();
 		Message returnData = new Message("", dataList);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
@@ -35,23 +36,23 @@ public class MemberController {
 	// 사원 상세 정보 조회
 	@GetMapping("/member/{id}")
 	public ResponseEntity<Message> detailMember(@PathVariable(value="id") Long id) {
-		Optional<Member> data = memberService.getMemberById(id);
+		MemberDto data = memberService.getMemberById(id);
 		Message returnData = new Message("", data);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);	
 	}
 	
 	// 사원 추가 - 김주원
 	@PostMapping("/member")
-	public ResponseEntity<Message> createMember(@RequestBody Member member) {
-		String result = memberService.createMember(member);
+	public ResponseEntity<Message> createMember(@RequestBody MemberDto memberDto) {
+		String result = memberService.createMember(memberDto);
 		Message returnData = new Message<>("",result);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	// 사원 대장 수정 - 김주원
 	@PutMapping("/member")
-	public ResponseEntity<Message> editMember(@RequestBody Member member) {
-		Optional<Member> editData = memberService.updateMember(member);
+	public ResponseEntity<Message> editMember(@RequestBody MemberDto memberDto) {
+		Optional<MemberDto> editData = memberService.updateMember(memberDto);
 		Message returnData = new Message("수정 성공", editData);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
