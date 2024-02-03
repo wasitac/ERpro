@@ -3,6 +3,7 @@ package himedia.project.erpro.order.dto;
 import java.util.Date;
 
 import himedia.project.erpro.order.entity.Orders;
+import himedia.project.erpro.order.enums.OrdersType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,7 +19,7 @@ public class OrdersDto {
 	private Long id;
 	private String bNm;
 	private String bNo;
-	private String type;
+	private String sort;
 	private Date dueDate;
 	private Date completionDate;
 	
@@ -27,7 +28,7 @@ public class OrdersDto {
 				.id(this.id)
 				.bNm(this.bNm)
 				.bNo(this.bNo)
-				.type(this.type)
+				.sort(this.sort)
 				.dueDate(this.dueDate)
 				.completionDate(this.completionDate)
 				.build();

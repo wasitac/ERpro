@@ -30,10 +30,10 @@ function Profiledropdown() {
         className={`menu ${isActive ? "active" : "inactive"}`}
       >
         <ul>
-          <li>이름 : 홍길동</li>
-          <li>직책 : 대리</li>
-          <li>부서 : 영업부</li>
-          <li>이메일 : abc@erpro.com</li>
+          <li>이름 : {localStorage.getItem("name")}</li>
+          <li>직급 : {localStorage.getItem("memberRank")}</li>
+          <li>부서 : {localStorage.getItem("department")}</li>
+          <li>이메일 : {localStorage.getItem("email")}</li>
 
           <Flex
             wrap="wrap"

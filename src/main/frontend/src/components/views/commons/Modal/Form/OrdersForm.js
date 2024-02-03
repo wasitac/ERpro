@@ -50,8 +50,6 @@ const OrdersForm = () => {
           {/*   <DatePicker /> */}
         </Form.Item>
       </div>
-
-
     </div>
   );
 };

@@ -3,8 +3,11 @@ package himedia.project.erpro.order.entity;
 import java.util.Date;
 
 import himedia.project.erpro.order.dto.OrdersDto;
+import himedia.project.erpro.order.enums.OrdersType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -32,8 +35,8 @@ public class Orders {
 	@Column(name = "b_no")
 	private String bNo;
 	
-	@Column(name = "type")
-	private String type;
+	@Column(name = "sort")
+	private String sort;
 	
 	@Column(name = "due_date")
 	private Date dueDate;
@@ -46,7 +49,7 @@ public class Orders {
 				.id(this.id)
 				.bNm(this.bNm)
 				.bNo(this.bNo)
-				.type(this.type)
+				.sort(this.sort)
 				.dueDate(this.dueDate)
 				.completionDate(this.completionDate)
 				.build();
