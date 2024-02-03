@@ -16,14 +16,8 @@ function Profiledropdown() {
   };
 
   const handleLogoutClick = () => {
-    axios
-      .post("/logout")
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
+    localStorage.clear();
+    navigate("/login");
   };
 
   return (

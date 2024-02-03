@@ -1,10 +1,11 @@
 package himedia.project.erpro.member.dto;
 
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import lombok.RequiredArgsConstructor;
@@ -17,18 +18,7 @@ public class CustomMemberDetails implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
 
-        Collection<GrantedAuthority> collection = new ArrayList<>();
-
-        collection.add(new GrantedAuthority() {
-
-            @Override
-            public String getAuthority() {
-
-                return memberDto.getRole().toString();
-            }
-        });
-
-        return collection;
+        return Collections.singletonList(new SimpleGrantedAuthority(memberDto.getRole().toString()));
     }
 
     @Override
@@ -75,11 +65,11 @@ public class CustomMemberDetails implements UserDetails {
     }
 
     public String getDepartment() {
-        return memberDto.getDepartment().getKor();
+        return memberDto.getDepartment();
     }
 
     public String getMemberRank() {
-        return memberDto.getMemberRank().getKor();
+        return memberDto.getMemberRank();
     }
     
     public Date getInsertDate() {

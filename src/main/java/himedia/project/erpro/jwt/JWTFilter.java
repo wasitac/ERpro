@@ -56,7 +56,7 @@ public class JWTFilter extends OncePerRequestFilter {
         MemberDto memberDto = new MemberDto();
         memberDto.setId(Long.parseLong(memberId));
         memberDto.setPassword(""); //password 강제로 입력 필요, 매번 DB조회는 부담으로 null값 강제 입력
-        memberDto.setRole(Role.valueOf(role));
+        memberDto.setRole(role);
 
         // CustomUserDetails에 사원 정보 객체 담기
         CustomMemberDetails customMemberDetails = new CustomMemberDetails(memberDto);

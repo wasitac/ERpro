@@ -12,4 +12,8 @@ public interface BomRepository extends JpaRepository<Bom, Long> {
     List<Long> findDistinctItemIds();
 
     List<Bom> findByItemId(Long itemId);
+
+    void deleteByItemId(Long itemId);
+
+    void deleteByItemIdIn(List<Long> itemIdList);
 }
