@@ -7,13 +7,13 @@ const InvoiceForm = () => {
       <Form.Item
         label="전표번호"
         name="id">
-        <Input disabled style={{ width: "400px" }} />
+        <Input disabled />
       </Form.Item>
       <Form.Item
         label="입출고번호"
         name="storeId"
       >
-        <Input style={{ width: "400px" }} />
+        <Input />
       </Form.Item>
       <Form.Item
         label="거래구분"
@@ -21,11 +21,11 @@ const InvoiceForm = () => {
         rules={[
           {
             required: true,
-            message: "견적번호를 입력해주세요",
+            message: "거래구분을 선택해주세요",
           },
         ]}
       >
-        <Select style={{ width: "400px" }}>
+        <Select>
           <Select.Option value="BUY">구매</Select.Option>
           <Select.Option value="SELL">판매</Select.Option>
         </Select>
@@ -40,20 +40,26 @@ const InvoiceForm = () => {
           },
         ]}
       >
-        <Input style={{ width: "400px" }} />
+        <Input />
       </Form.Item>
       <Form.Item
         label="거래일자"
         name="invoiceDate"
+        rules={[
+          {
+            required: true,
+            message: "거래일자를 입력해주세요",
+          },
+        ]}
       >
-        <Input style={{ width: "400px" }} />
+        <Input />
         {/* <DatePicker /> */}
       </Form.Item>
       <Form.Item
         label="비고"
         name="note"
       >
-        <Input style={{ width: "400px" }} />
+        <Input />
       </Form.Item>
     </div>
   );

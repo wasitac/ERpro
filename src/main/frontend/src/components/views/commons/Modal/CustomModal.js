@@ -101,7 +101,7 @@ function CustomModal(props) {
       break;
     case "orders":
       inputForm = <OrdersForm />;
-      modalSize = 1200;
+      // modalSize = 1200;
       break;
     case "estimate":
       inputForm = <EstimateForm />;

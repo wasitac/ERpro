@@ -47,7 +47,7 @@ const InvoiceItemForm = () => {
         rules={[
           {
             required: true,
-            message: "주문번호를 입력해주세요",
+            message: "단위를 입력해주세요",
           },
         ]}
       >
@@ -59,7 +59,7 @@ const InvoiceItemForm = () => {
         rules={[
           {
             required: true,
-            message: "주문번호를 입력해주세요",
+            message: "규격을 입력해주세요",
           },
         ]}
       >

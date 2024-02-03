@@ -3,7 +3,6 @@ const EstimateItemForm = () => {
   return (
     <div>
       <Form.Item
-        label="견적품목번호"
         name="id"
         noStyle
       >
@@ -47,7 +46,7 @@ const EstimateItemForm = () => {
         rules={[
           {
             required: true,
-            message: "주문번호를 입력해주세요",
+            message: "단위를 입력해주세요",
           },
         ]}
       >
@@ -59,7 +58,7 @@ const EstimateItemForm = () => {
         rules={[
           {
             required: true,
-            message: "주문번호를 입력해주세요",
+            message: "규격을 입력해주세요",
           },
         ]}
       >
