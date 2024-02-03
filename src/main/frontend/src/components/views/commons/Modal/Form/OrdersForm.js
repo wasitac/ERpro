@@ -10,7 +10,7 @@ const OrdersForm = () => {
         </Form.Item>
         <Form.Item
           label="유형"
-          name="type"
+          name="sort"
           rules={[
             {
               required: true,
@@ -22,6 +22,30 @@ const OrdersForm = () => {
             <Select.Option value="BUY">구매</Select.Option>
             <Select.Option value="SELL">판매</Select.Option>
           </Select>
+        </Form.Item>
+        <Form.Item
+          label="거래처명"
+          name="bNm"
+          rules={[
+            {
+              required: true,
+              message: "거래처명을 입력해주세요",
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label="사업자등록번호"
+          name="bNo"
+          rules={[
+            {
+              required: true,
+              message: "사업자등록번호를 입력해주세요",
+            },
+          ]}
+        >
+          <Input />
         </Form.Item>
         <Form.Item
           label="예정일"
