@@ -60,7 +60,6 @@ const BomForm = ({ form, mode }) => {
                 updatedBomList[name].price = updatedBomList[name].buyPrice * updatedBomList[name].requiredAmount;
             }
 
-
             formInstance.setFieldsValue({
                 bomList: updatedBomList,
             });

@@ -1,4 +1,4 @@
-import {DatePicker, Form, Input, Radio, Select, Space} from "antd";
+import { DatePicker, Form, Input, Radio, Select, Space } from "antd";
 const MemberForm = (props) => {
   return (
     <div>
@@ -6,16 +6,16 @@ const MemberForm = (props) => {
         <Input type="hidden" />
       </Form.Item>
       <Form.Item
-          label="이름"
-          name="name"
-          rules={[
-              {
-                  required: true,
-                  message: "이름을 입력해주세요",
-              },
-          ]}
+        label="이름"
+        name="name"
+        rules={[
+          {
+            required: true,
+            message: "이름을 입력해주세요",
+          },
+        ]}
       >
-          <Input />
+        <Input />
       </Form.Item>
       <Form.Item
         label="생년월일"
@@ -55,7 +55,7 @@ const MemberForm = (props) => {
           },
         ]}
       >
-          <Input />
+        <Input />
       </Form.Item>
       <Form.Item
         label="부서"
@@ -68,11 +68,11 @@ const MemberForm = (props) => {
         ]}
       >
         <Select>
-          <Select.Option value="SALES">영업</Select.Option>
-          <Select.Option value="PRODUCTION">생산</Select.Option>
-          <Select.Option value="HR">인사</Select.Option>
-          <Select.Option value="LOGISTICS">물류</Select.Option>
-          <Select.Option value="ADMIN">관리</Select.Option>
+          <Select.Option value="영업">영업</Select.Option>
+          <Select.Option value="생산">생산</Select.Option>
+          <Select.Option value="인사">인사</Select.Option>
+          <Select.Option value="물류">물류</Select.Option>
+          <Select.Option value="관리">관리</Select.Option>
         </Select>
       </Form.Item>
       <Form.Item
@@ -86,11 +86,11 @@ const MemberForm = (props) => {
         ]}
       >
         <Select>
-          <Select.Option value="EXECUTIVE">부장</Select.Option>
-          <Select.Option value="TEAM_LEADER">차장</Select.Option>
-          <Select.Option value="DIRECTOR">과장</Select.Option>
-          <Select.Option value="MANAGER">대리</Select.Option>
-          <Select.Option value="EMPLOYEE">사원</Select.Option>
+          <Select.Option value="부장">부장</Select.Option>
+          <Select.Option value="차장">차장</Select.Option>
+          <Select.Option value="과장">과장</Select.Option>
+          <Select.Option value="대리">대리</Select.Option>
+          <Select.Option value="사원">사원</Select.Option>
         </Select>
       </Form.Item>
       <Form.Item
@@ -103,11 +103,11 @@ const MemberForm = (props) => {
           },
         ]}
       >
-          <Select>
-              <Select.Option value="ROLE_SUPERADMIN">최고관리자</Select.Option>
-              <Select.Option value="ROLE_ADMIN">관리자</Select.Option>
-              <Select.Option value="ROLE_MEMBER">직원</Select.Option>
-          </Select>
+        <Select>
+          <Select.Option value="ROLE_SUPERADMIN">최고관리자</Select.Option>
+          <Select.Option value="ROLE_ADMIN">관리자</Select.Option>
+          <Select.Option value="ROLE_MEMBER">직원</Select.Option>
+        </Select>
       </Form.Item>
 
       <Form.Item
@@ -137,25 +137,22 @@ const MemberForm = (props) => {
       >
         <DatePicker />
       </Form.Item>
-      <Form.Item
-        label="퇴사일"
-        name="retireDate"
-      >
+      <Form.Item label="퇴사일" name="retireDate">
         <DatePicker />
       </Form.Item>
-      { props.mode === 'add' && (
-          <Form.Item
-            label="임시비밀번호"
-            name="password"
-            rules={[
-                {
-                    required: true,
-                    message: "임시 비밀번호를 입력해주세요",
-                },
-            ]}
-          >
-            <Input />
-          </Form.Item>
+      {props.mode === "add" && (
+        <Form.Item
+          label="임시비밀번호"
+          name="password"
+          rules={[
+            {
+              required: true,
+              message: "임시 비밀번호를 입력해주세요",
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
       )}
     </div>
   );
