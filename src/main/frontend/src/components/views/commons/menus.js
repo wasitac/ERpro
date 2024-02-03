@@ -694,13 +694,8 @@ const menus = {
     column: [
       {
         title: "품목번호",
-<<<<<<< Updated upstream
         width: 120,
         dataIndex: "itemId",
-=======
-        dataIndex: "id",
-        width: 120,
->>>>>>> Stashed changes
         defaultSortOrder: "descend",
         sorter: (a, b) => a.id - b.id,
       },
@@ -747,29 +742,12 @@ const menus = {
     column: [
       {
         title: "품목번호",
-<<<<<<< Updated upstream
         dataIndex: "itemId",
-=======
-        dataIndex: "id",
->>>>>>> Stashed changes
         width: 120,
         defaultSortOrder: "descend",
         sorter: (a, b) => a.id - b.id,
       },
       {
-<<<<<<< Updated upstream
-=======
-        title: "견적번호",
-        dataIndex: "estimateId",
-        width: 120,
-      },
-      {
-        title: "품목번호",
-        dataIndex: "itemId",
-        width: 120,
-      },
-      {
->>>>>>> Stashed changes
         title: "품목명",
         dataIndex: "itemName",
         width: 200,
