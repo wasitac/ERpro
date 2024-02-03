@@ -4,24 +4,22 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Form, Divider } from "antd";
 import menus from "../../commons/menus";
-import DataTable from "../../pages/MainPage/DataTable";
-import AccountForm from "./Form/AccountForm";
-import ItemForm from "./Form/ItemForm";
-import BomForm from "./Form/BomForm";
-import MemberForm from "./Form/MemberForm";
-import OrdersForm from "./Form/OrdersForm";
-import EstimateForm from "./Form/EstimateForm";
-import InvoiceForm from "./Form/InvoiceForm";
-import StoreForm from "./Form/StoreForm";
-import StoreItemForm from "./Form/StoreItemForm";
-import ProductionForm from "./Form/ProductionForm";
-import InspectionForm from "./Form/InspectionForm";
-import OrdersItemForm from "./Form/OrdersItemForm";
-import InvoiceItemForm from "./Form/InvoiceItemForm";
-import EstimateItemForm from "./Form/EstimateItemForm";
-import InventoryForm from "./Form/InventoryForm";
+import AccountForm from "./Form/trade/AccountForm";
+import ItemForm from "./Form/inventory/ItemForm";
+import BomForm from "./Form/inventory/BomForm";
+import MemberForm from "./Form/member/MemberForm";
+import OrdersForm from "./Form/order/OrdersForm";
+import EstimateForm from "./Form/order/EstimateForm";
+import InvoiceForm from "./Form/order/InvoiceForm";
+import StoreForm from "./Form/inventory/StoreForm";
+import StoreItemForm from "./Form/inventory/StoreItemForm";
+import ProductionForm from "./Form/production/ProductionForm";
+import InspectionForm from "./Form/production/InspectionForm";
+import OrdersItemForm from "./Form/order/OrdersItemForm";
+import InvoiceItemForm from "./Form/order/InvoiceItemForm";
+import EstimateItemForm from "./Form/order/EstimateItemForm";
+import InventoryForm from "./Form/inventory/InventoryForm";
 import fetchApi from "../../../../modules/api";
-import dayjs from "dayjs";
 
 function CustomModal(props) {
   // antd의 Form관련 hook 사용을 위함
@@ -170,9 +168,7 @@ function CustomModal(props) {
           span: 18,
         }}
       >
-        {/* Form */}
         {inputForm}
-        {/* Tabel */}
       </Form>
     </Modal>
   );

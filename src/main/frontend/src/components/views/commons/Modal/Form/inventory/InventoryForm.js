@@ -1,6 +1,6 @@
 // 이지홍
 import { Form, Input, Radio, Select } from "antd";
-import DataTable from "../../../pages/MainPage/DataTable";
+import DataTable from "../../../../pages/MainPage/DataTable";
 const InventoryForm = () => {
   return (
     <DataTable keyOfmenu="orders" />

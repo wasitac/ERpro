@@ -17,20 +17,21 @@ const DataTable = (props) => {
   const [data, setData] = useState([]);
   const [secondTable, setSecondTable] = useState("");
   const [tableHeight, setTableHeight] = useState("70vh");
-  
-  const columns = menus[props.keyOfmenu].column.map((item) => {
-    return {
-      ...item,
-      render: (text, record) => (
-        <a
-          onDoubleClick={() => handleEdit(record.id)}
-          onClick={() => onClickHandler(record.id)}
-        >
-          {text}
-        </a>
-      ),
-    };
-  });
+
+  const columns = menus[props.keyOfmenu].column;
+  // .map((item) => {
+  //   return {
+  //     ...item,
+  //     render: (text, record) => (
+  //       <a
+  //         onDoubleClick={() => handleEdit(record.id)}
+  //         onClick={() => onClickHandler(record.id)}
+  //       >
+  //         {text}
+  //       </a>
+  //     ),
+  //   };
+  // });
 
   const fetchData = async () => {
     var url = `/${props.keyOfmenu}`;
@@ -81,7 +82,6 @@ const DataTable = (props) => {
 
   const hasSelected = selectedRowKeys.length > 0;
 
-  // 모달
   // 모달 상태 - 김주원
   const [modalStatus, setModalStatus] = useState(false);
   // 수정 모달 오픈 시 모달 전달용 상세데이터 - 김주원
@@ -95,7 +95,7 @@ const DataTable = (props) => {
     }
     try {
       const response = await fetchApi.get(url);
-      // DatePicker 사용을 위한 포맷팅 이지홍
+      // DatePicker 사용을 위한 포맷팅 - 이지홍
       Object.keys(response.data.data).forEach((key) => {
         if (key.endsWith("Date")) {
           response.data.data[key] =
@@ -199,13 +199,16 @@ const DataTable = (props) => {
         size="small"
         pagination={false}
         onChange={onChange}
+        onRow={(record) => ({
+          onDoubleClick: () => handleEdit(record.id),
+          onClick: () => onClickHandler(record.id),
+        })}
         columns={columns}
         dataSource={data}
         scroll={{ y: tableHeight }}
         style={{ marginBottom: "30px" }}
       />
       {secondTable}
-      {/*  모달 영역 시작 */}
       <CustomModal
         keyOfmenu={props.keyOfmenu}
         modalStatus={modalStatus}
@@ -213,7 +216,6 @@ const DataTable = (props) => {
         dataForEdit={selectDetailData} // 로우 데이터
         fetchData={fetchData}
       />
-      {/* 모달 영역 끝 */}
     </div>
   );
 };

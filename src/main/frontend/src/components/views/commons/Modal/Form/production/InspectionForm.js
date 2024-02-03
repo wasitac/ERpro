@@ -1,5 +1,5 @@
 import { Form, Input, Row, Col, Radio, DatePicker } from "antd";
-import DataTable from "../../../pages/MainPage/DataTable";
+import DataTable from "../../../../pages/MainPage/DataTable";
 
 // 이지홍
 const StoreForm = () => {

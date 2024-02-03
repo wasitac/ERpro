@@ -6,16 +6,6 @@ import { Tabs } from "antd";
 import DataTable from "./DataTable";
 import menus from "../../commons/menus";
 
-// 이거대신 탭 기록 넣으면 됨
-// const defaultPanes = new Array(2).fill(null).map((_, index) => {
-//   const id = String(index + 1);
-//   return {
-//     label: `Tab ${id}`,
-//     children: `Content of Tab Pane ${index + 1}`,
-//     key: id,
-//   };
-// });
-
 // 저장한 탭 기록 출력
 const TableTabs = (props) => {
   const [activeKey, setActiveKey] = useState([]);
@@ -26,27 +16,30 @@ const TableTabs = (props) => {
   };
 
   useEffect(() => {
-    add();
+    add(props.keyOfmenu);
   }, [props.keyOfmenu]);
 
-  const add = () => {
-    const isValueExist = items.some((value) => value.key === props.keyOfmenu);
+  const add = (key) => {
+    const isValueExist = items.some((value) => value.key === key);
+
     if (!isValueExist) {
       setItems([
         ...items,
         {
-          label: menus[props.keyOfmenu].label,
-          children: <DataTable keyOfmenu={props.keyOfmenu} />,
-          key: props.keyOfmenu,
+          label: menus[key].label,
+          children: <DataTable keyOfmenu={key} />,
+          key: key,
         },
       ]);
     }
-    setActiveKey(props.keyOfmenu);
+
+    setActiveKey(key);
   };
 
   const remove = (targetKey) => {
     const targetIndex = items.findIndex((pane) => pane.key === targetKey);
     const newPanes = items.filter((pane) => pane.key !== targetKey);
+
     if (newPanes.length && targetKey === activeKey) {
       const { key } =
         newPanes[
@@ -54,6 +47,7 @@ const TableTabs = (props) => {
         ];
       setActiveKey(key);
     }
+
     setItems(newPanes);
   };
 
