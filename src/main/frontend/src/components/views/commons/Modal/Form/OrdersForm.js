@@ -25,7 +25,7 @@ const OrdersForm = () => {
         </Form.Item>
         <Form.Item
           label="거래처명"
-          name="bNm"
+          name="bnm"
           rules={[
             {
               required: true,
@@ -37,7 +37,7 @@ const OrdersForm = () => {
         </Form.Item>
         <Form.Item
           label="사업자등록번호"
-          name="bNo"
+          name="bno"
           rules={[
             {
               required: true,
