@@ -24,6 +24,7 @@ public class StoreService {
 
 	public List<StoreDto> getStoreAll() { 
 		List<Store> storeList = storeRepository.findAll();
+		System.out.println(storeList.get(0).getStoreDate());
 		List<StoreDto> storeDtoList = mapper.toDtoList(storeList, StoreDto.class);
 		return storeDtoList;
 	}

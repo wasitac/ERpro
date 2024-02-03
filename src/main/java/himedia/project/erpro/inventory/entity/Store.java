@@ -2,9 +2,13 @@ package himedia.project.erpro.inventory.entity;
 
 import java.util.Date;
 
+import himedia.project.erpro.common.DateFormat;
 import himedia.project.erpro.inventory.dto.StoreDto;
+import himedia.project.erpro.inventory.enums.StoreSort;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -20,13 +24,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Store {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Enumerated(EnumType.STRING)
 	@Column(name = "sort")
-	private String sort;
+	private StoreSort sort;
 
 	@Column(name = "b_nm")
 	private String bNm;
@@ -38,12 +43,13 @@ public class Store {
 	private Date storeDate;
 	
 	public StoreDto toDto() {
+		DateFormat dateFormat = new DateFormat();
 		return StoreDto.builder()
 				.id(this.id)
-				.sort(this.sort)
+				.sort((this.sort).getKor())
 				.bNm(this.bNm)
 				.orderId(this.orderId)
-				.storeDate(this.storeDate)
+				.storeDate(dateFormat.toStr(this.storeDate))
 				.build();
 	}
 }

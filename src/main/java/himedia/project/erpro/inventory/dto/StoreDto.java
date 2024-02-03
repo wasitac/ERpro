@@ -1,8 +1,9 @@
 package himedia.project.erpro.inventory.dto;
 
-import java.util.Date;
 
+import himedia.project.erpro.common.DateFormat;
 import himedia.project.erpro.inventory.entity.Store;
+import himedia.project.erpro.inventory.enums.StoreSort;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,19 +16,21 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class StoreDto {
+	
 	private Long id;
 	private String sort;
 	private String bNm;
 	private Long orderId;
-	private Date storeDate;
+	private String storeDate;
 	
 	public Store toEntity() {
+		DateFormat dateFormat = new DateFormat();
 		return Store.builder()
 				.id(this.id)
-				.sort(this.sort)
+				.sort(StoreSort.fromKor(this.sort))
 				.bNm(this.bNm)
 				.orderId(this.orderId)
-				.storeDate(this.storeDate)
+				.storeDate(dateFormat.toDate(this.storeDate))
 				.build();
 	}
 	

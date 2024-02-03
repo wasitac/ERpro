@@ -68,17 +68,17 @@ public class ProfileService {
 		// 입력 비밀번호가 저장된 비밀번호와 일치한다면 newPassword로 변경
 		if (bCryptPasswordEncoder.matches(password.getPassword(), member.getPassword())) {
 			if(password.getPassword().equals(password.getNewPassword())) {
-				message = new Message("", "같은 비밀번호로 변경할 수 없습니다", null);
+				return new Message(null, "같은 비밀번호로 변경할 수 없습니다", null);
 			}
 			memberDto.setPassword(bCryptPasswordEncoder.encode(password.getNewPassword()));			
 			Member updateMember = mapper.map(memberDto, Member.class);			
 			Optional<Member> result = Optional.ofNullable(memberRepository.save(updateMember));
 			if(result.isPresent()) {
-				message = new Message("비밀번호 변경에 성공했습니다", null);			
+				return new Message("비밀번호 변경에 성공했습니다", null);			
 			} 
-			message = new Message("", "비밀번호 변경실패", null);	
+			return new Message(null, "비밀번호 변경실패", null);	
 		}
-		message = new Message("", "비밀번호가 일치하지 않습니다", null);
-		return message;				
+		return new Message(null, "비밀번호가 일치하지 않습니다", null);
+						
 	}
 }

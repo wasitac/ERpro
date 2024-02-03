@@ -32,8 +32,8 @@ public class Orders {
 	@Column(name = "b_no")
 	private String bNo;
 	
-	@Column(name = "type")
-	private String type;
+	@Column(name = "sort")
+	private String sort;
 	
 	@Column(name = "due_date")
 	private Date dueDate;
@@ -46,7 +46,7 @@ public class Orders {
 				.id(this.id)
 				.bNm(this.bNm)
 				.bNo(this.bNo)
-				.type(this.type)
+				.sort(this.sort)
 				.dueDate(this.dueDate)
 				.completionDate(this.completionDate)
 				.build();
