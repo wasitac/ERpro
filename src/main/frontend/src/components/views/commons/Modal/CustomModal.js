@@ -19,6 +19,7 @@ import InspectionForm from "./Form/InspectionForm";
 import OrdersItemForm from "./Form/OrdersItemForm";
 import InvoiceItemForm from "./Form/InvoiceItemForm";
 import EstimateItemForm from "./Form/EstimateItemForm";
+import InventoryForm from "./Form/InventoryForm";
 import fetchApi from "../../../../modules/api";
 
 function CustomModal(props) {
@@ -130,6 +131,9 @@ function CustomModal(props) {
       break;
     case "invoiceItem":
       inputForm = <InvoiceItemForm />;
+      break;
+    case "inventory":
+      inputForm = <InventoryForm />;
       break;
     default:
       break;

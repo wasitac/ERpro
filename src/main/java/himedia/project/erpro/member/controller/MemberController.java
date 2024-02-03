@@ -4,7 +4,6 @@ package himedia.project.erpro.member.controller;
 import java.util.List;
 import java.util.Optional;
 
-import himedia.project.erpro.member.dto.MemberDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import himedia.project.erpro.common.Message;
-import himedia.project.erpro.member.entity.Member;
+import himedia.project.erpro.member.dto.MemberDto;
 import himedia.project.erpro.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 

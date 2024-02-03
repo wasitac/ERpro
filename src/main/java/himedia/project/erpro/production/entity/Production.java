@@ -29,7 +29,7 @@ public class Production {
 	private Long orderId;
 
 	@Column(name = "b_nm")
-	private String accountName;
+	private String bNm;
 
 	@Column(name = "member_name")
 	private String memberName;
@@ -54,7 +54,7 @@ public class Production {
         return ProductionDto.builder()
 				.id(this.id)
 				.orderId(this.orderId)
-				.accountName(this.accountName)
+				.bNm(this.bNm)
 				.memberName(this.memberName)
 				.itemId(this.itemId)
 				.itemName(this.itemName)

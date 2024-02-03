@@ -19,8 +19,8 @@ const OrdersForm = () => {
           ]}
         >
           <Select>
-            <Select.Option value="BUY">구매</Select.Option>
-            <Select.Option value="SELL">판매</Select.Option>
+            <Select.Option value="구매">구매</Select.Option>
+            <Select.Option value="판매">판매</Select.Option>
           </Select>
         </Form.Item>
         <Form.Item

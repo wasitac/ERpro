@@ -629,17 +629,9 @@ const menus = {
     column: [
       {
         title: "품목번호",
-        dataIndex: "id",
+        dataIndex: "itemId",
         defaultSortOrder: "descend",
         sorter: (a, b) => a.id - b.id,
-      },
-      {
-        title: "전표번호",
-        dataIndex: "invoiceId",
-      },
-      {
-        title: "품목번호",
-        dataIndex: "itemId",
       },
       {
         title: "품목명",
@@ -678,17 +670,9 @@ const menus = {
     column: [
       {
         title: "품목번호",
-        dataIndex: "id",
+        dataIndex: "itemId",
         defaultSortOrder: "descend",
         sorter: (a, b) => a.id - b.id,
-      },
-      {
-        title: "견적번호",
-        dataIndex: "estimateId",
-      },
-      {
-        title: "품목번호",
-        dataIndex: "itemId",
       },
       {
         title: "품목명",

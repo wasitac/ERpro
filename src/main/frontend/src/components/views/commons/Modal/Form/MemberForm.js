@@ -68,11 +68,11 @@ const MemberForm = (props) => {
         ]}
       >
         <Select>
-          <Select.Option value="영업">영업</Select.Option>
-          <Select.Option value="생산">생산</Select.Option>
-          <Select.Option value="인사">인사</Select.Option>
-          <Select.Option value="물류">물류</Select.Option>
-          <Select.Option value="관리">관리</Select.Option>
+          <Select.Option value="SALES">영업</Select.Option>
+          <Select.Option value="PRODUCTION">생산</Select.Option>
+          <Select.Option value="HR">인사</Select.Option>
+          <Select.Option value="LOGISTICS">물류</Select.Option>
+          <Select.Option value="ADMIN">관리</Select.Option>
         </Select>
       </Form.Item>
       <Form.Item
@@ -86,11 +86,11 @@ const MemberForm = (props) => {
         ]}
       >
         <Select>
-          <Select.Option value="부장">부장</Select.Option>
-          <Select.Option value="차장">차장</Select.Option>
-          <Select.Option value="과장">과장</Select.Option>
-          <Select.Option value="대리">대리</Select.Option>
-          <Select.Option value="사원">사원</Select.Option>
+          <Select.Option value="EXECUTIVE">부장</Select.Option>
+          <Select.Option value="TEAM_LEADER">차장</Select.Option>
+          <Select.Option value="DIRECTOR">과장</Select.Option>
+          <Select.Option value="MANAGER">대리</Select.Option>
+          <Select.Option value="EMPLOYEE">사원</Select.Option>
         </Select>
       </Form.Item>
       <Form.Item
