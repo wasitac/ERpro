@@ -5,10 +5,7 @@ const EstimateForm = () => {
   return (
     <div>
       <div>
-        <Form.Item
-          name="id"
-          noStyle
-        >
+        <Form.Item name="id" noStyle>
           <Input type="hidden" />
         </Form.Item>
         <Form.Item
@@ -39,9 +36,9 @@ const EstimateForm = () => {
         <Form.Item
           label="유효기간"
           name="expirationDate"
+          initialValue="작성일로부터 30일"
         >
-          <Input />
-          {/*  <DatePicker /> */}
+          <Input disabled />
         </Form.Item>
         <Form.Item
           label="납기일자"

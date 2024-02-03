@@ -5,12 +5,8 @@ const ProductionForm = () => {
       <Form.Item name="id" noStyle>
         <Input type="hidden" />
       </Form.Item>
-      <Form.Item label="지시 일자" name="productionDate">
-        {/* <DatePicker></DatePicker> */}
-        <Input />
-      </Form.Item>
       <Form.Item
-        label="주문처"
+        label="거래처명"
         name="bnm"
         rules={[
           {
@@ -103,6 +99,10 @@ const ProductionForm = () => {
           },
         ]}
       >
+        <Input />
+      </Form.Item>
+      <Form.Item label="지시 일자" name="productionDate">
+        {/* <DatePicker></DatePicker> */}
         <Input />
       </Form.Item>
     </div>

@@ -1,6 +1,6 @@
 package himedia.project.erpro.order.entity;
 
-import java.util.Date;
+import java.sql.Date;
 
 import himedia.project.erpro.order.dto.InvoiceDto;
 import jakarta.persistence.Column;

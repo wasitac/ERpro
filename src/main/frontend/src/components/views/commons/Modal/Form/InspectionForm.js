@@ -1,5 +1,6 @@
 import { Form, Input, Row, Col, Radio, DatePicker } from "antd";
 import DataTable from "../../../pages/MainPage/DataTable";
+
 // 이지홍
 const StoreForm = () => {
   return (
@@ -144,8 +145,8 @@ const StoreForm = () => {
             ]}
           >
             <Radio.Group value="합격여부">
-              <Radio value="합격">합격</Radio>
-              <Radio value="불합격">불합격</Radio>
+              <Radio value="PASS">합격</Radio>
+              <Radio value="FAIL">불합격</Radio>
             </Radio.Group>
           </Form.Item>
           <Form.Item
@@ -158,8 +159,7 @@ const StoreForm = () => {
               },
             ]}
           >
-            {/* <DatePicker/> */}
-            <Input style={{ width: "300px" }} />
+            <DatePicker />
           </Form.Item>
         </Col>
       </Row>

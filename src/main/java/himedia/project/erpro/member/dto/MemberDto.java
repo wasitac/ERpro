@@ -1,6 +1,6 @@
 package himedia.project.erpro.member.dto;
 
-import java.util.Date;
+import java.sql.Date;
 
 import himedia.project.erpro.member.entity.Member;
 import himedia.project.erpro.member.enums.Department;
@@ -16,7 +16,7 @@ import lombok.*;
 public class MemberDto {
 	private Long id;
 	private String name;
-	private Date birth;
+	private Date birthDate;
 	private String phone;
 	private String email;
 	private String department;
@@ -31,7 +31,7 @@ public class MemberDto {
 		return Member.builder()
 				.id(id)
 				.name(name)
-				.birth(birth)
+				.birthDate(birthDate)
 				.phone(phone)
 				.email(email)
 				.department(Department.valueOf(department))

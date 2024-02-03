@@ -89,7 +89,7 @@ public class MemberService {
 
 			// 비밀번호 제외한 필드를 수동으로 업데이트
 			updateMemberDto.setName(memberDto.getName());
-			updateMemberDto.setBirth(memberDto.getBirth());
+			updateMemberDto.setBirthDate(memberDto.getBirthDate());
 			updateMemberDto.setPhone(memberDto.getPhone());
 			updateMemberDto.setEmail(memberDto.getEmail());
 			updateMemberDto.setDepartment(memberDto.getDepartment());

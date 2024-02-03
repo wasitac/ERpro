@@ -1,6 +1,6 @@
 package himedia.project.erpro.order.entity;
 
-import java.util.Date;
+import java.sql.Date;
 
 import himedia.project.erpro.order.dto.EstimateDto;
 import jakarta.persistence.Column;
@@ -32,9 +32,6 @@ public class Estimate {
 	@Column(name = "insert_date")
 	private Date insertDate;
 	
-	@Column(name = "expiration_date")
-	private Date expirationDate;
-	
 	@Column(name = "due_date")
 	private Date dueDate;
 
@@ -49,7 +46,6 @@ public class Estimate {
 				.id(this.id)
 				.accountId(this.accountId)
 				.insertDate(this.insertDate)
-				.expirationDate(this.expirationDate)
 				.dueDate(this.dueDate)
 				.total(this.total)
 				.isOrder(this.isOrder)

@@ -19,7 +19,7 @@ const MemberForm = (props) => {
       </Form.Item>
       <Form.Item
         label="생년월일"
-        name="birth"
+        name="birthDate"
         rules={[
           {
             required: true,

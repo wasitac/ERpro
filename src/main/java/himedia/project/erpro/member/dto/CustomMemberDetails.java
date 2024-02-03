@@ -2,7 +2,7 @@ package himedia.project.erpro.member.dto;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Date;
+import java.sql.Date;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -55,7 +55,7 @@ public class CustomMemberDetails implements UserDetails {
         return memberDto.getName();
     }
     public Date getBirth() {
-        return memberDto.getBirth();
+        return memberDto.getBirthDate();
     }
     public String getPhone() {
         return memberDto.getPhone();

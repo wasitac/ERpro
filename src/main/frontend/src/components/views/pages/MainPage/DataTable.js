@@ -97,14 +97,22 @@ const DataTable = (props) => {
     try {
       const response = await fetchApi.get(url);
 
-      if (`${props.keyOfmenu} == 'user'`) {
-        response.data.data.birth = dayjs(response.data.data.birth);
-        response.data.data.insertDate = dayjs(response.data.data.insertDate);
-        response.data.data.retireDate =
-          response.data.data.retireDate != null
-            ? dayjs(response.data.data.retireDate)
-            : null;
-      }
+      Object.keys(response.data.data).forEach((key) => {
+        console.log(key);
+        console.log(response.data.data[key]);
+        if (key.endsWith("Date")) {
+          response.data.data[key] = dayjs(response.data.data[key]);
+        }
+      });
+
+      // if (`${props.keyOfmenu} == 'user'`) {
+      //   response.data.data.birth = dayjs(response.data.data.birth);
+      //   response.data.data.insertDate = dayjs(response.data.data.insertDate);
+      //   response.data.data.retireDate =
+      //     response.data.data.retireDate != null
+      //       ? dayjs(response.data.data.retireDate)
+      //       : null;
+      // }
 
       setSelectDetailData(response.data.data);
       setModalStatus(true);
@@ -123,10 +131,10 @@ const DataTable = (props) => {
   const onClickHandler = async (dataId) => {
     const menu = `${props.keyOfmenu}Item`;
     console.log(menu in menus);
+    localStorage.setItem("rowId", dataId);
+    setSelectedRowKeys([dataId]);
     if (menu in menus) {
       try {
-        localStorage.setItem("rowId", dataId);
-        setSelectedRowKeys([dataId]);
         setSecondTable(
           <div>
             <Tabs

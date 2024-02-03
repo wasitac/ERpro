@@ -1,6 +1,6 @@
 package himedia.project.erpro.production.entity;
 
-import java.util.Date;
+import java.sql.Date;
 
 import himedia.project.erpro.production.dto.InspectionDto;
 import jakarta.persistence.Column;

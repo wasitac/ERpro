@@ -1,6 +1,6 @@
 package himedia.project.erpro.order.dto;
 
-import java.util.Date;
+import java.sql.Date;
 
 import himedia.project.erpro.order.entity.Estimate;
 import lombok.AccessLevel;
@@ -19,7 +19,6 @@ public class EstimateDto {
 	private Long id;
 	private Long accountId;
 	private Date insertDate;
-	private Date expirationDate;
 	private Date dueDate;
 	private Integer total;
 	private String isOrder;
@@ -29,7 +28,6 @@ public class EstimateDto {
 				.id(this.id)
 				.accountId(this.accountId)
 				.insertDate(this.insertDate)
-				.expirationDate(this.expirationDate)
 				.dueDate(this.dueDate)
 				.total(this.total)
 				.isOrder(this.isOrder)

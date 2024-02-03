@@ -1,8 +1,7 @@
 package himedia.project.erpro.production.dto;
 
-import java.util.Date;
+import java.sql.Date;
 
-import himedia.project.erpro.inventory.dto.StoreDto;
 import himedia.project.erpro.production.entity.Production;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

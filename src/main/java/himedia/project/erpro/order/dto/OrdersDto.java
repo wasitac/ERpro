@@ -1,6 +1,6 @@
 package himedia.project.erpro.order.dto;
 
-import java.util.Date;
+import java.sql.Date;
 
 import himedia.project.erpro.order.entity.Orders;
 import himedia.project.erpro.order.enums.OrdersType;

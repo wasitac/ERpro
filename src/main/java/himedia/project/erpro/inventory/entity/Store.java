@@ -1,8 +1,7 @@
 package himedia.project.erpro.inventory.entity;
 
-import java.util.Date;
+import java.sql.Date;
 
-import himedia.project.erpro.common.DateFormat;
 import himedia.project.erpro.inventory.dto.StoreDto;
 import himedia.project.erpro.inventory.enums.StoreSort;
 import jakarta.persistence.Column;
@@ -43,13 +42,13 @@ public class Store {
 	private Date storeDate;
 	
 	public StoreDto toDto() {
-		DateFormat dateFormat = new DateFormat();
+//		DateFormat dateFormat = new DateFormat();
 		return StoreDto.builder()
 				.id(this.id)
 				.sort((this.sort).getKor())
 				.bNm(this.bNm)
 				.orderId(this.orderId)
-				.storeDate(dateFormat.toStr(this.storeDate))
+				.storeDate(this.storeDate)
 				.build();
 	}
 }

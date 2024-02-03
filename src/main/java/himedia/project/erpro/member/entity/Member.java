@@ -1,6 +1,6 @@
 package himedia.project.erpro.member.entity;
 
-import java.util.Date;
+import java.sql.Date;
 
 import himedia.project.erpro.member.dto.MemberDto;
 import himedia.project.erpro.member.enums.Department;
@@ -22,7 +22,8 @@ public class Member {
 	private String name;
 
 	@Temporal(TemporalType.DATE)
-	private Date birth;	
+	@Column(name = "birth_date")
+	private Date birthDate;	
 	
 	private String phone;
 	
@@ -55,7 +56,7 @@ public class Member {
 		return MemberDto.builder()
 				.id(id)
 				.name(name)
-				.birth(birth)
+				.birthDate(birthDate)
 				.phone(phone)
 				.email(email)
 				.department(department.getKor())
@@ -72,7 +73,7 @@ public class Member {
 		return MemberDto.builder()
 				.id(id)
 				.name(name)
-				.birth(birth)
+				.birthDate(birthDate)
 				.phone(phone)
 				.email(email)
 				.department(department.toString())
