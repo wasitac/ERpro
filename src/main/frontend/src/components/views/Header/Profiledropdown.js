@@ -31,7 +31,7 @@ function Profiledropdown() {
       >
         <ul>
           <li>이름 : {localStorage.getItem("name")}</li>
-          <li>직급 : {localStorage.getItem("memberRank")}</li>
+          <li>직급 : {localStorage.getItem("rank")}</li>
           <li>부서 : {localStorage.getItem("department")}</li>
           <li>이메일 : {localStorage.getItem("email")}</li>
 
