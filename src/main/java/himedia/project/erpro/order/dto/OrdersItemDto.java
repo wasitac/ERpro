@@ -1,6 +1,8 @@
 package himedia.project.erpro.order.dto;
 
-import himedia.project.erpro.order.entity.InvoiceItem;
+import himedia.project.erpro.order.entity.OrdersItem;
+import jakarta.persistence.Table;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -10,11 +12,13 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class InvoiceItemDto {
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@Table(name = "orders_item")
+public class OrdersItemDto {
 	private Long id;
-	private Long invoiceId;
+	private Long ordersId;
+	private String sort;
 	private Long itemId;
 	private String itemName;
 	private String unit;
@@ -23,11 +27,12 @@ public class InvoiceItemDto {
 	private Integer price;
 	private Integer vat;
 	private Integer total;
-
-	public InvoiceItem toEntity() {
-		return InvoiceItem.builder()
+	
+	public OrdersItem toEntity() {
+		return OrdersItem.builder()
 				.id(this.id)
-				.invoiceId(this.invoiceId)
+				.ordersId(this.ordersId)
+				.sort(this.sort)
 				.itemId(this.itemId)
 				.itemName(this.itemName)
 				.unit(this.unit)

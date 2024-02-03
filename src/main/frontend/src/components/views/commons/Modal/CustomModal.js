@@ -16,6 +16,10 @@ import StoreForm from "./Form/StoreForm";
 import StoreItemForm from "./Form/StoreItemForm";
 import ProductionForm from "./Form/ProductionForm";
 import InspectionForm from "./Form/InspectionForm";
+import OrdersItemForm from "./Form/OrdersItemForm";
+import InvoiceItemForm from "./Form/InvoiceItemForm";
+import EstimateItemForm from "./Form/EstimateItemForm";
+import InventoryForm from "./Form/InventoryForm";
 import fetchApi from "../../../../modules/api";
 
 function CustomModal(props) {
@@ -63,7 +67,7 @@ function CustomModal(props) {
         // 정보 수정
         const response = await fetchApi.put(`/${props.keyOfmenu}`, formData);
         console.log(response);
-        if (response.data?.data?.id) {
+        if (response.data?.data) {
           props.fetchData();
           onCancel();
         } else {
@@ -91,14 +95,14 @@ function CustomModal(props) {
       inputForm = <ItemForm />;
       break;
     case "bom":
-      inputForm = <BomForm form={form} />;
+      inputForm = <BomForm form={form} mode={mode} />;
       break;
     case "member":
       inputForm = <MemberForm mode={mode} />;
       break;
     case "orders":
       inputForm = <OrdersForm />;
-      modalSize = 1200;
+      // modalSize = 1200;
       break;
     case "estimate":
       inputForm = <EstimateForm />;
@@ -108,7 +112,6 @@ function CustomModal(props) {
       break;
     case "store":
       inputForm = <StoreForm />;
-
       break;
     case "production":
       inputForm = <ProductionForm />;
@@ -119,6 +122,18 @@ function CustomModal(props) {
       break;
     case "storeItem":
       inputForm = <StoreItemForm />;
+      break;
+    case "ordersItem":
+      inputForm = <OrdersItemForm />;
+      break;
+    case "estimateItem":
+      inputForm = <EstimateItemForm />;
+      break;
+    case "invoiceItem":
+      inputForm = <InvoiceItemForm />;
+      break;
+    case "inventory":
+      inputForm = <InventoryForm />;
       break;
     default:
       break;

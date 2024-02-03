@@ -6,16 +6,10 @@ const EstimateForm = () => {
     <div>
       <div>
         <Form.Item
-          label="견적번호"
           name="id"
-          rules={[
-            {
-              required: true,
-              message: "견적번호를 입력해주세요",
-            },
-          ]}
+          noStyle
         >
-          <Input style={{ width: "400px" }} />
+          <Input type="hidden" />
         </Form.Item>
         <Form.Item
           label="거래처번호"
@@ -27,27 +21,39 @@ const EstimateForm = () => {
             },
           ]}
         >
-          <Input style={{ width: "400px" }} />
+          <Input />
         </Form.Item>
         <Form.Item
           label="작성일자"
           name="insertDate"
+          rules={[
+            {
+              required: true,
+              message: "작성일자를 입력해주세요",
+            },
+          ]}
         >
-          <Input style={{ width: "400px" }} />
+          <Input />
           {/* <DatePicker /> */}
         </Form.Item>
         <Form.Item
           label="유효기간"
           name="expirationDate"
         >
-          <Input style={{ width: "400px" }} />
+          <Input />
           {/*  <DatePicker /> */}
         </Form.Item>
         <Form.Item
           label="납기일자"
           name="dueDate"
+          rules={[
+            {
+              required: true,
+              message: "납기일자를 입력해주세요",
+            },
+          ]}
         >
-          <Input style={{ width: "400px" }} />
+          <Input />
           {/*  <DatePicker /> */}
         </Form.Item>
         <Form.Item
@@ -60,7 +66,7 @@ const EstimateForm = () => {
             },
           ]}
         >
-          <Input style={{ width: "400px" }} />
+          <Input />
         </Form.Item>
         <Form.Item
           label="주문처리"
@@ -72,7 +78,7 @@ const EstimateForm = () => {
             },
           ]}
         >
-          <Select style={{ width: "400px" }}>
+          <Select>
             <Select.Option value="ongoing">진행중</Select.Option>
             <Select.Option value="completion">완료</Select.Option>
             <Select.Option value="cancel">취소됨</Select.Option>

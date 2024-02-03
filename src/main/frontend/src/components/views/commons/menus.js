@@ -578,7 +578,7 @@ const menus = {
   },
   ordersItem: {
     label: "주문 품목 상세",
-    key: "estimateItem",
+    key: "ordersItem",
     column: [
       {
         title: "품목번호",
@@ -694,22 +694,14 @@ const menus = {
     column: [
       {
         title: "품목번호",
-        dataIndex: "id",
         width: 120,
+        dataIndex: "itemId",
         defaultSortOrder: "descend",
         sorter: (a, b) => a.id - b.id,
       },
       {
-        title: "전표번호",
-        dataIndex: "invoice",
-      },
-      {
-        title: "품목번호",
-        dataIndex: "item",
-      },
-      {
         title: "품목명",
-        dataIndex: "item",
+        dataIndex: "itemName",
       },
       {
         title: "단위",
@@ -750,20 +742,10 @@ const menus = {
     column: [
       {
         title: "품목번호",
-        dataIndex: "id",
+        dataIndex: "itemId",
         width: 120,
         defaultSortOrder: "descend",
         sorter: (a, b) => a.id - b.id,
-      },
-      {
-        title: "견적번호",
-        dataIndex: "estimateId",
-        width: 120,
-      },
-      {
-        title: "품목번호",
-        dataIndex: "itemId",
-        width: 120,
       },
       {
         title: "품목명",
