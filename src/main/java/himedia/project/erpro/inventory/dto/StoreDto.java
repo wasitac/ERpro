@@ -1,6 +1,5 @@
 package himedia.project.erpro.inventory.dto;
 
-
 import himedia.project.erpro.common.DateFormat;
 import himedia.project.erpro.inventory.entity.Store;
 import himedia.project.erpro.inventory.enums.StoreSort;
