@@ -215,7 +215,7 @@ const menus = {
       },
       {
         title: "유형",
-        dataIndex: "type",
+        dataIndex: "sort",
         filters: [
           {
             text: "구매",
