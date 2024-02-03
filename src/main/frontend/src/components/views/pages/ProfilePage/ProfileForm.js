@@ -49,7 +49,7 @@ const ProfileForm = () => {
       form.setFieldsValue({
         name: data.name,
         id: data.id,
-        birth: dayjs(data.birth),
+        birthDate: dayjs(data.birthDate),
         phone: data.phone,
         email: data.email,
         department: data.department,
@@ -95,7 +95,7 @@ const ProfileForm = () => {
       </Form.Item>
 
       <Form.Item label="생년월일" name="birth">
-        <DatePicker disabled format="YYYY-MM-DD" />
+        <DatePicker disabled />
       </Form.Item>
 
       <Form.Item
@@ -133,7 +133,7 @@ const ProfileForm = () => {
       </Form.Item>
 
       <Form.Item label="입사일" name="insertDate">
-        <DatePicker disabled format="YYYY-MM-DD" />
+        <DatePicker disabled />
       </Form.Item>
 
       <Form.Item

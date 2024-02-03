@@ -2,13 +2,12 @@
  * 이지홍
  */
 import React, { useState, useEffect } from "react";
-import { Table, Button, Flex, Divider, Tabs } from "antd";
+import { Table, Button, Flex, Tabs } from "antd";
 import menus from "../../commons/menus";
 import fetchApi from "../../../../modules/api";
 import CustomModal from "../../commons/Modal/CustomModal";
 
 import dayjs from "dayjs";
-import TableTabs from "./TableTabs";
 
 const onChange = (filters, sorter, extra) => {
   console.log("params", filters, sorter, extra);
@@ -17,8 +16,8 @@ const DataTable = (props) => {
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const [data, setData] = useState([]);
   const [secondTable, setSecondTable] = useState("");
-
   const [tableHeight, setTableHeight] = useState("70vh");
+  
   const columns = menus[props.keyOfmenu].column.map((item) => {
     return {
       ...item,
@@ -96,12 +95,13 @@ const DataTable = (props) => {
     }
     try {
       const response = await fetchApi.get(url);
-
+      // DatePicker 사용을 위한 포맷팅 이지홍
       Object.keys(response.data.data).forEach((key) => {
-        console.log(key);
-        console.log(response.data.data[key]);
         if (key.endsWith("Date")) {
-          response.data.data[key] = dayjs(response.data.data[key]);
+          response.data.data[key] =
+            response.data.data[key] != null
+              ? dayjs(response.data.data[key])
+              : null;
         }
       });
 

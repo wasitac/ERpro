@@ -102,8 +102,7 @@ const ProductionForm = () => {
         <Input />
       </Form.Item>
       <Form.Item label="지시 일자" name="productionDate">
-        {/* <DatePicker></DatePicker> */}
-        <Input />
+        <DatePicker />
       </Form.Item>
     </div>
   );

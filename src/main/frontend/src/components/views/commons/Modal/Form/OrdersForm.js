@@ -57,21 +57,10 @@ const OrdersForm = () => {
             },
           ]}
         >
-          <Input />
-          {/*   <DatePicker /> */}
+          <DatePicker />
         </Form.Item>
-        <Form.Item
-          label="완료일"
-          name="completionDate"
-          rules={[
-            {
-              required: true,
-              message: "유형을 선택해주세요",
-            },
-          ]}
-        >
-          <Input />
-          {/*   <DatePicker /> */}
+        <Form.Item label="완료일" name="completionDate">
+          <DatePicker />
         </Form.Item>
       </div>
     </div>

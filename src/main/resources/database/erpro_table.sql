@@ -67,7 +67,7 @@ CREATE TABLE orders (
  b_no varchar(13) NOT NULL COMMENT '사업자등록번호',
  sort enum('구매', '판매') NOT NULL COMMENT '유형',
  due_date date NOT NULL COMMENT '예정일',
- completion_date date NULL COMMENT '완료일',
+ completion_date date COMMENT '완료일',
  primary key(id)
 );
 

@@ -52,8 +52,7 @@ const InvoiceForm = () => {
           },
         ]}
       >
-        <Input />
-        {/* <DatePicker /> */}
+        <DatePicker />
       </Form.Item>
       <Form.Item
         label="비고"

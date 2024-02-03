@@ -1,6 +1,4 @@
-import { Form, Input, Radio } from "antd";
-import DataTable from "../../../pages/MainPage/DataTable";
-import { Divider } from "rc-menu";
+import { Form, Input, Radio, DatePicker } from "antd";
 
 const StoreForm = () => {
   return (
@@ -57,7 +55,7 @@ const StoreForm = () => {
           },
         ]}
       >
-        <Input />
+        <DatePicker />
       </Form.Item>
     </div>
   );
