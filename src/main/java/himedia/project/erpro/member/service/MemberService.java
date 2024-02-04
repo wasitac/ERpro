@@ -37,7 +37,7 @@ public class MemberService {
 	public MemberDto getMemberById(Long memberId) {
 		MemberDto memberDto = memberRepository.findById(memberId)
 				.orElseThrow(() -> new EntityNotFoundException("Member not found with ID: " + memberId))
-				.toDto();
+				.toFormDto();
 
 		return memberDto;
 	}
