@@ -2,10 +2,16 @@
 import React, { useEffect, useState } from "react";
 import { DatePicker, Form, Input, Select } from "antd";
 import fetchApi from "../../../../../../modules/api";
-const filterOption = (input, option) => (option?.value ?? "").includes(input);
+import dayjs from "dayjs";
 
-const ProductionForm = () => {
+// 대/소문자 구분없이 비교
+const filterOption = (input, option) =>
+  (option?.label ?? "").toLowerCase().includes(input.toLowerCase());
+
+const ProductionForm = (props) => {
+  const today = dayjs();
   const [list, setList] = useState([]);
+  const [memberList, setMemberList] = useState([]);
   const [ordersIdList, setOrdersIdList] = useState([]);
   const [ordersItemList, setOrdersItemList] = useState([]);
   const [ordersItem, setOrdersItem] = useState([]);
@@ -24,10 +30,17 @@ const ProductionForm = () => {
 
   useEffect(() => {
     fetchList();
+    fetchMemberList();
   }, []);
 
   useEffect(() => {
-    console.log(ordersItem.itemName);
+    // ordersItem이 변경될 때마다 품목 업데이트
+    props.form.setFieldsValue({
+      itemName: ordersItem.itemName,
+      unit: ordersItem.unit,
+      spec: ordersItem.spec,
+      count: ordersItem.count,
+    });
   }, [ordersItem]);
 
   const fetchList = async () => {
@@ -52,11 +65,19 @@ const ProductionForm = () => {
   // 주문번호가 일치하는 품목 조회
   const fetchOrdersItemList = async (value) => {
     try {
-      console.log(value);
       const response = await fetchApi.get(`/ordersItem/${value}`);
       setOrdersItemList(response.data.data);
     } catch (error) {
       console.error("목록 조회 에러:", error);
+    }
+  };
+
+  const fetchMemberList = async () => {
+    try {
+      const response = await fetchApi.get("/member");
+      setMemberList(response.data.data);
+    } catch (error) {
+      console.error("담당자 목록 조회 에러:", error);
     }
   };
 
@@ -145,7 +166,7 @@ const ProductionForm = () => {
           },
         ]}
       >
-        <Input value={`${ordersItem.itemName}`} />
+        <Input />
       </Form.Item>
       <Form.Item
         label="단위"
@@ -193,10 +214,16 @@ const ProductionForm = () => {
           },
         ]}
       >
-        <Input />
+        <Select showSearch>
+          {memberList.map((member) => (
+            <Select.Option key={member.id} value={member.name}>
+              {member.name}
+            </Select.Option>
+          ))}
+        </Select>
       </Form.Item>
       <Form.Item label="지시 일자" name="productionDate">
-        <DatePicker />
+        <DatePicker defaultValue={today} />
       </Form.Item>
     </div>
   );

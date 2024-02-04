@@ -41,7 +41,6 @@ function CustomModal(props) {
       setDataId(undefined);
       setMode("add");
     }
-    
   }, [props.modalStatus]);
 
   // form submit
@@ -64,7 +63,6 @@ function CustomModal(props) {
         } else {
           alert("저장에 실패하였습니다. 다시 시도해 주세요.");
         }
-
       } else if (mode === "edit") {
         // 정보 수정
         const response = await fetchApi.put(`/${props.keyOfmenu}`, formData);
@@ -76,9 +74,7 @@ function CustomModal(props) {
         } else {
           alert("저장에 실패하였습니다. 다시 시도해 주세요.");
         }
-
       }
-
     } catch (errorInfo) {
       // 유효성 검사 실패 시 수행할 로직
     }
@@ -119,7 +115,7 @@ function CustomModal(props) {
       inputForm = <StoreForm />;
       break;
     case "production":
-      inputForm = <ProductionForm />;
+      inputForm = <ProductionForm form={form} />;
       break;
     case "inspection":
       inputForm = <InspectionForm />;
