@@ -1,5 +1,65 @@
-import { DatePicker, Form, Input } from "antd";
+// 이지홍
+import React, { useEffect, useState } from "react";
+import { DatePicker, Form, Input, Select } from "antd";
+import fetchApi from "../../../../../../modules/api";
+const filterOption = (input, option) => (option?.value ?? "").includes(input);
+
 const ProductionForm = () => {
+  const [list, setList] = useState([]);
+  const [ordersIdList, setOrdersIdList] = useState([]);
+  const [ordersItemList, setOrdersItemList] = useState([]);
+  const [ordersItem, setOrdersItem] = useState([]);
+
+  const bnmChange = (value) => {
+    fetchOrdersIdList(value);
+  };
+
+  const orderIdChange = (value) => {
+    fetchOrdersItemList(value);
+  };
+
+  const orderItemChange = (value) => {
+    setOrdersItem(ordersItemList.find((item) => item.itemId === value));
+  };
+
+  useEffect(() => {
+    fetchList();
+  }, []);
+
+  useEffect(() => {
+    console.log(ordersItem.itemName);
+  }, [ordersItem]);
+
+  const fetchList = async () => {
+    try {
+      const response = await fetchApi.get("/account");
+      setList(response.data.data);
+    } catch (error) {
+      console.error("목록 조회 에러:", error);
+    }
+  };
+
+  // 거래처의 모든 주문 조회
+  const fetchOrdersIdList = async (value) => {
+    try {
+      const response = await fetchApi.get(`/orders/bnm/${value}`);
+      setOrdersIdList(response.data.data);
+    } catch (error) {
+      console.error("목록 조회 에러:", error);
+    }
+  };
+
+  // 주문번호가 일치하는 품목 조회
+  const fetchOrdersItemList = async (value) => {
+    try {
+      console.log(value);
+      const response = await fetchApi.get(`/ordersItem/${value}`);
+      setOrdersItemList(response.data.data);
+    } catch (error) {
+      console.error("목록 조회 에러:", error);
+    }
+  };
+
   return (
     <div>
       <Form.Item name="id" noStyle>
@@ -15,7 +75,19 @@ const ProductionForm = () => {
           },
         ]}
       >
-        <Input />
+        <Select
+          showSearch
+          placeholder="거래처명"
+          optionFilterProp="children"
+          onChange={bnmChange}
+          filterOption={filterOption}
+        >
+          {list.map((account) => (
+            <Select.Option key={account.bnm} label={account.bnm}>
+              {account.bnm}
+            </Select.Option>
+          ))}
+        </Select>
       </Form.Item>
       <Form.Item
         label="주문번호"
@@ -27,7 +99,18 @@ const ProductionForm = () => {
           },
         ]}
       >
-        <Input />
+        <Select
+          showSearch
+          placeholder="주문번호"
+          optionFilterProp="children"
+          onChange={orderIdChange}
+        >
+          {ordersIdList.map((value) => (
+            <Select.Option key={value} value={value}>
+              {value}
+            </Select.Option>
+          ))}
+        </Select>
       </Form.Item>
       <Form.Item
         label="물품번호"
@@ -39,7 +122,18 @@ const ProductionForm = () => {
           },
         ]}
       >
-        <Input />
+        <Select
+          showSearch
+          placeholder="물품번호"
+          optionFilterProp="children"
+          onChange={orderItemChange}
+        >
+          {ordersItemList.map((value) => (
+            <Select.Option key={value.itemId} value={value.itemId}>
+              {value.itemId}
+            </Select.Option>
+          ))}
+        </Select>
       </Form.Item>
       <Form.Item
         label="물품명"
@@ -51,7 +145,7 @@ const ProductionForm = () => {
           },
         ]}
       >
-        <Input />
+        <Input value={`${ordersItem.itemName}`} />
       </Form.Item>
       <Form.Item
         label="단위"

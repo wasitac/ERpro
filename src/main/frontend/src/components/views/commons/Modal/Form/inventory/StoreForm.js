@@ -1,24 +1,24 @@
+// 이지홍
 import React, { useEffect, useState } from "react";
 import { Form, Input, Radio, DatePicker, Select } from "antd";
 import fetchApi from "../../../../../../modules/api";
 
-const onChange = (value) => {
-  console.log(`selected ${value}`);
-};
-const onSearch = (value) => {
-  console.log("search:", value);
-};
 const filterOption = (input, option) =>
   (option?.value ?? "").toLowerCase().includes(input.toLowerCase());
 
 const StoreForm = () => {
   const [list, setList] = useState([]);
+  const [subList, setSubList] = useState([]);
+
+  const onChange = (value) => {
+    fetchSubList(value);
+  };
 
   useEffect(() => {
-    fetchAccountList();
+    fetchList();
   }, []);
 
-  const fetchAccountList = async () => {
+  const fetchList = async () => {
     try {
       const response = await fetchApi.get("/account");
       setList(response.data.data);
@@ -26,10 +26,12 @@ const StoreForm = () => {
       console.error("목록 조회 에러:", error);
     }
   };
-  const fetchOrderList = async () => {
+
+  const fetchSubList = async (value) => {
     try {
-      const response = await fetchApi.get("/order/");
-      setList(response.data.data);
+      const response = await fetchApi.get(`/orders/bnm/${value}`);
+      setSubList(response.data.data);
+      console.log(response.data.data);
     } catch (error) {
       console.error("목록 조회 에러:", error);
     }
@@ -55,11 +57,10 @@ const StoreForm = () => {
           placeholder="거래처명"
           optionFilterProp="children"
           onChange={onChange}
-          onSearch={onSearch}
           filterOption={filterOption}
         >
           {list.map((account) => (
-            <Select.Option key={account.id} value={account.bnm}>
+            <Select.Option key={account.bnm} label={account.bnm}>
               {account.bnm}
             </Select.Option>
           ))}
@@ -75,7 +76,18 @@ const StoreForm = () => {
           },
         ]}
       >
-        <Input />
+        <Select
+          showSearch
+          placeholder="주문번호"
+          optionFilterProp="children"
+          filterOption={filterOption}
+        >
+          {subList.map((value) => (
+            <Select.Option key={value} value={value}>
+              {value}
+            </Select.Option>
+          ))}
+        </Select>
       </Form.Item>
       <Form.Item
         label="구분"

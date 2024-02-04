@@ -39,6 +39,15 @@ public class OrdersController {
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
+	// 거래처명이 일치하는 주문 조회 - 이지홍
+	@GetMapping("/orders/bnm/{bNm}")
+	public ResponseEntity<Message> detatilOrders(@PathVariable(value="bNm") String bNm) {
+		System.out.println(bNm);
+		List<Long> idList = ordersService.getIdsByBNm(bNm);
+		Message returnData = new Message("거래처명이 일치하는 주문번호 목록", idList);
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
+	}
+	
 	// 구매/판매 추가
 	@PostMapping("/orders")
 	public ResponseEntity<Message> addOrders(@RequestBody OrdersDto ordersDto) {

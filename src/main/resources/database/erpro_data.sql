@@ -52,7 +52,11 @@ insert into orders_item values (5, 5, "제품", 5, "떡", "BOX", "600*600", 100,
 insert into orders_item values (6, 6, "자재", 6, "소금", "포대", "600*600", 100, 100, 10, 11000);
 insert into orders_item values (7, 7, "제품", 7, "과자", "BOX", "600*600", 100, 100, 10, 11000);
 insert into orders_item values (8, 8, "자재", 8, "설탕", "포대", "600*600", 100, 100, 10, 11000);
- 
+insert into orders_item values (null, 2, "제품", 7, "과자", "BOX", "600*600", 100, 100, 10, 11000);
+insert into orders_item values (null, 2, "자재", 8, "설탕", "포대", "600*600", 100, 100, 10, 11000);
+
+select * from orders_item;
+
 ## 생산지시서 번호, 주문 번호, 거래처명, 담당자명, 품목번호, 품목명, 단위, 규격, 생산량, 지시일자
 insert into production values (1, 1, "가나테크", "이지홍", 3, "CDL-3LR", "1개", "700*2100", 10, "2024-01-29");
 insert into production values (2, 2, "가가상사", "이지홍", 2, "K8015-5", "1개", "600*600", 1, "2024-01-30");

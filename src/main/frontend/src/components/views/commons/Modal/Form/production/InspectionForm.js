@@ -1,7 +1,12 @@
-import { Form, Input, Row, Col, Radio, DatePicker } from "antd";
-
 // 이지홍
-const StoreForm = () => {
+import React, { useEffect, useState } from "react";
+import { Form, Input, Row, Col, Radio, DatePicker } from "antd";
+import fetchApi from "../../../../../../modules/api";
+
+const filterOption = (input, option) =>
+  (option?.value ?? "").toLowerCase().includes(input.toLowerCase());
+
+const InspectionForm = () => {
   return (
     // 신청자 / 검수자 id가 아니라 name인 것 주의
     <div>
@@ -166,4 +171,4 @@ const StoreForm = () => {
   );
 };
 
-export default StoreForm;
+export default InspectionForm;

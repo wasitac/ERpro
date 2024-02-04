@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import himedia.project.erpro.order.entity.Orders;
 import jakarta.transaction.Transactional;
@@ -11,6 +13,9 @@ import jakarta.transaction.Transactional;
 public interface OrdersRepository extends JpaRepository<Orders, Long>{
 	public List<Orders> findAll();
 	public Optional<Orders> findById(Long id);
+	
+	@Query(value = "SELECT id FROM orders WHERE b_nm = :bNm", nativeQuery = true)
+	List<Long> findIdsByBNm(@Param("bNm") String bNm);
 	
 	@Transactional
 	public int deleteAllByIdIn(List<Long> idList);

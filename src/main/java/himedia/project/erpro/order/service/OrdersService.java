@@ -36,6 +36,12 @@ public class OrdersService {
 		OrdersDto ordersDtoId = mapper.map(ordersId, OrdersDto.class);
 		return ordersDtoId;
 	}
+
+	// 구매/판매 주문서 상세 조회 - 이지홍
+	public List<Long> getIdsByBNm(String name){
+		List<Long> idList = ordersRepository.findIdsByBNm(name);
+		return idList;
+	}
 	
 	// 구매/판매 주문서 등록
 	public OrdersDto createOrders(OrdersDto ordersDto) {

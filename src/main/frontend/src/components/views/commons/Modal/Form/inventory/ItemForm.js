@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Input, Radio, Select } from "antd";
+import { Form, Input, Radio } from "antd";
 
 const ItemForm = () => {
   return (
