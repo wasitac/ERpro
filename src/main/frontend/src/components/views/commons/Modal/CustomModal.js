@@ -41,6 +41,7 @@ function CustomModal(props) {
       setDataId(undefined);
       setMode("add");
     }
+    
   }, [props.modalStatus]);
 
   // form submit
@@ -56,23 +57,28 @@ function CustomModal(props) {
       if (mode === "add") {
         // 정보 저장
         const response = await fetchApi.post(`/${props.keyOfmenu}`, formData);
+
         if (response.data?.data) {
           props.fetchData();
           onCancel();
         } else {
           alert("저장에 실패하였습니다. 다시 시도해 주세요.");
         }
+
       } else if (mode === "edit") {
         // 정보 수정
         const response = await fetchApi.put(`/${props.keyOfmenu}`, formData);
         console.log(response);
+
         if (response.data?.data) {
           props.fetchData();
           onCancel();
         } else {
           alert("저장에 실패하였습니다. 다시 시도해 주세요.");
         }
+
       }
+
     } catch (errorInfo) {
       // 유효성 검사 실패 시 수행할 로직
     }

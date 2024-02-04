@@ -14,7 +14,7 @@ const BomForm = ({ form, mode }) => {
 
   // 수정 모드일때 수동으로 매입단가 및 금액 계산
   useEffect(() => {
-    if (mode == "edit") {
+    if (mode === "edit") {
       const bomList = form.getFieldValue("bomList");
       const updatedBomList = [...bomList];
 
@@ -106,7 +106,7 @@ const BomForm = ({ form, mode }) => {
         name="itemId"
         rules={[{ required: true, message: "제품을 선택해주세요." }]}
       >
-        <Select disabled={mode == "add" ? false : true}>
+        <Select disabled={mode === "add" ? false : true}>
           {itemList.map(
             (item) =>
               item.sort === "제품" && (

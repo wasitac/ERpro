@@ -1,6 +1,40 @@
-import { Form, Input, Radio, DatePicker } from "antd";
+import React, { useEffect, useState } from "react";
+import { Form, Input, Radio, DatePicker, Select } from "antd";
+import fetchApi from "../../../../../../modules/api";
+
+const onChange = (value) => {
+  console.log(`selected ${value}`);
+};
+const onSearch = (value) => {
+  console.log("search:", value);
+};
+const filterOption = (input, option) =>
+  (option?.value ?? "").toLowerCase().includes(input.toLowerCase());
 
 const StoreForm = () => {
+  const [list, setList] = useState([]);
+
+  useEffect(() => {
+    fetchAccountList();
+  }, []);
+
+  const fetchAccountList = async () => {
+    try {
+      const response = await fetchApi.get("/account");
+      setList(response.data.data);
+    } catch (error) {
+      console.error("목록 조회 에러:", error);
+    }
+  };
+  const fetchOrderList = async () => {
+    try {
+      const response = await fetchApi.get("/order/");
+      setList(response.data.data);
+    } catch (error) {
+      console.error("목록 조회 에러:", error);
+    }
+  };
+
   return (
     <div>
       <Form.Item name="id" noStyle>
@@ -16,7 +50,20 @@ const StoreForm = () => {
           },
         ]}
       >
-        <Input />
+        <Select
+          showSearch
+          placeholder="거래처명"
+          optionFilterProp="children"
+          onChange={onChange}
+          onSearch={onSearch}
+          filterOption={filterOption}
+        >
+          {list.map((account) => (
+            <Select.Option key={account.id} value={account.bnm}>
+              {account.bnm}
+            </Select.Option>
+          ))}
+        </Select>
       </Form.Item>
       <Form.Item
         label="주문번호"

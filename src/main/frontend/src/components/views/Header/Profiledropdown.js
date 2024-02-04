@@ -3,7 +3,6 @@ import "./profile.css";
 import { Button, Flex } from "antd";
 import profile from "../../../img/profileIcon.png";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 function Profiledropdown() {
   const dropdownRef = useRef(null);
