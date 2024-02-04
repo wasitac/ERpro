@@ -32,7 +32,7 @@ public class LoginService {
 
         MemberDto findMemberDto = memberRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Member not found with ID: " + id))
-                .toDto();
+                .toFormDto();
 
         // 임시 비밀번호 생성
         String tempPassword = RandomStringUtils.randomAlphanumeric(8);
