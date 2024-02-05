@@ -63,27 +63,12 @@ const InspectionForm = () => {
           >
             <Input style={{ width: "300px" }} />
           </Form.Item>
-          <Form.Item
-            label="단위"
-            name="unit"
-            rules={[
-              {
-                required: true,
-                message: "단위를 입력해주세요",
-              },
-            ]}
-          >
+          <Form.Item label="단위" name="unit">
             <Input style={{ width: "300px" }} />
           </Form.Item>
           <Form.Item
             label="규격"
             name="spec"
-            rules={[
-              {
-                required: true,
-                message: "규격을 입력해주세요",
-              },
-            ]}
           >
             <Input style={{ width: "300px" }} />
           </Form.Item>

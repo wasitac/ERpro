@@ -44,24 +44,12 @@ const InvoiceItemForm = () => {
       <Form.Item
         label="단위"
         name="unit"
-        rules={[
-          {
-            required: true,
-            message: "단위를 입력해주세요",
-          },
-        ]}
       >
         <Input />
       </Form.Item>
       <Form.Item
         label="규격"
         name="spec"
-        rules={[
-          {
-            required: true,
-            message: "규격을 입력해주세요",
-          },
-        ]}
       >
         <Input />
       </Form.Item>
