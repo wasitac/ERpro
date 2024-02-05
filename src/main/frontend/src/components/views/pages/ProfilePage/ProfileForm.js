@@ -6,7 +6,7 @@ import React, { useState, useEffect } from "react";
 import fetchApi from "../../../../modules/api";
 import dayjs from "dayjs";
 
-// 정보수정 폼. 사원 대장에서 비밀번호만 빼고 모달로 사용하면 될것같음
+// 정보수정 폼
 const onFinish = async (values) => {
   console.log("sucsses:", values);
   try {

@@ -66,8 +66,7 @@ function CustomModal(props) {
       } else if (mode === "edit") {
         // 정보 수정
         const response = await fetchApi.put(`/${props.keyOfmenu}`, formData);
-        console.log(response);
-
+        
         if (response.data?.data) {
           props.fetchData();
           onCancel();
