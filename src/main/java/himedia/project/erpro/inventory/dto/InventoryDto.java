@@ -7,8 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+// 이지홍
 @Getter
-@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor

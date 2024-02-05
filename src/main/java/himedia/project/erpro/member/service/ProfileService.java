@@ -63,19 +63,25 @@ public class ProfileService {
 		Long memberId = getMemberId();
 		Member member = memberRepository.findById(memberId)
 				.orElseThrow(() -> new EntityNotFoundException("Member not found with ID: " + memberId));
-		MemberDto memberDto = mapper.map(member, MemberDto.class);
+		MemberDto memberDto = member.toDto();
 		Message<String> message = null;
+		
 		// 입력 비밀번호가 저장된 비밀번호와 일치한다면 newPassword로 변경
 		if (bCryptPasswordEncoder.matches(password.getPassword(), member.getPassword())) {
+			
 			if(password.getPassword().equals(password.getNewPassword())) {
 				return new Message(null, "같은 비밀번호로 변경할 수 없습니다", null);
 			}
+			
 			memberDto.setPassword(bCryptPasswordEncoder.encode(password.getNewPassword()));			
+			
 			Member updateMember = mapper.map(memberDto, Member.class);			
 			Optional<Member> result = Optional.ofNullable(memberRepository.save(updateMember));
+			
 			if(result.isPresent()) {
 				return new Message("비밀번호 변경에 성공했습니다", null);			
 			} 
+			
 			return new Message(null, "비밀번호 변경실패", null);	
 		}
 		return new Message(null, "비밀번호가 일치하지 않습니다", null);

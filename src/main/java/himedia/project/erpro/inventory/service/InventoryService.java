@@ -2,6 +2,7 @@ package himedia.project.erpro.inventory.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -9,6 +10,7 @@ import himedia.project.erpro.common.CustomMapper;
 import himedia.project.erpro.inventory.dto.InventoryDto;
 import himedia.project.erpro.inventory.dto.InventoryDto;
 import himedia.project.erpro.inventory.entity.Inventory;
+import himedia.project.erpro.inventory.entity.Store;
 import himedia.project.erpro.inventory.entity.Inventory;
 import himedia.project.erpro.inventory.repository.InventoryRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -23,7 +25,7 @@ public class InventoryService {
 
 	public List<InventoryDto> getInventoryAll() {
 		List<Inventory> inventoryList = inventoryRepository.findAll();
-		List<InventoryDto> inventoryDtoList = mapper.toDtoList(inventoryList, InventoryDto.class);
+		List<InventoryDto> inventoryDtoList = inventoryList.stream().map(Inventory::toDto).collect(Collectors.toList());
 		return inventoryDtoList;
 	}
 	

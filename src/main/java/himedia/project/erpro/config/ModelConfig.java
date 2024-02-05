@@ -5,7 +5,7 @@ import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-//이지홍
+// 이지홍
 @Configuration
 public class ModelConfig {
 	// Model Mapper

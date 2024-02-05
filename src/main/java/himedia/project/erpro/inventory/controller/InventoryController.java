@@ -17,6 +17,7 @@ import himedia.project.erpro.inventory.dto.InventoryDto;
 import himedia.project.erpro.inventory.service.InventoryService;
 import lombok.RequiredArgsConstructor;
 
+// 이지홍
 @RestController
 @RequiredArgsConstructor
 public class InventoryController {

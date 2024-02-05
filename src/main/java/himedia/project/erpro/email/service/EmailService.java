@@ -10,6 +10,7 @@ import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
 
+// 김주원
 @Service
 @RequiredArgsConstructor
 public class EmailService {
