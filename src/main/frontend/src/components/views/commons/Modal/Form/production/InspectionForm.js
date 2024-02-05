@@ -66,10 +66,7 @@ const InspectionForm = () => {
           <Form.Item label="단위" name="unit">
             <Input style={{ width: "300px" }} />
           </Form.Item>
-          <Form.Item
-            label="규격"
-            name="spec"
-          >
+          <Form.Item label="규격" name="spec">
             <Input style={{ width: "300px" }} />
           </Form.Item>
           <Form.Item
@@ -123,31 +120,13 @@ const InspectionForm = () => {
           >
             <Input style={{ width: "300px" }} />
           </Form.Item>
-          <Form.Item
-            label="합격여부"
-            name="pass"
-            rules={[
-              {
-                required: true,
-                message: "합격여부를 입력해주세요",
-              },
-            ]}
-          >
+          <Form.Item label="합격여부" name="pass">
             <Radio.Group value="합격여부">
               <Radio value="PASS">합격</Radio>
               <Radio value="FAIL">불합격</Radio>
             </Radio.Group>
           </Form.Item>
-          <Form.Item
-            label="검수일자"
-            name="inspectionDate"
-            rules={[
-              {
-                required: true,
-                message: "검수일자를 입력해주세요",
-              },
-            ]}
-          >
+          <Form.Item label="검수일자" name="inspectionDate">
             <DatePicker />
           </Form.Item>
         </Col>

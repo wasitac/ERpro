@@ -202,8 +202,8 @@ CREATE TABLE inspection (
  count int NOT NULL,
  eligible int NOT NULL,
  ineligible int NOT NULL,
- pass enum('PASS', "FAIL") NOT NULL,
- inspection_date date NOT NULL DEFAULT (current_date),
+ pass enum('PASS', "FAIL"),
+ inspection_date date DEFAULT (current_date),
  primary key(id),
  foreign key(store_id) references store(id)
 );
