@@ -318,12 +318,12 @@ const menus = {
         minWidth: 120,
         filters: [
           {
-            text: "매입",
-            value: "매입",
+            text: "구매",
+            value: "PURCHASE",
           },
           {
-            text: "매출",
-            value: "매출",
+            text: "판매",
+            value: "SALES",
           },
         ],
       },

@@ -4,10 +4,15 @@ import { Form, Input, Select, DatePicker } from "antd";
 const InvoiceForm = () => {
   return (
     <div>
-      <Form.Item label="전표번호" name="id">
+      <Form.Item
+        label="전표번호"
+        name="id">
         <Input disabled />
       </Form.Item>
-      <Form.Item label="입출고번호" name="storeId">
+      <Form.Item
+        label="입출고번호"
+        name="storeId"
+      >
         <Input />
       </Form.Item>
       <Form.Item
@@ -21,8 +26,8 @@ const InvoiceForm = () => {
         ]}
       >
         <Select>
-          <Select.Option value="매입">매입</Select.Option>
-          <Select.Option value="매출">매출</Select.Option>
+          <Select.Option value="BUY">구매</Select.Option>
+          <Select.Option value="SELL">판매</Select.Option>
         </Select>
       </Form.Item>
       <Form.Item
@@ -49,7 +54,10 @@ const InvoiceForm = () => {
       >
         <DatePicker />
       </Form.Item>
-      <Form.Item label="비고" name="note">
+      <Form.Item
+        label="비고"
+        name="note"
+      >
         <Input />
       </Form.Item>
     </div>
