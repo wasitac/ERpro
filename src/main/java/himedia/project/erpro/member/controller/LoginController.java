@@ -36,9 +36,6 @@ public class LoginController {
 
 		String role = auth.getAuthority();
 
-		System.out.println("memberId: "+memberId);
-		System.out.println("role: "+role);
-
 		return "로그인 페이지";
 	}
 
