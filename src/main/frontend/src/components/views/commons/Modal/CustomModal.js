@@ -66,7 +66,7 @@ function CustomModal(props) {
       } else if (mode === "edit") {
         // 정보 수정
         const response = await fetchApi.put(`/${props.keyOfmenu}`, formData);
-        
+
         if (response.data?.data) {
           props.fetchData();
           onCancel();
@@ -102,7 +102,6 @@ function CustomModal(props) {
       break;
     case "orders":
       inputForm = <OrdersForm />;
-      // modalSize = 1200;
       break;
     case "estimate":
       inputForm = <EstimateForm />;
