@@ -8,6 +8,7 @@ insert into member values (1005, "정유진", "1996-02-20", "010-2377-4573", "ju
 insert into member values (1006, "이지홍", "1997-08-17", "010-8874-7098", "ghong817@gmail.com", "LOGISTICS", "EMPLOYEE", "ROLE_MEMBER", "정규직", "2024-01-21", null, "$2a$10$xNsseao2cwCVld7nZDZZaeig93/KU49hlgWA2c4QxnSlEZXUjnEVK");
 insert into member values (1007, "송창민", "1994-03-17", "010-2232-2900", "kingsv12@gmail.com", "LOGISTICS", "EMPLOYEE", "ROLE_MEMBER", "계약직", "2023-10-24", "2024-01-20", "$2a$10$xNsseao2cwCVld7nZDZZaeig93/KU49hlgWA2c4QxnSlEZXUjnEVK");
 
+
 insert into item values (1, "자재", "3mm 스웨이드 가죽끈", "개(EA)", "3mm", 900, 2000);
 insert into item values (2, "자재", "원형 스냅 단추", "개(EA)", "15mm", 200, 800);
 insert into item values (3, "자재", "가방 마감 직사각 링", "개(EA)", "150*150(mm)", 800, 2800);
@@ -30,7 +31,7 @@ insert into item values (19, "자재", "시마노 MTB 알리비오 FH-M4050 허�
 insert into item values (20, "자재", "BARADINE 로드 접이식 자전거용 V브레이크패드", "개(EA)", "55(mm)", 1000, 60000);
 insert into item values (21, "자재", "MTB 알루미늄 블랙 브레이크레버", "개(EA)", "135*95(mm)", 1400, 10000);
 insert into item values (22, "자재", "radius 픽시 브레이크레버", "개(EA)", "55(mm)", 900, 6500);
-insert into item values (23, "자재", "ST-F15 자전거 2홀(4cm) 길이조절 킥스텐드", "개(EA)", "40(mm)", 5000, 1600);
+insert into item values (23, "자재", "ST-F15 자전거 2홀(4cm) 길이조절 킥스텐드", "개(EA)", "40(mm)", 5000, 16000);
 insert into item values (24, "자재", "헤드셋용 베어링 41mm", "개(EA)", "41mm", 500, 3500);
 insert into item values (25, "자재", "헤드셋용 베어링 47mm", "개(EA)", "47mm", 500, 3500);
 insert into item values (26, "자재", "SHIKRA 알루미늄 스템 7도", "개(EA)", "318(mm)", 1500, 14500);
@@ -44,11 +45,12 @@ insert into item values (33, "제품", "데일리 탑 핸드백", "개", "17*14*
 insert into item values (34, "제품", "고르고쉬 가죽 체인 백", "개", "21*15*12(cm)", 25000, 77000);
 insert into item values (35, "제품", "케이글 데일리 크로스 바디백", "개", "30*17*15(cm)", 70000, 200000);
 
-insert into account values (1, "김주원", "654-32-10987", "퓨어그로우 바이크", "매출처", "이수근", "운동용품 및 자전거 소매업", "자전거 및 자전거 용품 소매", "031-6443-4325", "경기도 시흥시 매화산단로 45", "sugun@gmail.com"); 
-insert into account values (2, "이지홍", "123-45-67890", "블루스카이 인더스트리", "매출처", "이미자", "건설 및 건축", "리모델링 ", "02-5198-4566", "인천광역시 미추홀구 한나루로 563", "mija@gmail.com");
-insert into account values (3, "이미자", "543-21-09876", "센트럴 솔루션", "매입처", "강호동", "건설 및 건축", "주택 건설", "031-2833-5919", "서울특별시 금천구 시흥대로 46 13동", "hodong@gmail.com");
-insert into account values (4, "박보검", "987-65-43210", "실버웨이브 그룹", "매출처", "유지태", "건설 및 건축", "상업물 건축", "02-3845-6847", "인천광역시 남동구 경인로 744", "jitae@gmail.com");
-insert into account values (5, "이지홍", "201-88-18954", "그린테크 솔루션즈", "매입처", "홍길동", " IT 서비스", "시스템 개발,", "02-3159-2368", "경기도 화성시 팔탄면 3.1만세로", "gildong@gmail.com");  
+
+insert into account values (null, "김주원", "654-32-10987", "퓨어그로우 바이크", "매출처", "이수근", "운동용품 및 자전거 소매업", "자전거 및 자전거 용품 소매", "031-6443-4325", "경기도 시흥시 매화산단로 45", "sugun@gmail.com"); 
+insert into account values (null, "이지홍", "123-45-67890", "블루스카이 인더스트리", "매출처", "이미자", "건설 및 건축", "리모델링 ", "02-5198-4566", "인천광역시 미추홀구 한나루로 563", "mija@gmail.com");
+insert into account values (null, "이미자", "543-21-09876", "센트럴 솔루션", "매입처", "강호동", "건설 및 건축", "주택 건설", "031-2833-5919", "서울특별시 금천구 시흥대로 46 13동", "hodong@gmail.com");
+insert into account values (null, "박보검", "987-65-43210", "실버웨이브 그룹", "매출처", "유지태", "건설 및 건축", "상업물 건축", "02-3845-6847", "인천광역시 남동구 경인로 744", "jitae@gmail.com");
+insert into account values (null, "이지홍", "201-88-18954", "그린테크 솔루션즈", "매입처", "홍길동", " IT 서비스", "시스템 개발,", "02-3159-2368", "경기도 화성시 팔탄면 3.1만세로", "gildong@gmail.com");  
 insert into account values (null, "김마리", "789-01-23456", "테크놀로지 엑스플로어", "매입처", "김수로", "IT 서비스", "시스템 개발", "02-1224-5778", "서울특별시 강남구 테헤란로 12", "adventureExplorer@yahoo.com");
 insert into account values (null, "소낙려", "345-67-89012", "타고르고타", "매입처", "마장평", " 자전거 제조", "자전거 구성품 제조", "031-9876-5432", "경기도 성남시 분당구 대왕판교로 789", "fashionista.email@gmail.com");  
 insert into account values (null, "마추일", "890-12-34567", "금수강산", "매출처", "강유순", "운동용품 및 자전거 소매업", "자전거 및 액세서리 판매", "032-2345-6789", "인천광역시 남동구 인하로 33-1 901호", "codingPro@hotmail.com");  
@@ -64,6 +66,7 @@ insert into account values (null, "김마리", "210-98-76543", "스피드사이�
 insert into account values (null, "김관평", "987-65-43210", "라이딩플로우", "매입처", "정지후", "이륜 자전거 제조", "자전거 구성품 제조", "041-6789-0123", "충청남도 천안시 동남구 만남로 678", "futuristicMind@gmail.com");  
 insert into account values (null, "민시호", "876-54-32109", "어드벤처사이클", "매입처", "소향아", "이륜 자전거 제조", "자전거 구성품 제조", "044-1234-5678", "충청북도 청주시 상당구 상당로 41 209호", "malangoo@gmail.com");  
 insert into account values (null, "이사라", "210-98-76543", "바이크마스터", "매출처", "한무제", "운동용품 및 자전거 소매업", "자전거 및 자전거 용품 소매", "051-8901-2345", "부산광역시 사하구 다대로 27-1 612호", "zigzag@gmail.com");  
+
 
 insert into orders values (1, "퓨어그로우 바이크", "654-32-10987", "판매", "2023-06-25", "2023-07-10");
 insert into orders values (2, "금수강산", "890-12-34567", "판매", "2023-07-12", "2023-07-27");
@@ -86,14 +89,15 @@ insert into orders values (18, "스피드사이클", "210-98-76543", "판매", "
 insert into orders values (19, "트렌드토트", "765-43-21098", "구매", "2024-01-15", "2023-01-18");
 insert into orders values (20, "금수강산", "890-12-34567", "판매", "2024-02-08", "2023-02-14");
 
-insert into orders_item values (1, 1, "자재", 13, "DST-2060 3베어링 와이드 경량페달", "개(EA)", "85*85(mm)", 50, 28000, 10, 1540000);
-insert into orders_item values (2, 2, "자재", 20, "BARADINE 로드 접이식 자전거용 V브레이크패드", "개(EA)", "55(mm)", 100, 6000, 10, 660000);
-insert into orders_item values (3, 3, "자재", 21, "MTB 알루미늄 블랙 브레이크레버", "개(EA)", "135*95(mm)", 300, 10000, 10, 3300000);
-insert into orders_item values (4, 4, "자재", 24, "헤드셋용 베어링 41mm", "개(EA)", "41mm", 210, 500, 10, 115500);
-insert into orders_item values (5, 5, "자재", 28, "COS 20인치 미니벨로용 노바텍 이중림 앞뒤세트", "개(EA)", "100mm(앞)*135mm(뒤)", 100, 12000, 10, 12000000);
-insert into orders_item values (6, 6, "자재", 16, "시마노 M311 크랭크", "개(EA)", "50(mm)", 80, 45000, 10, 3960000);
-insert into orders_item values (7, 7, "제품", 19, "시마노 MTB 알리비오 FH-M4050 허브", "개(EA)", "135*146(mm)", 120, 45000, 10, 5940000);
-insert into orders_item values (8, 8, "자재", 27, "MTB 자전거용 심보 허브축 퀵릴리즈 레버", "개(EA)", "135mm", 400, 13000, 10, 5720000);
+
+insert into orders_item values (null, 1, "자재", 13, "DST-2060 3베어링 와이드 경량페달", "개(EA)", "85*85(mm)", 50, 28000, 10, 1540000);
+insert into orders_item values (null, 2, "자재", 20, "BARADINE 로드 접이식 자전거용 V브레이크패드", "개(EA)", "55(mm)", 100, 6000, 10, 660000);
+insert into orders_item values (null, 3, "자재", 21, "MTB 알루미늄 블랙 브레이크레버", "개(EA)", "135*95(mm)", 300, 10000, 10, 3300000);
+insert into orders_item values (null, 4, "자재", 24, "헤드셋용 베어링 41mm", "개(EA)", "41mm", 210, 500, 10, 115500);
+insert into orders_item values (null, 5, "자재", 28, "COS 20인치 미니벨로용 노바텍 이중림 앞뒤세트", "개(EA)", "100mm(앞)*135mm(뒤)", 100, 12000, 10, 12000000);
+insert into orders_item values (null, 6, "자재", 16, "시마노 M311 크랭크", "개(EA)", "50(mm)", 80, 45000, 10, 3960000);
+insert into orders_item values (null, 7, "제품", 19, "시마노 MTB 알리비오 FH-M4050 허브", "개(EA)", "135*146(mm)", 120, 45000, 10, 5940000);
+insert into orders_item values (null, 8, "자재", 27, "MTB 자전거용 심보 허브축 퀵릴리즈 레버", "개(EA)", "135mm", 400, 13000, 10, 5720000);
 insert into orders_item values (null, 9, "자재", 23, "ST-F15 자전거 2홀(4cm) 길이조절 킥스텐드", "개(EA)", "40(mm)", 320, 16000, 10, 5632000);
 insert into orders_item values (null, 10, "자재", 26, "SHIKRA 알루미늄 스템 7도", "개(EA)", "318(mm)", 64, 14500, 10, 1020800);
 insert into orders_item values (null, 11, "자재", 1, "3mm 스웨이드 가죽끈", "개(EA)", "3mm", 3000, 900, 10, 2970000);
@@ -107,6 +111,7 @@ insert into orders_item values (null, 18, "자재", 8, "짧은 가방 가죽 스
 insert into orders_item values (null, 19, "자재", 9, "모던 시크 가방발 세트 4p", "개(EA)", "10(cm)", 1000, 400, 10, 440000);
 insert into orders_item values (null, 20, "제품", 29, "메라다 스킬타라", "대", "8.54(kg)", 500, 800, 10, 825000000);
 
+
 insert into production values (1, 1, "어드벤처사이클", "민시호", 29, "메라다 스킬타라", "대", "8.54(kg)", 100, "2024-01-29");
 insert into production values (2, 2, "라이딩플로우", "정지후", 30, "캐논도일 올뉴 하이모드", "대", "10.22(kg)", 230, "2024-01-30");
 insert into production values (3, 3, "미라지 마운트", "김관평", 31, "CBC 탐머신 SKR01 FU 울테라 ", "대", "13.12(kg)", 85, "2024-01-30");
@@ -115,7 +120,8 @@ insert into production values (5, 5, "트렌드토트", "이사라", 33, "데일
 insert into production values (6, 6, "어반플로우 패션백스", "민시호", 34, "고르고쉬 가죽 체인 백", "개", "21*15*12(cm)", 250, "2024-02-16");
 insert into production values (7, 7, "스타일캐리어", "박장료", 35, "케이글 데일리 크로스 바디백", "개", "30*17*15(cm)", 150, "2024-02-21");
 
-insert into store values (1, "IN", "퓨어그로우 바이크", 1, "2023-07-10");
+
+insert into store values (null, "IN", "퓨어그로우 바이크", 1, "2023-07-10");
 insert into store values (null, "OUT", "금수강산", 2, "2023-07-27");
 insert into store values (null, "IN", "타고르고타", 3, "2023-08-30");
 insert into store values (null, "OUT", "라이트닝 라이더즈", 4, "2023-09-06");
@@ -135,6 +141,7 @@ insert into store values (null, "IN", "어반플로우 패션백스", 17, "2023-
 insert into store values (null, "OUT", "스피드사이클", 18, "2024-01-06");
 insert into store values (null, "IN", "트렌드토트", 19, "2024-01-18");
 insert into store values (null, "OUT", "금수강산", 20, "2024-02-14");
+
 
 insert into store_item values (1, 1, 10, "슈발베 RAPID ROB 폴딩 타이어", "개(EA)", "275x210(mm)", 100, 10000, 10, 1100000);
 insert into store_item values (2, 1, 11, "WAKE 라이져핸들바", "개(EA)", "780(mm)", 50, 3000, 10, 165000);
@@ -157,6 +164,7 @@ insert into store_item values (18, 10, 23, "ST-F15 자전거 2홀(4cm) 길이조
 insert into store_item values (19, 11, 3, "가방 마감 직사각 링", "개(EA)", "150*150(mm)", 2200, 800, 10, 1936000);
 insert into store_item values (20, 12, 22, "radius 픽시 브레이크레버", "개(EA)", "55(mm)", 600, 900, 10, 594000);
 
+
 insert into invoice values (1, 1, "매입", "카드", "-", "2023-07-10");
 insert into invoice values (2, 2, "매출", "카드", "2차 주문", "2023-07-27");
 insert into invoice values (3, 3, "매입", "현금", "장부 문의", "2023-08-30");
@@ -178,8 +186,9 @@ insert into invoice values (18, 18, "매출", "카드", "-", "2024-01-06");
 insert into invoice values (19, 19, "매입", "현금", "-", "2024-01-18");
 insert into invoice values (20, 20, "매출", "카드", "-", "2024-01-19");
 
-insert into invoice_item values (1, 1, 10, "슈발베 RAPID ROB 폴딩 타이어", "개(EA)", "275x210(mm)", 100, 10000, 10, 1100000);
-insert into invoice_item values (2, 1, 11, "WAKE 라이져핸들바", "개(EA)", "780(mm)", 50, 3000, 10, 165000);
+
+insert into invoice_item values (null, 1, 10, "슈발베 RAPID ROB 폴딩 타이어", "개(EA)", "275x210(mm)", 100, 10000, 10, 1100000);
+insert into invoice_item values (null, 1, 11, "WAKE 라이져핸들바", "개(EA)", "780(mm)", 50, 3000, 10, 165000);
 insert into invoice_item values (null, 2, 29, "메라다 스킬타라", "대", "8.54(kg)", 30, 1500000, 10, 45450000);
 insert into invoice_item values (null, 3, 13, "에르고스 액티브 621 안장", "개(EA)", "180*277(mm)", 200, 9000, 10, 1980000);
 insert into invoice_item values (null, 3, 14, "DST-2060 3베어링 와이드 경량페달", "개(EA)", "85*85(mm)", 220, 11000, 10, 2662000);
@@ -197,28 +206,67 @@ insert into invoice_item values (null, 9, 1, "3mm 스웨이드 가죽끈", "개(
 insert into invoice_item values (null, 10, 23, "ST-F15 자전거 2홀(4cm) 길이조절 킥스텐드", "개(EA)", "40(mm)", 270, 5000, 10, 1485000);
 insert into invoice_item values (null, 11, 3, "가방 마감 직사각 링", "개(EA)", "150*150(mm)", 2200, 800, 10, 1936000);
 insert into invoice_item values (null, 12, 22, "radius 픽시 브레이크레버", "개(EA)", "55(mm)", 600, 900, 10, 594000);
-insert into invoice_item values (null, 12, 14, "DST-2060 3베어링 와이드 경량페달", "개(EA)", "85*85(mm)", 220, 11000, 10, 2662000);
+insert into invoice_item values (null, 13, 7, "라운드 나사형 리벳", "개(EA)", "10*10(mm)", 3000, 4000, 10, 13200000);
+insert into invoice_item values (null, 14, 33, "데일리 탑 핸드백", "개", "17*14*10(cm)", 400, 135000, 10, 59400000);
+insert into invoice_item values (null, 15, 34, "고르고쉬 가죽 체인 백", "개", "21*15*12(cm)", 100, 77000, 10, 8470000);
+insert into invoice_item values (null, 16, 35, "케이글 데일리 크로스 바디백", "개", "30*17*15(cm)", 500, 200000, 10, 1100000000);
+insert into invoice_item values (null, 17, 1, "3mm 스웨이드 가죽끈", "개(EA)", "3mm", 4500, 900, 10, 4455000);
+insert into invoice_item values (null, 18, 23, "ST-F15 자전거 2홀(4cm) 길이조절 킥스텐드", "개(EA)", "40(mm)", 270, 5000, 10, 1485000);
+insert into invoice_item values (null, 19, 3, "가방 마감 직사각 링", "개(EA)", "150*150(mm)", 2200, 800, 10, 1936000);
+insert into invoice_item values (null, 20, 22, "radius 픽시 브레이크레버", "개(EA)", "55(mm)", 600, 900, 10, 594000);
 
-insert into BOM values (1, 29, 10, 150, "-");
-insert into BOM values (2, 29, 11, 200, "-");
-insert into BOM values (3, 29, 12, 480, "-");
-insert into BOM values (4, 29, 14, 35, "-");
-insert into BOM values (5, 29, 16, 300, "-");
-insert into BOM values (6, 29, 17, 350, "-");
-insert into BOM values (7, 29, 19, 120, "-");
-insert into BOM values (8, 29, 23, 19, "-");
-insert into BOM values (9, 29, 24, 67, "-");
-insert into BOM values (10, 30, 11, 8, "-");
-insert into BOM values (11, 30, 13, 40, "-");
-insert into BOM values (12, 30, 15, 78, "-");
-insert into BOM values (13, 30, 16, 110, "-");
-insert into BOM values (14, 30, 18, 230, "-");
-insert into BOM values (15, 30, 19, 950, "-");
-insert into BOM values (16, 30, 22, 45, "-");
-insert into BOM values (17, 30, 23, 87, "-");
-insert into BOM values (18, 30, 25, 360, "-");
-insert into BOM values (19, 30, 27, 174, "-");
-insert into BOM values (20, 30, 28, 30, "-");
+
+insert into bom values (1, 29, 10, 150, "-");
+insert into bom values (2, 29, 11, 200, "-");
+insert into bom values (3, 29, 12, 480, "-");
+insert into bom values (4, 29, 14, 35, "-");
+insert into bom values (5, 29, 16, 300, "-");
+insert into bom values (6, 29, 17, 350, "-");
+insert into bom values (7, 29, 19, 120, "-");
+insert into bom values (8, 29, 23, 19, "-");
+insert into bom values (9, 29, 24, 67, "-");
+insert into bom values (10, 30, 11, 8, "-");
+insert into bom values (11, 30, 13, 40, "-");
+insert into bom values (12, 30, 15, 78, "-");
+insert into bom values (13, 30, 16, 110, "-");
+insert into bom values (14, 30, 18, 230, "-");
+insert into bom values (15, 30, 19, 950, "-");
+insert into bom values (16, 30, 22, 45, "-");
+insert into bom values (17, 30, 23, 87, "-");
+insert into bom values (18, 30, 25, 360, "-");
+insert into bom values (19, 30, 27, 174, "-");
+insert into bom values (20, 30, 28, 30, "-");
+insert into bom values (21, 31, 11, 50, "-");
+insert into bom values (22, 31, 12, 130, "-");
+insert into bom values (23, 31, 22, 20, "-");
+insert into bom values (24, 31, 23, 70, "-");
+insert into bom values (25, 31, 27, 95, "-");
+insert into bom values (26, 31, 28, 43, "-");
+insert into bom values (27, 31, 25, 32, "-");
+insert into bom values (28, 31, 24, 77, "-");
+insert into bom values (29, 32, 14, 65, "-");
+insert into bom values (30, 32, 13, 22, "-");
+insert into bom values (31, 32, 12, 34, "-");
+insert into bom values (32, 32, 16, 12, "-");
+insert into bom values (33, 32, 18, 90, "-");
+insert into bom values (34, 32, 19, 50, "-");
+insert into bom values (35, 32, 20, 70, "-");
+insert into bom values (36, 33, 1, 70, "-");
+insert into bom values (37, 32, 2, 100, "-");
+insert into bom values (38, 32, 3, 20, "-");
+insert into bom values (39, 32, 4, 40, "-");
+insert into bom values (40, 32, 5, 60, "-");
+insert into bom values (41, 32, 6, 88, "-");
+insert into bom values (42, 32, 7, 72, "-");
+insert into bom values (43, 33, 9, 80, "-");
+insert into bom values (44, 33, 8, 12, "-");
+insert into bom values (45, 33, 7, 15, "-");
+insert into bom values (46, 33, 6, 45, "-");
+insert into bom values (47, 33, 5, 99, "-");
+insert into bom values (48, 33, 4, 47, "-");
+insert into bom values (49, 33, 3, 20, "-");
+insert into bom values (50, 33, 2, 180, "-");
+
 
 insert into inventory values (1, 10, "슈발베 RAPID ROB 폴딩 타이어", 1, 200, 10000, 100, 150, 200, 300, 200, 300, 100);
 insert into inventory values (2, 11, "WAKE 라이져핸들바", 1, 20, 3000, 50, 10, 25, 80, 15, 65, 25);
@@ -235,6 +283,7 @@ insert into inventory values (12, 14, "라운드 나사형 리벳", 6, 2000, 400
 insert into inventory values (13, 14, "데일리 탑 핸드백", 7, 20, 135000, 220, 35, 60, 400, 10, 35, 12);
 insert into inventory values (14, 14, "고르고쉬 가죽 체인 백", 8, 30, 77000, 220, 35, 60, 70, 100, 35, 12);
 insert into inventory values (15, 14,  "케이글 데일리 크로스 바디백", 8, 300, 200000, 220, 35, 500, 70, 10, 35, 12);
+
 
 insert into estimate values (1, 1, "2023-08-10", "2023-07-10", 1100000, "완료");
 insert into estimate values (2, 2, "2023-08-27", "2023-07-27", 165000, "완료");
@@ -257,6 +306,7 @@ insert into estimate values (18, 18, "2024-03-02", "2023-02-02", 1485000, "진�
 insert into estimate values (19, 19, "2024-03-03", "2023-02-03", 1485000, "진행중");
 insert into estimate values (20, 20, "2024-03-05", "2023-02-05", 1485000, "진행중");
 
+
 insert into estimate_item values (1, 1, 10, "슈발베 RAPID ROB 폴딩 타이어", "개(EA)", "275x210(mm)", 100, 10000, 10, 1100000);
 insert into estimate_item values (2, 1, 11, "WAKE 라이져핸들바", "개(EA)", "780(mm)", 50, 3000, 10, 165000);
 insert into estimate_item values (3, 1, 12, "DDK 더블폼 메모리 안장", "개(EA)", "265*212(mm)", 120, 9000, 10, 1188000);
@@ -277,6 +327,15 @@ insert into estimate_item values (17, 9, 1, "3mm 스웨이드 가죽끈", "개(E
 insert into estimate_item values (18, 10, 23, "ST-F15 자전거 2홀(4cm) 길이조절 킥스텐드", "개(EA)", "40(mm)", 270, 5000, 10, 1485000);
 insert into estimate_item values (19, 11, 3, "가방 마감 직사각 링", "개(EA)", "150*150(mm)", 2200, 800, 10, 1936000);
 insert into estimate_item values (20, 12, 22, "radius 픽시 브레이크레버", "개(EA)", "55(mm)", 600, 900, 10, 594000);
+insert into estimate_item values (21, 13, 1, "3mm 스웨이드 가죽끈", "개(EA)", "3(mm)", 600, 900, 10, 594000);
+insert into estimate_item values (22, 14, 2, "원형 스냅 단추", "개(EA)", "15(mm)", 2700, 800, 10, 2376000);
+insert into estimate_item values (23, 15, 5, "가방 잠금 버클 락장식", "개(EA)", "30*40(mm)", 700, 900, 10, 693000);
+insert into estimate_item values (24, 16, 6, "체인 가방끈 스트랩", "개(EA)", "110(cm)", 5000, 1000, 10, 5500000);
+insert into estimate_item values (25, 17, 7, "포카스 헌터 아틀란티스5", "대", "8.7(kg)", 50, 3200000, 10, 176000000);
+insert into estimate_item values (26, 18, 22, "시마노 M311 크랭크", "개(EA)", "50(mm)", 300, 8000, 10, 2640000);
+insert into estimate_item values (27, 19, 22, "MTB 자전거용 심보 허브축 퀵릴리즈 레버", "개(EA)", "135(mm)", 500, 3000, 10, 1650000);
+insert into estimate_item values (28, 20, 22, "메라다 스킬타라", "대", "8.54(kg)", 30, 1500000, 10, 49500000);
+
 
 insert into inspection values (1, 1, "이지홍", "박보검", "10", "슈발베 RAPID ROB 폴딩 타이어", "개(EA)", "275*210(mm)", 100, 100, 0, "PASS", "2024-01-05");
 insert into inspection values (2, 1, "송창민", "홍길동", "11", "WAKE 라이져핸들바", "개(EA)", "780(mm)", 150, 80, 70, "FAIL", "2024-01-05");
