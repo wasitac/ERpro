@@ -4,8 +4,8 @@ import himedia.project.erpro.inventory.entity.Item;
 
 import lombok.*;
 
+// 김주원
 @Getter
-@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor

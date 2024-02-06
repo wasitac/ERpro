@@ -3,11 +3,24 @@ package himedia.project.erpro.member.entity;
 import java.sql.Date;
 
 import himedia.project.erpro.member.dto.MemberDto;
+import himedia.project.erpro.member.dto.ProfileFormDto;
 import himedia.project.erpro.member.enums.Department;
 import himedia.project.erpro.member.enums.MemberRank;
 import himedia.project.erpro.member.enums.Role;
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
@@ -54,35 +67,72 @@ public class Member {
 
 	public MemberDto toDto() {
 		return MemberDto.builder()
-				.id(id)
-				.name(name)
-				.birthDate(birthDate)
-				.phone(phone)
-				.email(email)
-				.department(department.getKor())
-				.memberRank(memberRank.getKor())
-				.role(role.getKor())
-				.workType(workType)
-				.insertDate(insertDate)
-				.retireDate(retireDate)
-				.password(password)
+				.id(this.id)
+				.name(this.name)
+				.birthDate(this.birthDate)
+				.phone(this.phone)
+				.email(this.email)
+				.department(this.department.getKor())
+				.memberRank(this.memberRank.getKor())
+				.role(this.role.getKor())
+				.workType(this.workType)
+				.insertDate(this.insertDate)
+				.retireDate(this.retireDate)
+				.password(this.password)
 				.build();
 	}
 
 	public MemberDto toFormDto() {
 		return MemberDto.builder()
-				.id(id)
-				.name(name)
-				.birthDate(birthDate)
-				.phone(phone)
-				.email(email)
-				.department(department.toString())
-				.memberRank(memberRank.toString())
-				.role(role.toString())
-				.workType(workType)
-				.insertDate(insertDate)
-				.retireDate(retireDate)
+				.id(this.id)
+				.name(this.name)
+				.birthDate(this.birthDate)
+				.phone(this.phone)
+				.email(this.email)
+				.department(this.department.toString())
+				.memberRank(this.memberRank.toString())
+				.role(this.role.toString())
+				.workType(this.workType)
+				.insertDate(this.insertDate)
+				.retireDate(this.retireDate)
+				.password(this.password)
+				.build();
+	}
+
+	// 이지홍
+	public Member updateProfile(ProfileFormDto profile) {
+		return Member.builder()
+				.id(this.id)
+				.name(profile.getName())
+				.birthDate(this.birthDate)
+				.phone(profile.getPhone())
+				.email(profile.getEmail())
+				.department(this.department)
+				.memberRank(this.memberRank)
+				.role(this.role)
+				.workType(this.workType)
+				.insertDate(this.insertDate)
+				.retireDate(this.retireDate)
+				.password(this.password)
+				.build();
+	}
+	
+	// 이지홍
+	public Member updatePassword(String password) {
+		return Member.builder()
+				.id(this.id)
+				.name(this.name)
+				.birthDate(this.birthDate)
+				.phone(this.phone)
+				.email(this.email)
+				.department(this.department)
+				.memberRank(this.memberRank)
+				.role(this.role)
+				.workType(this.workType)
+				.insertDate(this.insertDate)
+				.retireDate(this.retireDate)
 				.password(password)
 				.build();
 	}
+	
 }

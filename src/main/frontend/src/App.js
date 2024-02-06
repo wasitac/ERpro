@@ -11,8 +11,8 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="login" element={<LoginPage />} />
-          <Route path="findpassword" element={<FindPasswordPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/findpassword" element={<FindPasswordPage />} />
           <Route path="/" element={<MainPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/error" element={<ErrorPage />} />

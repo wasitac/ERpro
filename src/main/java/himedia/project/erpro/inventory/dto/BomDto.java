@@ -3,8 +3,8 @@ package himedia.project.erpro.inventory.dto;
 import himedia.project.erpro.inventory.entity.Bom;
 import lombok.*;
 
+// 김주원
 @Getter
-@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,5 +23,15 @@ public class BomDto {
                 .requiredAmount(this.requiredAmount)
                 .note(this.note)
                 .build();
+    }
+    
+    public Bom toEntity(Long itemId) {
+    	return Bom.builder()
+    			.id(this.id)
+    			.itemId(itemId)
+    			.materialId(this.materialId)
+    			.requiredAmount(this.requiredAmount)
+    			.note(this.note)
+    			.build();
     }
 }

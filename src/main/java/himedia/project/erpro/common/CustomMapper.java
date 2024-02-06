@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import lombok.RequiredArgsConstructor;
 
+// 이지홍
 @Component
 @RequiredArgsConstructor
 public class CustomMapper{

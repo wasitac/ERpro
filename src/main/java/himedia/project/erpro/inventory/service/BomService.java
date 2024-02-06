@@ -58,8 +58,7 @@ public class BomService {
 
         List<BomDto> saveBomList = new ArrayList<>();
         for(BomDto bomDto : bomDetailDto.getBomList()) {
-            bomDto.setItemId(bomDetailDto.getItemId());
-            BomDto saveBomDto = bomRepository.save(bomDto.toEntity()).toDto();
+            BomDto saveBomDto = bomRepository.save(bomDto.toEntity(bomDetailDto.getItemId())).toDto();
             saveBomList.add(saveBomDto);
         }
 
@@ -72,8 +71,8 @@ public class BomService {
 
         List<BomDto> saveBomList = new ArrayList<>();
         for(BomDto bomDto : bomDetailDto.getBomList()) {
-            bomDto.setItemId(bomDetailDto.getItemId());
-            BomDto saveBomDto = bomRepository.save(bomDto.toEntity()).toDto();
+//            bomDto.setItemId(bomDetailDto.getItemId());
+            BomDto saveBomDto = bomRepository.save(bomDto.toEntity(bomDetailDto.getItemId())).toDto();
             saveBomList.add(saveBomDto);
         }
 
