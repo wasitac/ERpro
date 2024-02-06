@@ -27,13 +27,8 @@ function App() {
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/findpassword" element={<FindPasswordPage />} />
-<<<<<<< HEAD
-          <Route path="/" element={<MainPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-=======
           <Route path="/" element={<Applayout><MainPage /></Applayout>} />
           <Route path="/profile" element={<Applayout><ProfilePage /></Applayout>} />
->>>>>>> origin/joowon
           <Route path="/error" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>

@@ -29,7 +29,7 @@ public class MemberService {
 	// 사원목록 조회 - 김주원
 	public List<MemberDto> getMemberAll() {
 		List<Member> memberList = memberRepository.findAll();
-		List<MemberDto> memberDtoList = memberList.stream().map(Member::toDto).collect(Collectors.toList());
+		List<MemberDto> memberDtoList = memberList.stream().map(Member::toFormDto).collect(Collectors.toList());
 		return memberDtoList;
 	}
 	
@@ -81,7 +81,7 @@ public class MemberService {
 		Optional<Member> existMember = memberRepository.findById(memberDto.getId());
 		
 		if(existMember.isPresent()) {
-			MemberDto updateMemberDto= existMember.get().toDto();
+			MemberDto updateMemberDto= existMember.get().toFormDto();
 
 			// 비밀번호 제외한 필드를 수동으로 업데이트
 			updateMemberDto.setName(memberDto.getName());
