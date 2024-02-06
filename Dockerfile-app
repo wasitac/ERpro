@@ -1,5 +1,10 @@
-FROM openjdk:17
-ARG JAR_FILE=build/libs/*.jar
-COPY ${JAR_FILE} app.jar
+FROM openjdk:17-jdk-slim
 
-ENTRYPOINT ["java","-Dfile.encoding=UTF-8","-jar","app.jar"]
+WORKDIR /erpro
+
+COPY build/libs/erpro-0.0.1-SNAPSHOT.jar ./app.jar
+COPY erpro.sh ./erpro.sh
+
+RUN chmod +x ./erpro.sh
+
+ENTRYPOINT ["sh", "./erpro.sh"]
