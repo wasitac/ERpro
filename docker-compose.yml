@@ -11,13 +11,11 @@ services:
     ports:
       - 9999:8080
     depends_on:
-      - database #아래 서비스명 db가 먼저 생성이 돼야해서
+      - database
 
   database:
     container_name: erpro-db
-    build:
-      context: .
-      dockerfile: Dockerfile-db
+    image: mysql:8.0
     hostname: docker-mysql
     ports:
       - 3307:3306
