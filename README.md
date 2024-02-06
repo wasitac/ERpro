@@ -7,7 +7,7 @@
 <br>
 
 ## 🗓️개발 기간
-### 2024. 1. 15 ~ 2024. 2.
+### 2024. 1. 15 ~ 
 <br>
 
 ## 🧑‍💻팀 소개
@@ -22,6 +22,18 @@
 <br>
 
 ## 🏷️개발 환경
+#### Front End
+-React 18.2.0<br>
+-CSS 3<br>
+
+#### Back End 
+-Spring Boot 3.2.2<br>
+-Java 17<br>
+-My SQL 8.0.22<br>
+-Lombok 1.18.30<br>
+-JWT 0.12.3<br>
+-Spring Security <br>
+-model mapper 3.2.0 <br>
 <br>
 <br>
 <br>
