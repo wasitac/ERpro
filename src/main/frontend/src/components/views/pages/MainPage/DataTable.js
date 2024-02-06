@@ -66,6 +66,9 @@ const DataTable = (props) => {
         }
       } catch (error) {
         console.error("Error delete data", error);
+        if(error.response.status == 403) {
+          alert("삭제 권한이 없습니다.");
+        }
       }
     }
   };
