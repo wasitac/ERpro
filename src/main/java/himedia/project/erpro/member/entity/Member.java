@@ -65,7 +65,24 @@ public class Member {
 	
 	private String password;
 
-	public MemberDto toDto() {
+//	public MemberDto toDto() {
+//		return MemberDto.builder()
+//				.id(this.id)
+//				.name(this.name)
+//				.birthDate(this.birthDate)
+//				.phone(this.phone)
+//				.email(this.email)
+//				.department(this.department.getKor())
+//				.memberRank(this.memberRank.getKor())
+//				.role(this.role.getKor())
+//				.workType(this.workType)
+//				.insertDate(this.insertDate)
+//				.retireDate(this.retireDate)
+//				.password(this.password)
+//				.build();
+//	}
+
+	public MemberDto toFormDto() {
 		return MemberDto.builder()
 				.id(this.id)
 				.name(this.name)
@@ -75,23 +92,6 @@ public class Member {
 				.department(this.department.getKor())
 				.memberRank(this.memberRank.getKor())
 				.role(this.role.getKor())
-				.workType(this.workType)
-				.insertDate(this.insertDate)
-				.retireDate(this.retireDate)
-				.password(this.password)
-				.build();
-	}
-
-	public MemberDto toFormDto() {
-		return MemberDto.builder()
-				.id(this.id)
-				.name(this.name)
-				.birthDate(this.birthDate)
-				.phone(this.phone)
-				.email(this.email)
-				.department(this.department.toString())
-				.memberRank(this.memberRank.toString())
-				.role(this.role.toString())
 				.workType(this.workType)
 				.insertDate(this.insertDate)
 				.retireDate(this.retireDate)

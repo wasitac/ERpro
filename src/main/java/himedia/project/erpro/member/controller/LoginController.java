@@ -32,7 +32,7 @@ public class LoginController {
 //
 //		return "로그인 페이지";
 //	}
-
+	
 	// 비밀번호 찾기 - 김주원
 	@PostMapping("/findpassword")
 	public ResponseEntity<Message> findPassword(@RequestBody Long memberId) {
