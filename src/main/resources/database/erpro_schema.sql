@@ -167,8 +167,6 @@ CREATE TABLE invoice_item (
  foreign key(invoice_id) references invoice(id) on delete cascade
 );
 
-
-
 CREATE TABLE inventory (
  id bigint auto_increment NOT NULL COMMENT '재고번호',
  item_id bigint NOT NULL COMMENT '품목번호',
