@@ -66,8 +66,8 @@ public class OrdersController {
 	// 구매/판매 삭제
 	@DeleteMapping("/orders")
 	public ResponseEntity<Message> deleteOrders(@RequestBody List<Long> idList) {
-		boolean dataDelete = ordersService.deleteOrdersList(idList);
-		Message returnData = new Message(Boolean.toString(dataDelete));
+		ordersService.deleteOrdersList(idList);
+		Message returnData = new Message("구매/판매 삭제");
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
@@ -95,21 +95,21 @@ public class OrdersController {
 	@PostMapping("/ordersItem")
 	public ResponseEntity<Message> addOrdersItem(@RequestBody OrdersItemDto ordersItemDto) {
 		OrdersItemDto dataList = ordersService.createOrdersItem(ordersItemDto);
-		Message returnData = new Message("품목 추가", dataList);
+		Message returnData = new Message("구매/판매 품목 추가", dataList);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	@PutMapping("/ordersItem")
 	public ResponseEntity<Message> updateOrdersItem(@RequestBody OrdersItemDto ordersItemDto) {
 		OrdersItemDto data = ordersService.updateOrdersItem(ordersItemDto);
-		Message returnData = new Message("품목 수정", data);
+		Message returnData = new Message("구매/판매 품목 수정", data);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 
 	@DeleteMapping("/ordersItem")
 	public ResponseEntity<Message> deleteOrdersItem(@RequestBody List<Long> idList) {
 		ordersService.deleteOrdersItemList(idList);
-		Message returnData = new Message("품목 삭제");
+		Message returnData = new Message("구매/판매 품목 삭제");
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 }

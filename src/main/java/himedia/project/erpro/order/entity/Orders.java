@@ -44,7 +44,7 @@ public class Orders {
 	@Column(name = "completion_date")
 	private Date completionDate;
 	
-	public OrdersDto toOrdersDto() {
+	public OrdersDto toDto() {
 		return OrdersDto.builder()
 				.id(this.id)
 				.bNm(this.bNm)
