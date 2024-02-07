@@ -99,6 +99,23 @@ public class Member {
 				.build();
 	}
 
+	public MemberDto toFormDto() {
+		return MemberDto.builder()
+				.id(id)
+				.name(name)
+				.birthDate(birthDate)
+				.phone(phone)
+				.email(email)
+				.department(department.toString())
+				.memberRank(memberRank.toString())
+				.role(role.toString())
+				.workType(workType)
+				.insertDate(insertDate)
+				.retireDate(retireDate)
+				.password(password)
+				.build();
+	}
+
 	// 이지홍
 	public Member updateProfile(ProfileFormDto profile) {
 		return Member.builder()
