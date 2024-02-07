@@ -2,6 +2,7 @@ package himedia.project.erpro.order.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -20,27 +21,25 @@ import lombok.RequiredArgsConstructor;
 public class EstimateService {
 	private final EstimateRepository estimateRepository;
 	private final EstimateItemRepository estimateItemRepository;
-	private final CustomMapper mapper;
 	
 	public List<EstimateDto> getEstimateAll() {
 		List<Estimate> estimateList = estimateRepository.findAll();
-		List<EstimateDto> estimateDtoList = mapper.toDtoList(estimateList, EstimateDto.class);
+		List<EstimateDto> estimateDtoList = estimateList.stream().map(Estimate::toDto).collect(Collectors.toList());
 		return estimateDtoList;
 	}
 	
 	public EstimateDto getEstimateById(Long id){
-		Estimate estimateId = estimateRepository.findById(id)
+		Estimate estimate = estimateRepository.findById(id)
 				.orElseThrow(()-> new EntityNotFoundException("Estimate not found with estimateID : " + id));
-		EstimateDto estimateDtoId = mapper.map(estimateId, EstimateDto.class);
-		return estimateDtoId;
+		EstimateDto estimateDto = estimate.toDto();
+		return estimateDto;
 	}
 	
 	
 	public EstimateDto createEstimate(EstimateDto estimateDto) {
-		Estimate estimate = mapper.map(estimateDto, Estimate.class);
-		Estimate estimateSave = estimateRepository.save(estimate);
-		EstimateDto estimateDtoSave = mapper.map(estimateSave, EstimateDto.class);
-		return estimateDtoSave;
+		Estimate estimate = estimateDto.toEntity();
+		Estimate saveEstimate = estimateRepository.save(estimate);
+		return saveEstimate.toDto();
 	}
 	
 	public EstimateDto updateEstimate(EstimateDto estimateDto) {
@@ -48,8 +47,8 @@ public class EstimateService {
 		Optional<Estimate> existEstimate = estimateRepository.findById(estimate.getId());
 		
 		if(existEstimate.isPresent()) {
-			Estimate estimateUpdate = estimateRepository.save(estimate);
-			return estimateUpdate.toDto();
+			Estimate updateEstimate = estimateRepository.save(estimate);
+			return updateEstimate.toDto();
 		} else {
 			return null;
 		}
@@ -68,7 +67,7 @@ public class EstimateService {
 	
 	public List<EstimateItemDto> getEstimateItems(Long estimateId) {
 		List<EstimateItem> estimateItemList = estimateItemRepository.findAllByEstimateId(estimateId);
-		List<EstimateItemDto> estimateItemDtoList = mapper.toDtoList(estimateItemList, EstimateItemDto.class);
+		List<EstimateItemDto> estimateItemDtoList = estimateItemList.stream().map(EstimateItem::toDto).collect(Collectors.toList());
 		return estimateItemDtoList;
 	}
 	

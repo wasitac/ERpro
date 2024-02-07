@@ -39,22 +39,22 @@ public class InvoiceController {
 	
 	@PostMapping("/invoice")
 	public ResponseEntity<Message> addInvoice(@RequestBody InvoiceDto invoiceDto) {
-		InvoiceDto dataSave = invoiceService.createInvoice(invoiceDto);
-		Message returnData = new Message("저장 성공", dataSave);
+		InvoiceDto dataList = invoiceService.createInvoice(invoiceDto);
+		Message returnData = new Message("전표 저장 성공", dataList);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	@PutMapping("/invoice")
 	public ResponseEntity<Message> updateInvoice(@RequestBody InvoiceDto invoiceDto) {
-		InvoiceDto dataUpdate = invoiceService.updateInvoice(invoiceDto);
-		Message returnData = new Message("수정 성공", dataUpdate);
+		InvoiceDto data = invoiceService.updateInvoice(invoiceDto);
+		Message returnData = new Message("전표 수정 성공", data);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/invoice")
 	public ResponseEntity<Message> deleteInvoice(@RequestBody List<Long> idList) {
-		boolean dataDelete = invoiceService.deleteInvoiceList(idList);
-		Message returnData = new Message(Boolean.toString(dataDelete));
+		invoiceService.deleteInvoiceList(idList);
+		Message returnData = new Message("전표 삭제");
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
@@ -82,21 +82,21 @@ public class InvoiceController {
 		@PostMapping("/invoiceItem")
 		public ResponseEntity<Message> addInvoiceItem(@RequestBody InvoiceItemDto invoiceItemDto) {
 			InvoiceItemDto dataList = invoiceService.createInvoiceItem(invoiceItemDto);
-			Message returnData = new Message("품목 추가", dataList);
+			Message returnData = new Message("전표 품목 추가", dataList);
 			return new ResponseEntity<>(returnData, HttpStatus.OK);
 		}
 		
 		@PutMapping("/invoiceItem")
 		public ResponseEntity<Message> updateInvoiceItem(@RequestBody InvoiceItemDto invoiceItemDto) {
 			InvoiceItemDto data = invoiceService.updateInvoiceItem(invoiceItemDto);
-			Message returnData = new Message("품목 수정", data);
+			Message returnData = new Message("전표 품목 수정", data);
 			return new ResponseEntity<>(returnData, HttpStatus.OK);
 		}
 
 		@DeleteMapping("/invoiceItem")
 		public ResponseEntity<Message> deleteOrdersItem(@RequestBody List<Long> idList) {
 			invoiceService.deleteInvoiceItemList(idList);
-			Message returnData = new Message("품목 삭제");
+			Message returnData = new Message("전표 품목 삭제");
 			return new ResponseEntity<>(returnData, HttpStatus.OK);
 		}
 }

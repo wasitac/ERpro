@@ -74,9 +74,9 @@ const EstimateForm = () => {
           ]}
         >
           <Select>
-            <Select.Option value="ongoing">진행중</Select.Option>
-            <Select.Option value="completion">완료</Select.Option>
-            <Select.Option value="cancel">취소됨</Select.Option>
+            <Select.Option value="진행중">진행중</Select.Option>
+            <Select.Option value="완료">완료</Select.Option>
+            <Select.Option value="취소됨">취소됨</Select.Option>
           </Select>
         </Form.Item>
       </div>

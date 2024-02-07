@@ -2,10 +2,10 @@ package himedia.project.erpro.order.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import himedia.project.erpro.common.CustomMapper;
 import himedia.project.erpro.order.dto.OrdersDto;
 import himedia.project.erpro.order.dto.OrdersItemDto;
 import himedia.project.erpro.order.entity.Orders;
@@ -20,21 +20,22 @@ import lombok.RequiredArgsConstructor;
 public class OrdersService {
 	private final OrdersRepository ordersRepository;
 	private final OrdersItemRepository ordersItemRepository;
-	private final CustomMapper mapper;
 	
 	// 구매/판매 주문서 리스트
 	public List<OrdersDto> getOrdersAll() {
 		List<Orders> ordersList = ordersRepository.findAll();
-		List<OrdersDto> ordersDtoList = mapper.toDtoList(ordersList, OrdersDto.class);
+		List<OrdersDto> ordersDtoList = ordersList.stream()
+				.map(Orders::toDto)
+				.collect(Collectors.toList());
 		return ordersDtoList;
 	}
 	
 	// 구매/판매 주문서 상세 조회
 	public OrdersDto getOrdersById(Long id){
-		Orders ordersId = ordersRepository.findById(id)
+		Orders orders = ordersRepository.findById(id)
 				.orElseThrow(()-> new EntityNotFoundException("Orders not found with ordersID : " + id));
-		OrdersDto ordersDtoId = mapper.map(ordersId, OrdersDto.class);
-		return ordersDtoId;
+		OrdersDto ordersDto = orders.toDto();
+		return ordersDto;
 	}
 
 	// 구매/판매 주문서 상세 조회 - 이지홍
@@ -45,11 +46,9 @@ public class OrdersService {
 	
 	// 구매/판매 주문서 등록
 	public OrdersDto createOrders(OrdersDto ordersDto) {
-		// dto를 엔티티로 변환
-		Orders orders = mapper.map(ordersDto, Orders.class);
-		Orders ordersSave = ordersRepository.save(orders);
-		OrdersDto ordersDtoSave = mapper.map(ordersSave, OrdersDto.class);
-		return ordersDtoSave;
+		Orders orders = ordersDto.toEntity();
+		Orders saveOrders = ordersRepository.save(orders);
+		return saveOrders.toDto();
 	}
 	
 	// 구매/판매 주문서 수정
@@ -66,20 +65,15 @@ public class OrdersService {
 	}
 	
 	// 구매/판매 주문서 삭제
-	public boolean deleteOrdersList(List<Long> idList) {
-		int deletedOrders = ordersRepository.deleteAllByIdIn(idList);
-		if(deletedOrders > 0 && deletedOrders == idList.size()) {
-			return true;
-		} else {
-			return false;
-		}
+	public void deleteOrdersList(List<Long> idList) {
+		ordersRepository.deleteAllById(idList);
 	}
 	
 	// 구매/판매 주문서 품목 파트
 	
 	public List<OrdersItemDto> getOrdersItems(Long ordersId) {
 		List<OrdersItem> ordersItemList = ordersItemRepository.findAllByOrdersId(ordersId);
-		List<OrdersItemDto> ordersItemDtoList = mapper.toDtoList(ordersItemList, OrdersItemDto.class);
+		List<OrdersItemDto> ordersItemDtoList = ordersItemList.stream().map(OrdersItem::toDto).collect(Collectors.toList());
 		return ordersItemDtoList;
 	}
 	
