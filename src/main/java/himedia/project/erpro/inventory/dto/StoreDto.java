@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 // 이지홍
 @Getter
@@ -18,7 +19,7 @@ public class StoreDto {
 	
 	private Long id;
 	private String sort;
-	private String bNm;
+	private String bnm;
 	private Long orderId;
 	private Date storeDate;
 	
@@ -27,10 +28,9 @@ public class StoreDto {
 		return Store.builder()
 				.id(this.id)
 				.sort(StoreSort.fromKor(this.sort))
-				.bNm(this.bNm)
+				.bnm(this.bnm)
 				.orderId(this.orderId)
 				.storeDate(this.storeDate)
 				.build();
 	}
-	
 }

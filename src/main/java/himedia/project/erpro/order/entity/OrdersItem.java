@@ -52,7 +52,7 @@ public class OrdersItem {
 	@Column(name = "total")
 	private Integer total;
 	
-	public OrdersItemDto toOrdersItemDto() {
+	public OrdersItemDto toDto() {
 		return OrdersItemDto.builder()
 				.id(this.id)
 				.ordersId(this.ordersId)

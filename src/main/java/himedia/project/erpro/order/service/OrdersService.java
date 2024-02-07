@@ -38,8 +38,8 @@ public class OrdersService {
 	}
 
 	// 구매/판매 주문서 상세 조회 - 이지홍
-	public List<Long> getIdsByBNm(String name){
-		List<Long> idList = ordersRepository.findIdsByBNm(name);
+	public List<Long> getIdsByBnm(String name){
+		List<Long> idList = ordersRepository.findIdsByBnm(name);
 		return idList;
 	}
 	
@@ -59,7 +59,7 @@ public class OrdersService {
 		
 		if(existOrders.isPresent()) {
 			Orders ordersUpt = ordersRepository.save(orders);
-			return ordersUpt.toOrdersDto();
+			return ordersUpt.toDto();
 		} else {
 			return null;
 		}
@@ -86,14 +86,14 @@ public class OrdersService {
 	public OrdersItemDto getOrdersItem(Long id) {
 		OrdersItemDto ordersItemDto = ordersItemRepository.findById(id)
 				.orElseThrow(() -> new EntityNotFoundException("OrdersItem not found with ID : " + id))
-				.toOrdersItemDto();
+				.toDto();
 		return ordersItemDto;
 	}
 	
 	public OrdersItemDto createOrdersItem(OrdersItemDto ordersItemDto) {
 		OrdersItemDto saveOrdersItemDto = Optional.ofNullable(ordersItemRepository.save(ordersItemDto.toEntity()))
 						.orElseThrow(() -> new RuntimeException("Orders save failed"))
-						.toOrdersItemDto();
+						.toDto();
 		return saveOrdersItemDto;
 	}
 	
@@ -104,7 +104,7 @@ public class OrdersService {
 			throw new EntityNotFoundException("OrdersItem not found with ID : " + ordersItemDto.getId());		
 		}
 		
-		OrdersItemDto saveOrdersItemDto = ordersItemRepository.save(ordersItemDto.toEntity()).toOrdersItemDto();
+		OrdersItemDto saveOrdersItemDto = ordersItemRepository.save(ordersItemDto.toEntity()).toDto();
 		return saveOrdersItemDto;
 	}
 	

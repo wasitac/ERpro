@@ -82,7 +82,7 @@ public class Member {
 //				.build();
 //	}
 
-	public MemberDto toFormDto() {
+	public MemberDto toDto() {
 		return MemberDto.builder()
 				.id(this.id)
 				.name(this.name)

@@ -41,7 +41,7 @@ public class Estimate {
 	@Column(name = "is_order")
 	private String isOrder;
 	
-	public EstimateDto toEstimateDto() {
+	public EstimateDto toDto() {
 		return EstimateDto.builder()
 				.id(this.id)
 				.accountId(this.accountId)

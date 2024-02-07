@@ -16,7 +16,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ProductionDto {
 	private Long id;
-	private String bNm;
+	private String bnm;
 	private Long orderId;
 	private Long itemId;
 	private String itemName;
@@ -29,7 +29,7 @@ public class ProductionDto {
 	public Production toEntity() {
 		return Production.builder()
 						.id(this.id)
-						.bNm(this.bNm)
+						.bnm(this.bnm)
 						.orderId(this.orderId)
 						.itemId(this.itemId)
 						.itemName(this.itemName)

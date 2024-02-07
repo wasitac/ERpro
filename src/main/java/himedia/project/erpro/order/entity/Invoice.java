@@ -41,7 +41,7 @@ public class Invoice {
 	@Column(name = "invoice_date")
 	private Date invoiceDate;
 	
-	public InvoiceDto toInvoiceDto() {
+	public InvoiceDto toDto() {
 		return InvoiceDto.builder()
 				.id(this.id)
 				.storeId(this.storeId)

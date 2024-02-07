@@ -75,12 +75,7 @@ const StoreForm = () => {
           },
         ]}
       >
-        <Select
-          showSearch
-          placeholder="주문번호"
-          optionFilterProp="children"
-          filterOption={filterOption}
-        >
+        <Select showSearch placeholder="주문번호" optionFilterProp="children">
           {subList.map((value) => (
             <Select.Option key={value} value={value}>
               {value}

@@ -48,7 +48,7 @@ public class InvoiceService {
 		
 		if(existInvoice.isPresent()) {
 			Invoice invoiceUpdate = invoiceRepository.save(invoice);
-			return invoiceUpdate.toInvoiceDto();
+			return invoiceUpdate.toDto();
 		} else {
 			return null;
 		}
@@ -74,14 +74,14 @@ public class InvoiceService {
 	public InvoiceItemDto getInvoiceItem(Long id) {
 		InvoiceItemDto invoiceItemDto = invoiceItemRepository.findById(id)
 				.orElseThrow(() -> new EntityNotFoundException("InvoiceItem not found with ID : " + id))
-				.toInvoiceItemDto();
+				.toDto();
 		return invoiceItemDto;
 	}
 	
 	public InvoiceItemDto createInvoiceItem(InvoiceItemDto invoiceItemDto) {
 		InvoiceItemDto saveInvoiceItemDto = Optional.ofNullable(invoiceItemRepository.save(invoiceItemDto.toEntity()))
 						.orElseThrow(() -> new RuntimeException("Invoice save failed"))
-						.toInvoiceItemDto();
+						.toDto();
 		return saveInvoiceItemDto;
 	}
 	
@@ -92,7 +92,7 @@ public class InvoiceService {
 			throw new EntityNotFoundException("InvoiceItem not found with ID : " + invoiceItemDto.getId());		
 		}
 		
-		InvoiceItemDto saveInvoiceItemDto = invoiceItemRepository.save(invoiceItemDto.toEntity()).toInvoiceItemDto();
+		InvoiceItemDto saveInvoiceItemDto = invoiceItemRepository.save(invoiceItemDto.toEntity()).toDto();
 		return saveInvoiceItemDto;
 	}
 	

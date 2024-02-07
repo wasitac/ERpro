@@ -27,7 +27,7 @@ public class AccountService {
 		List<Account> accountList = accountRepository.findAll();
 
 		List<AccountDto> accountDtoList = accountList.stream()
-				.map(Account::toAccountDto)
+				.map(Account::toDto)
 				.collect(Collectors.toList());
 
 		return accountDtoList;
@@ -38,7 +38,7 @@ public class AccountService {
 		Account account = accountRepository.findById(id)
 				.orElseThrow(() -> new EntityNotFoundException("Account not found with ID: " + id));
 
-		AccountDto accountDto = account.toAccountDto();
+		AccountDto accountDto = account.toDto();
 
 		return accountDto;
 	}
@@ -48,7 +48,7 @@ public class AccountService {
 		Account account = accountDto.toEntity();
 		Account saveAccount = accountRepository.save(account);
 
-		return saveAccount.toAccountDto();
+		return saveAccount.toDto();
 	}
   
 	// 거래처 수정
@@ -59,7 +59,7 @@ public class AccountService {
 		
 		if(existAccount.isPresent()) {
 			Account updateAccount = accountRepository.save(account);
-			return updateAccount.toAccountDto();
+			return updateAccount.toDto();
 		} else {
 			return null;
 		}

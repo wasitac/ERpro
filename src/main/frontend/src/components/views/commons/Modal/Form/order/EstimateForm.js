@@ -37,7 +37,7 @@ const EstimateForm = () => {
           name="expirationDate"
           initialValue="작성일로부터 30일"
         >
-          <DatePicker disabled />
+          <Input />
         </Form.Item>
         <Form.Item
           label="납기일자"
@@ -49,7 +49,7 @@ const EstimateForm = () => {
             },
           ]}
         >
-           <DatePicker />
+          <DatePicker />
         </Form.Item>
         <Form.Item
           label="견적금액"

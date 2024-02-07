@@ -49,7 +49,7 @@ public class EstimateService {
 		
 		if(existEstimate.isPresent()) {
 			Estimate estimateUpdate = estimateRepository.save(estimate);
-			return estimateUpdate.toEstimateDto();
+			return estimateUpdate.toDto();
 		} else {
 			return null;
 		}
@@ -75,14 +75,14 @@ public class EstimateService {
 	public EstimateItemDto getEstimateItem(Long id) {
 		EstimateItemDto estimateItemDto = estimateItemRepository.findById(id)
 				.orElseThrow(() -> new EntityNotFoundException("EstimateItem not found with ID : " + id))
-				.toEstimateItemDto();
+				.toDto();
 		return estimateItemDto;
 	}
 	
 	public EstimateItemDto createEstimateItem(EstimateItemDto estimateItemDto) {
 		EstimateItemDto saveEstimateItemDto = Optional.ofNullable(estimateItemRepository.save(estimateItemDto.toEntity()))
 						.orElseThrow(() -> new RuntimeException("Estimate save failed"))
-						.toEstimateItemDto();
+						.toDto();
 		return saveEstimateItemDto;
 	}
 	
@@ -93,7 +93,7 @@ public class EstimateService {
 			throw new EntityNotFoundException("EstimateItem not found with ID : " + estimateItemDto.getId());		
 		}
 		
-		EstimateItemDto saveEstimateItemDto = estimateItemRepository.save(estimateItemDto.toEntity()).toEstimateItemDto();
+		EstimateItemDto saveEstimateItemDto = estimateItemRepository.save(estimateItemDto.toEntity()).toDto();
 		return saveEstimateItemDto;
 	}
 	

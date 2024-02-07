@@ -30,10 +30,10 @@ public class Orders {
 	private Long id;
 
 	@Column(name = "b_nm")
-	private String bNm;
+	private String bnm;
 	
 	@Column(name = "b_no")
-	private String bNo;
+	private String bno;
 	
 	@Column(name = "sort")
 	private String sort;
@@ -44,11 +44,11 @@ public class Orders {
 	@Column(name = "completion_date")
 	private Date completionDate;
 	
-	public OrdersDto toOrdersDto() {
+	public OrdersDto toDto() {
 		return OrdersDto.builder()
 				.id(this.id)
-				.bNm(this.bNm)
-				.bNo(this.bNo)
+				.bnm(this.bnm)
+				.bno(this.bno)
 				.sort(this.sort)
 				.dueDate(this.dueDate)
 				.completionDate(this.completionDate)

@@ -12,28 +12,28 @@ public class AccountDto {
 
     private Long id;			// 거래처 코드
     private String memberName;	// 담당자 이름
-    private String bNo;			// 사업자 등록 번호
-    private String bNm;			// 거래처명
+    private String bno;			// 사업자 등록 번호
+    private String bnm;			// 거래처명
     private String sort;		// 구분 (매입, 매출)
-    private String pNm;			// 대표명
-    private String bSector;		// 업태
-    private String bType;		// 종목
+    private String pnm;			// 대표명
+    private String bsector;		// 업태
+    private String btype;		// 종목
     private String phone;		// 연락처
-    private String bAdr;		// 거래처 주소
+    private String badr;		// 거래처 주소
     private String email;		// 이메일
 
     public Account toEntity() {
         return Account.builder()
                 .id(this.id)
                 .memberName(this.memberName)
-                .bNo(this.bNo)
-                .bNm(this.bNm)
+                .bno(this.bno)
+                .bnm(this.bnm)
                 .sort(this.sort)
-                .pNm(this.pNm)
-                .bSector(this.bSector)
-                .bType(this.bType)
+                .pnm(this.pnm)
+                .bsector(this.bsector)
+                .btype(this.btype)
                 .phone(this.phone)
-                .bAdr(this.bAdr)
+                .badr(this.badr)
                 .email(this.email)
                 .build();
     }

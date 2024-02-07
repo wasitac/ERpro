@@ -17,8 +17,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class OrdersDto {
 	private Long id;
-	private String bNm;
-	private String bNo;
+	private String bnm;
+	private String bno;
 	private String sort;
 	private Date dueDate;
 	private Date completionDate;
@@ -26,8 +26,8 @@ public class OrdersDto {
 	public Orders toEntity() {
 		return Orders.builder()
 				.id(this.id)
-				.bNm(this.bNm)
-				.bNo(this.bNo)
+				.bnm(this.bnm)
+				.bno(this.bno)
 				.sort(this.sort)
 				.dueDate(this.dueDate)
 				.completionDate(this.completionDate)
