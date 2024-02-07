@@ -56,7 +56,7 @@ function CustomModal(props) {
       if (mode === "add") {
         // 정보 저장
         const response = await fetchApi.post(`/${props.keyOfmenu}`, formData);
-        
+
         if (response.data?.data) {
           props.fetchData();
           onCancel();
@@ -86,7 +86,7 @@ function CustomModal(props) {
     form.resetFields();
     props.handleCloseModal();
   };
-  var modalSize = "60%";
+  var modalSize = "40%";
   var inputForm;
   switch (props.keyOfmenu) {
     case "account":
@@ -97,6 +97,7 @@ function CustomModal(props) {
       break;
     case "bom":
       inputForm = <BomForm form={form} mode={mode} />;
+      modalSize = "60%";
       break;
     case "member":
       inputForm = <MemberForm mode={mode} />;
@@ -111,14 +112,14 @@ function CustomModal(props) {
       inputForm = <InvoiceForm />;
       break;
     case "store":
-      inputForm = <StoreForm />;
+      inputForm = <StoreForm form={form} />;
       break;
     case "production":
       inputForm = <ProductionForm form={form} />;
       break;
     case "inspection":
       inputForm = <InspectionForm />;
-      modalSize = 1000;
+      modalSize = "70%";
       break;
     case "storeItem":
       inputForm = <StoreItemForm />;

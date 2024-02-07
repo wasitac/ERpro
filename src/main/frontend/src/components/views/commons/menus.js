@@ -8,7 +8,7 @@ const menus = {
       {
         title: "번호",
         dataIndex: "id",
-        minWidth: 120,
+        width: 120,
         // 정렬
         defaultSortOrder: "ascend",
         sorter: (a, b) => a.id - b.id,
@@ -16,7 +16,7 @@ const menus = {
       {
         title: "사업자 유형",
         dataIndex: "sort",
-        minWidth: 120,
+        width: 120,
         filters: [
           {
             text: "매입처",
@@ -46,27 +46,32 @@ const menus = {
       {
         title: "거래처명",
         dataIndex: "bnm",
+        width: 200,
       },
       {
         title: "사업자 번호",
         dataIndex: "bno",
+        width: 140,
       },
       {
         title: "대표자",
         dataIndex: "pnm",
+        width: 100,
       },
       {
         title: "업태",
         dataIndex: "bsector",
+        width: 200,
       },
       {
         title: "종목",
         dataIndex: "btype",
-        minWidth: 200,
+        width: 200,
       },
       {
         title: "전화번호",
         dataIndex: "phone",
+        width: 140,
       },
     ],
   },
@@ -79,7 +84,7 @@ const menus = {
       {
         title: "품목번호",
         dataIndex: "id",
-        minWidth: 120,
+        width: 120,
         // 정렬
         defaultSortOrder: "ascend",
         sorter: (a, b) => a.id - b.id,
@@ -87,33 +92,34 @@ const menus = {
       {
         title: "품목구분",
         dataIndex: "sort",
-        minWidth: 120,
+        width: 120,
       },
       {
         title: "품목명",
         dataIndex: "itemName",
-        minWidth: 200,
+        width: 330,
       },
       {
         title: "단위",
         dataIndex: "unit",
-        minWidth: 100,
+        width: 100,
       },
       {
         title: "규격",
         dataIndex: "spec",
-        minWidth: 120,
+        width: 160,
       },
       {
         title: "매입단가",
         dataIndex: "buyPrice",
-        minWidth: 150,
+        width: 150,
       },
       {
         title: "매출단가",
         dataIndex: "sellPrice",
-        minWidth: 150,
+        width: 150,
       },
+      {},
     ],
   },
 
@@ -125,7 +131,7 @@ const menus = {
       {
         title: "품목번호",
         dataIndex: "id",
-        minWidth: 120,
+        width: 120,
         // 정렬
         defaultSortOrder: "ascend",
         sorter: (a, b) => a.id - b.id,
@@ -133,33 +139,34 @@ const menus = {
       {
         title: "품목구분",
         dataIndex: "sort",
-        minWidth: 120,
+        width: 120,
       },
       {
         title: "품목명",
         dataIndex: "itemName",
-        minWidth: 200,
+        width: 330,
       },
       {
         title: "단위",
         dataIndex: "unit",
-        minWidth: 100,
+        width: 100,
       },
       {
         title: "규격",
         dataIndex: "spec",
-        minWidth: 120,
+        width: 160,
       },
       {
         title: "매입단가",
         dataIndex: "buyPrice",
-        minWidth: 150,
+        width: 150,
       },
       {
         title: "매출단가",
         dataIndex: "sellPrice",
-        minWidth: 150,
+        width: 150,
       },
+      {},
     ],
   },
 
@@ -171,7 +178,7 @@ const menus = {
       {
         title: "사번",
         dataIndex: "id",
-        minWidth: 120,
+        width: 120,
         // 정렬
         defaultSortOrder: "ascend",
         sorter: (a, b) => a.id - b.id,
@@ -179,35 +186,44 @@ const menus = {
       {
         title: "이름",
         dataIndex: "name",
+        width: 100,
       },
       {
         title: "생년월일",
         dataIndex: "birthDate",
+        width: 100,
       },
       {
         title: "연락처",
         dataIndex: "phone",
+        width: 140,
       },
       {
         title: "부서",
         dataIndex: "department",
+        width: 100,
       },
       {
         title: "직급",
         dataIndex: "memberRank",
+        width: 100,
       },
       {
         title: "근무 형태",
         dataIndex: "workType",
+        width: 120,
       },
       {
         title: "입사일",
         dataIndex: "insertDate",
+        width: 100,
       },
       {
         title: "퇴사일",
         dataIndex: "retireDate",
+        width: 100,
       },
+      {},
     ],
   },
 
@@ -220,7 +236,7 @@ const menus = {
       {
         title: "주문번호",
         dataIndex: "id",
-        minWidth: 120,
+        width: 120,
         // 정렬
         defaultSortOrder: "descend",
         sorter: (a, b) => a.id - b.id,
@@ -228,14 +244,17 @@ const menus = {
       {
         title: "거래처명",
         dataIndex: "bnm",
+        width: 200,
       },
       {
         title: "사업자 등록번호",
         dataIndex: "bno",
+        width: 140,
       },
       {
         title: "유형",
         dataIndex: "sort",
+        width: 100,
         filters: [
           {
             text: "구매",
@@ -250,11 +269,14 @@ const menus = {
       {
         title: "예정일",
         dataIndex: "dueDate",
+        width: 100,
       },
       {
         title: "완료일",
         dataIndex: "completionDate",
+        width: 100,
       },
+      {},
     ],
   },
 
@@ -266,32 +288,35 @@ const menus = {
       {
         title: "견적번호",
         dataIndex: "id",
-        minWidth: 120,
+        width: 120,
         defaultSortOrder: "descend",
         sorter: (a, b) => a.id - b.id,
       },
       {
         title: "거래처 번호",
         dataIndex: "accountId",
-        minWidth: 120,
+        width: 120,
       },
       {
         title: "작성일자",
         dataIndex: "insertDate",
+        width: 100,
       },
       {
         title: "납기일자",
         dataIndex: "dueDate",
+        width: 100,
       },
       {
         title: "합계금액",
         dataIndex: "total",
-        minWidth: 200,
+        width: 200,
       },
       {
         title: "주문처리",
         dataIndex: "isOrder",
       },
+      {},
     ],
   },
 
@@ -303,19 +328,19 @@ const menus = {
       {
         title: "전표번호",
         dataIndex: "id",
-        minWidth: 120,
+        width: 120,
         defaultSortOrder: "descend",
         sorter: (a, b) => a.id - b.id,
       },
       {
         title: "입출고번호",
         dataIndex: "storeId",
-        minWidth: 120,
+        width: 120,
       },
       {
         title: "거래구분",
         dataIndex: "sort",
-        minWidth: 120,
+        width: 120,
         filters: [
           {
             text: "구매",
@@ -330,15 +355,18 @@ const menus = {
       {
         title: "결제방법",
         dataIndex: "payment",
+        width: 100,
+      },
+      {
+        title: "거래일자",
+        dataIndex: "invoiceDate",
+        width: 100,
       },
       {
         title: "비고",
         dataIndex: "note",
       },
-      {
-        title: "거래일자",
-        dataIndex: "invoiceDate",
-      },
+      {},
     ],
   },
 
@@ -350,14 +378,14 @@ const menus = {
       {
         title: "입출고 번호",
         dataIndex: "id",
-        minWidth: 120,
+        width: 120,
         defaultSortOrder: "descend",
         sorter: (a, b) => a.id - b.id,
       },
       {
         title: "구분",
         dataIndex: "sort",
-        minWidth: 80,
+        width: 80,
         filters: [
           {
             text: "입고",
@@ -373,16 +401,19 @@ const menus = {
       {
         title: "거래처명",
         dataIndex: "bnm",
+        width: 200,
       },
       {
         title: "주문 번호",
         dataIndex: "orderId",
-        minWidth: 120,
+        width: 120,
       },
       {
         title: "입출고 일자",
         dataIndex: "storeDate",
+        width: 100,
       },
+      {},
     ],
   },
 
@@ -394,55 +425,64 @@ const menus = {
       {
         title: "재고 번호",
         dataIndex: "id",
-        minWidth: 120,
+        width: 120,
         defaultSortOrder: "descend",
         sorter: (a, b) => a.id - b.id,
       },
       {
         title: "품목 번호",
         dataIndex: "itemId",
-        minWidth: 120,
+        width: 100,
       },
       {
         title: "입/출고 번호",
         dataIndex: "storeId",
-        minWidth: 120,
+        width: 100,
       },
       {
         title: "기초재고 수량",
         dataIndex: "openingCount",
+        width: 120,
       },
       {
         title: "기초재고 금액",
         dataIndex: "openingAmount",
+        width: 120,
       },
       {
         title: "입고",
         dataIndex: "storeIn",
+        width: 100,
       },
       {
         title: "출고",
         dataIndex: "storeOut",
+        width: 100,
       },
       {
         title: "현재고량",
         dataIndex: "currentInventory",
+        width: 100,
       },
       {
         title: "적정재고",
         dataIndex: "appropriateInventory",
+        width: 100,
       },
       {
         title: "부족수량",
         dataIndex: "lack",
+        width: 100,
       },
       {
         title: "매출수량",
         dataIndex: "sales",
+        width: 100,
       },
       {
         title: "예상발주량",
         dataIndex: "expectedOrder",
+        width: 100,
       },
     ],
   },
@@ -455,51 +495,54 @@ const menus = {
       {
         title: "지시 번호",
         dataIndex: "id",
-        minWidth: 120,
+        width: 120,
         defaultSortOrder: "descend",
         sorter: (a, b) => a.id - b.id,
       },
       {
         title: "거래처명",
         dataIndex: "bnm",
+        width: 200,
       },
       {
         title: "주문 번호",
         dataIndex: "orderId",
-        minWidth: 120,
+        width: 120,
       },
       {
         title: "물품 번호",
         dataIndex: "itemId",
-        minWidth: 120,
+        width: 120,
       },
       {
         title: "물품명",
         dataIndex: "itemName",
-        minWidth: 200,
+        width: 250,
       },
       {
         title: "단위",
         dataIndex: "unit",
-        minWidth: 100,
+        width: 100,
       },
       {
         title: "규격",
         dataIndex: "spec",
-        minWidth: 120,
+        width: 160,
       },
       {
         title: "생산량",
         dataIndex: "count",
-        minWidth: 150,
+        width: 150,
       },
       {
         title: "담당자명",
         dataIndex: "memberName",
+        width: 100,
       },
       {
         title: "지시 일자",
         dataIndex: "productionDate",
+        width: 100,
       },
     ],
   },
@@ -512,69 +555,69 @@ const menus = {
       {
         title: "검수 번호",
         dataIndex: "id",
-        minWidth: 110,
+        width: 110,
         defaultSortOrder: "descend",
         sorter: (a, b) => a.id - b.id,
       },
       {
         title: "입/출고 번호",
         dataIndex: "storeId",
-        minWidth: 110,
+        width: 100,
       },
       {
         title: "신청자",
         dataIndex: "proposerName",
-        minWidth: 90,
+        width: 90,
       },
       {
         title: "검수자",
         dataIndex: "inspectorName",
-        minWidth: 90,
+        width: 90,
       },
       {
         title: "품목 번호",
         dataIndex: "itemId",
-        minWidth: 110,
+        width: 100,
       },
       {
         title: "품목명",
         dataIndex: "itemName",
-        minWidth: "10%",
+        width: 330,
       },
       {
         title: "단위",
         dataIndex: "unit",
-        minWidth: 70,
+        width: 70,
       },
       {
         title: "규격",
         dataIndex: "spec",
-        minWidth: 120,
+        width: 160,
       },
       {
         title: "생산량",
         dataIndex: "count",
-        minWidth: 70,
+        width: 70,
       },
       {
         title: "적격",
         dataIndex: "eligible",
-        minWidth: 70,
+        width: 70,
       },
       {
         title: "부적격",
         dataIndex: "ineligible",
-        minWidth: 70,
+        width: 70,
       },
       {
         title: "합격",
         dataIndex: "pass",
-        minWidth: 60,
+        width: 60,
       },
       {
         title: "검수일자",
         dataIndex: "inspectionDate",
-        minWidth: 100,
+        width: 100,
       },
     ],
   },
@@ -584,61 +627,52 @@ const menus = {
     column: [
       {
         title: "품목번호",
-        dataIndex: "id",
-        minWidth: 120,
+        dataIndex: "itemId",
+        width: 120,
         defaultSortOrder: "descend",
         sorter: (a, b) => a.id - b.id,
       },
       {
-        title: "주문번호",
-        dataIndex: "ordersId",
-        minWidth: 120,
-      },
-      {
         title: "구분",
         dataIndex: "sort",
-        minWidth: 120,
-      },
-      {
-        title: "품목번호",
-        dataIndex: "itemId",
-        minWidth: 120,
+        width: 120,
       },
       {
         title: "품목명",
         dataIndex: "itemName",
-        minWidth: 200,
+        width: 330,
       },
       {
         title: "단위",
         dataIndex: "unit",
-        minWidth: 100,
+        width: 100,
       },
       {
         title: "규격",
         dataIndex: "spec",
-        minWidth: 120,
+        width: 160,
       },
       {
         title: "수량",
         dataIndex: "count",
-        minWidth: 150,
+        width: 150,
       },
       {
         title: "단가",
         dataIndex: "price",
-        minWidth: 150,
+        width: 150,
       },
       {
         title: "부가세",
         dataIndex: "vat",
-        minWidth: 150,
+        width: 150,
       },
       {
         title: "합계금액",
         dataIndex: "total",
-        minWidth: 200,
+        width: 200,
       },
+      {},
     ],
   },
   storeItem: {
@@ -648,45 +682,46 @@ const menus = {
       {
         title: "품목번호",
         dataIndex: "itemId",
-        minWidth: 120,
+        width: 120,
         defaultSortOrder: "descend",
         sorter: (a, b) => a.id - b.id,
       },
       {
         title: "품목명",
         dataIndex: "itemName",
-        minWidth: 200,
+        width: 330,
       },
       {
         title: "단위",
         dataIndex: "unit",
-        minWidth: 100,
+        width: 100,
       },
       {
         title: "규격",
         dataIndex: "spec",
-        minWidth: 120,
+        width: 160,
       },
       {
         title: "수량",
         dataIndex: "count",
-        minWidth: 150,
+        width: 150,
       },
       {
         title: "단가",
         dataIndex: "price",
-        minWidth: 150,
+        width: 150,
       },
       {
         title: "부가세",
         dataIndex: "vat",
-        minWidth: 150,
+        width: 150,
       },
       {
         title: "합계금액",
         dataIndex: "total",
-        minWidth: 200,
+        width: 200,
       },
+      {},
     ],
   },
 
@@ -696,7 +731,7 @@ const menus = {
     column: [
       {
         title: "품목번호",
-        minWidth: 120,
+        width: 120,
         dataIndex: "itemId",
         defaultSortOrder: "descend",
         sorter: (a, b) => a.id - b.id,
@@ -704,37 +739,39 @@ const menus = {
       {
         title: "품목명",
         dataIndex: "itemName",
+        width: 330,
       },
       {
         title: "단위",
         dataIndex: "unit",
-        minWidth: 100,
+        width: 100,
       },
       {
         title: "규격",
         dataIndex: "spec",
-        minWidth: 120,
+        width: 160,
       },
       {
         title: "수량",
         dataIndex: "count",
-        minWidth: 150,
+        width: 150,
       },
       {
         title: "단가",
         dataIndex: "price",
-        minWidth: 150,
+        width: 150,
       },
       {
         title: "부가세",
         dataIndex: "vat",
-        minWidth: 150,
+        width: 150,
       },
       {
         title: "합계금액",
         dataIndex: "total",
-        minWidth: 200,
+        width: 200,
       },
+      {},
     ],
   },
 
@@ -745,45 +782,46 @@ const menus = {
       {
         title: "품목번호",
         dataIndex: "itemId",
-        minWidth: 120,
+        width: 120,
         defaultSortOrder: "descend",
         sorter: (a, b) => a.id - b.id,
       },
       {
         title: "품목명",
         dataIndex: "itemName",
-        minWidth: 200,
+        width: 330,
       },
       {
         title: "단위",
         dataIndex: "unit",
-        minWidth: 100,
+        width: 100,
       },
       {
         title: "규격",
         dataIndex: "spec",
-        minWidth: 120,
+        width: 160,
       },
       {
         title: "수량",
         dataIndex: "count",
-        minWidth: 150,
+        width: 150,
       },
       {
         title: "단가",
         dataIndex: "price",
-        minWidth: 150,
+        width: 150,
       },
       {
         title: "부가세",
         dataIndex: "vat",
-        minWidth: 150,
+        width: 150,
       },
       {
         title: "합계금액",
         dataIndex: "total",
-        minWidth: 200,
+        width: 200,
       },
+      {},
     ],
   },
 };

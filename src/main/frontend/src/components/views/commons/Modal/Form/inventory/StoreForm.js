@@ -6,12 +6,21 @@ import fetchApi from "../../../../../../modules/api";
 const filterOption = (input, option) =>
   (option?.value ?? "").toLowerCase().includes(input.toLowerCase());
 
-const StoreForm = () => {
+const StoreForm = (props) => {
   const [list, setList] = useState([]);
   const [subList, setSubList] = useState([]);
 
   const onChange = (value) => {
     fetchSubList(value);
+  };
+
+  const changeOrderId = (value) => {
+    const selectedOrder = subList.find((item) => item.id === value);
+    if (selectedOrder.sort === "판매") {
+      props.form.setFieldsValue({ sort: "출고" });
+    } else {
+      props.form.setFieldsValue({ sort: "입고" });
+    }
   };
 
   useEffect(() => {
@@ -29,7 +38,7 @@ const StoreForm = () => {
 
   const fetchSubList = async (value) => {
     try {
-      const response = await fetchApi.get(`/orders/bnm/${value}`);
+      const response = await fetchApi.get(`/orders/name/${value}`);
       setSubList(response.data.data);
     } catch (error) {
       console.error("목록 조회 에러:", error);
@@ -75,10 +84,15 @@ const StoreForm = () => {
           },
         ]}
       >
-        <Select showSearch placeholder="주문번호" optionFilterProp="children">
+        <Select
+          showSearch
+          placeholder="주문번호"
+          optionFilterProp="children"
+          onChange={changeOrderId}
+        >
           {subList.map((value) => (
-            <Select.Option key={value} value={value}>
-              {value}
+            <Select.Option key={value.id} value={value.id}>
+              {value.id}
             </Select.Option>
           ))}
         </Select>
