@@ -56,7 +56,7 @@ function CustomModal(props) {
       if (mode === "add") {
         // 정보 저장
         const response = await fetchApi.post(`/${props.keyOfmenu}`, formData);
-
+        
         if (response.data?.data) {
           props.fetchData();
           onCancel();
@@ -66,7 +66,7 @@ function CustomModal(props) {
       } else if (mode === "edit") {
         // 정보 수정
         const response = await fetchApi.put(`/${props.keyOfmenu}`, formData);
-        
+
         if (response.data?.data) {
           props.fetchData();
           onCancel();
@@ -76,6 +76,7 @@ function CustomModal(props) {
       }
     } catch (errorInfo) {
       // 유효성 검사 실패 시 수행할 로직
+      console.log("유효성 검사 실패");
     }
   };
 
@@ -102,7 +103,6 @@ function CustomModal(props) {
       break;
     case "orders":
       inputForm = <OrdersForm />;
-      // modalSize = 1200;
       break;
     case "estimate":
       inputForm = <EstimateForm />;

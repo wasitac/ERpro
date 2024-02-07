@@ -49,7 +49,7 @@ public class EstimateItem {
 	@Column(name = "total")
 	private Integer total;
 	
-	public EstimateItemDto toEstimateItemDto() {
+	public EstimateItemDto toDto() {
 		return EstimateItemDto.builder()
 				.id(this.id)
 				.estimateId(this.estimateId)

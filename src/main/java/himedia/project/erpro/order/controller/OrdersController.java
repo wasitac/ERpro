@@ -40,9 +40,9 @@ public class OrdersController {
 	}
 	
 	// 거래처명이 일치하는 주문 조회 - 이지홍
-	@GetMapping("/orders/bnm/{bNm}")
-	public ResponseEntity<Message> detatilOrders(@PathVariable(value="bNm") String bNm) {
-		List<Long> idList = ordersService.getIdsByBNm(bNm);
+	@GetMapping("/orders/bnm/{bnm}")
+	public ResponseEntity<Message> detatilOrders(@PathVariable(value="bnm") String bnm) {
+		List<Long> idList = ordersService.getIdsByBnm(bnm);
 		Message returnData = new Message("거래처명이 일치하는 주문번호 목록", idList);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
@@ -66,8 +66,8 @@ public class OrdersController {
 	// 구매/판매 삭제
 	@DeleteMapping("/orders")
 	public ResponseEntity<Message> deleteOrders(@RequestBody List<Long> idList) {
-		boolean dataDelete = ordersService.deleteOrdersList(idList);
-		Message returnData = new Message(Boolean.toString(dataDelete));
+		ordersService.deleteOrdersList(idList);
+		Message returnData = new Message("구매/판매 삭제");
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
@@ -95,21 +95,21 @@ public class OrdersController {
 	@PostMapping("/ordersItem")
 	public ResponseEntity<Message> addOrdersItem(@RequestBody OrdersItemDto ordersItemDto) {
 		OrdersItemDto dataList = ordersService.createOrdersItem(ordersItemDto);
-		Message returnData = new Message("품목 추가", dataList);
+		Message returnData = new Message("구매/판매 품목 추가", dataList);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	@PutMapping("/ordersItem")
 	public ResponseEntity<Message> updateOrdersItem(@RequestBody OrdersItemDto ordersItemDto) {
 		OrdersItemDto data = ordersService.updateOrdersItem(ordersItemDto);
-		Message returnData = new Message("품목 수정", data);
+		Message returnData = new Message("구매/판매 품목 수정", data);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 
 	@DeleteMapping("/ordersItem")
 	public ResponseEntity<Message> deleteOrdersItem(@RequestBody List<Long> idList) {
 		ordersService.deleteOrdersItemList(idList);
-		Message returnData = new Message("품목 삭제");
+		Message returnData = new Message("구매/판매 품목 삭제");
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 }

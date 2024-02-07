@@ -23,6 +23,7 @@ import lombok.RequiredArgsConstructor;
 public class EstimateController {
 	private final EstimateService estimateService;
 	
+	//견적서 목록 - 정유진
 	@GetMapping("/estimate")
 	public ResponseEntity<Message> estimate() {
 		List<EstimateDto> dataList = estimateService.getEstimateAll();
@@ -39,22 +40,22 @@ public class EstimateController {
 	
 	@PostMapping("/estimate")
 	public ResponseEntity<Message> addEstimate(@RequestBody EstimateDto estimateDto) {
-		EstimateDto dataSave = estimateService.createEstimate(estimateDto);
-		Message returnData = new Message("저장 성공", dataSave);
+		EstimateDto dataList = estimateService.createEstimate(estimateDto);
+		Message returnData = new Message("견적서 저장 성공", dataList);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	@PutMapping("/estimate")
 	public ResponseEntity<Message> updateEstimate(@RequestBody EstimateDto estimateDto) {
 		EstimateDto dataUpdate = estimateService.updateEstimate(estimateDto);
-		Message returnData = new Message("수정 성공", dataUpdate);
+		Message returnData = new Message("견적서 수정 성공", dataUpdate);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/estimate")
 	public ResponseEntity<Message> deleteEstimate(@RequestBody List<Long> idList) {
-		boolean dataDelete = estimateService.deleteEstimateList(idList);
-		Message returnData = new Message(Boolean.toString(dataDelete));
+		estimateService.deleteEstimateList(idList);
+		Message returnData = new Message("견적서 삭제");
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
@@ -82,21 +83,21 @@ public class EstimateController {
 	@PostMapping("/estimateItem")
 	public ResponseEntity<Message> addEstimateItem(@RequestBody EstimateItemDto estimateItemDto) {
 		EstimateItemDto dataList = estimateService.createEstimateItem(estimateItemDto);
-		Message returnData = new Message("품목 추가", dataList);
+		Message returnData = new Message("견적서 품목 추가", dataList);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	@PutMapping("/estimateItem")
 	public ResponseEntity<Message> updateEstimateItem(@RequestBody EstimateItemDto estimateItemDto) {
 		EstimateItemDto data = estimateService.updateEstimateItem(estimateItemDto);
-		Message returnData = new Message("품목 수정", data);
+		Message returnData = new Message("견적서 품목 수정", data);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 
 	@DeleteMapping("/estimateItem")
 	public ResponseEntity<Message> deleteEstimateItem(@RequestBody List<Long> idList) {
 		estimateService.deleteEstimateItemList(idList);
-		Message returnData = new Message("품목 삭제");
+		Message returnData = new Message("견적서 품목 삭제");
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 }

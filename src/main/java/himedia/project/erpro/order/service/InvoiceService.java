@@ -2,6 +2,7 @@ package himedia.project.erpro.order.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -24,22 +25,21 @@ public class InvoiceService {
 	
 	public List<InvoiceDto> getInviceAll() {
 		List<Invoice> invoiceList = invoiceRepository.findAll();
-		List<InvoiceDto> invoiceDtoList = mapper.toDtoList(invoiceList, InvoiceDto.class);
+		List<InvoiceDto> invoiceDtoList = invoiceList.stream().map(Invoice::toDto).collect(Collectors.toList());
 		return invoiceDtoList;
 	}
 	
 	public InvoiceDto getInvoiceById(Long id) {
-		Invoice invoiceId = invoiceRepository.findById(id)
+		Invoice invoice = invoiceRepository.findById(id)
 				.orElseThrow(()-> new EntityNotFoundException("Invoice not found with invoiceID : " + id));
-		InvoiceDto invoiceDtoId = mapper.map(invoiceId, InvoiceDto.class);
-		return invoiceDtoId;
+		InvoiceDto invoiceDto = invoice.toDto();
+		return invoiceDto;
 	}
 	
 	public InvoiceDto createInvoice(InvoiceDto invoiceDto) {
-		Invoice invoice = mapper.map(invoiceDto, Invoice.class);
-		Invoice incoiceSave = invoiceRepository.save(invoice);
-		InvoiceDto invoiceDtoSave = mapper.map(incoiceSave, InvoiceDto.class);
-		return invoiceDtoSave;
+		Invoice invoice = invoiceDto.toEntity();
+		Invoice saveInvoice = invoiceRepository.save(invoice);
+		return saveInvoice.toDto();
 	}
 	
 	public InvoiceDto updateInvoice(InvoiceDto invoiceDto) {
@@ -47,8 +47,8 @@ public class InvoiceService {
 		Optional<Invoice> existInvoice = invoiceRepository.findById(invoice.getId());
 		
 		if(existInvoice.isPresent()) {
-			Invoice invoiceUpdate = invoiceRepository.save(invoice);
-			return invoiceUpdate.toInvoiceDto();
+			Invoice updateInvoice = invoiceRepository.save(invoice);
+			return updateInvoice.toDto();
 		} else {
 			return null;
 		}
@@ -67,21 +67,21 @@ public class InvoiceService {
 	
 	public List<InvoiceItemDto> getInvoiceItems(Long invoiceId) {
 		List<InvoiceItem> invoiceItemList = invoiceItemRepository.findAllByInvoiceId(invoiceId);
-		List<InvoiceItemDto> invoiceItemDtoList = mapper.toDtoList(invoiceItemList, InvoiceItemDto.class);
+		List<InvoiceItemDto> invoiceItemDtoList = invoiceItemList.stream().map(InvoiceItem::toDto).collect(Collectors.toList());
 		return invoiceItemDtoList;
 	}
 	
 	public InvoiceItemDto getInvoiceItem(Long id) {
 		InvoiceItemDto invoiceItemDto = invoiceItemRepository.findById(id)
 				.orElseThrow(() -> new EntityNotFoundException("InvoiceItem not found with ID : " + id))
-				.toInvoiceItemDto();
+				.toDto();
 		return invoiceItemDto;
 	}
 	
 	public InvoiceItemDto createInvoiceItem(InvoiceItemDto invoiceItemDto) {
 		InvoiceItemDto saveInvoiceItemDto = Optional.ofNullable(invoiceItemRepository.save(invoiceItemDto.toEntity()))
 						.orElseThrow(() -> new RuntimeException("Invoice save failed"))
-						.toInvoiceItemDto();
+						.toDto();
 		return saveInvoiceItemDto;
 	}
 	
@@ -92,7 +92,7 @@ public class InvoiceService {
 			throw new EntityNotFoundException("InvoiceItem not found with ID : " + invoiceItemDto.getId());		
 		}
 		
-		InvoiceItemDto saveInvoiceItemDto = invoiceItemRepository.save(invoiceItemDto.toEntity()).toInvoiceItemDto();
+		InvoiceItemDto saveInvoiceItemDto = invoiceItemRepository.save(invoiceItemDto.toEntity()).toDto();
 		return saveInvoiceItemDto;
 	}
 	

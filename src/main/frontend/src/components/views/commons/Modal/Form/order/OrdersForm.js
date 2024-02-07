@@ -5,8 +5,8 @@ const OrdersForm = () => {
   return (
     <div>
       <div>
-        <Form.Item label="주문번호" name="id">
-          <Input disabled />
+        <Form.Item name="id" noStyle>
+          <Input type="hidden" />
         </Form.Item>
         <Form.Item
           label="유형"
@@ -45,7 +45,7 @@ const OrdersForm = () => {
             },
           ]}
         >
-          <Input />
+          <Input readOnly />
         </Form.Item>
         <Form.Item
           label="예정일"

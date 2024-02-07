@@ -53,7 +53,7 @@ public class InvoiceItem {
 	@Column(name = "total")
 	private Integer total;
 	
-	public InvoiceItemDto toInvoiceItemDto() {
+	public InvoiceItemDto toDto() {
 		return InvoiceItemDto.builder()
 				.id(this.id)
 				.invoiceId(this.invoiceId)

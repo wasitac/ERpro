@@ -1,3 +1,4 @@
+
 package himedia.project.erpro.inventory.controller;
 
 import java.util.List;
@@ -40,6 +41,7 @@ public class StoreController {
 	
 	@PostMapping("/store")
 	public ResponseEntity<Message> addStore(@RequestBody StoreDto storeDto){
+		System.out.println(storeDto.getSort());
 		StoreDto dataList = storeService.createStore(storeDto);
 		Message returnData = new Message("입/출고 추가", dataList);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);

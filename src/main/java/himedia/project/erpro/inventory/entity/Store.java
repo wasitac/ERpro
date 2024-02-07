@@ -33,7 +33,7 @@ public class Store {
 	private StoreSort sort;
 
 	@Column(name = "b_nm")
-	private String bNm;
+	private String bnm;
 
 	@Column(name = "order_id")
 	private Long orderId;
@@ -46,7 +46,7 @@ public class Store {
 		return StoreDto.builder()
 				.id(this.id)
 				.sort((this.sort).getKor())
-				.bNm(this.bNm)
+				.bnm(this.bnm)
 				.orderId(this.orderId)
 				.storeDate(this.storeDate)
 				.build();

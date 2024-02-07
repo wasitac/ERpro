@@ -8,27 +8,28 @@ import ProfilePage from "./components/views/pages/ProfilePage/ProfilePage";
 import ErrorPage from "./components/views/pages/Common/ErrorPage";
 
 function App() {
-  // const token = localStorage.getItem("token");
-  // if(!token) {
-  //   return (
-  //       <div>
-  //         <BrowserRouter>
-  //           <Routes>
-  //             <Route path="/" element={<LoginPage />} />
-  //             <Route path="findpassword" element={<FindPasswordPage />} />
-  //           </Routes>
-  //         </BrowserRouter>
-  //       </div>
-  //   );
-  // }
   return (
     <div>
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/findpassword" element={<FindPasswordPage />} />
-          <Route path="/" element={<Applayout><MainPage /></Applayout>} />
-          <Route path="/profile" element={<Applayout><ProfilePage /></Applayout>} />
+          <Route
+            path="/"
+            element={
+              <Applayout>
+                <MainPage />
+              </Applayout>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <Applayout>
+                <ProfilePage />
+              </Applayout>
+            }
+          />
           <Route path="/error" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>
