@@ -26,9 +26,9 @@ public class LoginController {
 	
 	// 비밀번호 찾기 - 김주원
 	@PostMapping("/findpassword")
-	public ResponseEntity<Message> findPassword(@RequestBody Long memberId) {
+	public ResponseEntity<Message<String>> findPassword(@RequestBody Long memberId) {
 
 		String result = loginService.findPassword(memberId);
-		return new ResponseEntity<>(new Message(result), HttpStatus.OK);
+		return new ResponseEntity<>(new Message<String>(result), HttpStatus.OK);
 	}
 }

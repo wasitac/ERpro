@@ -25,92 +25,91 @@ public class OrdersController {
 	
 	// 구매/판매 목록
 	@GetMapping("/orders")
-	public ResponseEntity<Message> orders() {
+	public ResponseEntity<Message<List<OrdersDto>>> orders() {
 		List<OrdersDto> dataList = ordersService.getOrdersAll();
-		Message returnData = new Message("", dataList);
+		Message<List<OrdersDto>> returnData = new Message<>("", dataList);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	// 구매/판매 상세 조회
 	@GetMapping("/orders/{id}")
-	public ResponseEntity<Message> detatilOrders(@PathVariable(value="id") Long id) {
+	public ResponseEntity<Message<OrdersDto>> detatilOrders(@PathVariable(value="id") Long id) {
 		OrdersDto data = ordersService.getOrdersById(id);
-		Message returnData = new Message("", data);
+		Message<OrdersDto> returnData = new Message<>("", data);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	// 거래처명이 일치하는 주문 조회 - 이지홍
 	@GetMapping("/orders/name/{bnm}")
-	public ResponseEntity<Message> detatilOrders(@PathVariable(value="bnm") String bnm) {
-		System.out.println(bnm);
+	public ResponseEntity<Message<List<OrdersDto>>> detatilOrders(@PathVariable(value="bnm") String bnm) {
 		List<OrdersDto> ordersList = ordersService.getOrdersByBnm(bnm);
-		Message returnData = new Message("거래처명이 일치하는 주문번호 목록", ordersList);
+		Message<List<OrdersDto>> returnData = new Message<>("거래처명이 일치하는 주문번호 목록", ordersList);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	// 구매/판매 추가
 	@PostMapping("/orders")
-	public ResponseEntity<Message> addOrders(@RequestBody OrdersDto ordersDto) {
+	public ResponseEntity<Message<OrdersDto>> addOrders(@RequestBody OrdersDto ordersDto) {
 		OrdersDto dataSave = ordersService.createOrders(ordersDto);
-		Message returnData = new Message("저장 성공", dataSave);
+		Message<OrdersDto> returnData = new Message<>("저장 성공", dataSave);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	// 구매/판매 수정
 	@PutMapping("/orders")
-	public ResponseEntity<Message> updateOrders(@RequestBody OrdersDto ordersDto) {
+	public ResponseEntity<Message<OrdersDto>> updateOrders(@RequestBody OrdersDto ordersDto) {
 		OrdersDto dataUpdate = ordersService.updateOrders(ordersDto);
-		Message returnData = new Message("수정 성공", dataUpdate);
+		Message<OrdersDto> returnData = new Message<>("수정 성공", dataUpdate);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	// 구매/판매 삭제
 	@DeleteMapping("/orders")
-	public ResponseEntity<Message> deleteOrders(@RequestBody List<Long> idList) {
+	public ResponseEntity<Message<String>> deleteOrders(@RequestBody List<Long> idList) {
 		ordersService.deleteOrdersList(idList);
-		Message returnData = new Message("구매/판매 삭제");
+		Message<String> returnData = new Message<>("구매/판매 삭제");
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	// 구매/판매 품목
 	@GetMapping("/ordersItem")
-	public ResponseEntity<Message> ordersItem() {
-		Message returnData = new Message("ordersItem");
+	public ResponseEntity<Message<String>> ordersItem() {
+		Message<String> returnData = new Message<>("ordersItem");
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	@GetMapping("/ordersItem/{ordersId}")
-	public ResponseEntity<Message> ordersItems(@PathVariable(value="ordersId") Long ordersId) {
+	public ResponseEntity<Message<List<OrdersItemDto>>> ordersItems(@PathVariable(value="ordersId") Long ordersId) {
 		List<OrdersItemDto> dataList = ordersService.getOrdersItems(ordersId);
-		Message returnData = new Message("", dataList);
+		Message<List<OrdersItemDto>> returnData = new Message<>("", dataList);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	@GetMapping("/ordersItem/{ordersId}/{rowId}")
-	public ResponseEntity<Message> ordersItemRow(@PathVariable(value="rowId") Long rowId) {
+	public ResponseEntity<Message<OrdersItemDto>> ordersItemRow(@PathVariable(value="rowId") Long rowId) {
 		OrdersItemDto data = ordersService.getOrdersItem(rowId);
-		Message returnData = new Message("", data);
+		Message<OrdersItemDto> returnData = new Message<>("", data);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	@PostMapping("/ordersItem")
-	public ResponseEntity<Message> addOrdersItem(@RequestBody OrdersItemDto ordersItemDto) {
+	public ResponseEntity<Message<OrdersItemDto>> addOrdersItem(@RequestBody OrdersItemDto ordersItemDto) {
 		OrdersItemDto dataList = ordersService.createOrdersItem(ordersItemDto);
-		Message returnData = new Message("구매/판매 품목 추가", dataList);
+		Message<OrdersItemDto> returnData = new Message<>("구매/판매 품목 추가", dataList);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	@PutMapping("/ordersItem")
-	public ResponseEntity<Message> updateOrdersItem(@RequestBody OrdersItemDto ordersItemDto) {
+	public ResponseEntity<Message<OrdersItemDto>> updateOrdersItem(@RequestBody OrdersItemDto ordersItemDto) {
 		OrdersItemDto data = ordersService.updateOrdersItem(ordersItemDto);
-		Message returnData = new Message("구매/판매 품목 수정", data);
+		Message<OrdersItemDto> returnData = new Message<>("구매/판매 품목 수정", data);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 
 	@DeleteMapping("/ordersItem")
-	public ResponseEntity<Message> deleteOrdersItem(@RequestBody List<Long> idList) {
+	public ResponseEntity<Message<String>> deleteOrdersItem(@RequestBody List<Long> idList) {
 		ordersService.deleteOrdersItemList(idList);
-		Message returnData = new Message("구매/판매 품목 삭제");
+		Message<String> returnData = new Message<>("구매/판매 품목 삭제");
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 }

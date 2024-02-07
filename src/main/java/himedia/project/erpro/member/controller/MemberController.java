@@ -26,41 +26,41 @@ public class MemberController {
 	
 	// 사원 대장 - 김주원
 	@GetMapping("/member")
-	public ResponseEntity<Message> member() {
+	public ResponseEntity<Message<List<MemberDto>>> member() {
 		List<MemberDto> dataList = memberService.getMemberAll();
-		Message returnData = new Message("", dataList);
+		Message<List<MemberDto>> returnData = new Message<>("", dataList);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	// 사원 상세 정보 조회
 	@GetMapping("/member/{id}")
-	public ResponseEntity<Message> detailMember(@PathVariable(value="id") Long id) {
+	public ResponseEntity<Message<MemberDto>> detailMember(@PathVariable(value="id") Long id) {
 		MemberDto data = memberService.getMemberById(id);
-		Message returnData = new Message("", data);
+		Message<MemberDto> returnData = new Message<>("", data);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);	
 	}
 	
 	// 사원 추가 - 김주원
 	@PostMapping("/member")
-	public ResponseEntity<Message> createMember(@RequestBody MemberDto memberDto) {
+	public ResponseEntity<Message<String>> createMember(@RequestBody MemberDto memberDto) {
 		String result = memberService.createMember(memberDto);
-		Message returnData = new Message<>("",result);
+		Message<String> returnData = new Message<>("",result);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	// 사원 대장 수정 - 김주원
 	@PutMapping("/member")
-	public ResponseEntity<Message> editMember(@RequestBody MemberDto memberDto) {
+	public ResponseEntity<Message<Optional<MemberDto>>> editMember(@RequestBody MemberDto memberDto) {
 		Optional<MemberDto> editData = memberService.updateMember(memberDto);
-		Message returnData = new Message("수정 성공", editData);
+		Message<Optional<MemberDto>> returnData = new Message<>("수정 성공", editData);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	// 사원 삭제 - 김주원
 	@DeleteMapping("/member")
-	public ResponseEntity<Message> deleteMember(@RequestBody List<Long> idList) {
+	public ResponseEntity<Message<Boolean>> deleteMember(@RequestBody List<Long> idList) {
 		boolean result = memberService.deleteMemberList(idList);
-		Message returnData = new Message(Boolean.toString(result));
+		Message<Boolean> returnData = new Message<>(Boolean.toString(result));
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
