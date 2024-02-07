@@ -142,7 +142,9 @@ const BomForm = ({ form, mode }) => {
                       style={{ minWidth: 120 }}
                       onChange={(value) => onMaterialSelect(value, form, name)}
                     >
-                      {itemList.map((item) => (
+                      {itemList.map(
+                        (item) => 
+                          item.sort === "자재" && (
                         <Select.Option key={item.id} value={item.id}>
                           {item.itemName}
                         </Select.Option>

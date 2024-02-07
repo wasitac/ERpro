@@ -69,7 +69,7 @@ insert into account values (null, "이사라", "210-98-76543", "바이크마스�
 
 
 insert into orders values (null, "퓨어그로우 바이크", "654-32-10987", "판매", "2023-06-25", "2023-01-30");
-insert into orders values (null, "금수강산", "890-12-34567", "판매", "2023-01-32", "2023-07-27");
+insert into orders values (null, "금수강산", "890-12-34567", "판매", "2023-01-30", "2023-07-27");
 insert into orders values (null, "타고르고타", "345-67-89012", "구매", "2023-8-18", "2023-08-30");
 insert into orders values (null, "라이트닝 라이더즈", "678-90-12345", "판매", "2023-08-30", "2023-09-06");
 insert into orders values (null, "미라지 마운트", "234-56-78901", "구매", "2023-09-09", "2023-09-21");
@@ -89,7 +89,7 @@ insert into orders values (null, "스피드사이클", "210-98-76543", "판매",
 insert into orders values (null, "트렌드토트", "765-43-21098", "구매", "2024-01-15", "2023-01-18");
 insert into orders values (null, "금수강산", "890-12-34567", "판매", "2024-02-08", "2023-02-14");
 insert into orders values (null, "퓨어그로우 바이크", "654-32-10987", "판매", "2023-06-25", "2023-01-30");
-insert into orders values (null, "금수강산", "890-12-34567", "판매", "2023-01-32", "2023-07-27");
+insert into orders values (null, "금수강산", "890-12-34567", "판매", "2023-01-31", "2023-07-27");
 insert into orders values (null, "타고르고타", "345-67-89012", "구매", "2023-8-18", "2023-08-30");
 insert into orders values (null, "라이트닝 라이더즈", "678-90-12345", "판매", "2023-08-30", "2023-09-06");
 insert into orders values (null, "미라지 마운트", "234-56-78901", "구매", "2023-09-09", "2023-09-21");
@@ -109,7 +109,7 @@ insert into orders values (null, "스피드사이클", "210-98-76543", "판매",
 insert into orders values (null, "트렌드토트", "765-43-21098", "구매", "2024-01-15", "2023-01-18");
 insert into orders values (null, "금수강산", "890-12-34567", "판매", "2024-02-08", "2023-02-14");
 insert into orders values (null, "퓨어그로우 바이크", "654-32-10987", "판매", "2023-06-25", "2023-01-30");
-insert into orders values (null, "금수강산", "890-12-34567", "판매", "2023-01-32", "2023-07-27");
+insert into orders values (null, "금수강산", "890-12-34567", "판매", "2023-01-31", "2023-07-27");
 insert into orders values (null, "타고르고타", "345-67-89012", "구매", "2023-8-18", "2023-08-30");
 insert into orders values (null, "라이트닝 라이더즈", "678-90-12345", "판매", "2023-08-30", "2023-09-06");
 insert into orders values (null, "미라지 마운트", "234-56-78901", "구매", "2023-09-09", "2023-09-21");
@@ -129,10 +129,10 @@ insert into orders values (null, "스피드사이클", "210-98-76543", "판매",
 insert into orders values (null, "트렌드토트", "765-43-21098", "구매", "2024-01-15", "2023-01-18");
 insert into orders values (null, "금수강산", "890-12-34567", "판매", "2024-02-08", "2023-02-14");
 insert into orders values (null, "퓨어그로우 바이크", "654-32-10987", "판매", "2023-06-25", "2023-01-30");
-insert into orders values (null, "금수강산", "890-12-34567", "판매", "2023-01-32", "2023-07-27");
+insert into orders values (null, "금수강산", "890-12-34567", "판매", "2023-01-31", "2023-07-27");
 insert into orders values (null, "타고르고타", "345-67-89012", "구매", "2023-08-18", "2023-08-30");
 insert into orders values (null, "라이트닝 라이더즈", "678-90-12345", "판매", "2023-08-30", "2023-09-06");
-insert into orders values (null, "미라지 마운트", "234-56-78901", "구매", "202305", "2023-09-21");
+insert into orders values (null, "미라지 마운트", "234-56-78901", "구매", "2023-05-30", "2023-09-21");
 insert into orders values (null, "어반플로우 패션백스", "432-10-98765", "구매", "2023-09-30", "2023-10-10");
 insert into orders values (null, "아임플라잉", "109-87-65432", "판매", "2023-10-10", "2023-10-29");
 insert into orders values (null, "룩앤로드", "321-09-87654", "판매", "2023-10-30", "2023-11-11");
@@ -355,8 +355,6 @@ insert into invoice_item values (null, 18, 23, "ST-F15 자전거 2홀(4cm) 길�
 insert into invoice_item values (null, 19, 3, "가방 마감 직사각 링", "개(EA)", "150*150(mm)", 2200, 800, 10, 1936000);
 insert into invoice_item values (null, 20, 22, "radius 픽시 브레이크레버", "개(EA)", "55(mm)", 600, 900, 10, 594000);
 
-
-<<<<<<< HEAD
 insert into bom values (1, 29, 10, 150, "-");
 insert into bom values (2, 29, 11, 200, "-");
 insert into bom values (3, 29, 12, 480, "-");
@@ -407,59 +405,6 @@ insert into bom values (47, 33, 5, 99, "-");
 insert into bom values (48, 33, 4, 47, "-");
 insert into bom values (49, 33, 3, 20, "-");
 insert into bom values (50, 33, 2, 180, "-");
-=======
-insert into BOM values (1, 29, 10, 150, "-");
-insert into BOM values (2, 29, 11, 200, "-");
-insert into BOM values (3, 29, 12, 480, "-");
-insert into BOM values (4, 29, 14, 35, "-");
-insert into BOM values (5, 29, 16, 300, "-");
-insert into BOM values (6, 29, 17, 350, "-");
-insert into BOM values (7, 29, 19, 120, "-");
-insert into BOM values (8, 29, 23, 19, "-");
-insert into BOM values (9, 29, 24, 67, "-");
-insert into BOM values (10, 30, 11, 8, "-");
-insert into BOM values (11, 30, 13, 40, "-");
-insert into BOM values (12, 30, 15, 78, "-");
-insert into BOM values (13, 30, 16, 110, "-");
-insert into BOM values (14, 30, 18, 230, "-");
-insert into BOM values (15, 30, 19, 950, "-");
-insert into BOM values (16, 30, 22, 45, "-");
-insert into BOM values (17, 30, 23, 87, "-");
-insert into BOM values (18, 30, 25, 360, "-");
-insert into BOM values (19, 30, 27, 174, "-");
-insert into BOM values (20, 30, 28, 30, "-");
-insert into BOM values (21, 31, 11, 50, "-");
-insert into BOM values (22, 31, 12, 130, "-");
-insert into BOM values (23, 31, 22, 20, "-");
-insert into BOM values (24, 31, 23, 70, "-");
-insert into BOM values (25, 31, 27, 95, "-");
-insert into BOM values (26, 31, 28, 43, "-");
-insert into BOM values (27, 31, 25, 32, "-");
-insert into BOM values (28, 31, 24, 77, "-");
-insert into BOM values (29, 32, 14, 65, "-");
-insert into BOM values (30, 32, 13, 22, "-");
-insert into BOM values (31, 32, 12, 34, "-");
-insert into BOM values (32, 32, 16, 12, "-");
-insert into BOM values (33, 32, 18, 90, "-");
-insert into BOM values (34, 32, 19, 50, "-");
-insert into BOM values (35, 32, 20, 70, "-");
-insert into BOM values (36, 33, 1, 70, "-");
-insert into BOM values (37, 32, 2, 100, "-");
-insert into BOM values (38, 32, 3, 20, "-");
-insert into BOM values (39, 32, 4, 40, "-");
-insert into BOM values (40, 32, 5, 60, "-");
-insert into BOM values (41, 32, 6, 88, "-");
-insert into BOM values (42, 32, 7, 72, "-");
-insert into BOM values (43, 33, 9, 80, "-");
-insert into BOM values (44, 33, 8, 12, "-");
-insert into BOM values (45, 33, 7, 15, "-");
-insert into BOM values (46, 33, 6, 45, "-");
-insert into BOM values (47, 33, 5, 99, "-");
-insert into BOM values (48, 33, 4, 47, "-");
-insert into BOM values (49, 33, 3, 20, "-");
-insert into BOM values (50, 33, 2, 180, "-");
->>>>>>> yoojin-ver2
-
 
 insert into inventory values (1, 10, "슈발베 RAPID ROB 폴딩 타이어", 1, 200, 10000, 100, 150, 200, 300, 200, 300, 100);
 insert into inventory values (2, 11, "WAKE 라이져핸들바", 1, 20, 3000, 50, 10, 25, 80, 15, 65, 25);
