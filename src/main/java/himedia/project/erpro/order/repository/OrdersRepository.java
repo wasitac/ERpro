@@ -14,8 +14,8 @@ public interface OrdersRepository extends JpaRepository<Orders, Long>{
 	public List<Orders> findAll();
 	public Optional<Orders> findById(Long id);
 	
-	@Query(value = "SELECT id FROM orders WHERE b_nm = :bnm", nativeQuery = true)
-	List<Long> findIdsByBnm(@Param("bnm") String bnm);
+	@Query(value = "SELECT * FROM orders WHERE b_nm = :bnm", nativeQuery = true)
+	List<Orders> findAllByBnm(@Param("bnm") String bnm);
 	
 	@Transactional
 	public int deleteAllByIdIn(List<Long> idList);

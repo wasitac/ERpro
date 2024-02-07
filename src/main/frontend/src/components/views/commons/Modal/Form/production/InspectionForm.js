@@ -1,10 +1,5 @@
 // 이지홍
-import React, { useEffect, useState } from "react";
 import { Form, Input, Row, Col, Radio, DatePicker } from "antd";
-import fetchApi from "../../../../../../modules/api";
-
-const filterOption = (input, option) =>
-  (option?.value ?? "").toLowerCase().includes(input.toLowerCase());
 
 const InspectionForm = () => {
   return (

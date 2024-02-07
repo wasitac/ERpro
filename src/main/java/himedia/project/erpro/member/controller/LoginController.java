@@ -17,21 +17,12 @@ public class LoginController {
 
 	private final LoginService loginService;
 
-//	@GetMapping("/login")
-//	public String login() {
-//		
-//		// 로그인 계정정보, role 확인 예제코드
-//		String memberId = SecurityContextHolder.getContext().getAuthentication().getName();
-//
-//		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-//		Iterator<? extends GrantedAuthority> iterator = authorities.iterator();
-//		GrantedAuthority auth = iterator.next();
-//
-//		String role = auth.getAuthority();
-//
-//		return "로그인 페이지";
-//	}
+	@GetMapping("/login")
+	public String login() {
+		
+		System.out.println("로그인");
+		return "로그인 페이지";
+	}
 	
 	// 비밀번호 찾기 - 김주원
 	@PostMapping("/findpassword")

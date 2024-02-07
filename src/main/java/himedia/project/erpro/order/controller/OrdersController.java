@@ -40,10 +40,11 @@ public class OrdersController {
 	}
 	
 	// 거래처명이 일치하는 주문 조회 - 이지홍
-	@GetMapping("/orders/bnm/{bnm}")
+	@GetMapping("/orders/name/{bnm}")
 	public ResponseEntity<Message> detatilOrders(@PathVariable(value="bnm") String bnm) {
-		List<Long> idList = ordersService.getIdsByBnm(bnm);
-		Message returnData = new Message("거래처명이 일치하는 주문번호 목록", idList);
+		System.out.println(bnm);
+		List<OrdersDto> ordersList = ordersService.getOrdersByBnm(bnm);
+		Message returnData = new Message("거래처명이 일치하는 주문번호 목록", ordersList);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	

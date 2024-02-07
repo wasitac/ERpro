@@ -39,9 +39,12 @@ public class OrdersService {
 	}
 
 	// 구매/판매 주문서 상세 조회 - 이지홍
-	public List<Long> getIdsByBnm(String name){
-		List<Long> idList = ordersRepository.findIdsByBnm(name);
-		return idList;
+	public List<OrdersDto> getOrdersByBnm(String bnm){
+		List<Orders> ordersList = ordersRepository.findAllByBnm(bnm);
+		List<OrdersDto> ordersDtoList = ordersList.stream()
+				.map(Orders::toDto)
+				.collect(Collectors.toList());
+		return ordersDtoList;
 	}
 	
 	// 구매/판매 주문서 등록
