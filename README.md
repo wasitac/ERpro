@@ -25,6 +25,8 @@
 #### Front End
 -React 18.2.0<br>
 -CSS 3<br>
+-html <br>
+-Javascript<br>
 
 #### Back End 
 -Spring Boot 3.2.2<br>
@@ -32,8 +34,8 @@
 -My SQL 8.0.22<br>
 -Lombok 1.18.30<br>
 -JWT 0.12.3<br>
--Spring Security <br>
--model mapper 3.2.0 <br>
+-Spring Security 6.2.1<br>
+<br>
 <br>
 <br>
 
