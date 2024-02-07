@@ -22,22 +22,14 @@
 <br>
 
 ## 🏷️개발 환경
-#### Front End
--React 18.2.0<br>
--CSS 3<br>
--html <br>
--Javascript<br>
+----|----|
+**OS**|Windows 10|
+**IDE**|Spring Tool Suite4 4.21.0.RELEASE|
+**Front-end**|HTML<br>CSS<br>JavaScript<br>React 18.2.0<br> Antdisign|
+**Back-end**|Java 17<br>Spring Boot 3.2.2<br>Spring Security 6.2.1<br>JWT 0.12.3<br>JPA<br>lombok 1.18.30|
+**Database**|MySQL 8.0.22<br>MySQL Workbench CE 8.0|
+<br>
 
-#### Back End 
--Spring Boot 3.2.2<br>
--Java 17<br>
--My SQL 8.0.22<br>
--Lombok 1.18.30<br>
--JWT 0.12.3<br>
--Spring Security 6.2.1<br>
-<br>
-<br>
-<br>
 
 ## 💻설계 배경
 제조 생산 업무에 대한 전반적인 흐름 관리와 작업 효율 향상
