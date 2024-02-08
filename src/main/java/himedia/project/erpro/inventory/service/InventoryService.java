@@ -6,22 +6,16 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import himedia.project.erpro.common.CustomMapper;
 import himedia.project.erpro.inventory.dto.InventoryDto;
-import himedia.project.erpro.inventory.dto.InventoryDto;
-import himedia.project.erpro.inventory.entity.Inventory;
-import himedia.project.erpro.inventory.entity.Store;
 import himedia.project.erpro.inventory.entity.Inventory;
 import himedia.project.erpro.inventory.repository.InventoryRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RequiredArgsConstructor
 public class InventoryService {
 	private final InventoryRepository inventoryRepository;
-	private final CustomMapper mapper;
 
 	public List<InventoryDto> getInventoryAll() {
 		List<Inventory> inventoryList = inventoryRepository.findAll();

@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import himedia.project.erpro.common.CustomMapper;
 import himedia.project.erpro.order.dto.InvoiceDto;
 import himedia.project.erpro.order.dto.InvoiceItemDto;
 import himedia.project.erpro.order.entity.Invoice;
@@ -21,7 +20,6 @@ import lombok.RequiredArgsConstructor;
 public class InvoiceService {
 	private final InvoiceRepository invoiceRepository;
 	private final InvoiceItemRepository invoiceItemRepository;
-	private final CustomMapper mapper;
 	
 	public List<InvoiceDto> getInviceAll() {
 		List<Invoice> invoiceList = invoiceRepository.findAll();

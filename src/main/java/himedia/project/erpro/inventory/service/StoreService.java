@@ -6,10 +6,8 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import himedia.project.erpro.common.CustomMapper;
 import himedia.project.erpro.inventory.dto.StoreDto;
 import himedia.project.erpro.inventory.dto.StoreItemDto;
-import himedia.project.erpro.inventory.entity.Item;
 import himedia.project.erpro.inventory.entity.Store;
 import himedia.project.erpro.inventory.entity.StoreItem;
 import himedia.project.erpro.inventory.repository.StoreItemRepository;
@@ -22,7 +20,6 @@ import lombok.RequiredArgsConstructor;
 public class StoreService {
 	private final StoreRepository storeRepository;
 	private final StoreItemRepository storeItemRepository;
-	private final CustomMapper mapper;
 
 	public List<StoreDto> getStoreAll() {
 		List<Store> storeList = storeRepository.findAll();

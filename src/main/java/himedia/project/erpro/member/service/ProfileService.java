@@ -2,15 +2,11 @@ package himedia.project.erpro.member.service;
 
 import java.util.Optional;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import himedia.project.erpro.common.CustomMapper;
 import himedia.project.erpro.common.Message;
-import himedia.project.erpro.member.dto.MemberDto;
 import himedia.project.erpro.member.dto.PasswordFormDto;
 import himedia.project.erpro.member.dto.ProfileFormDto;
 import himedia.project.erpro.member.entity.Member;
@@ -22,21 +18,9 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ProfileService {
 	private final MemberRepository memberRepository;
-	private final CustomMapper mapper;
 
 	private Long getMemberId() {
 		return Long.parseLong(SecurityContextHolder.getContext().getAuthentication().getName());
-	}
-
-	// 프로필 가져오기 - 이지홍
-	public ProfileFormDto getMemberProfile() {
-		Long memberId = getMemberId();
-		
-		Member member = memberRepository.findById(memberId)
-				.orElseThrow(() -> new EntityNotFoundException("Member not found with ID: " + memberId));
-		
-		ProfileFormDto profile = mapper.map(member, ProfileFormDto.class);
-		return profile;
 	}
 
 	// 내 정보 수정 - 이지홍

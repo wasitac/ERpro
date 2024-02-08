@@ -66,7 +66,7 @@ const DataTable = (props) => {
         }
       } catch (error) {
         console.error("Error delete data", error);
-        if(error.response.status == 403) {
+        if (error.response.status == 403) {
           alert("삭제 권한이 없습니다.");
         }
       }
@@ -188,7 +188,10 @@ const DataTable = (props) => {
               type="primary"
               onClick={handleDelete}
               disabled={!hasSelected}
-              style={{ backgroundColor: "#c4c4c4" }}
+              style={{
+                backgroundColor: hasSelected ? "#ffc432" : "#c4c4c4",
+                color: hasSelected ? "#3d3d3d" : "#ffffff",
+              }}
             >
               삭제
             </Button>
@@ -199,7 +202,11 @@ const DataTable = (props) => {
         rowSelection={rowSelection}
         rowKey="id"
         size="small"
-        pagination={false}
+        pagination={{
+          pageSize: 50,
+
+          position: ["bottomLeft"],
+        }}
         onChange={onChange}
         onRow={(record) => ({
           onDoubleClick: () => handleEdit(record.id),
@@ -208,7 +215,6 @@ const DataTable = (props) => {
         columns={columns}
         dataSource={data}
         scroll={{ y: tableHeight }}
-        style={{ marginBottom: "30px" }}
       />
       {secondTable}
       <CustomModal

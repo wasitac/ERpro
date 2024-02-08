@@ -115,6 +115,7 @@ public class Member {
 				.password(password)
 				.build();
 	}
+	
 
 	// 이지홍
 	public Member updateProfile(ProfileFormDto profile) {

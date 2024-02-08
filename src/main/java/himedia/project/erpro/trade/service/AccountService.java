@@ -25,7 +25,6 @@ public class AccountService {
 	// 거래처 목록
 	public List<AccountDto> getAccountAll() {
 		List<Account> accountList = accountRepository.findAll();
-
 		List<AccountDto> accountDtoList = accountList.stream()
 				.map(Account::toDto)
 				.collect(Collectors.toList());

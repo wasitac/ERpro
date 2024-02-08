@@ -258,13 +258,14 @@ const menus = {
         filters: [
           {
             text: "구매",
-            value: "BUY",
+            value: "구매",
           },
           {
             text: "판매",
-            value: "SELL",
+            value: "판매",
           },
         ],
+        onFilter: (value, record) => record.sort.indexOf(value) === 0,
       },
       {
         title: "예정일",
@@ -344,13 +345,14 @@ const menus = {
         filters: [
           {
             text: "구매",
-            value: "PURCHASE",
+            value: "구매",
           },
           {
             text: "판매",
-            value: "SALES",
+            value: "판매",
           },
         ],
+        onFilter: (value, record) => record.sort.indexOf(value) === 0,
       },
       {
         title: "결제방법",

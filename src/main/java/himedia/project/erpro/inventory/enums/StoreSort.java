@@ -3,6 +3,7 @@ package himedia.project.erpro.inventory.enums;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+//이지홍
 @Getter
 @RequiredArgsConstructor
 public enum StoreSort {
