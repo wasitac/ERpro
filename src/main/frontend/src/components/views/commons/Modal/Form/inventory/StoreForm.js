@@ -38,7 +38,7 @@ const StoreForm = (props) => {
 
   const fetchSubList = async (value) => {
     try {
-      const response = await fetchApi.get(`/orders/name/${value}`);
+      const response = await fetchApi.get(`/orders/bnm/${value}`);
       setSubList(response.data.data);
     } catch (error) {
       console.error("목록 조회 에러:", error);

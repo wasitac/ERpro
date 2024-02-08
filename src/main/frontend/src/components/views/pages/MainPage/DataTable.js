@@ -19,19 +19,6 @@ const DataTable = (props) => {
   const [tableHeight, setTableHeight] = useState("70vh");
 
   const columns = menus[props.keyOfmenu].column;
-  // .map((item) => {
-  //   return {
-  //     ...item,
-  //     render: (text, record) => (
-  //       <a
-  //         onDoubleClick={() => handleEdit(record.id)}
-  //         onClick={() => onClickHandler(record.id)}
-  //       >
-  //         {text}
-  //       </a>
-  //     ),
-  //   };
-  // });
 
   const fetchData = async () => {
     var url = `/${props.keyOfmenu}`;
@@ -84,12 +71,10 @@ const DataTable = (props) => {
   };
 
   const hasSelected = selectedRowKeys.length > 0;
-
   // 모달 상태 - 김주원
   const [modalStatus, setModalStatus] = useState(false);
   // 수정 모달 오픈 시 모달 전달용 상세데이터 - 김주원
   const [selectDetailData, setSelectDetailData] = useState(null);
-
   // 수정 모달 오픈 - 김주원
   const handleEdit = async (dataId) => {
     var url = `/${props.keyOfmenu}/${dataId}`;
@@ -108,15 +93,6 @@ const DataTable = (props) => {
         }
       });
 
-      // if (`${props.keyOfmenu} == 'user'`) {
-      //   response.data.data.birth = dayjs(response.data.data.birth);
-      //   response.data.data.insertDate = dayjs(response.data.data.insertDate);
-      //   response.data.data.retireDate =
-      //     response.data.data.retireDate != null
-      //       ? dayjs(response.data.data.retireDate)
-      //       : null;
-      // }
-
       setSelectDetailData(response.data.data);
       setModalStatus(true);
     } catch (error) {
@@ -128,6 +104,19 @@ const DataTable = (props) => {
   const handleCloseModal = () => {
     setSelectDetailData(null);
     setModalStatus(false);
+  };
+
+  // 두 번째 모달 상태
+  const [secondModalStatus, setSecondModalStatus] = useState(false);
+
+  // 두 번째 모달을 여는 함수
+  const openSecondModal = () => {
+    setSecondModalStatus(true);
+  };
+
+  // 두 번째 모달 닫기
+  const closeSecondModal = () => {
+    setSecondModalStatus(false);
   };
 
   // 로우 클릭 시 상세 테이블 출력 - 이지홍
@@ -144,7 +133,7 @@ const DataTable = (props) => {
               items={[{ label: "품목 상세", key: 0 }]}
               style={{ marginLeft: "20px" }}
             />
-            <DataTable keyOfmenu={`${props.keyOfmenu}Item`} id={dataId} />
+            <DataTable keyOfmenu={menu} id={dataId} />
           </div>
         );
         setTableHeight("35vh");
@@ -223,7 +212,17 @@ const DataTable = (props) => {
         handleCloseModal={handleCloseModal}
         dataForEdit={selectDetailData} // 로우 데이터
         fetchData={fetchData}
+        openSecondModal={openSecondModal}
       />
+
+      {secondModalStatus && (
+        <CustomModal
+          keyOfmenu={`${props.keyOfmenu}Item`}
+          modalStatus={secondModalStatus}
+          fetchData={fetchData}
+          handleCloseModal={closeSecondModal}
+        />
+      )}
     </div>
   );
 };

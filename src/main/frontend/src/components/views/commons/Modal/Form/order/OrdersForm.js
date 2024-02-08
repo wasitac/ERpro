@@ -45,7 +45,7 @@ const OrdersForm = () => {
             },
           ]}
         >
-          <Input readOnly />
+          <Input />
         </Form.Item>
         <Form.Item
           label="예정일"

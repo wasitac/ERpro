@@ -26,82 +26,81 @@ public class StoreController {
 	private final StoreService storeService;
 
 	@GetMapping("/store")
-	public ResponseEntity<Message> store() {
+	public ResponseEntity<Message<List<StoreDto>>> store() {
 		List<StoreDto> dataList = storeService.getStoreAll();
-		Message returnData = new Message("입/출고 목록", dataList);
+		Message<List<StoreDto>> returnData = new Message<>("입/출고 목록", dataList);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	@GetMapping("/store/{id}")
-	public ResponseEntity<Message> detailStore(@PathVariable(value="id") Long id) {
+	public ResponseEntity<Message<StoreDto>> detailStore(@PathVariable(value="id") Long id) {
 		StoreDto data = storeService.getStore(id);
-		Message returnData = new Message("입/출고 상세 데이터", data);
+		Message<StoreDto> returnData = new Message<>("입/출고 상세 데이터", data);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	@PostMapping("/store")
-	public ResponseEntity<Message> addStore(@RequestBody StoreDto storeDto){
-		System.out.println(storeDto.getSort());
+	public ResponseEntity<Message<StoreDto>> addStore(@RequestBody StoreDto storeDto){
 		StoreDto dataList = storeService.createStore(storeDto);
-		Message returnData = new Message("입/출고 추가", dataList);
+		Message<StoreDto> returnData = new Message<>("입/출고 추가", dataList);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	@PutMapping("/store")
-	public ResponseEntity<Message> editStore(@RequestBody StoreDto storeDto){
+	public ResponseEntity<Message<StoreDto>> editStore(@RequestBody StoreDto storeDto){
 		StoreDto data = storeService.updateStore(storeDto);
-		Message returnData = new Message("입/출고 수정", data);
+		Message<StoreDto> returnData = new Message<>("입/출고 수정", data);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/store")
-	public ResponseEntity<Message> deleteStore(@RequestBody List<Long> idList){
+	public ResponseEntity<Message<String>> deleteStore(@RequestBody List<Long> idList){
 		storeService.deleteStoreList(idList);
-		Message returnData = new Message("입/출고 삭제");
+		Message<String> returnData = new Message<>("입/출고 삭제");
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	
 	// 출고 품목 상세
 	@GetMapping("/storeItem")
-	public ResponseEntity<Message> storeItem() {
-		Message returnData = new Message("storeItem");
+	public ResponseEntity<Message<String>> storeItem() {
+		Message<String> returnData = new Message<>("storeItem");
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	// 입출고 품목 상세
 	@GetMapping("/storeItem/{storeId}")
-	public ResponseEntity<Message> storeItems(@PathVariable(value="storeId") Long storeId) {
+	public ResponseEntity<Message<List<StoreItemDto>>> storeItems(@PathVariable(value="storeId") Long storeId) {
 		List<StoreItemDto> dataList = storeService.getStoreItems(storeId);
-		Message returnData = new Message("", dataList);
+		Message<List<StoreItemDto>> returnData = new Message<>("", dataList);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	@GetMapping("/storeItem/{storeId}/{rowId}")
-	public ResponseEntity<Message> storeItem(@PathVariable(value="rowId") Long rowId) {
+	public ResponseEntity<Message<StoreItemDto>> storeItem(@PathVariable(value="rowId") Long rowId) {
 		StoreItemDto data = storeService.getStoreItem(rowId);
-		Message returnData = new Message("", data);
+		Message<StoreItemDto> returnData = new Message<>("", data);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	@PostMapping("/storeItem")
-	public ResponseEntity<Message> addStoreItem(@RequestBody StoreItemDto storeItemDto){
+	public ResponseEntity<Message<StoreItemDto>> addStoreItem(@RequestBody StoreItemDto storeItemDto){
 		StoreItemDto dataList = storeService.createStoreItem(storeItemDto);
-		Message returnData = new Message("입/출고 추가", dataList);
+		Message<StoreItemDto> returnData = new Message<>("입/출고 추가", dataList);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	@PutMapping("/storeItem")
-	public ResponseEntity<Message> editStoreItem(@RequestBody StoreItemDto storeItemDto){
+	public ResponseEntity<Message<StoreItemDto>> editStoreItem(@RequestBody StoreItemDto storeItemDto){
 		StoreItemDto data = storeService.updateStoreItem(storeItemDto);
-		Message returnData = new Message("입/출고 수정", data);
+		Message<StoreItemDto> returnData = new Message<>("입/출고 수정", data);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/storeItem")
-	public ResponseEntity<Message> deleteStoreItem(@RequestBody List<Long> idList){
+	public ResponseEntity<Message<String>> deleteStoreItem(@RequestBody List<Long> idList){
 		storeService.deleteStoreItemList(idList);
-		Message returnData = new Message("입/출고 삭제");
+		Message<String> returnData = new Message<>("입/출고 삭제");
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 }
