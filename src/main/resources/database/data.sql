@@ -1,7 +1,7 @@
 use erpro;
 
-insert into member values (1001, "홍길동", "1969-05-23", "010-2398-4849", "hong@gmail.com", "ADMIN", "CEO", "ROLE_SUPERADMIN", "정규직", "2001-10-24", null, "$2a$10$J/H3gJjxKuJ/h/9sGeZXN.i0xhA4udGfuKA5U5Rf21PQiyR/KyR3C");
-insert into member values (1002, "이미자", "1987-07-02", "010-4049-3303", "lee@gmail.com", "HR", "EXECUTIVE", "ROLE_SUPERADMIN", "정규직", "2010-05-02", null, "$2a$10$J/H3gJjxKuJ/h/9sGeZXN.i0xhA4udGfuKA5U5Rf21PQiyR/KyR3C");
+insert into member values (1001, "홍길동", "1969-05-23", "010-2398-4849", "hong@gmail.com", "ADMIN", "CEO", "ROLE_ADMIN", "정규직", "2001-10-24", null, "$2a$10$J/H3gJjxKuJ/h/9sGeZXN.i0xhA4udGfuKA5U5Rf21PQiyR/KyR3C");
+insert into member values (1002, "이미자", "1987-07-02", "010-4049-3303", "lee@gmail.com", "HR", "EXECUTIVE", "ROLE_ADMIN", "정규직", "2010-05-02", null, "$2a$10$J/H3gJjxKuJ/h/9sGeZXN.i0xhA4udGfuKA5U5Rf21PQiyR/KyR3C");
 insert into member values (1003, "박보검", "1994-12-30", "010-2342-3892", "park@gmail.com", "SALES", "TEAM_LEADER", "ROLE_ADMIN", "정규직", "2013-10-24", null, "$2a$10$J/H3gJjxKuJ/h/9sGeZXN.i0xhA4udGfuKA5U5Rf21PQiyR/KyR3C");
 insert into member values (1004, "김주원", "1996-12-23", "010-4892-3444", "kim@gmail.com", "SALES", "DIRECTOR", "ROLE_ADMIN", "정규직", "2017-11-10", null, "$2a$10$xNsseao2cwCVld7nZDZZaeig93/KU49hlgWA2c4QxnSlEZXUjnEVK");
 insert into member values (1005, "정유진", "1996-02-20", "010-2377-4573", "jung@gmail.cm", "PRODUCTION", "MANAGER", "ROLE_ADMIN", "정규직", "2019-09-07", null, "$2a$10$xNsseao2cwCVld7nZDZZaeig93/KU49hlgWA2c4QxnSlEZXUjnEVK");
