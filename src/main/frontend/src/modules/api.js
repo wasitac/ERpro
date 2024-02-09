@@ -4,7 +4,7 @@
 import axios from "axios";
 
 const fetchApi = axios.create({
-  baseURL: "", // API 기본 경로 설정
+  baseURL: "/api", // API 기본 경로 설정
 });
 
 // 요청 전 header에 token 정보 담기
@@ -29,11 +29,10 @@ fetchApi.interceptors.response.use(
     return response;
   },
   (error) => {
-    if (error.response.status === 403) {
+    if (error.response.status === 500) {
       // 토큰인증 만료
       // 로컬 스토리지 비우기
       localStorage.clear();
-      error.response.statusText = "Unauthorized";
       window.location.href = "/error";
     }
     return Promise.reject(error);
