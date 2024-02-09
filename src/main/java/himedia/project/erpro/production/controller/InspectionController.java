@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,35 +24,36 @@ import lombok.RequiredArgsConstructor;
 public class InspectionController {
 	private final InspectionService inspectionService;
 	
-	@GetMapping("/inspection")
+	@GetMapping("/api/inspection")
 	public ResponseEntity<Message> inspection() {
 		List<InspectionDto> dataList = inspectionService.getInspectionAll();
 		Message returnData = new Message("제품 검수", dataList);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
-	@GetMapping("/inspection/{id}")
+	@GetMapping("/api/inspection/{id}")
 	public ResponseEntity<Message> detailInspection(@PathVariable(value="id") Long id) {
 		InspectionDto data = inspectionService.getInspection(id);
 		Message returnData = new Message("제품 검수 상세", data);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
-	@PostMapping("/inspection")
+	@PostMapping("/api/inspection")
 	public ResponseEntity<Message> addInspection(@RequestBody InspectionDto inspectionDto){
 		InspectionDto dataList = inspectionService.createInspection(inspectionDto);
 		Message returnData = new Message("제품 검수 추가", dataList);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
-	@PutMapping("/inspection")
+	@PutMapping("/api/inspection")
 	public ResponseEntity<Message> editInspection(@RequestBody InspectionDto inspectionDto){
 		InspectionDto data = inspectionService.updateInspection(inspectionDto);
 		Message returnData = new Message("제품 검수 추가", data);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
-	
-	@DeleteMapping("/inspection")
+
+	@PreAuthorize("hasRole('ADMIN')")
+	@DeleteMapping("/api/inspection")
 	public ResponseEntity<Message> deleteInspection(@RequestBody List<Long> idList){
 		inspectionService.deleteInspectionList(idList);
 		Message returnData = new Message("제품 검수 삭제");

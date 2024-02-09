@@ -24,7 +24,7 @@ public class AccountController {
 	private final AccountService accountService;
 	
 	// 거래처 목록 - 김주원
-	@GetMapping("/account")
+	@GetMapping("/api/account")
 	public ResponseEntity<Message> account() {
 		List<AccountDto> dataList = accountService.getAccountAll();
 		Message returnData = new Message("", dataList);
@@ -32,7 +32,7 @@ public class AccountController {
 	}
 	
 	// 거래처 상세데이터 조회 - 김주원
-	@GetMapping("/account/{id}")
+	@GetMapping("/api/account/{id}")
 	public ResponseEntity<Message> detailAccount(@PathVariable(value="id") Long id) {
 		AccountDto data = accountService.getAccountById(id);
 		Message returnData = new Message("", data);
@@ -40,7 +40,7 @@ public class AccountController {
 	}
 	
 	// 거래처 추가 - 김주원
-	@PostMapping("/account")
+	@PostMapping("/api/account")
 	public ResponseEntity<Message> addAccount(@RequestBody AccountDto accountDto) {
 		AccountDto data = accountService.createAccount(accountDto);
 		Message returnData = new Message("저장 성공", data);
@@ -48,7 +48,7 @@ public class AccountController {
 	}
 	
 	// 거래처 수정 - 김주원
-	@PutMapping("/account")
+	@PutMapping("/api/account")
 	public ResponseEntity<Message> editAccount(@RequestBody AccountDto accountDto) {
 		AccountDto editData = accountService.updateAccount(accountDto);
 		Message returnData = new Message("수정 성공", editData);
@@ -57,7 +57,7 @@ public class AccountController {
 	
 	// 거래처 삭제 - 김주원
 	@PreAuthorize("hasRole('ADMIN')")
-	@DeleteMapping("/account")
+	@DeleteMapping("/api/account")
 	public ResponseEntity<Message> deleteAccount(@RequestBody List<Long> idList) {
 		boolean result = accountService.deleteAccountList(idList);
 		Message returnData = new Message(Boolean.toString(result));
