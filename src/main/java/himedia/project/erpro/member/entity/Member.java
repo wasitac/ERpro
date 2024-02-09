@@ -115,7 +115,20 @@ public class Member {
 				.password(password)
 				.build();
 	}
-	
+
+	public MemberDto toJwtDto() {
+		return MemberDto.builder()
+				.id(id)
+				.name(name)
+				.email(email)
+				.department(department.getKor())
+				.memberRank(memberRank.getKor())
+				.role(role.toString())
+				.insertDate(insertDate)
+				.retireDate(retireDate)
+				.password(password)
+				.build();
+	}
 
 	// 이지홍
 	public Member updateProfile(ProfileFormDto profile) {
