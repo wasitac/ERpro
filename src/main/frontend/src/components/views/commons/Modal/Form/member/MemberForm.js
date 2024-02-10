@@ -104,7 +104,6 @@ const MemberForm = (props) => {
         ]}
       >
         <Select>
-          <Select.Option value="ROLE_SUPERADMIN">최고관리자</Select.Option>
           <Select.Option value="ROLE_ADMIN">관리자</Select.Option>
           <Select.Option value="ROLE_MEMBER">직원</Select.Option>
         </Select>
