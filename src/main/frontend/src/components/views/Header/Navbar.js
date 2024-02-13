@@ -20,7 +20,7 @@ const items = [
     children: [
       {
         type: "group",
-        children: [menus.account, menus.item, menus.bom, menus.member]
+        children: [menus.account, menus.item, menus.bom, menus.member],
       },
     ],
   },
@@ -31,7 +31,7 @@ const items = [
     children: [
       {
         type: "group",
-        children: [menus.orders, menus.estimate, menus.invoice]
+        children: [menus.orders, menus.estimate, menus.invoice],
       },
     ],
   },
@@ -42,7 +42,7 @@ const items = [
     children: [
       {
         type: "group",
-        children: [menus.store, menus.inventory]
+        children: [menus.store, menus.inventory],
       },
     ],
   },
@@ -53,7 +53,7 @@ const items = [
     children: [
       {
         type: "group",
-        children: [menus.production, menus.inspection]
+        children: [menus.production, menus.inspection],
       },
     ],
   },
@@ -81,6 +81,8 @@ const Navbar = ({ onMenuChange }) => {
           style={{ width: "150px", margin: "20px 20px 12px 20px" }}
           src={logo}
           alt="logo"
+          // onClick={onClick}
+          // selectedKeys={["calendar"]}
         />
         <Menu
           onClick={onClick}
