@@ -26,20 +26,6 @@ const menus = {
             text: "매출처",
             value: "매출처",
           },
-          // {
-          //   text: "Submenu",
-          //   value: "Submenu",
-          //   children: [
-          //     {
-          //       text: "Green",
-          //       value: "Green",
-          //     },
-          //     {
-          //       text: "Black",
-          //       value: "Black",
-          //     },
-          //   ],
-          // },
         ],
         onFilter: (value, record) => record.sort.indexOf(value) === 0,
       },
@@ -93,6 +79,17 @@ const menus = {
         title: "품목구분",
         dataIndex: "sort",
         width: 120,
+        filters: [
+          {
+            text: "자재",
+            value: "자재",
+          },
+          {
+            text: "제품",
+            value: "제품",
+          },
+        ],
+        onFilter: (value, record) => record.sort.indexOf(value) === 0,
       },
       {
         title: "품목명",
@@ -141,11 +138,6 @@ const menus = {
         sorter: (a, b) => a.id - b.id,
       },
       {
-        title: "품목구분",
-        dataIndex: "sort",
-        width: 120,
-      },
-      {
         title: "품목명",
         dataIndex: "itemName",
         width: 330,
@@ -164,11 +156,15 @@ const menus = {
         title: "매입단가",
         dataIndex: "buyPrice",
         width: 150,
+        defaultSortOrder: "descend",
+        sorter: (a, b) => a.buyPrice - b.buyPrice,
       },
       {
         title: "매출단가",
         dataIndex: "sellPrice",
         width: 150,
+        defaultSortOrder: "descend",
+        sorter: (a, b) => a.sellPrice - b.sellPrice,
       },
       {},
     ],
@@ -206,16 +202,77 @@ const menus = {
         title: "부서",
         dataIndex: "department",
         width: 100,
+        filters: [
+          {
+            text: "관리",
+            value: "관리",
+          },
+          {
+            text: "인사",
+            value: "인사",
+          },
+          {
+            text: "영업",
+            value: "영업",
+          },
+          {
+            text: "생산",
+            value: "생산",
+          },
+          {
+            text: "물류",
+            value: "물류",
+          },
+        ],
+        onFilter: (value, record) => record.department.indexOf(value) === 0,
       },
       {
         title: "직급",
         dataIndex: "memberRank",
         width: 100,
+        filters: [
+          {
+            text: "사장",
+            value: "사장",
+          },
+          {
+            text: "부장",
+            value: "부장",
+          },
+          {
+            text: "차장",
+            value: "차장",
+          },
+          {
+            text: "과장",
+            value: "과장",
+          },
+          {
+            text: "대리",
+            value: "대리",
+          },
+          {
+            text: "사원",
+            value: "사원",
+          },
+        ],
+        onFilter: (value, record) => record.memberRank.indexOf(value) === 0,
       },
       {
         title: "근무 형태",
         dataIndex: "workType",
         width: 120,
+        filters: [
+          {
+            text: "정규직",
+            value: "정규직",
+          },
+          {
+            text: "계약직",
+            value: "계약직",
+          },
+        ],
+        onFilter: (value, record) => record.workType.indexOf(value) === 0,
       },
       {
         title: "입사일",
@@ -301,6 +358,8 @@ const menus = {
         title: "거래처 번호",
         dataIndex: "accountId",
         width: 120,
+        defaultSortOrder: "descend",
+        sorter: (a, b) => a.accountId - b.accountId,
       },
       {
         title: "작성일자",
@@ -316,10 +375,28 @@ const menus = {
         title: "합계금액",
         dataIndex: "total",
         width: 200,
+        defaultSortOrder: "descend",
+        sorter: (a, b) => a.total - b.total,
       },
       {
         title: "주문처리",
         dataIndex: "isOrder",
+        width: 120,
+        filters: [
+          {
+            text: "진행중",
+            value: "진행중",
+          },
+          {
+            text: "완료",
+            value: "완료",
+          },
+          {
+            text: "취소",
+            value: "취소",
+          },
+        ],
+        onFilter: (value, record) => record.isOrder.indexOf(value) === 0,
       },
       {},
     ],
@@ -341,6 +418,8 @@ const menus = {
         title: "입출고번호",
         dataIndex: "storeId",
         width: 120,
+        defaultSortOrder: "descend",
+        sorter: (a, b) => a.storeId - b.storeId,
       },
       {
         title: "거래구분",
@@ -362,6 +441,17 @@ const menus = {
         title: "결제방법",
         dataIndex: "payment",
         width: 100,
+        filters: [
+          {
+            text: "카드",
+            value: "카드",
+          },
+          {
+            text: "현금",
+            value: "현금",
+          },
+        ],
+        onFilter: (value, record) => record.payment.indexOf(value) === 0,
       },
       {
         title: "거래일자",
@@ -455,41 +545,57 @@ const menus = {
         title: "기초재고 수량",
         dataIndex: "openingCount",
         width: 120,
+        defaultSortOrder: "descend",
+        sorter: (a, b) => a.openingCount - b.openingCount,
       },
       {
         title: "기초재고 금액",
         dataIndex: "openingAmount",
         width: 120,
+        defaultSortOrder: "descend",
+        sorter: (a, b) => a.openingAmount - b.openingAmount,
       },
       {
         title: "입고",
         dataIndex: "storeIn",
         width: 100,
+        defaultSortOrder: "descend",
+        sorter: (a, b) => a.storeIn - b.storeIn,
       },
       {
         title: "출고",
         dataIndex: "storeOut",
         width: 100,
+        defaultSortOrder: "descend",
+        sorter: (a, b) => a.storeOut - b.storeOut,
       },
       {
         title: "현재고량",
         dataIndex: "currentInventory",
         width: 100,
+        defaultSortOrder: "descend",
+        sorter: (a, b) => a.currentInventory - b.currentInventory,
       },
       {
         title: "적정재고",
         dataIndex: "appropriateInventory",
         width: 100,
+        defaultSortOrder: "descend",
+        sorter: (a, b) => a.appropriateInventory - b.appropriateInventory,
       },
       {
         title: "부족수량",
         dataIndex: "lack",
         width: 100,
+        defaultSortOrder: "descend",
+        sorter: (a, b) => a.lack - b.lack,
       },
       {
         title: "매출수량",
         dataIndex: "sales",
         width: 100,
+        defaultSortOrder: "descend",
+        sorter: (a, b) => a.sales - b.sales,
       },
       {
         title: "예상발주량",
@@ -600,6 +706,8 @@ const menus = {
         title: "품목 번호",
         dataIndex: "itemId",
         width: 100,
+        defaultSortOrder: "descend",
+        sorter: (a, b) => a.itemId - b.itemId,
       },
       {
         title: "품목명",
@@ -620,21 +728,38 @@ const menus = {
         title: "생산량",
         dataIndex: "count",
         width: 70,
+        defaultSortOrder: "descend",
+        sorter: (a, b) => a.count - b.count,
       },
       {
         title: "적격",
         dataIndex: "eligible",
         width: 70,
+        defaultSortOrder: "descend",
+        sorter: (a, b) => a.eligible - b.eligible,
       },
       {
         title: "부적격",
         dataIndex: "ineligible",
         width: 70,
+        defaultSortOrder: "descend",
+        sorter: (a, b) => a.ineligible - b.ineligible,
       },
       {
         title: "합격",
         dataIndex: "pass",
         width: 60,
+        filters: [
+          {
+            text: "PASS",
+            value: "PASS",
+          },
+          {
+            text: "FAIL",
+            value: "FAIL",
+          },
+        ],
+        onFilter: (value, record) => record.pass.indexOf(value) === 0,
       },
       {
         title: "검수일자",
