@@ -127,8 +127,8 @@ const ProductionForm = (props) => {
           onChange={orderIdChange}
         >
           {ordersIdList.map((value) => (
-            <Select.Option key={value} value={value}>
-              {value}
+            <Select.Option key={value.id} value={value.id}>
+              {value.id}
             </Select.Option>
           ))}
         </Select>
@@ -168,16 +168,10 @@ const ProductionForm = (props) => {
       >
         <Input />
       </Form.Item>
-      <Form.Item
-        label="단위"
-        name="unit"
-      >
+      <Form.Item label="단위" name="unit">
         <Input />
       </Form.Item>
-      <Form.Item
-        label="규격"
-        name="spec"
-      >
+      <Form.Item label="규격" name="spec">
         <Input />
       </Form.Item>
       <Form.Item

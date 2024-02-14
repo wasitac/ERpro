@@ -38,7 +38,7 @@ public class MemberController {
 	public ResponseEntity<Message<MemberDto>> detailMember(@PathVariable(value="id") Long id) {
 		MemberDto data = memberService.getMemberById(id);
 		Message<MemberDto> returnData = new Message<>("", data);
-		return new ResponseEntity<>(returnData, HttpStatus.OK);	
+		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	// 사원 추가 - 김주원

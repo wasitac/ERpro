@@ -77,12 +77,6 @@ const StoreForm = (props) => {
       <Form.Item
         label="주문번호"
         name="orderId"
-        rules={[
-          {
-            required: true,
-            message: "주문번호를 입력해주세요",
-          },
-        ]}
       >
         <Select
           showSearch

@@ -122,9 +122,9 @@ const DataTable = (props) => {
   // 로우 클릭 시 상세 테이블 출력 - 이지홍
   const onClickHandler = async (dataId) => {
     const menu = `${props.keyOfmenu}Item`;
-    localStorage.setItem("rowId", dataId);
     setSelectedRowKeys([dataId]);
     if (menu in menus) {
+      localStorage.setItem("rowId", dataId);
       try {
         setSecondTable(
           <div>

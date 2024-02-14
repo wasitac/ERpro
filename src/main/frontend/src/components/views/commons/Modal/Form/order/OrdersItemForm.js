@@ -59,24 +59,12 @@ const OrdersItemForm = () => {
       <Form.Item
         label="단위"
         name="unit"
-        rules={[
-          {
-            required: true,
-            message: "주문번호를 입력해주세요",
-          },
-        ]}
       >
         <Input />
       </Form.Item>
       <Form.Item
         label="규격"
         name="spec"
-        rules={[
-          {
-            required: true,
-            message: "주문번호를 입력해주세요",
-          },
-        ]}
       >
         <Input />
       </Form.Item>

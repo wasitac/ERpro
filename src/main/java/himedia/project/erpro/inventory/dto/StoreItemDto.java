@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 // 이지홍
 @Getter
@@ -14,8 +13,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class StoreItemDto {
 	private Long id;
-	private Long storeId;
 	private Long itemId;
+	private Long storeId;
 	private String itemName;
 	private String unit;
 	private String spec;
@@ -27,8 +26,8 @@ public class StoreItemDto {
 	public StoreItem toEntity() {
 		return StoreItem.builder()
 				.id(this.id)
-				.storeId(this.storeId)
 				.itemId(this.itemId)
+				.storeId(this.storeId)
 				.itemName(this.itemName)
 				.unit(this.unit)
 				.spec(this.spec)

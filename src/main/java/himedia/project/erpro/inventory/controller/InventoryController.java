@@ -30,6 +30,7 @@ public class InventoryController {
 		Message returnData = new Message("재고 목록 불러오기", dataList);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
+	
 	@GetMapping("/api/inventory/{id}")
 	public ResponseEntity<Message> detailInventory(@PathVariable(value="id") Long id) {
 		InventoryDto data = inventoryService.getInventory(id);

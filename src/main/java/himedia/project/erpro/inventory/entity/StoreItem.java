@@ -20,16 +20,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Table(name = "store_item")
 public class StoreItem {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "store_id")
-	private Long storeId;
-
 	@Column(name = "item_id")
 	private Long itemId;
+
+	@Column(name = "store_id")
+	private Long storeId;
 
 	@Column(name = "item_name")
 	private String itemName;
@@ -49,8 +49,8 @@ public class StoreItem {
 		public StoreItemDto toDto() {
 		return StoreItemDto.builder()
 				.id(this.id)
-				.storeId(this.storeId)
 				.itemId(this.itemId)
+				.storeId(this.storeId)
 				.itemName(this.itemName)
 				.unit(this.unit)
 				.spec(this.spec)

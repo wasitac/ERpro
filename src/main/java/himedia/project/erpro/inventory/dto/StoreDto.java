@@ -24,7 +24,6 @@ public class StoreDto {
 	private Date storeDate;
 	
 	public Store toEntity() {
-//		DateFormat dateFormat = new DateFormat();
 		return Store.builder()
 				.id(this.id)
 				.sort(StoreSort.fromKor(this.sort))

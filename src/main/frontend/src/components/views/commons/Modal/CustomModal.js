@@ -43,29 +43,26 @@ function CustomModal(props) {
   // form submit
   const onSubmit = async (values) => {
     try {
-      let formData; // form 입력 데이터
       // 현재 입력 필드를 유효성 검사
-      await form.validateFields().then((values) => {
-        console.log("Received values:", values);
-        formData = values;
-      });
-
+      const values = await form.validateFields();
+      values.storeId = localStorage.getItem("rowId");
+      console.log("Received values:", values);
       if (mode === "add") {
         // 정보 저장
-        const response = await fetchApi.post(`/${props.keyOfmenu}`, formData);
+        const response = await fetchApi.post(`/${props.keyOfmenu}`, values);
         if (response.data?.data) {
+          if (`${props.keyOfmenu}Item` in menus) {
+            localStorage.setItem("rowId", response.data.data.id);
+            props.openSecondModal();
+          }
           props.fetchData();
           onCancel();
-          if (`${props.keyOfmenu}Item` in menus) {
-            props.openSecondModal();
-            localStorage.setItem("rowId", response.data.data.id);
-          }
         } else {
           alert("저장에 실패하였습니다. 다시 시도해 주세요.");
         }
       } else if (mode === "edit") {
         // 정보 수정
-        const response = await fetchApi.put(`/${props.keyOfmenu}`, formData);
+        const response = await fetchApi.put(`/${props.keyOfmenu}`, values);
 
         if (response.data?.data) {
           props.fetchData();
@@ -123,7 +120,7 @@ function CustomModal(props) {
       modalSize = "70%";
       break;
     case "storeItem":
-      inputForm = <StoreItemForm />;
+      inputForm = <StoreItemForm form={form} />;
       break;
     case "ordersItem":
       inputForm = <OrdersItemForm />;

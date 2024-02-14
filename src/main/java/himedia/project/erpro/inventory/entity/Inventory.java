@@ -6,6 +6,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.MapsId;
+import jakarta.persistence.OneToOne;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,15 +21,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Inventory {
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@Column(name = "item_id")
-	private Long itemId;
-	
-	@Column(name = "store_id")
-	private Long storeId;
+
+	@Column(name = "item_name")
+	private String itemName;
 	
 	@Column(name = "opening_count")
 	private Integer openingCount;
@@ -48,16 +48,12 @@ public class Inventory {
 	
 	private Integer lack;
 	
-	private Integer sales;
 	
-	@Column(name = "expected_order")
-	private String expectedOrder;
 
 	public InventoryDto toDto() {
         return InventoryDto.builder()
 								.id(this.id)
-								.itemId(this.itemId)
-								.storeId(this.storeId)
+								.itemName(this.itemName)
 								.openingCount(this.openingCount)
 								.openingAmount(this.openingAmount)
 								.storeIn(this.storeIn)
@@ -65,8 +61,6 @@ public class Inventory {
 								.currentInventory(this.currentInventory)
 								.appropriateInventory(this.appropriateInventory)
 								.lack(this.lack)
-								.sales(this.sales)
-								.expectedOrder(this.expectedOrder)
 								.build();
     }
 }

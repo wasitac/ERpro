@@ -159,10 +159,8 @@ CREATE TABLE invoice_item (
 
 
 CREATE TABLE inventory (
- id bigint auto_increment NOT NULL,
- item_id bigint NOT NULL,
+ id bigint NOT NULL auto_increment,
  item_name varchar(30) NOT NULL,
- store_id bigint NOT NULL,
  opening_count int NOT NULL,
  opening_amount int NOT NULL,
  store_in int NOT NULL,
@@ -170,10 +168,8 @@ CREATE TABLE inventory (
  current_inventory int NOT NULL,
  appropriate_inventory int NOT NULL,
  lack int NOT NULL,
- sales int NOT NULL,
- expected_order int NOT NULL,
  primary key(id),
- foreign key(store_id) references store(id)
+ foreign key(id) references item(id) on delete cascade
 );
 
 CREATE TABLE production (
@@ -205,5 +201,5 @@ CREATE TABLE inspection (
  pass enum('PASS', "FAIL") NOT NULL,
  inspection_date date NOT NULL DEFAULT (current_date),
  primary key(id),
- foreign key(store_id) references store(id)
+ foreign key(store_id) references store(id) on delete cascade
 );

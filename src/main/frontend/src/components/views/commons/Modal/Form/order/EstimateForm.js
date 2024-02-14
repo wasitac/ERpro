@@ -11,12 +11,6 @@ const EstimateForm = () => {
         <Form.Item
           label="거래처번호"
           name="accountId"
-          rules={[
-            {
-              required: true,
-              message: "거래처 번호를 입력해주세요",
-            },
-          ]}
         >
           <Input />
         </Form.Item>
@@ -66,12 +60,6 @@ const EstimateForm = () => {
         <Form.Item
           label="주문처리"
           name="isOrder"
-          rules={[
-            {
-              required: true,
-              message: "주문처리를 선택해주세요",
-            },
-          ]}
         >
           <Select>
             <Select.Option value="진행중">진행중</Select.Option>

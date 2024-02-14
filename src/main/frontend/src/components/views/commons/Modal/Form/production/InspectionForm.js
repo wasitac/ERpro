@@ -19,7 +19,7 @@ const InspectionForm = () => {
                 message: "사업자번호를 입력해주세요",
               },
             ]}
-          >
+          > 
             <Input style={{ width: "300px" }} />
           </Form.Item>
           <Form.Item

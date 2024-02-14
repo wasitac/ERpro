@@ -63,7 +63,6 @@ public class StoreController {
 	}
 	
 	
-	// 출고 품목 상세
 	@GetMapping("/api/storeItem")
 	public ResponseEntity<Message<String>> storeItem() {
 		Message<String> returnData = new Message<>("storeItem");
@@ -78,9 +77,9 @@ public class StoreController {
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
-	@GetMapping("/api/storeItem/{storeId}/{rowId}")
-	public ResponseEntity<Message<StoreItemDto>> storeItem(@PathVariable(value="rowId") Long rowId) {
-		StoreItemDto data = storeService.getStoreItem(rowId);
+	@GetMapping("/api/storeItem/{storeId}/{itemId}")
+	public ResponseEntity<Message<StoreItemDto>> storeItem(@PathVariable(value="itemId") Long itemId) {
+		StoreItemDto data = storeService.getStoreItem(itemId);
 		Message<StoreItemDto> returnData = new Message<>("", data);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}

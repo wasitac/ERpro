@@ -42,7 +42,6 @@ public class Store {
 	private Date storeDate;
 	
 	public StoreDto toDto() {
-//		DateFormat dateFormat = new DateFormat();
 		return StoreDto.builder()
 				.id(this.id)
 				.sort((this.sort).getKor())
