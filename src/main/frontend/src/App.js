@@ -6,7 +6,6 @@ import FindPasswordPage from "./components/views/pages/FindPasswordPage/FindPass
 import MainPage from "./components/views/pages/MainPage/MainPage";
 import ProfilePage from "./components/views/pages/ProfilePage/ProfilePage";
 import ErrorPage from "./components/views/pages/Common/ErrorPage";
-import Hotjar from "./modules/Hotjar";
 
 function App() {
   return (
@@ -34,7 +33,6 @@ function App() {
           <Route path="/error" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>
-      <Hotjar />
     </div>
   );
 }

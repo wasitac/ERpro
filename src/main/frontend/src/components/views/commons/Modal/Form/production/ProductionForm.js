@@ -2,14 +2,12 @@
 import React, { useEffect, useState } from "react";
 import { DatePicker, Form, Input, Select } from "antd";
 import fetchApi from "../../../../../../modules/api";
-import dayjs from "dayjs";
 
 // 대/소문자 구분없이 비교
 const filterOption = (input, option) =>
   (option?.label ?? "").toLowerCase().includes(input.toLowerCase());
 
 const ProductionForm = (props) => {
-  const today = dayjs();
   const [list, setList] = useState([]);
   const [memberList, setMemberList] = useState([]);
   const [ordersIdList, setOrdersIdList] = useState([]);
@@ -205,7 +203,7 @@ const ProductionForm = (props) => {
         </Select>
       </Form.Item>
       <Form.Item label="지시 일자" name="productionDate">
-        <DatePicker defaultValue={today} />
+        <DatePicker />
       </Form.Item>
     </div>
   );

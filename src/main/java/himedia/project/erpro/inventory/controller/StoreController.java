@@ -36,7 +36,7 @@ public class StoreController {
 	@GetMapping("/api/store/{id}")
 	public ResponseEntity<Message<StoreDto>> detailStore(@PathVariable(value="id") Long id) {
 		StoreDto data = storeService.getStore(id);
-		Message<StoreDto> returnData = new Message<>("입/출고 상세 데이터", data);
+		Message<StoreDto> returnData = new Message<>("입/출고 상세", data);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
@@ -62,14 +62,12 @@ public class StoreController {
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
-	
 	@GetMapping("/api/storeItem")
 	public ResponseEntity<Message<String>> storeItem() {
 		Message<String> returnData = new Message<>("storeItem");
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
-	// 입출고 품목 상세
 	@GetMapping("/api/storeItem/{storeId}")
 	public ResponseEntity<Message<List<StoreItemDto>>> storeItems(@PathVariable(value="storeId") Long storeId) {
 		List<StoreItemDto> dataList = storeService.getStoreItems(storeId);
@@ -87,14 +85,14 @@ public class StoreController {
 	@PostMapping("/api/storeItem")
 	public ResponseEntity<Message<StoreItemDto>> addStoreItem(@RequestBody StoreItemDto storeItemDto){
 		StoreItemDto dataList = storeService.createStoreItem(storeItemDto);
-		Message<StoreItemDto> returnData = new Message<>("입/출고 추가", dataList);
+		Message<StoreItemDto> returnData = new Message<>("입/출고 품목 추가", dataList);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 	
 	@PutMapping("/api/storeItem")
 	public ResponseEntity<Message<StoreItemDto>> editStoreItem(@RequestBody StoreItemDto storeItemDto){
 		StoreItemDto data = storeService.updateStoreItem(storeItemDto);
-		Message<StoreItemDto> returnData = new Message<>("입/출고 수정", data);
+		Message<StoreItemDto> returnData = new Message<>("입/출고 품목 수정", data);
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 
@@ -102,7 +100,7 @@ public class StoreController {
 	@DeleteMapping("/api/storeItem")
 	public ResponseEntity<Message<String>> deleteStoreItem(@RequestBody List<Long> idList){
 		storeService.deleteStoreItemList(idList);
-		Message<String> returnData = new Message<>("입/출고 삭제");
+		Message<String> returnData = new Message<>("입/출고 품목 삭제");
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 }

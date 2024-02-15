@@ -16,20 +16,15 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class StoreDto {
-	
+
 	private Long id;
 	private String sort;
 	private String bnm;
 	private Long orderId;
 	private Date storeDate;
-	
+
 	public Store toEntity() {
-		return Store.builder()
-				.id(this.id)
-				.sort(StoreSort.fromKor(this.sort))
-				.bnm(this.bnm)
-				.orderId(this.orderId)
-				.storeDate(this.storeDate)
-				.build();
+		return Store.builder().id(this.id).sort(StoreSort.fromKor(this.sort)).bnm(this.bnm).orderId(this.orderId)
+				.storeDate(this.storeDate).build();
 	}
 }

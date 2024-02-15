@@ -62,19 +62,6 @@ public class StoreService {
 		storeRepository.deleteAllById(idList);
 	}
 
-	public List<StoreItemDto> getStoreItems(Long storeId) {
-		List<StoreItem> storeItemList = storeItemRepository.findAllByStoreId(storeId);
-		List<StoreItemDto> storeItemDtoList =  storeItemList.stream().map(StoreItem::toDto).collect(Collectors.toList());
-		return storeItemDtoList;
-	}
-
-	public StoreItemDto getStoreItem(Long id) {
-		StoreItemDto storeItemDto = storeItemRepository.findById(id)
-				.orElseThrow(() -> new EntityNotFoundException("StoreItem not found with ID: " + id)).toDto();
-
-		return storeItemDto;
-	}
-
 	// StoreItem 변경 시 재고에 반영하는 메서드
 	public void editInventory(StoreItem storeItem, boolean isAdd) {
 		Integer count = isAdd ? storeItem.getCount() : -storeItem.getCount();
@@ -99,13 +86,26 @@ public class StoreService {
 				.openingAmount(inventory.getOpeningAmount())
 				.storeIn(inventory.getStoreIn() + in)
 				.storeOut(inventory.getStoreOut() + out)
-				.currentInventory(inventory.getOpeningCount() + (inventory.getStoreIn() + in)- (inventory.getStoreOut() + out))
+				.currentInventory(inventory.getOpeningCount() + (inventory.getStoreIn() + in) - (inventory.getStoreOut() + out))
 				.appropriateInventory(inventory.getAppropriateInventory())
 				.lack(inventory.getAppropriateInventory() - (inventory.getCurrentInventory() + in - out))
 				.build();
 		inventoryRepository.save(newInventory);
 	}
 	
+	public List<StoreItemDto> getStoreItems(Long storeId) {
+		List<StoreItem> storeItemList = storeItemRepository.findAllByStoreId(storeId);
+		List<StoreItemDto> storeItemDtoList =  storeItemList.stream().map(StoreItem::toDto).collect(Collectors.toList());
+		return storeItemDtoList;
+	}
+
+	public StoreItemDto getStoreItem(Long id) {
+		StoreItemDto storeItemDto = storeItemRepository.findById(id)
+				.orElseThrow(() -> new EntityNotFoundException("StoreItem not found with ID: " + id)).toDto();
+
+		return storeItemDto;
+	}
+
 	// 입/출고 품목 추가
 	public StoreItemDto createStoreItem(StoreItemDto storeItemDto) {
 		StoreItem savedStoreItem = Optional.ofNullable(storeItemRepository.save(storeItemDto.toEntity()))
@@ -119,6 +119,7 @@ public class StoreService {
 	public StoreItemDto updateStoreItem(StoreItemDto storeItemDto) {
 		StoreItem storeItem = storeItemRepository.findById(storeItemDto.getStoreId())
 				.orElseThrow(() -> new EntityNotFoundException("StoreItem not found with ID: " + storeItemDto.getStoreId()));
+		System.out.println(storeItem.getItemName());
 		editInventory(storeItem, false);
 		
 		StoreItem savedStoreItem = storeItemRepository.save(storeItemDto.toEntity());
