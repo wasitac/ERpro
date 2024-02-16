@@ -757,11 +757,6 @@ const menus = {
         sorter: (a, b) => a.id - b.id,
       },
       {
-        title: "구분",
-        dataIndex: "sort",
-        width: 120,
-      },
-      {
         title: "품목명",
         dataIndex: "itemName",
         width: 330,

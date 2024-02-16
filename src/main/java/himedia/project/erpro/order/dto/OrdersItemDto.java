@@ -18,7 +18,6 @@ import lombok.Setter;
 public class OrdersItemDto {
 	private Long id;
 	private Long ordersId;
-	private String sort;
 	private Long itemId;
 	private String itemName;
 	private String unit;
@@ -32,7 +31,6 @@ public class OrdersItemDto {
 		return OrdersItem.builder()
 				.id(this.id)
 				.ordersId(this.ordersId)
-				.sort(this.sort)
 				.itemId(this.itemId)
 				.itemName(this.itemName)
 				.unit(this.unit)

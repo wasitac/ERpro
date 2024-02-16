@@ -18,21 +18,6 @@ const OrdersItemForm = () => {
         <Input type="hidden" />
       </Form.Item>
       <Form.Item
-        label="품목구분"
-        name="sort"
-        rules={[
-          {
-            required: true,
-            message: "품목구분을 선택해주세요",
-          },
-        ]}
-      >
-        <Radio.Group value="제품">
-          <Radio value="제품">제품</Radio>
-          <Radio value="자재">자재</Radio>
-        </Radio.Group>
-      </Form.Item>
-      <Form.Item
         label="품목번호"
         name="itemId"
         rules={[

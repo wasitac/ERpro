@@ -25,9 +25,6 @@ public class OrdersItem {
 	@Column(name = "orders_Id")
 	private Long ordersId;
 	
-	@Column(name = "sort")
-	private String sort;
-	
 	@Column(name = "item_id")
 	private Long itemId;
 	
@@ -56,7 +53,6 @@ public class OrdersItem {
 		return OrdersItemDto.builder()
 				.id(this.id)
 				.ordersId(this.ordersId)
-				.sort(this.sort)
 				.itemId(this.itemId)
 				.itemName(this.itemName)
 				.unit(this.unit)

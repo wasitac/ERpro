@@ -68,7 +68,6 @@ CREATE TABLE orders (
 CREATE TABLE orders_item (
  id bigint NOT NULL auto_increment,
  orders_id bigint NOT NULL,
- sort varchar(10) NOT NULL,
  item_id bigint NOT NULL,
  item_name varchar(30) NOT NULL,
  unit varchar(30) NOT NULL,
