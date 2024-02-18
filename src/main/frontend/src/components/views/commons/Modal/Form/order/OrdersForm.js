@@ -1,7 +1,35 @@
 // 정유진
+import React, { useEffect, useState } from "react";
 import { Form, Input, Select, DatePicker } from "antd";
+import fetchApi from "../../../../../../modules/api";
 
-const OrdersForm = () => {
+const filterOption = (input, option) =>
+  (option?.value ?? "").toLowerCase().includes(input.toLowerCase());
+
+const OrdersForm = (props) => {
+  const [list, setList] = useState([]);
+
+  useEffect(() => {
+    fetchList();
+  }, []);
+
+  const fetchList = async () => {
+    try {
+      const response = await fetchApi.get("/account");
+      setList(response.data.data);
+    } catch (error) {
+      console.error("목록 조회 에러:", error);
+    }
+  };
+
+  const handleBnmChange = (bnm) => {
+    // 거래처명에 해당하는 사업자 등록번호 찾기
+    const account = list.find((account) => account.bnm === bnm);
+    props.form.setFieldsValue({
+      bno: account.bno,
+    });
+  };
+
   return (
     <div>
       <div>
@@ -33,7 +61,19 @@ const OrdersForm = () => {
             },
           ]}
         >
-          <Input />
+          <Select
+            showSearch
+            placeholder="거래처명"
+            optionFilterProp="children"
+            onChange={handleBnmChange}
+            filterOption={filterOption}
+          >
+            {list.map((account) => (
+              <Select.Option key={account.bnm} label={account.bnm}>
+                {account.bnm}
+              </Select.Option>
+            ))}
+          </Select>
         </Form.Item>
         <Form.Item
           label="사업자등록번호"
@@ -45,7 +85,7 @@ const OrdersForm = () => {
             },
           ]}
         >
-          <Input />
+          <Input readOnly />
         </Form.Item>
         <Form.Item
           label="예정일"

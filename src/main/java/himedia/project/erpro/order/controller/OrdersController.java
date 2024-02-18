@@ -66,7 +66,7 @@ public class OrdersController {
 	
 	// 구매/판매 삭제
 	@PreAuthorize("hasRole('ADMIN')")
-	@DeleteMapping("/orders")
+	@DeleteMapping("/api/orders")
 	public ResponseEntity<Message<String>> deleteOrders(@RequestBody List<Long> idList) {
 		ordersService.deleteOrdersList(idList);
 		Message<String> returnData = new Message<>("구매/판매 삭제");

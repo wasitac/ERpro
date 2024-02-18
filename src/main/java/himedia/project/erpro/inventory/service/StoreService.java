@@ -135,7 +135,6 @@ public class StoreService {
 		for (StoreItem storeItem : storeItemList) {
 			editInventory(storeItem, false);
 		}
-		
 		storeItemRepository.deleteAllById(idList);
 	}
 

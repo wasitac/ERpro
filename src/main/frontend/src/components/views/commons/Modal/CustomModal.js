@@ -101,7 +101,7 @@ function CustomModal(props) {
       inputForm = <MemberForm mode={mode} />;
       break;
     case "orders":
-      inputForm = <OrdersForm />;
+      inputForm = <OrdersForm form={form} />;
       break;
     case "estimate":
       inputForm = <EstimateForm />;
@@ -123,13 +123,13 @@ function CustomModal(props) {
       inputForm = <StoreItemForm form={form} />;
       break;
     case "ordersItem":
-      inputForm = <OrdersItemForm />;
+      inputForm = <OrdersItemForm form={form} />;
       break;
     case "estimateItem":
-      inputForm = <EstimateItemForm />;
+      inputForm = <EstimateItemForm form={form} />;
       break;
     case "invoiceItem":
-      inputForm = <InvoiceItemForm />;
+      inputForm = <InvoiceItemForm form={form} />;
       break;
     case "inventory":
       inputForm = <InventoryForm />;

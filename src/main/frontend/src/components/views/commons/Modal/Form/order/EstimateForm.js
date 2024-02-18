@@ -8,10 +8,7 @@ const EstimateForm = () => {
         <Form.Item name="id" noStyle>
           <Input type="hidden" />
         </Form.Item>
-        <Form.Item
-          label="거래처번호"
-          name="accountId"
-        >
+        <Form.Item label="거래처번호" name="accountId">
           <Input />
         </Form.Item>
         <Form.Item
@@ -57,10 +54,7 @@ const EstimateForm = () => {
         >
           <Input />
         </Form.Item>
-        <Form.Item
-          label="주문처리"
-          name="isOrder"
-        >
+        <Form.Item label="주문처리" name="isOrder">
           <Select>
             <Select.Option value="진행중">진행중</Select.Option>
             <Select.Option value="완료">완료</Select.Option>

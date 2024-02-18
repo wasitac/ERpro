@@ -9,4 +9,5 @@ import himedia.project.erpro.inventory.entity.Inventory;
 
 public interface InventoryRepository extends JpaRepository<Inventory, Long>{
 	public List<Inventory> findAll();
+	public int deleteAllByIdIn(List<Long> idList);
 }
