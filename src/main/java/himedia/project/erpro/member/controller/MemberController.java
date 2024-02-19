@@ -42,6 +42,7 @@ public class MemberController {
 	}
 	
 	// 사원 추가 - 김주원
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/api/member")
 	public ResponseEntity<Message<String>> createMember(@RequestBody MemberDto memberDto) {
 		String result = memberService.createMember(memberDto);
@@ -50,6 +51,7 @@ public class MemberController {
 	}
 	
 	// 사원 대장 수정 - 김주원
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/api/member")
 	public ResponseEntity<Message<Optional<MemberDto>>> editMember(@RequestBody MemberDto memberDto) {
 		Optional<MemberDto> editData = memberService.updateMember(memberDto);

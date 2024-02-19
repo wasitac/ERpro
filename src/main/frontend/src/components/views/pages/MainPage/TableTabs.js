@@ -2,12 +2,16 @@
  * 이지홍
  */
 import React, { useState, useEffect } from "react";
-import { Tabs } from "antd";
+import { Tabs, Calendar } from "antd";
 import DataTable from "./DataTable";
 import menus from "../../commons/menus";
 
 // 저장한 탭 기록 출력
 const TableTabs = (props) => {
+  const onPanelChange = (value, mode) => {
+    console.log(value.format("YYYY-MM-DD"), mode);
+  };
+
   const [activeKey, setActiveKey] = useState([]);
   const [items, setItems] = useState([]);
 
@@ -16,7 +20,7 @@ const TableTabs = (props) => {
   };
 
   useEffect(() => {
-    add(props.keyOfmenu);
+    add(props.keyOfmenu[0]);
   }, [props.keyOfmenu]);
 
   const add = (key) => {
@@ -27,7 +31,12 @@ const TableTabs = (props) => {
         ...items,
         {
           label: menus[key].label,
-          children: <DataTable keyOfmenu={key} />,
+          children:
+            key === "main" ? (
+              <Calendar onPanelChange={onPanelChange} />
+            ) : (
+              <DataTable keyOfmenu={key} />
+            ),
           key: key,
         },
       ]);

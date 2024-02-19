@@ -58,12 +58,18 @@ const items = [
     ],
   },
 ];
-
 const Navbar = ({ onMenuChange }) => {
   const [current, setCurrent] = useState("");
+  const [check, setCheck] = useState(1);
   const onClick = (e) => {
     setCurrent(e.key);
-    onMenuChange(e.key);
+    setCheck(-check);
+    onMenuChange([e.key, check]);
+  };
+  const onLogoClick = () => {
+    setCurrent("main");
+    setCheck(-check);
+    onMenuChange(["main", check]);
   };
   return (
     <div
@@ -81,8 +87,7 @@ const Navbar = ({ onMenuChange }) => {
           style={{ width: "150px", margin: "20px 20px 12px 20px" }}
           src={logo}
           alt="logo"
-          // onClick={onClick}
-          // selectedKeys={["calendar"]}
+          onClick={onLogoClick}
         />
         <Menu
           onClick={onClick}

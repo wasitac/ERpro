@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import fetchApi from "../../../../../../modules/api";
+import fetchApi from "../../../../../../img/modules/api";
 import { Form, Input, Radio, Select } from "antd";
 
 const AccountForm = () => {

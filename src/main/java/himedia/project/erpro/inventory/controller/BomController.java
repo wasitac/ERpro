@@ -59,7 +59,7 @@ public class BomController {
     }
     
     // Bom 삭제 - 김주원
-    @PreAuthorize("hasRole('ADMIN')")
+//    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/api/bom")
     public ResponseEntity<Message> deleteBom(@RequestBody List<Long> itemIdList) {
     	boolean result = bomService.deleteBomList(itemIdList);

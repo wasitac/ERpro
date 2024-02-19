@@ -4,7 +4,7 @@
 import React, { useState, useEffect } from "react";
 import { Table, Button, Flex, Tabs } from "antd";
 import menus from "../../commons/menus";
-import fetchApi from "../../../../modules/api";
+import fetchApi from "../../../../img/modules/api";
 import CustomModal from "../../commons/Modal/CustomModal";
 
 import dayjs from "dayjs";

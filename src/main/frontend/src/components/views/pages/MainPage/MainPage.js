@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import TableTabs from "./TableTabs";
 import Navbar from "../../Header/Navbar";
 const MainPage = () => {
-  const [keyOfmenu, setKeyOfmenu] = useState("account");
+  const [keyOfmenu, setKeyOfmenu] = useState(["main", 1]);
   const handleMenuChange = (changedKeyOfmenu) => {
     setKeyOfmenu(changedKeyOfmenu);
   };
@@ -13,7 +13,7 @@ const MainPage = () => {
   return (
     <>
       <Navbar onMenuChange={handleMenuChange} />
-      <TableTabs keyOfmenu={keyOfmenu}></TableTabs>
+      <TableTabs keyOfmenu={keyOfmenu} onMenuChange={handleMenuChange}></TableTabs>
     </>
   );
 };

@@ -1,7 +1,7 @@
 // 이지홍
 import React, { useEffect, useState } from "react";
 import { Form, Input, Radio, DatePicker, Select } from "antd";
-import fetchApi from "../../../../../../modules/api";
+import fetchApi from "../../../../../../img/modules/api";
 
 const filterOption = (input, option) =>
   (option?.value ?? "").toLowerCase().includes(input.toLowerCase());
@@ -74,10 +74,7 @@ const StoreForm = (props) => {
           ))}
         </Select>
       </Form.Item>
-      <Form.Item
-        label="주문번호"
-        name="orderId"
-      >
+      <Form.Item label="주문번호" name="orderId">
         <Select
           showSearch
           placeholder="주문번호"

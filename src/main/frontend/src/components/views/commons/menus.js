@@ -1,4 +1,8 @@
 const menus = {
+  main: {
+    label: "메인 페이지",
+    key: "main",
+  },
   // 거래처 - 김주원
   account: {
     label: "거래처 목록",
