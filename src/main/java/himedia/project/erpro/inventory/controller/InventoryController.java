@@ -52,7 +52,7 @@ public class InventoryController {
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 
-	@PreAuthorize("hasRole('ADMIN')")
+//	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/api/inventory")
 	public ResponseEntity<Message> deleteInventory(@RequestBody List<Long> idList){
 		inventoryService.deleteInventoryList(idList);

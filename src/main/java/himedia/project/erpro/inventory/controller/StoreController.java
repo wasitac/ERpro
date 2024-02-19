@@ -54,7 +54,7 @@ public class StoreController {
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 
-	@PreAuthorize("hasRole('ADMIN')")
+//	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/api/store")
 	public ResponseEntity<Message<String>> deleteStore(@RequestBody List<Long> idList){
 		storeService.deleteStoreList(idList);
@@ -96,7 +96,7 @@ public class StoreController {
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 
-	@PreAuthorize("hasRole('ADMIN')")
+//	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/api/storeItem")
 	public ResponseEntity<Message<String>> deleteStoreItem(@RequestBody List<Long> idList){
 		storeService.deleteStoreItemList(idList);

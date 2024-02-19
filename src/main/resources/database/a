@@ -1,0 +1,248 @@
+3.1) 사용자
+member(id, name, birth_date, phone, email, department, member_rank, role, work_type, insert_date, retire_date, password)
+
+
+3.2) 거래
+account(id, member_name, b_no, b_nm, sort, p_nm, b_sector, b_type, phone, b_adr, email)
+estimate(id, account_id, insert_date, due_date, total, is_order)
+estimate_item(id, estimate_id, item_id, item_name, unit, spec, count, price, vat, total)
+orders(id, b_nm, b_no, sort, due_date, completion_date)
+orders_item(id, orders_id, item_id, item_name, unit, spec, count, price, vat, total)
+invoice(id, store_id, sort, payment, note, invoice_date)
+invoice_item(id, invoice_id, item_id, item_name, unit, spec, count, price, vat, total)
+
+3.3) 물류/재고
+item(id, sort, item_name, unit, spec, buy_price, sell_price)
+bom(id, item_id, material_id, required_amount, note)
+store(id, sort, b_nm, order_id, store_date)
+store_item(id, store_id, item_id, item_name, unit, spec, count, price, vat, total)
+inventory(id, item_name, opening_count, opening_amount, store_in, store_out, current_inventory, appropriate_inventory, lack)
+
+3.4) 생산
+production(id, order_id, b_nm, member_name, item_id, item_name, unit, spec, count, production_date)
+inspection(id, store_id, proposer_name, inspector_name, item_id, item_name, unit, spec, count, eligible, ineligible, pass, inspection_date)
+
+4) 물리 스키마
+4.1) 사용자
+member (id bigint, name varchar(30), birth_date date, phone varchar(13), email 		varchar(30), department varchar(10), member_rank varchar(30), 			roleenum('ROLE_SUPERADMIN', 'ROLE_ADMIN', 'ROLE_MEMBER'), work_type 	varchar(10), insert_date date, retire_date date, password varchar(100))
+
+4.2) 거래
+account (id bigint, member_name varchar(30), b_no varchar(13), b_nm varchar(30), 	sort enum('매입처', '매출처'), p_nm varchar(30), b_sector varchar(30), b_type 	varchar(30), phone varchar(13), b_adr varchar(100), email varchar(30))
+estimate (id bigint, account_id bigint, insert_date date DEFAULT(current_date), 		due_date date, total int, is_order varchar(10))
+estimate_item (id bigint, estimate_id bigint, item_id bigint, item_name varchar(30), unit 	varchar(30), spec varchar(30), count int, price int, vat int, total int)
+orders (id bigint, b_nm varchar(30), b_no varchar(13), sort enum('구매', '판매'), 		due_date date, completion_date date)
+orders_item (id bigint, orders_id bigint, item_id bigint, item_name varchar(30), unit 	varchar(30), spec varchar(30), count int, price int, vat int, total int)
+invoice (id bigint, store_id bigint, sort enum('매출', '매입'), payment varchar(10), note 	varchar(255) NULL, invoice_date date DEFAULT(current_date))
+invoice_item (id bigint, invoice_id bigint, item_id bigint, item_name varchar(30), unit 	varchar(30), spec varchar(30), count int, price int, vat int, total int)
+
+4.3) 물류/재고
+item (id bigint, sort enum('제품', '자재'), item_name varchar(30), unit varchar(30), 	spec varchar(30), buy_price int, sell_price int)
+bom (id bigint, item_id bigint, material_id bigint, required_amount int, note 		varchar(255) NULL)
+store (id bigint, sort enum('IN', 'OUT'), b_nm varchar(30), order_id bigint, 		store_date date DEFAULT(current_date))
+store_item (id bigint, store_id bigint, item_id bigint, item_name varchar(30), unit 		varchar(30), spec varchar(30), count int, price int, vat int, total int)
+inventory (id bigint, item_name varchar(30), opening_count int, opening_amount 	int, 	store_in int, store_out int, current_inventory int, appropriate_inventory 	int, 	lack int)
+
+
+4.4) 생산
+production (id bigint, order_id bigint, b_nm varchar(30), member_name varchar(30), 	item_id bigint, item_name varchar(30), unit varchar(30), spec varchar(30), 	count int, production_date date DEFAULT(current_date))
+inspection (id bigint, store_id bigint, proposer_name varchar(30), inspector_name 		varchar(30), item_id bigint, item_name varchar(30), unit varchar(30), spec 	varchar(30), count int, eligible int, ineligible int, pass enum('PASS', "FAIL"), 	inspection_date date DEFAULT(current_date))
+CREATE TABLE account (
+ id bigint NOT NULL auto_increment,
+ member_name varchar(30) NOT NULL,
+ b_no varchar(13) NOT NULL,
+ b_nm varchar(30) NOT NULL,
+ sort enum('매입처', '매출처') NOT NULL,
+ p_nm varchar(30) NOT NULL,
+ b_sector varchar(30) NOT NULL,
+ b_type varchar(30) NOT NULL,
+ phone varchar(13) NOT NULL,
+ b_adr varchar(100) NOT NULL,
+ email varchar(30) NOT NULL,
+ primary key(id)
+);
+
+CREATE TABLE item (
+ id bigint NOT NULL auto_increment,
+ sort enum('제품', '자재') NOT NULL,
+ item_name varchar(30) NOT NULL,
+ unit varchar(30) NOT NULL,
+ spec varchar(30) NOT NULL,
+ buy_price int NOT NULL,
+ sell_price int NOT NULL,
+ primary key(id)
+);
+
+CREATE TABLE bom (
+ id bigint NOT NULL auto_increment,
+ item_id bigint NOT NULL,
+ material_id bigint NOT NULL,
+ required_amount int NOT NULL,
+ note varchar(255) NULL,
+ primary key(id),
+ foreign key(item_id) references item(id) on delete cascade,
+ foreign key(material_id) references item(id) on delete cascade
+);
+
+CREATE TABLE member (
+ id bigint NOT NULL auto_increment,
+ name varchar(30) NOT NULL,
+ birth_date date NOT NULL,
+ phone varchar(13) NOT NULL,
+ email varchar(30) NOT NULL,
+ department varchar(10) NOT NULL,
+ member_rank varchar(30) NOT NULL,
+ role enum('ROLE_SUPERADMIN', 'ROLE_ADMIN', 'ROLE_MEMBER') NOT NULL,
+ work_type varchar(10) NOT NULL,
+ insert_date date NOT NULL,
+ retire_date date,
+ password varchar(100) NOT NULL,
+ primary key(id)
+);
+
+CREATE TABLE orders (
+ id bigint NOT NULL auto_increment,
+ b_nm varchar(30) NOT NULL,
+ b_no varchar(13) NOT NULL,
+ sort enum('구매', '판매') NOT NULL,
+ due_date date NOT NULL,
+ completion_date date,
+ primary key(id)
+);
+
+CREATE TABLE orders_item (
+ id bigint NOT NULL auto_increment,
+ orders_id bigint NOT NULL,
+ item_id bigint NOT NULL,
+ item_name varchar(30) NOT NULL,
+ unit varchar(30) NOT NULL,
+ spec varchar(30) NOT NULL,
+ count int NOT NULL,
+ price int NOT NULL,
+ vat int NOT NULL,
+ total int NOT NULL,
+ primary key(id),
+ foreign key(orders_id) references orders(id) on delete cascade
+);
+
+CREATE TABLE estimate (
+ id bigint NOT NULL auto_increment,
+ account_id bigint NOT NULL,
+ insert_date date NOT NULL DEFAULT (current_date),
+ due_date date NOT NULL,
+ total int NOT NULL,
+ is_order varchar(10) NOT NULL,
+ primary key(id)
+);
+
+CREATE TABLE estimate_item (
+ id bigint NOT NULL auto_increment,
+ estimate_id bigint NOT NULL,
+ item_id bigint NOT NULL,
+ item_name varchar(30) NOT NULL,
+ unit varchar(30) NOT NULL,
+ spec varchar(30) NOT NULL,
+ count int NOT NULL,
+ price int NOT NULL,
+ vat int NOT NULL,
+ total int NOT NULL,
+ primary key(id),
+ foreign key(estimate_id) references estimate(id) on delete cascade
+);
+
+CREATE TABLE store (
+ id bigint NOT NULL auto_increment,
+ sort enum('IN', 'OUT') NOT NULL,
+ b_nm varchar(30) NOT NULL,
+ order_id bigint NOT NULL,
+ store_date date NOT NULL DEFAULT (current_date),
+ primary key(id)
+);
+
+CREATE TABLE store_item (
+	id bigint NOT NULL auto_increment,
+	store_id bigint NOT NULL,
+	item_id bigint NOT NULL,
+	item_name varchar(30) NOT NULL,
+	unit varchar(30) NOT NULL,
+	spec varchar(30) NOT NULL,
+	count int NOT NULL,
+	price int NOT NULL,
+	vat int NOT NULL,
+	total int NOT NULL,
+	primary key(id),
+	foreign key(store_id) references store(id) on delete cascade
+);
+
+CREATE TABLE invoice (
+ id bigint NOT NULL auto_increment,
+ store_id bigint NOT NULL,
+ sort enum('매출', '매입') NOT NULL,
+ payment varchar(10) NOT NULL,
+ note varchar(255) NULL,
+ invoice_date date NOT NULL DEFAULT (current_date),
+ primary key(id),
+ foreign key(store_id) references store(id) on delete cascade
+);
+
+CREATE TABLE invoice_item (
+ id bigint NOT NULL auto_increment,
+ invoice_id bigint NOT NULL,
+ item_id bigint NOT NULL,
+ item_name varchar(30) NOT NULL,
+ unit varchar(30) NOT NULL,
+ spec varchar(30) NOT NULL,
+ count int NOT NULL,
+ price int NOT NULL,
+ vat int NOT NULL,
+ total int NOT NULL,
+ primary key(id),
+ foreign key(invoice_id) references invoice(id) on delete cascade
+);
+
+
+
+CREATE TABLE inventory (
+ id bigint NOT NULL auto_increment,
+ item_name varchar(30) NOT NULL,
+ opening_count int NOT NULL,
+ opening_amount int NOT NULL,
+ store_in int NOT NULL,
+ store_out int NOT NULL,
+ current_inventory int NOT NULL,
+ appropriate_inventory int NOT NULL,
+ lack int NOT NULL,
+ primary key(id),
+ foreign key(id) references item(id) on delete cascade
+);
+
+CREATE TABLE production (
+ id bigint NOT NULL auto_increment,
+ order_id bigint NOT NULL,
+ b_nm varchar(30) NOT NULL,
+ member_name varchar(30) NOT NULL,
+ item_id bigint NOT NULL,
+ item_name varchar(30) NOT NULL,
+ unit varchar(30) NOT NULL,
+ spec varchar(30) NOT NULL,
+ count int NOT NULL,
+ production_date date NOT NULL DEFAULT (current_date),
+ primary key(id)
+);
+
+CREATE TABLE inspection (
+ id bigint NOT NULL auto_increment,
+ store_id bigint NOT NULL,
+ proposer_name varchar(30) NOT NULL,
+ inspector_name varchar(30) NOT NULL,
+ item_id bigint NOT NULL,
+ item_name varchar(30) NOT NULL,
+ unit varchar(30) NOT NULL,
+ spec varchar(30) NOT NULL,
+ count int NOT NULL,
+ eligible int NOT NULL,
+ ineligible int NOT NULL,
+ pass enum('PASS', "FAIL") NOT NULL,
+ inspection_date date NOT NULL DEFAULT (current_date),
+ primary key(id),
+ foreign key(store_id) references store(id) on delete cascade
+);

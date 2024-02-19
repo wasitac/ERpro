@@ -53,7 +53,6 @@ public class EstimateController {
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 
-	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/estimate")
 	public ResponseEntity<Message> deleteEstimate(@RequestBody List<Long> idList) {
 		estimateService.deleteEstimateList(idList);
@@ -96,7 +95,7 @@ public class EstimateController {
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 
-	@PreAuthorize("hasRole('ADMIN')")
+//	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/api/estimateItem")
 	public ResponseEntity<Message> deleteEstimateItem(@RequestBody List<Long> idList) {
 		estimateService.deleteEstimateItemList(idList);

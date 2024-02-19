@@ -51,7 +51,7 @@ public class ProductionController {
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 
-	@PreAuthorize("hasRole('ADMIN')")
+//	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/api/production")
 	public ResponseEntity<Message> deleteProduction(@RequestBody List<Long> idList){
 		productionService.deleteProductionList(idList);

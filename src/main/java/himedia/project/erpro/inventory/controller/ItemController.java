@@ -59,7 +59,7 @@ public class ItemController {
 	}
 	
 	// 물품 삭제 - 김주원
-	@PreAuthorize("hasRole('ADMIN')")
+//	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/api/item")
 	public ResponseEntity<Message> deleteItem(@RequestBody List<Long> idList) {
 		boolean result = itemService.deleteItemList(idList);

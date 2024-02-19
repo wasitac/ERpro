@@ -95,7 +95,7 @@ public class InvoiceController {
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 
-	@PreAuthorize("hasRole('ADMIN')")
+//	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/api/invoiceItem")
 	public ResponseEntity<Message> deleteOrdersItem(@RequestBody List<Long> idList) {
 		invoiceService.deleteInvoiceItemList(idList);

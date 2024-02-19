@@ -3,7 +3,7 @@
  */
 import { Button, Form, Input, DatePicker } from "antd";
 import React, { useState, useEffect } from "react";
-import fetchApi from "../../../../modules/api";
+import fetchApi from "../../../../img/modules/api";
 import dayjs from "dayjs";
 
 // 정보수정 폼

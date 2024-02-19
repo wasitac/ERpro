@@ -65,7 +65,7 @@ public class OrdersController {
 	}
 	
 	// 구매/판매 삭제
-	@PreAuthorize("hasRole('ADMIN')")
+//	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/api/orders")
 	public ResponseEntity<Message<String>> deleteOrders(@RequestBody List<Long> idList) {
 		ordersService.deleteOrdersList(idList);
@@ -108,7 +108,7 @@ public class OrdersController {
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 
-	@PreAuthorize("hasRole('ADMIN')")
+//	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/api/ordersItem")
 	public ResponseEntity<Message<String>> deleteOrdersItem(@RequestBody List<Long> idList) {
 		ordersService.deleteOrdersItemList(idList);

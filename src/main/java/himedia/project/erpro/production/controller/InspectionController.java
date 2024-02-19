@@ -52,7 +52,7 @@ public class InspectionController {
 		return new ResponseEntity<>(returnData, HttpStatus.OK);
 	}
 
-	@PreAuthorize("hasRole('ADMIN')")
+//	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/api/inspection")
 	public ResponseEntity<Message> deleteInspection(@RequestBody List<Long> idList){
 		inspectionService.deleteInspectionList(idList);

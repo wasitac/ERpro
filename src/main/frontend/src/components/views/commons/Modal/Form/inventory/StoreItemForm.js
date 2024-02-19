@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Form, Input, Select } from "antd";
-import fetchApi from "../../../../../../modules/api";
+import fetchApi from "../../../../../../img/modules/api";
 
 const StoreItemForm = (props) => {
   const [list, setList] = useState([]);

@@ -19,7 +19,6 @@ import java.util.Collection;
 import java.util.Iterator;
 
 @RequiredArgsConstructor
-@Slf4j
 public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
     private final AuthenticationManager authenticationManager;
@@ -50,7 +49,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
         GrantedAuthority auth = iterator.next();
 
         String role = auth.getAuthority();
-        String token = jwtUtil.createJwt(customMemberDetails, role, 10*60*60*1000L);
+        String token = jwtUtil.createJwt(customMemberDetails, role, 30*24*60*60*1000L);
 
         response.addHeader("Authorization","Bearer " + token );
     }
