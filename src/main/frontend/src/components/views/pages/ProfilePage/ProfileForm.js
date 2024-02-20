@@ -13,7 +13,7 @@ const onFinish = async (values) => {
     const response = await fetchApi.put("/profile", values);
     console.log("PUT request successful", response.data);
     alert("내 정보 변경에 성공했습니다");
-    window.location.href = "/";
+    window.location.href = "/home";
   } catch (error) {
     alert("내 정보 변경에 실패했습니다");
     console.error("Error making PUT request", error);

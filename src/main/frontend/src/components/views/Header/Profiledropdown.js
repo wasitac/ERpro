@@ -16,7 +16,7 @@ function Profiledropdown() {
 
   const handleLogoutClick = () => {
     localStorage.clear();
-    navigate("/login");
+    navigate("/");
   };
 
   return (

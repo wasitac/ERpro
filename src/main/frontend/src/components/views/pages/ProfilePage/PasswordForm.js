@@ -14,7 +14,7 @@ const onFinish = async (values) => {
       // 성공적인 응답의 경우
       console.log("Success message:", response.data.message);
       alert(response.data.message);
-      window.location.href = "/";
+      window.location.href = "/home";
     } else {
       // 에러 응답의 경우
       console.error("Error message:", response.data.errorMessage);

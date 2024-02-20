@@ -35,7 +35,7 @@ function LoginPage() {
       });
 
       // 메인페이지 이동
-      navigate("/");
+      navigate("/home");
     } catch (error) {
       if (error.response && error.response.status === 401) {
         alert("인증에 실패하였습니다.");

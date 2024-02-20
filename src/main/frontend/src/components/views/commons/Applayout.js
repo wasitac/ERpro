@@ -7,7 +7,7 @@ function Applayout({children}) {
 
   useEffect(() => {
     if (!token) {
-      navigate("/login");
+      navigate("/");
     }
   }, []);
 
