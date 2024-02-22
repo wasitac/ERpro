@@ -22,8 +22,9 @@
 <br>
 
 ## 🏷️개발 환경
-| **OS**  | Windows 10   |
+
 ----|----|
+**OS**|Windows 10|
 **IDE**|Spring Tool Suite4 4.21.0.RELEASE|
 **Front-end**|HTML<br>CSS<br>JavaScript<br>React 18.2.0<br> Antdisign|
 **Back-end**|Java 17<br>Spring Boot 3.2.2<br>Spring Security 6.2.1<br>JWT 0.12.3<br>JPA<br>lombok 1.18.30|
