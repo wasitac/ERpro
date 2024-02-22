@@ -22,7 +22,7 @@
 <br>
 
 ## 🏷️개발 환경
-
+| 구분 | 내용 |
 ----|----|
 **OS**|Windows 10|
 **IDE**|Spring Tool Suite4 4.21.0.RELEASE|
