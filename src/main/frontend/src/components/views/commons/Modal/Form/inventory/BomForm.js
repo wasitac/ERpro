@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import fetchApi from "../../../../../../img/modules/api";
+import fetchApi from "../../../../../../modules/api";
 import { Button, Form, Input, Select, Space } from "antd";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 

@@ -1,7 +1,7 @@
 // 정유진
 import React, { useEffect, useState } from "react";
 import { Form, Input, Select, DatePicker } from "antd";
-import fetchApi from "../../../../../../img/modules/api";
+import fetchApi from "../../../../../../modules/api";
 
 const filterOption = (input, option) =>
   (option?.value ?? "").toLowerCase().includes(input.toLowerCase());

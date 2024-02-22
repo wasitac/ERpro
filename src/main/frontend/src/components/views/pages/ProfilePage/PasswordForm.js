@@ -2,7 +2,7 @@
  * 이지홍
  */
 import { Button, Form, Input } from "antd";
-import fetchApi from "../../../../img/modules/api";
+import fetchApi from "../../../../modules/api";
 
 const onFinish = async (values) => {
   console.log("sucsses:", values);

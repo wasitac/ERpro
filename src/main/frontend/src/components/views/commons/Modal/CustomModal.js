@@ -19,7 +19,7 @@ import OrdersItemForm from "./Form/order/OrdersItemForm";
 import InvoiceItemForm from "./Form/order/InvoiceItemForm";
 import EstimateItemForm from "./Form/order/EstimateItemForm";
 import InventoryForm from "./Form/inventory/InventoryForm";
-import fetchApi from "../../../../img/modules/api";
+import fetchApi from "../../../../modules/api";
 
 function CustomModal(props) {
   // antd의 Form관련 hook 사용을 위함
