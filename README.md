@@ -1,14 +1,15 @@
-# SpringBoot JPA Project 
-
-<br>
-
-## 🖥️프로젝트명
-### ERPro
-<br>
+# ERPro
+SpringBoot JPA Project <br>
+## 주제 : ERP<br>
 
 ## 🗓️개발 기간
 ### 2024. 1. 15 ~ 2024.02. 15
 <br>
+
+#### 배포: http://43.203.34.89:9999/<br>
+(id: 1001/pw: 1111)
+
+#### 산출물: https://drive.google.com/drive/folders/1MCcwADfoYAukfyV_YaAiUIOK2xAHi0NO?usp=drive_link<br>
 
 ## 🧑‍💻팀 소개
 ### Team. 알바트로스
