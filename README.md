@@ -1,9 +1,8 @@
-# ERPro
-SpringBoot JPA Project <br>
-## 주제 : ERP<br>
-
-## 🗓️개발 기간
-### 2024. 1. 15 ~ 2024.02. 15<br>
+# **ERPro**
+### **SpringBoot/JPA Project**
+### 주제 : ERP<br>
+#### 🗓️개발 기간
+#### 2024. 1. 15 ~ 2024.02. 15<br>
 
 #### 배포: http://43.203.34.89:9999/<br>
 (id: 1001/pw: 1111)
