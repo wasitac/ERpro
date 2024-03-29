@@ -7,7 +7,7 @@
 #### 배포: http://43.203.34.89:9999/<br>
 (id: 1001/pw: 1111)
 
-#### 산출물: https://drive.google.com/drive/folders/1MCcwADfoYAukfyV_YaAiUIOK2xAHi0NO?usp=drive_link<br>
+#### 산출물: https://drive.google.com/drive/folders/1Vou1iD2J9DRyMfJkz0rWXiqd_fuTtbHZ?usp=drive_link<br>
 
 ## 🧑‍💻팀 소개
 ### Team. 알바트로스
