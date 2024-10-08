@@ -57,6 +57,8 @@
 
 ## 📝주요기능
 - 로그인 : 아이디, 비밀번호 입력을 통한 로그인
+- ![image](https://github.com/user-attachments/assets/1eb6e65a-3b22-4d67-a9be-cfacd23503e8)
+
 - 유저 정보 : 유저 정보 조회, 수정 등 관리
 - 회원 가입 : 관리자가 유저를 추가
 - 권한그룹 설정 : 유저의 권한 설정
