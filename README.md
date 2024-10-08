@@ -57,16 +57,16 @@
 
 ## 📝주요기능
 - 로그인 : 아이디, 비밀번호 입력을 통한 로그인
-<br><img src="https://github.com/user-attachments/assets/1eb6e65a-3b22-4d67-a9be-cfacd23503e8" width="900" border="1px solid"><br>
+<br><img src="https://github.com/user-attachments/assets/1eb6e65a-3b22-4d67-a9be-cfacd23503e8" width="1000" border="1px solid"><br>
 - 유저 정보 : 유저 정보 조회, 수정 등 관리
-<br><img src="https://github.com/user-attachments/assets/0c459795-ccc5-4fef-b418-d9b393dd6a82" width="900" border="1px solid"><br>
+<br><img src="https://github.com/user-attachments/assets/0c459795-ccc5-4fef-b418-d9b393dd6a82" width="1000" border="1px solid"><br>
 - 회원 가입 : 관리자가 유저를 추가
 - 권한그룹 설정 : 유저의 권한 설정
-<br><img src="https://github.com/user-attachments/assets/1b97f945-3997-4186-84b7-78e9194892b1" width="900" border="1px solid"><br>
+<br><img src="https://github.com/user-attachments/assets/1b97f945-3997-4186-84b7-78e9194892b1" width="1000" border="1px solid"><br>
 - 거래처 관리 : 거래처 정보, 거래 기록 등을 작성, 조회
 - 구매/판매 관리 : 거래처로부터 구매 / 자사의 판매 관리
 - 입고/출고 관리 : 자재의 입고 / 제품의 출고 관리
-<br><img src="https://github.com/user-attachments/assets/e1027f36-1e92-4bbf-9c93-624fa31afca9" width="900" border="1px solid"><br>
+<br><img src="https://github.com/user-attachments/assets/e1027f36-1e92-4bbf-9c93-624fa31afca9" width="1000" border="1px solid"><br>
 - 재고 관리 : 자재 / 제품의 재고 관리
 - 전표 관리 : 입금/출금 내역을 기록하는 전표 작성 및 조회
 - 생산 관리 : 생산 지시 작성, 단가 표시, 불량률 파악 등 생산 관련 기능 
