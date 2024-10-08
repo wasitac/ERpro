@@ -66,3 +66,63 @@
 - 재고 관리 : 자재 / 제품의 재고 관리
 - 전표 관리 : 입금/출금 내역을 기록하는 전표 작성 및 조회
 - 생산 관리 : 생산 지시 작성, 단가 표시, 불량률 파악 등 생산 관련 기능 
+
+## **폴더 구조**<br>
+```
++---frontend
+|       \---...
++---java
+|   \---himedia
+|       \---project
+|           \---erpro
+|               +---common
+|               +---config
+|               +---email
+|               |   +---dto
+|               |   \---service
+|               +---inventory
+|               |   +---controller
+|               |   +---dto
+|               |   +---entity
+|               |   +---enums
+|               |   +---repository
+|               |   \---service
+|               +---jwt
+|               +---member
+|               |   +---controller
+|               |   +---dto
+|               |   +---entity
+|               |   +---enums
+|               |   +---repository
+|               |   \---service
+|               +---order
+|               |   +---controller
+|               |   +---dto
+|               |   +---entity
+|               |   +---enums
+|               |   +---repository
+|               |   \---service
+|               +---production
+|               |   +---controller
+|               |   +---dto
+|               |   +---entity
+|               |   +---enums
+|               |   +---repository
+|               |   \---service
+|               \---trade
+|                   +---controller
+|                   +---dto
+|                   +---entity
+|                   +---enums
+|                   +---repository
+|                   \---service
+\---resources
+    +---database
+    +---META-INF
+    +---static
+    |   \---static
+    |       +---css
+    |       +---js
+    |       \---media
+    \---templates
+```
