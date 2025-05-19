@@ -4,8 +4,7 @@
 ### 프로젝트 목적 : 제조/생산 업무에 대한 전반적인 흐름을 관리하고, 작업 효율을 높이는 ERP시스템개발<br>
 #### 프로젝트 기간 : 2024. 1. 15 ~ 2024.02. 15<br>
 #### 작업인원 : 3명<br>
-#### 배포: http://52.78.58.48:9999/<br>
-(id: 1001/pw: 1111)
+
 
 #### 산출물: https://drive.google.com/drive/folders/1Vou1iD2J9DRyMfJkz0rWXiqd_fuTtbHZ?usp=drive_link<br>
 
